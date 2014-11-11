@@ -1,4 +1,6 @@
 
+import generated.*;
+
 class MainConyo 
 {
 	public static ConyoLexer s = null;
