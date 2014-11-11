@@ -1,4 +1,5 @@
 /*Import*/
+import generated.sym;
 import java.io.*;
 import java_cup.runtime.*;
 
@@ -14,6 +15,7 @@ import java_cup.runtime.*;
 %unicode
 %line
 %column
+%public
 %cup
 
 %{
