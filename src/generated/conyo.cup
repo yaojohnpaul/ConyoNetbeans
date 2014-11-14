@@ -1,4 +1,6 @@
 import java_cup.runtime.*;
+import created.*;
+import created.OMG.*;
 
 parser code {:
 	StringBuilder sb = new StringBuilder();
@@ -58,9 +60,9 @@ terminal			NOT_EQUAL, LESS_THAN, LT_EQUAL, GREATER_THAN, GT_EQUAL, EQUAL_EQUAL, 
 terminal 			POS_INC, NEG_INC;
 terminal String		IDENTIFIER;
 terminal String		STRING_LITERAL;
-terminal Character 	CHAR_LITERAL;
-terminal Float		FLOAT_LITERAL;			
-terminal Integer    INT_LITERAL;
+terminal String 	CHAR_LITERAL;
+terminal String		FLOAT_LITERAL;			
+terminal String		INT_LITERAL;
 terminal String		BOOL_LITERAL;
 terminal String		WALEY;
 /*Terminals for precedence*/
@@ -68,11 +70,11 @@ terminal			LONG_NAME, SHORT_NAME;
 
 /* Non terminals */
 /*Program*/
-non terminal			conyogram;
+non terminal Conyogram	conyogram;
 /*Program Breakdown*/
-non terminal			OMG_section;
-non terminal			OMG_list;
-non terminal			OMG_dec;
+non terminal OMGlist	OMG_section;
+non terminal OMGlist	OMG_list;
+non terminal OMG		OMG_dec;
 non terminal			yaya_section;
 non terminal			yaya_list;
 non terminal			sub_yaya_section;
@@ -162,18 +164,22 @@ start with conyogram;
  
 /*Program*/
 
-conyogram ::= OMG_section yaya_section sub_yaya_section super_yaya 
-				{: printText(); :};
+conyogram ::= OMG_section:o yaya_section sub_yaya_section super_yaya 
+				{: 
+					RESULT = new Conyogram(o);
+					printText(); 
+				:};
 
 /*Program Breakdown*/
 
-OMG_section ::= OMG_list | ;
-OMG_list ::= OMG_dec
-			| OMG_dec OMG_list;
+OMG_section ::= OMG_list:o {: RESULT = o; :}
+			| {: RESULT = new OMGlist(); :};
+OMG_list ::= OMG_dec:o {: RESULT = new OMGlist(o); :}
+			| OMG_dec:o OMG_list:l {: RESULT = new OMGlist(o, l); :};
 			
-OMG_dec ::= OMG IDENTIFIER:id MAKE_KUHA sabi_sabi DB
-			| OMG error DB {: addText(" in Constant Declaration"); :}
-			| error DB {: addText(" before main and function declarations"); :}
+OMG_dec ::= OMG IDENTIFIER:id MAKE_KUHA sabi_sabi DB {: RESULT = new OMG(id); :}
+			| OMG error DB {: RESULT = null; addText(" in Constant Declaration"); :}
+			| error DB {: RESULT = null; addText(" before main and function declarations"); :}
 ;
 
 yaya_section ::= yaya_list | ;
