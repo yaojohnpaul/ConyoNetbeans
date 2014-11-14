@@ -1,5 +1,6 @@
 
 import generated.*;
+import created.*;
 
 class MainConyo 
 {
@@ -11,11 +12,21 @@ class MainConyo
 	public static void main(String argv[]) {
             try 
             {
-                  java.io.FileInputStream stream = new java.io.FileInputStream("src/test_cases/" + test_file + ".txt");
-                  java.io.Reader reader = new java.io.InputStreamReader(stream, "UTF-8");
-                  s = new ConyoLexer(reader);
-                  Parser p = new Parser(s);
-                  p.parse();
+                java.io.FileInputStream stream = new java.io.FileInputStream("src/test_cases/" + test_file + ".txt");
+                java.io.Reader reader = new java.io.InputStreamReader(stream, "UTF-8");
+                s = new ConyoLexer(reader);
+                Parser p = new Parser(s);
+
+                Conyogram c = null;
+                try
+                {
+                    c = (Conyogram) p.parse().value;
+                }
+                catch(Exception e)
+                {
+                    System.out.println(e);
+                }
+                c.setupSymList();
             }
             catch (Exception e) 
             {
