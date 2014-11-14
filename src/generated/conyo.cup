@@ -1,6 +1,7 @@
 import java_cup.runtime.*;
 import created.*;
 import created.OMG.*;
+import created.sabisabi.*;
 
 parser code {:
 	StringBuilder sb = new StringBuilder();
@@ -134,7 +135,7 @@ non terminal			utos_makeUlit;
 non terminal			utos_makeArte;
 non terminal			utos_makeSabi;
 /*Expression Relations*/
-non terminal			sabi_sabi;
+non terminal SabiSabi	sabi_sabi;
 non terminal			sabi_sabi_end;
 non terminal			sabi_sabi_for;
 non terminal			ss_OR;
@@ -177,7 +178,7 @@ OMG_section ::= OMG_list:o {: RESULT = o; :}
 OMG_list ::= OMG_dec:o {: RESULT = new OMGlist(o); :}
 			| OMG_dec:o OMG_list:l {: RESULT = new OMGlist(o, l); :};
 			
-OMG_dec ::= OMG IDENTIFIER:id MAKE_KUHA sabi_sabi DB {: RESULT = new OMG(id); :}
+OMG_dec ::= OMG IDENTIFIER:id MAKE_KUHA sabi_sabi:ss DB {: RESULT = new OMG(id, ss); :}
 			| OMG error DB {: RESULT = null; addText(" in Constant Declaration"); :}
 			| error DB {: RESULT = null; addText(" before main and function declarations"); :}
 ;
@@ -330,7 +331,7 @@ sabi_sabi_end ::= valid_var
 				| literal;
 
 sabi_sabi_for ::= sabi_sabi DB;	
-sabi_sabi ::= ss_OR;
+sabi_sabi ::= ss_OR {: RESULT = new SabiSabi(); :};
 ss_OR ::= ss_AND OR OR ss_OR
 		| ss_AND;
 ss_AND ::= ss_equality AND AND ss_AND
