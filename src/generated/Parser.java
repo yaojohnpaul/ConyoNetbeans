@@ -6,6 +6,7 @@
 import java_cup.runtime.*;
 import created.*;
 import created.OMG.*;
+import created.sabisabi.*;
 import java_cup.runtime.XMLElement;
 
 /** CUP v0.11b 20140808 (SVN rev 54) generated parser.
@@ -929,7 +930,10 @@ class CUP$Parser$actions {
 		int idleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)).left;
 		int idright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)).right;
 		String id = (String)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-3)).value;
-		 RESULT = new OMG(id); 
+		int ssleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
+		int ssright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
+		SabiSabi ss = (SabiSabi)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		 RESULT = new OMG(id, ss); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("OMG_dec",3, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-4)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -2086,8 +2090,8 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 132: // sabi_sabi ::= ss_OR 
             {
-              Object RESULT =null;
-
+              SabiSabi RESULT =null;
+		 RESULT = new SabiSabi(); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("sabi_sabi",56, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;

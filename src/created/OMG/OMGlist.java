@@ -1,6 +1,7 @@
 
 package created.OMG;
 
+import error.ErrorReport;
 import created.*;
 
 /**
@@ -50,10 +51,10 @@ public class OMGlist implements iNode
         Boolean success = false;
         if(o != null) //there are constants
         {
-            success = sl.addToList(o.toString(), new SymOMG(o.toString()));
+            success = sl.addToList(o.toString(), new SymOMG(o.toString(), o.getValue()));
             if(!success) //no duplicate
             {
-                System.out.println("Duplicate constant! - " + o.toString());
+                ErrorReport.error("Duplicate constant! - " + o.toString());
             }
             if(olist != null) //more constants
             {

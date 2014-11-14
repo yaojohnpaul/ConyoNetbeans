@@ -33,4 +33,10 @@ public class SymEntry
     {
         return NONE;
     }
+    
+    @Override
+    public String toString()
+    {
+        return symName;
+    }
 }

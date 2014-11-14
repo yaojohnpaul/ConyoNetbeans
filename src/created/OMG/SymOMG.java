@@ -2,19 +2,23 @@
 package created.OMG;
 
 import created.*;
+import created.sabisabi.SabiSabi;
 
 /**
  * A symbol for constants.
  */
 public class SymOMG extends SymEntry
 {
+    SabiSabi ss;
+    
     /**
      * Constructor
      * @param n Name of constant.
      */
-    public SymOMG(String n)
+    public SymOMG(String n, SabiSabi ss)
     {
         super(n);
+        this.ss = ss;
     }
     
     @Override
@@ -26,6 +30,6 @@ public class SymOMG extends SymEntry
     @Override
     public String toString()
     {
-        return symName;
+        return ss.toString();
     }
 }

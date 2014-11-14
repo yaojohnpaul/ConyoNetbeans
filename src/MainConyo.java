@@ -9,7 +9,8 @@ class MainConyo
         /*Which test case to use.*/
         private static String test_file = "test";
 
-	public static void main(String argv[]) {
+	public static void main(String argv[]) 
+        {
             try 
             {
                 java.io.FileInputStream stream = new java.io.FileInputStream("src/test_cases/" + test_file + ".txt");
