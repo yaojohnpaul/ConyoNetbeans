@@ -14,7 +14,7 @@ public abstract class super_yaya implements created.iNode
     {
         public utos_block u;
         
-        public superYaya()
+        public superYaya(utos_block u)
         {
             this.u = u;
         }

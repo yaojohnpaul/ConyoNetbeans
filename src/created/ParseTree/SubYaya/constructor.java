@@ -15,7 +15,7 @@ public abstract class constructor implements created.iNode
         public String id;
         public utos_block u;
         
-        public mSimula()
+        public mSimula(String id, utos_block u)
         {
             this.id = id;
             this.u = u;
