@@ -13,9 +13,9 @@ public abstract class OMG_dec implements created.iNode
     public static class OMG extends OMG_dec
     {
         String id; //Constant name
-        SabiSabi ss; //Expression, value of constant
+        sabi_sabi ss; //Expression, value of constant
         
-        public OMG(String id, SabiSabi ss)
+        public OMG(String id, sabi_sabi ss)
         {
             this.id = id;
             this.ss = ss;
@@ -30,7 +30,7 @@ public abstract class OMG_dec implements created.iNode
          * Get the value of the constant.
          * @return Constant value.
          */
-        public SabiSabi getValue()
+        public sabi_sabi getValue()
         {
             return ss;
         }

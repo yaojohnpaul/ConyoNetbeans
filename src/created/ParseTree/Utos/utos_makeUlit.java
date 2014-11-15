@@ -1,6 +1,12 @@
 package created.parseTree.Utos;
 
-
+import created.ParseTree.Array.*;
+import created.ParseTree.Arte.*;
+import created.ParseTree.Literals.*;
+import created.ParseTree.Program.*;
+import created.ParseTree.SabiSabi.*;
+import created.ParseTree.SubYaya.*;
+import created.ParseTree.Yaya.*;
 
 public abstract class utos_makeUlit implements created.iNode  
 {
@@ -30,12 +36,14 @@ public abstract class utos_makeUlit implements created.iNode
             this.u = u;
         }
         
+        @Override
         public String toString()
         {
             if(m2 != null)
                 return "makeUlit(" + m1.toString() + " db " + s1.toString() + " " + m2.toString() + ")\n" + u.toString();
             else if(s2 != null)
                 return "makeUlit(" + m1.toString() + " db " + s1.toString() + " " + s2.toString() + ")\n" + u.toString();
+            return "";
         }
     }
 }

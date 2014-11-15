@@ -23,7 +23,7 @@ public abstract class ss_AND implements created.iNode
         
         public String toString()
         {
-            return e.toString() + " AND " + a.toString();
+            return e.toString() + " && " + a.toString();
         }
     }
     

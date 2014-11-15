@@ -23,7 +23,7 @@ public abstract class ss_OR implements created.iNode
         
         public String toString()
         {
-            return a.toString() + " OR " + o.toString();
+            return a.toString() + " || " + o.toString();
         }
     }
     
