@@ -1,6 +1,6 @@
 package created.parseTree.Utos;
 
-abstract class utos_likeHabang implements created.iNode  
+public abstract class utos_likeHabang implements created.iNode  
 {
     public static class likeHabang extends utos_likeHabang
     {

@@ -1,6 +1,14 @@
 package created.parseTree.Utos;
 
-abstract class utos_dec_nodb implements created.iNode  
+import created.ParseTree.Array.*;
+import created.ParseTree.Arte.*;
+import created.ParseTree.Literals.*;
+import created.ParseTree.Program.*;
+import created.ParseTree.SabiSabi.*;
+import created.ParseTree.SubYaya.*;
+import created.ParseTree.Yaya.*;
+
+public abstract class utos_dec_nodb implements created.iNode  
 {
     public static class utosLikeKapag extends utos_dec_nodb
     {
@@ -28,7 +36,7 @@ abstract class utos_dec_nodb implements created.iNode
         
         public String toString()
         {
-            return up.toString;
+            return up.toString();
         }
     }
     
@@ -43,7 +51,7 @@ abstract class utos_dec_nodb implements created.iNode
         
         public String toString()
         {
-            return uh.toString;
+            return uh.toString();
         }
     }
     
@@ -58,7 +66,7 @@ abstract class utos_dec_nodb implements created.iNode
         
         public String toString()
         {
-            return ugh.toString;
+            return ugh.toString();
         }
     }
     
@@ -73,7 +81,7 @@ abstract class utos_dec_nodb implements created.iNode
         
         public String toString()
         {
-            return uu.toString;
+            return uu.toString();
         }
     }
     
@@ -88,7 +96,7 @@ abstract class utos_dec_nodb implements created.iNode
         
         public String toString()
         {
-            return ua.toString;
+            return ua.toString();
         }
     }
 }

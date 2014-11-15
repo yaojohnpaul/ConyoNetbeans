@@ -1,13 +1,21 @@
 package created.ParseTree.SabiSabi;
 
-abstract class ss_AND implements created.iNode
+import created.ParseTree.Array.*;
+import created.ParseTree.Arte.*;
+import created.ParseTree.Literals.*;
+import created.ParseTree.Program.*;
+import created.ParseTree.SubYaya.*;
+import created.ParseTree.Utos.*;
+import created.ParseTree.Yaya.*;
+
+public abstract class ss_AND implements created.iNode
 {
     public static class ssANDExpansion extends ss_AND
     {
         public ss_AND a;
         public ss_equality e;
         
-        public ssORExpansion(ss_equality e, ss_AND a)
+        public ssANDExpansion(ss_equality e, ss_AND a)
         {
             this.a = a;
             this.e = e;
@@ -23,7 +31,7 @@ abstract class ss_AND implements created.iNode
     {
         public ss_equality e;
         
-        public ssOR(ss_equality e)
+        public ssAND(ss_equality e)
         {
             this.e = e;
         }

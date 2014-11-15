@@ -1,8 +1,16 @@
 package created.ParseTree.SabiSabi;
 
-abstract class arithmetic_2 implements created.iNode
+import created.ParseTree.Array.*;
+import created.ParseTree.Arte.*;
+import created.ParseTree.Literals.*;
+import created.ParseTree.Program.*;
+import created.ParseTree.SubYaya.*;
+import created.ParseTree.Utos.*;
+import created.ParseTree.Yaya.*;
+
+public abstract class arithmetic_2 implements created.iNode
 {
-    ublic static class arithmetic2 extends arithmetic_2
+    public static class arithmetic2 extends arithmetic_2
     {
         public String kind; // will contain either /, * or % 
         

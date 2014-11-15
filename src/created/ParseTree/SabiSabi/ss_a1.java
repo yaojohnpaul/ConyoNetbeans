@@ -1,6 +1,14 @@
 package created.ParseTree.SabiSabi;
 
-abstract class ss_a1 implements created.iNode
+import created.ParseTree.Array.*;
+import created.ParseTree.Arte.*;
+import created.ParseTree.Literals.*;
+import created.ParseTree.Program.*;
+import created.ParseTree.SubYaya.*;
+import created.ParseTree.Utos.*;
+import created.ParseTree.Yaya.*;
+
+public abstract class ss_a1 implements created.iNode
 {
     public static class ssA1Expansion extends ss_a1
     {
@@ -8,7 +16,7 @@ abstract class ss_a1 implements created.iNode
         public arithmetic_1 ar;
         public ss_a1 a1;
         
-        public ssComparisonExpansion(ss_a2 a, arithmetic_1 ar, ss_a1 c)
+        public ssA1Expansion(ss_a2 a, arithmetic_1 ar, ss_a1 c)
         {
             this.a1 = a1;
             this.ar = ar;
@@ -25,7 +33,7 @@ abstract class ss_a1 implements created.iNode
     {
         public ss_a2 a2;
         
-        public ssComparison(ss_a2 a2)
+        public ssA1(ss_a2 a2)
         {
             this.a2 = a2;
         }

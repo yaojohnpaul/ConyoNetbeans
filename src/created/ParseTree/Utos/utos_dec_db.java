@@ -1,6 +1,14 @@
 package created.parseTree.Utos;
 
-abstract class utos_dec_db implements created.iNode  
+import created.ParseTree.Array.*;
+import created.ParseTree.Arte.*;
+import created.ParseTree.Literals.*;
+import created.ParseTree.Program.*;
+import created.ParseTree.SabiSabi.*;
+import created.ParseTree.SubYaya.*;
+import created.ParseTree.Yaya.*;
+
+public abstract class utos_dec_db implements created.iNode  
 {
     public static class utosMakeKuha extends utos_dec_db
     {
@@ -17,7 +25,7 @@ abstract class utos_dec_db implements created.iNode
         }
     }
     
-    public static class utosMakeSulat extends PLACEHOLDER_ABSTRACT
+    public static class utosMakeSulat extends utos_dec_db
     {
         public utos_makeSulat usu; 
         
@@ -32,7 +40,7 @@ abstract class utos_dec_db implements created.iNode
         }
     }
     
-    public static class utosMakeSabi extends PLACEHOLDER_ABSTRACT
+    public static class utosMakeSabi extends utos_dec_db
     {
         public utos_makeSabi usa; 
         
@@ -47,7 +55,7 @@ abstract class utos_dec_db implements created.iNode
         }
     }
     
-    public static class breakup extends PLACEHOLDER_ABSTRACT
+    public static class breakup extends utos_dec_db
     {
         public breakup()
         {
@@ -59,7 +67,7 @@ abstract class utos_dec_db implements created.iNode
         }
     }
     
-    public static class makeup extends PLACEHOLDER_ABSTRACT
+    public static class makeup extends utos_dec_db
     {
         public makeup()
         {

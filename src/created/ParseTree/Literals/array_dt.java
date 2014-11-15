@@ -1,7 +1,14 @@
-package created.ParseTree.Literals
-;
+package created.ParseTree.Literals;
 
-abstract class array_dt implements created.iNode
+import created.ParseTree.Array.*;
+import created.ParseTree.Arte.*;
+import created.ParseTree.Program.*;
+import created.ParseTree.SabiSabi.*;
+import created.ParseTree.SubYaya.*;
+import created.ParseTree.Utos.*;
+import created.ParseTree.Yaya.*;
+
+public abstract class array_dt implements created.iNode
 {
     
     public static class arrayPrimitive extends array_dt

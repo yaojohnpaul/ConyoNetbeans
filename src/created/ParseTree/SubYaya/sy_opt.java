@@ -1,6 +1,14 @@
 package created.ParseTree.SubYaya;
 
-abstract class sy_opt implements created.iNode 
+import created.ParseTree.Array.*;
+import created.ParseTree.Arte.*;
+import created.ParseTree.Literals.*;
+import created.ParseTree.Program.*;
+import created.ParseTree.SabiSabi.*;
+import created.ParseTree.Utos.*;
+import created.ParseTree.Yaya.*;
+
+public abstract class sy_opt implements created.iNode 
 {
     public static class SubYayaOpt extends sy_opt
     {
@@ -21,7 +29,7 @@ abstract class sy_opt implements created.iNode
             if(l != null)
             return l.toString();
             else
-            return "null"
+            return null;
         }
     }
     

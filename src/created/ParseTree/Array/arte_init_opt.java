@@ -1,6 +1,14 @@
 package created.ParseTree.Array;
 
-abstract class arte_init_opt implements created.iNode 
+import created.ParseTree.Arte.*;
+import created.ParseTree.Literals.*;
+import created.ParseTree.Program.*;
+import created.ParseTree.SabiSabi.*;
+import created.ParseTree.SubYaya.*;
+import created.ParseTree.Utos.*;
+import created.ParseTree.Yaya.*;
+
+public abstract class arte_init_opt implements created.iNode 
 {
     public static class arteInitOpt extends arte_init_opt
     {

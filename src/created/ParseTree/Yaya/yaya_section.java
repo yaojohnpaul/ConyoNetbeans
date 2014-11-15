@@ -1,6 +1,14 @@
 package created.parseTree.Yaya;
 
-abstract class yaya_section implements created.iNode  
+import created.ParseTree.Array.*;
+import created.ParseTree.Arte.*;
+import created.ParseTree.Literals.*;
+import created.ParseTree.Program.*;
+import created.ParseTree.SabiSabi.*;
+import created.ParseTree.SubYaya.*;
+import created.ParseTree.Utos.*;
+
+public abstract class yaya_section implements created.iNode  
 {
     public static class yayaSection extends yaya_section
     {

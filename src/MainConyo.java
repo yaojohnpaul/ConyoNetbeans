@@ -27,7 +27,7 @@ class MainConyo
                 {
                     System.out.println(e);
                 }
-                c.setupSymList();
+                System.out.println(c.toString());
             }
             catch (Exception e) 
             {

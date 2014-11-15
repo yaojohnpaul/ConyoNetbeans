@@ -1,6 +1,14 @@
 package created.ParseTree.SubYaya;
 
-abstract class constructor implements created.iNode 
+import created.ParseTree.Array.*;
+import created.ParseTree.Arte.*;
+import created.ParseTree.Literals.*;
+import created.ParseTree.Program.*;
+import created.ParseTree.SabiSabi.*;
+import created.ParseTree.Utos.*;
+import created.ParseTree.Yaya.*;
+
+public abstract class constructor implements created.iNode 
 {
     public static class mSimula extends constructor
     {
@@ -21,4 +29,4 @@ abstract class constructor implements created.iNode
     
 }
 
-constructor ::= MAKE_SIMULA IDENTIFIER:id utos_block:u {: RESULT = new mSimula(id, u); :};
+//constructor ::= MAKE_SIMULA IDENTIFIER:id utos_block:u {: RESULT = new mSimula(id, u); :};

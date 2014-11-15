@@ -1,6 +1,14 @@
 package created.parseTree.Utos;
 
-abstract class utos_dec implements created.iNode 
+import created.ParseTree.Array.*;
+import created.ParseTree.Arte.*;
+import created.ParseTree.Literals.*;
+import created.ParseTree.Program.*;
+import created.ParseTree.SabiSabi.*;
+import created.ParseTree.SubYaya.*;
+import created.ParseTree.Yaya.*;
+
+public abstract class utos_dec implements created.iNode 
 {
     public static class utosDecDB extends utos_dec
     {
@@ -21,7 +29,7 @@ abstract class utos_dec implements created.iNode
     {
         public utos_dec_val uv;
         
-        public utosDecVal(utos_dec_dv uv)
+        public utosDecVal(utos_dec_val uv)
         {
             this.uv = uv;
         }

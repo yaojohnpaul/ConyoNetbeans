@@ -1,6 +1,14 @@
 package created.ParseTree.SabiSabi;
 
-abstract class ss_equality implements created.iNode
+import created.ParseTree.Array.*;
+import created.ParseTree.Arte.*;
+import created.ParseTree.Literals.*;
+import created.ParseTree.Program.*;
+import created.ParseTree.SubYaya.*;
+import created.ParseTree.Utos.*;
+import created.ParseTree.Yaya.*;
+
+public abstract class ss_equality implements created.iNode
 {
     public static class ssEqualityExpansion extends ss_equality
     {
@@ -24,7 +32,7 @@ abstract class ss_equality implements created.iNode
     {
         public ss_comparison c;
         
-        public ssEqualityExpansion(ss_comparison c)
+        public ssEquality(ss_comparison c)
         {
             this.c = c;
         }

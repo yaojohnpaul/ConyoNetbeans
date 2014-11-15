@@ -1,6 +1,8 @@
 package created.parseTree.Utos;
 
-abstract class utos_makeUlit implements created.iNode  
+
+
+public abstract class utos_makeUlit implements created.iNode  
 {
     public static class makeUlit extends utos_makeUlit
     {

@@ -1,6 +1,14 @@
 package created.ParseTree.Literals;
 
-abstract class data_type implements created.iNode
+import created.ParseTree.Array.*;
+import created.ParseTree.Arte.*;
+import created.ParseTree.Program.*;
+import created.ParseTree.SabiSabi.*;
+import created.ParseTree.SubYaya.*;
+import created.ParseTree.Utos.*;
+import created.ParseTree.Yaya.*;
+
+public abstract class data_type implements created.iNode
 {
     public static class datatypePrimitive extends data_type
     {
@@ -22,7 +30,7 @@ abstract class data_type implements created.iNode
     {
         public reference_dt r;
         
-        public datatypePrimitive(reference_dt r)
+        public datatypeReference(reference_dt r)
         {
             this.r = r;
         }

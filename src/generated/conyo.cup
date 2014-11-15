@@ -269,7 +269,7 @@ arte_init_list ::= arte_init_opt:o {: RETURN = new arteInitList(o); :}
 arte_init_opt ::= arte_init:i COMMA arte_init_opt:o {: RETURN = new arteInitOpt(i, o); :}
 				| arte_init:i {: RETURN = new arteInitOpt(i); :};
 				
-brackets ::= LEFT_BRACE RIGHT_BRACE {: RESULT = "[]"; :};
+brackets ::= LEFT_BRACE RIGHT_BRACE {: RESULT = new brackets(); :};
 ref_brackets ::= LEFT_BRACE sabi_sabi RIGHT_BRACE;
 
 /*Program Code Productions*/
