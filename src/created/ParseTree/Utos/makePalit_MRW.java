@@ -1,0 +1,36 @@
+abstract class makePalit_MRW implements iNode 
+{
+    public static class MRW extends makePalit_MRW
+    {
+        public sabi_sabi s; 
+        public utos_block_opt u;
+        public makePalit_MRW m;
+        
+        public MRW(sabi_sabi s, utos_block_opt u, makePalit_MRW m)
+        {
+            this.s = s;
+            this.u = u;
+            this.m = m;
+        }
+        
+        public String toString()
+        {
+            return "MRW " + s.toString() + " : " + u.toString() + "\n" + m.toString();
+        }
+    }
+    
+    public static class MDR extends makePalit_MRW
+    {
+        public utos_block_opt o; 
+        
+        public MDR(PLACEHOLDER_VARTYPE o)
+        {
+            this.o = o;
+        }
+        
+        public String toString()
+        {
+            return "MDR: " + o.toString();
+        }
+    }
+}

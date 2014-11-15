@@ -76,26 +76,26 @@ non terminal Conyogram	conyogram;
 non terminal OMGlist	OMG_section;
 non terminal OMGlist	OMG_list;
 non terminal OMG		OMG_dec;
-non terminal			yaya_section;
-non terminal			yaya_list;
-non terminal			sub_yaya_section;
-non terminal			sub_yaya_list;
-non terminal			super_yaya;
+non terminal YayaList	yaya_section;
+non terminal YayaList	yaya_list;
+non terminal SubYayaList	sub_yaya_section;
+non terminal SubYayaList	sub_yaya_list;
+non terminal SuperYaya	super_yaya;
 /*Literals, Data Types, Names*/
-non terminal			literal;
+non terminal literal	literal;
 non terminal String		data_type;
-non terminal			primitive_dt;
-non terminal			reference_dt;
-non terminal			array_dt;
+non terminal String		primitive_dt;
+non terminal String		reference_dt;
+non terminal String		array_dt;
 non terminal String		valid_name;
-non terminal			valid_var;
+non terminal validVar	valid_var;
 /*Class Declaration Productions*/
-non terminal			sub_yaya;
-non terminal			sy_body;
-non terminal			sy_opt;
-non terminal			sy_cont_list;
+non terminal SubYaya	sub_yaya;
+non terminal SubYayaBodyList	sy_body;
+non terminal SubYayaBodyList	sy_opt;
+non terminal SubYayaBodyList	sy_cont_list;
 non terminal			sy_cont;
-non terminal			constructor;
+non terminal mSimula	constructor;
 non terminal			sy_init;
 /*Variable Declaration Productions*/
 non terminal			arte_dec;
@@ -111,7 +111,7 @@ non terminal			yaya_param;
 non terminal			array_init;
 non terminal			arte_init_list;
 non terminal			arte_init_opt;
-non terminal			brackets;
+non terminal String		brackets;
 non terminal			ref_brackets;
 /*Program Code Productions*/
 non terminal			utos_block;
@@ -136,17 +136,17 @@ non terminal			utos_makeArte;
 non terminal			utos_makeSabi;
 /*Expression Relations*/
 non terminal SabiSabi	sabi_sabi;
-non terminal			sabi_sabi_end;
-non terminal			sabi_sabi_for;
-non terminal			ss_OR;
-non terminal			ss_AND;
-non terminal			ss_equality;
-non terminal			ss_comparison;
-non terminal			ss_a1;
-non terminal			ss_a2;
-non terminal			ss_unary_1;
-non terminal			ss_unary_2;
-non terminal			ss_paren;
+non terminal ssEnd		sabi_sabi_end;
+non terminal SabiSabiFor	sabi_sabi_for;
+non terminal ssOR		ss_OR;
+non terminal ssAND		ss_AND;
+non terminal ssEquality	ss_equality;
+non terminal ssComparison	ss_comparison;
+non terminal ssA1		ss_a1;
+non terminal ssA2		ss_a2;
+non terminal ssU1		ss_unary_1;
+non terminal ssU2		ss_unary_2;
+non terminal ssParen	ss_paren;
 non terminal			equality;
 non terminal			comparison;
 non terminal			arithmetic_1;
@@ -165,11 +165,11 @@ start with conyogram;
  
 /*Program*/
 
-conyogram ::= OMG_section:o yaya_section:y sub_yaya_section super_yaya 
-				{: 
-					RESULT = new Conyogram(o, y);
-					printText(); 
-				:};
+conyogram ::= OMG_section:o yaya_section:y sub_yaya_section:b super_yaya:p 
+			{: 
+				RESULT = new Conyogram(o, y, b, );
+				printText(); 
+			:};
 
 /*Program Breakdown*/
 
@@ -183,12 +183,12 @@ OMG_dec ::= OMG IDENTIFIER:id MAKE_KUHA sabi_sabi:ss DB {: RESULT = new OMG(id, 
 			| error DB {: RESULT = null; addText(" before main and function declarations"); :}
 ;
 
-yaya_section ::= yaya_list:y {: RESULT = y; :}
-| {: RESULT = new YayaList(); :};
-yaya_list ::= yaya:y {: RESULT = new YayaList(y); :}
-			| yaya:y yaya_list:l {: RESULT = new YayaList(y, l); :};
+yaya_section ::= yaya_list:y {: RESULT = new yayaSection(y); :}
+| {: RESULT = new yayaSection(); :};
+yaya_list ::= yaya:y {: RESULT = new yayaList(y); :}
+			| yaya:y yaya_list:l {: RESULT = new yayaList(y, l); :};
 
-sub_yaya_section ::= sub_yaya_list:s {: RESULT = new SubYayaList(s); :}
+sub_yaya_section ::= sub_yaya_list:s {: RESULT = s; :}
 			| {: RESULT = new SubYayaList(); :};
 sub_yaya_list ::= sub_yaya:s {: RESULT = new SubYayaList(s); :}
 				| sub_yaya:s sub_yaya_list:l {: RESULT = new SubYayaList(s, l); :};
@@ -197,6 +197,7 @@ super_yaya ::= SUPER_YAYA utos_block:u {: RESULT = new SuperYaya(u); :};
 
 /*Literals, Data Types, Names*/
 
+/*All literals implements iLiteral interface*/
 literal ::= INT_LITERAL:i {: RESULT = new Inty(i); :}
 			| FLOAT_LITERAL:f {: RESULT = new Floaty(f); :}
 			| STRING_LITERAL:s {: RESULT = new Stringy(s); :}
@@ -204,20 +205,20 @@ literal ::= INT_LITERAL:i {: RESULT = new Inty(i); :}
 			| BOOL_LITERAL:b {: RESULT = new Booly(b); :}
 			| WALEY:w {: RESULT = new Waley(w); :}; 
 
-data_type ::= primitive_dt:p {: RESULT = p; :}
-			| reference_dt:r {: RESULT = r; :};
-primitive_dt ::= INTY:i {: RESULT = i; :}
-			| FLOATY:f {: RESULT = f; :}
-			| STRINGY:s {: RESULT = s; :}
-			| CHARY:c {: RESULT = c; :}
-			| BOOLY:b {: RESULT = b; :};
-reference_dt ::= valid_name:vn {: RESULT = vn; :} 
-				| array_dt:a {: RESULT = a; :};
-array_dt ::= primitive_dt:p brackets:b {: RESULT = p + b; :}
-			| valid_name:vn brackets:b {: RESULT = vn + b; :};
+data_type ::= primitive_dt:p {: RESULT = new datatypePrimitive(p); :};
+			| reference_dt:r {: RESULT = new datatypeReference(r); :};
+primitive_dt ::= INTY:i {: RESULT = new intType(i); :}
+			| FLOATY:f {: RESULT = new floatType(f); :}
+			| STRINGY:s {: RESULT = new stringType(s); :}
+			| CHARY:c {: RESULT = new charType(c); :}
+			| BOOLY:b {: RESULT = new booleanType(b); :};
+reference_dt ::= valid_name:vn {: RESULT = new referenceValidName(vn); :}
+				| array_dt:a {: RESULT = new referenceArray(a); :};
+array_dt ::= primitive_dt:p brackets:b {: RESULT = new arrayPrimitive(p, b); :}
+			| valid_name:vn brackets:b {: RESULT = new arrayName(vn, b); :};
 			
-valid_name ::= IDENTIFIER:id {:RESULT = id;:}
-			| valid_name:vn COLON IDENTIFIER:id {:RESULT = vn + ":" + id;:} %prec LONG_NAME;
+valid_name ::= IDENTIFIER:id {:RESULT = new identifier(id)}
+			| valid_name:vn COLON IDENTIFIER:id {:RESULT = new validName(vn, id) :} %prec LONG_NAME;
 valid_var ::= valid_name:vn {: RESULT = new validVar(vn); :} %prec SHORT_NAME 
 			| valid_name:vn ref_brackets:rb {: RESULT = new validVar(vn, rb); :};
 			
@@ -237,137 +238,140 @@ sy_init ::= BRAND_NEW reference_dt LEFT_PAREN arte_init_list RIGHT_PAREN;
 
 /*Variable Declaration Productions*/
 
-arte_dec ::= MAKE_ARTE data_type IDENTIFIER:id arte_assign DB
-			| MAKE_ARTE error DB {: addText(" in Variable Declaration"); :};
-arte_assign ::= MAKE_KUHA arte_init
-			| ;
-arte_init ::= array_init
-			| sy_init
-			| sabi_sabi;
+arte_dec ::= MAKE_ARTE data_type:dt IDENTIFIER:id arte_assign:a DB {: RESULT = new arteDec(dt, id, a); :}
+			| MAKE_ARTE error DB {: RESULT = null; addText(" in Variable Declaration"); :};
+arte_assign ::= MAKE_KUHA arte_init:i {: RESULT = new arteAssign(i); :}
+			| {: RESULT = new arteAssign(); :}; 
+arte_init ::= array_init:a {: RESULT = new arrayInit(a); :}
+			| sy_init:sy {: RESULT = new syInit(sy); :}
+			| sabi_sabi:s {: RESULT = new sabiInit(s); :};
 
 /*Function Declaration Productions*/
 
-yaya ::= yaya_header utos_block;
+yaya ::= yaya_header:h utos_block:u {: RESULT = new addYaya(h, u); :};
 
-yaya_header ::= HIRE_YAYA IDENTIFIER:id BAYAD LEFT_PAREN yaya_param_sec RIGHT_PAREN MAKE_BALIK data_type IDENTIFIER
-			| HIRE_YAYA IDENTIFIER:id BAYAD LEFT_PAREN yaya_param_sec RIGHT_PAREN MAKE_BALIK POOR;
+yaya_header ::= HIRE_YAYA IDENTIFIER:id BAYAD LEFT_PAREN yaya_param_sec:yps RIGHT_PAREN MAKE_BALIK data_type:dt IDENTIFIER:r
+				{: RESULT = new yayaHeader(id, yps, dt, r); :}
+			| HIRE_YAYA IDENTIFIER:id BAYAD LEFT_PAREN yaya_param_sec:yps RIGHT_PAREN MAKE_BALIK POOR
+				{: RESULT = new yayaHeader(id, yps); :};
 
-yaya_param_sec ::= yaya_param_list | ;
-yaya_param_list ::= yaya_param COMMA yaya_param_list
-				| yaya_param;
+yaya_param_sec ::= yaya_param_list:ypl {: RESULT = new yayaParamSec(ypl); :}
+			| {: RESULT = new yayaParamSec(); :};
+yaya_param_list ::= yaya_param:yp COMMA yaya_param_list:ypl {: RESULT = new yayaParamList(yp, ypl); :}
+			| yaya_param:yp {: RESULT = new yayaParamList(yp); :};
 yaya_param ::= data_type IDENTIFIER;
 
 /*Array Productions*/
 
-array_init ::= LEFT_CURLY arte_init_list RIGHT_CURLY;
-arte_init_list ::= arte_init_opt
-				| ;
-arte_init_opt ::= arte_init COMMA arte_init_opt
-				| arte_init;
+array_init ::= LEFT_CURLY arte_init_list:l RIGHT_CURLY {: RETURN = new arrayInit(l); :};
+arte_init_list ::= arte_init_opt:o {: RETURN = new arteInitList(o); :}
+			| {: RETURN = new arteInitList(); :};
+arte_init_opt ::= arte_init COMMA arte_init_opt {: RETURN = new arteInitOpt(); :}
+			| arte_init {: RETURN = new arteInitOpt(); :};
 				
 brackets ::= LEFT_BRACE RIGHT_BRACE {: RESULT = "[]"; :};
 ref_brackets ::= LEFT_BRACE sabi_sabi RIGHT_BRACE;
 
 /*Program Code Productions*/
 
-utos_block ::= DOLLAR_SIGN utos_block_opt DOLLAR_SIGN
-				| error {: addText(" in code block"); :};
-utos_block_opt ::= block_content | ;
-block_content ::= utos_dec block_content
-				| utos_dec;
-utos_dec ::= utos_dec_db 
-			| utos_dec_val DB
-			| utos_dec_nodb
-			| error {: addText(""); :};
-utos_dec_nodb ::= utos_likeKapag
-			| utos_makePalit
-			| utos_likeHabang
-			| utos_makeGawaHabang
-			| utos_makeUlit
-			| utos_makeArte
-			| LIKE_KAPAG error {: addText(" in IF statement"); :}
-			| MAKE_PALIT error DB{: addText(" in SWITCH statement"); :}
-			| LIKE_HABANG error DB{: addText(" in WHILE LOOP"); :}
-			| MAKE_GAWA error DB{: addText(" in DO WHILE LOOP"); :}
-			| MAKE_ULIT error DB{: addText(" in FOR LOOP"); :};
-utos_dec_db ::= utos_makeKuha DB
-			| utos_makeSulat DB
-			| utos_makeSabi DB
-			| BREAKUP DB
-			| MAKEUP DB
-			| MAKE_SULAT error DB{: addText(" in OUTPUT function"); :}
-			| MAKE_SABI error DB{: addText(" in MAKESABI function"); :};
-utos_dec_val ::= utos_makeTawag
-			| utos_makeBasa
-			| MAKE_TAWAG error {: addText(" in FUNCTION CALL"); :}
-			| MAKE_BASA error {: addText(" in SCAN function"); :};
-utos_makeKuha ::= valid_var arte_assign;
-utos_makeTawag ::= MAKE_TAWAG valid_name:vn LEFT_PAREN arte_init_list RIGHT_PAREN;
-utos_makeSulat ::= MAKE_SULAT LEFT_PAREN sabi_sabi RIGHT_PAREN;
-utos_makeBasa ::= MAKE_BASA LEFT_PAREN data_type RIGHT_PAREN;
-utos_likeKapag ::= LIKE_KAPAG LEFT_PAREN sabi_sabi RIGHT_PAREN utos_block utos_thisNalang;
-utos_thisNalang ::= THIS_NALANG utos_block
-				| THIS_NALANG_KAPAG LEFT_PAREN sabi_sabi RIGHT_PAREN utos_block utos_thisNalang
-				|
-				| THIS_NALANG error DB {: addText(" in ELSE statement"); :}
-				| THIS_NALANG_KAPAG error DB {: addText(" in ELSE IF statement"); :};
-utos_makePalit ::= MAKE_PALIT LEFT_PAREN sabi_sabi RIGHT_PAREN DOLLAR_SIGN makePalit_MRW DOLLAR_SIGN;
-makePalit_MRW ::= MRW sabi_sabi COLON utos_block_opt makePalit_MRW
-				| MRW error DB {: addText(" in one of the cases of a SWITCH statement"); :}
-				| MDR COLON utos_block_opt
-				| MDR error DB {: addText(" in the last case of a SWITCH statement"); :}
-				| ;
-
-utos_likeHabang ::= LIKE_HABANG LEFT_PAREN sabi_sabi RIGHT_PAREN utos_block
-				| LIKE_HABANG LEFT_PAREN sabi_sabi RIGHT_PAREN DB;
-utos_makeGawaHabang ::= MAKE_GAWA utos_block LIKE_HABANG LEFT_PAREN sabi_sabi RIGHT_PAREN DB;
-utos_makeUlit ::= MAKE_ULIT LEFT_PAREN utos_makeKuha DB sabi_sabi_for utos_makeKuha RIGHT_PAREN utos_block 
-				| MAKE_ULIT LEFT_PAREN utos_makeKuha DB sabi_sabi_for sabi_sabi_for RIGHT_PAREN utos_block;
-utos_makeArte ::= arte_dec;
-utos_makeSabi ::= MAKE_SABI sabi_sabi;
+utos_block ::= DOLLAR_SIGN utos_block_opt:opt DOLLAR_SIGN {: RESULT = new utosBlock(opt); :}
+			| error {: RESULT = null; addText(" in code block"); :};
+utos_block_opt ::= block_content:c {: RESULT = new utosBlockOpt(b); :}
+			| {: RESULT = new utosBlockOpt(); :};
+block_content ::= utos_dec block_content {: RESULT = new blockContent(u, b); :}
+			| utos_dec {: RESULT = new blockContent(u); :};
+utos_dec ::= utos_dec_db:d {: RESULT = new utosDecDB(d); :}
+			| utos_dec_val:v DB {: RESULT = new utosDecVal(v); :}
+			| utos_dec_nodb:n {: RESULT = new utosDecNoDB(n); :}
+			| error {: RESULT = null; addText(""); :};
+utos_dec_nodb ::= utos_likeKapag:uk {: RESULT = new utosLikeKapag(u); :}
+			| utos_makePalit:up {: RESULT = new utosMakePalit(up); :}
+			| utos_likeHabang:uh {: RESULT = new utosLikeHabang(uh); :}
+			| utos_makeGawaHabang:ugh {: RESULT = new utosMakeGawaHabang(ugh); :}
+			| utos_makeUlit:uu {: RESULT = new utosMakeUlit(uu); :}
+			| utos_makeArte:ua {: RESULT = new utosMakeArte(ua); :}
+			| LIKE_KAPAG error {: RESULT = null; addText(" in IF statement"); :}
+			| MAKE_PALIT error DB {: RESULT = null; addText(" in SWITCH statement"); :}
+			| LIKE_HABANG error DB {: RESULT = null; addText(" in WHILE LOOP"); :}
+			| MAKE_GAWA error DB {: RESULT = null; addText(" in DO WHILE LOOP"); :}
+			| MAKE_ULIT error DB {: RESULT = null; addText(" in FOR LOOP"); :};
+utos_dec_db ::= utos_makeKuha:uk DB {: RESULT = new utosMakeKuha(uk); :}
+			| utos_makeSulat:usu DB {: RESULT = new utosMakeSulat(usu); :}
+			| utos_makeSabi:usa DB {: RESULT = new utosMakeSabi(usa); :}
+			| BREAKUP DB {: RESULT = new breakup(); :}
+			| MAKEUP DB {: RESULT = new makeup(); :}
+			| MAKE_SULAT error DB {: RESULT = null; addText(" in OUTPUT function"); :}
+			| MAKE_SABI error DB {: RESULT = null; addText(" in MAKESABI function"); :};
+utos_dec_val ::= utos_makeTawag:ut {: RESULT = new utosMakeTawag(ut); :}
+			| utos_makeBasa:ub {: RESULT = new utosMakeBasa(ub); :}
+			| MAKE_TAWAG error {: RESULT = null; addText(" in FUNCTION CALL"); :}
+			| MAKE_BASA error {: RESULT = null; addText(" in SCAN function"); :};
+utos_makeKuha ::= valid_var:vv arte_assign:a {: RESULT = makeKuha(vv, a); :};
+utos_makeTawag ::= MAKE_TAWAG valid_name:vn LEFT_PAREN arte_init_list:l RIGHT_PAREN {: RESULT = makeTawag(vn, l); :};
+utos_makeSulat ::= MAKE_SULAT LEFT_PAREN sabi_sabi:s RIGHT_PAREN {: RESULT = makeSulat(s); :};
+utos_makeBasa ::= MAKE_BASA LEFT_PAREN data_type:d RIGHT_PAREN {: RESULT = new makeBasa(d); :};
+utos_likeKapag ::= LIKE_KAPAG LEFT_PAREN sabi_sabi:s RIGHT_PAREN utos_block:b utos_thisNalang:t {: RESULT = new likeKapag(s, b, t); :};
+utos_thisNalang ::= THIS_NALANG utos_block:b {: RESULT = new thisNalang(b); :}
+			| THIS_NALANG_KAPAG LEFT_PAREN sabi_sabi:s RIGHT_PAREN utos_block:b utos_thisNalang:t {: RESULT = new thisNalangKapag(s, b, t); :}
+			| {: RESULT = new thisNalang(); :}
+			| THIS_NALANG error DB {: RESULT = null; addText(" in ELSE statement"); :}
+			| THIS_NALANG_KAPAG error DB {: RESULT = null; addText(" in ELSE IF statement"); :};
+utos_makePalit ::= MAKE_PALIT LEFT_PAREN sabi_sabi:s RIGHT_PAREN DOLLAR_SIGN makePalit_MRW:m DOLLAR_SIGN {: RESULT = new mPalit(s, m); :};
+makePalit_MRW ::= MRW sabi_sabi:s COLON utos_block_opt:o makePalit_MRW:m {: RESULT = new MRW(s, o, m); :}
+			| MRW error DB {: RESULT = null; addText(" in one of the cases of a SWITCH statement"); :}
+			| MDR COLON utos_block_opt:o {: RESULT = new MDR(o); :}
+			| MDR error DB {: RESULT = null; addText(" in the last case of a SWITCH statement"); :}
+			| {: RESULT = new MRW(); :};
+utos_likeHabang ::= LIKE_HABANG LEFT_PAREN sabi_sabi:s RIGHT_PAREN utos_block:u {: RESULT = new likeHabang(s, u); :}
+			| LIKE_HABANG LEFT_PAREN sabi_sabi:s RIGHT_PAREN DB {: RESULT = new likeHabang(s); :};
+utos_makeGawaHabang ::= MAKE_GAWA utos_block:u LIKE_HABANG LEFT_PAREN sabi_sabi:s RIGHT_PAREN DB {: RESULT = new makeGawaHabang(u, s); :};
+utos_makeUlit ::= MAKE_ULIT LEFT_PAREN utos_makeKuha:m1 DB sabi_sabi_for:s utos_makeKuha:m2 RIGHT_PAREN utos_block:u {: RESULT = new makeUlit(m1, s1, m2, u); :}
+			| MAKE_ULIT LEFT_PAREN utos_makeKuha:m DB sabi_sabi_for:s1 sabi_sabi_for:s2 RIGHT_PAREN utos_block:u {: RESULT = new makeUlit(m1, s1, s2, u); :};
+utos_makeArte ::= arte_dec:a {: RESULT = makeArte(a); :};
+utos_makeSabi ::= MAKE_SABI sabi_sabi:s {: RESULT = new makeSabi(s); :};
 
 /*Expression Productions*/
 
-sabi_sabi_end ::= valid_var:v {: RESULT = new ssEnd(v); :}
-				| utos_dec_val:u {: RESULT = new ssEnd(u); :}
-				| literal:l {: RESULT = new ssEnd(l); :};
+sabi_sabi_end ::= valid_var:v {: RESULT = new ssEndValidVar(v); :}
+			| utos_dec_val:u {: RESULT = new ssEndUtos(u); :}
+			| literal:l {: RESULT = new ssEndLiteral(l); :};
 
 sabi_sabi_for ::= sabi_sabi:s DB {: RESULT = new SabiSabiFor(s); :};	
 sabi_sabi ::= ss_OR:o {: RESULT = new SabiSabi(o); :};
-ss_OR ::= ss_AND:a OR OR ss_OR:o {: RESULT = new ssOR(a, o); :}
-		| ss_AND:a {: RESULT = new ssOR(a); :};
-ss_AND ::= ss_equality:e AND AND ss_AND:a {: RESULT = new ssAND(e, a); :}
-		| ss_equality:e {: RESULT = new ssAND(e); :};
-ss_equality ::= ss_comparison:c equality ss_equality:e {: RESULT = new ssEquality(c, e); :}
+ss_OR ::= ss_AND:a OR OR ss_OR:o {: RESULT = new ssORExpansion(a, o); :}
+			| ss_AND:a {: RESULT = new ssOR(a); :};
+ss_AND ::= ss_equality:e AND AND ss_AND:a {: RESULT = new ssANDExpansion(e, a); :}
+			| ss_equality:e {: RESULT = new ssAND(e); :};
+ss_equality ::= ss_comparison:c equality:eq ss_equality:e {: RESULT = new ssEqualityExpansion(c, eq, e); :}
 			| ss_comparison:c {: RESULT = new ssEquality(c); :};
-ss_comparison ::= ss_a1:a comparison ss_comparison:c {: RESULT = new ssComparison(a, c); :}
+ss_comparison ::= ss_a1:a comparison:co ss_comparison:c {: RESULT = new ssComparisonExpansion(a, co, c); :}
 			|	ss_a1:a {: RESULT = new ssComparison(a); :};
-ss_a1 ::= ss_a2:a2 arithmetic_1 ss_a1:a1 {: RESULT = new ssA1(a2, a1); :}
-		| ss_a2:a2 {: RESULT = new ssA1(a2); :};
-ss_a2 ::= ss_unary_1:u arithmetic_2 ss_a2:a {: RESULT = new ssA2(u, a); :}
-		| ss_unary_1:u {: RESULT = new ssA2(u); :};
-ss_unary_1 ::= NOT ss_unary_1:u {: RESULT = new ssU1("!", u); :}
-			| PLUS PLUS ss_unary_1:u {: RESULT = new ssU1("++", u); :}
-			| MINUS MINUS ss_unary_1:u {: RESULT = new ssU1("--", u); :}
+ss_a1 ::= ss_a2:a2 arithmetic_1:ar ss_a1:a1 {: RESULT = new ssA1Expansion(a2, ar, a1); :}
+			| ss_a2:a2 {: RESULT = new ssA1(a2); :};
+ss_a2 ::= ss_unary_1:u arithmetic_2:ar ss_a2:a {: RESULT = new ssA2Expansion(u, ar, a); :}
+			| ss_unary_1:u {: RESULT = new ssA2(u); :};
+ss_unary_1 ::= NOT ss_unary_1:u {: RESULT = new ssU1Not(u); :}
+			| POS_INC ss_unary_1:u {: RESULT = new ssU1PlusPlus(u); :}
+			| NEG_INC ss_unary_1:u {: RESULT = new ssU1MinusMinus(u); :}
 			| ss_unary_2:u {: RESULT = new ssU1(u); :};
-ss_unary_2 ::= ss_unary_2:u POS_INC {: RESULT = new ssU2(u, "++"); :}
-			| ss_unary_2:u NEG_INC {: RESULT = new ssU2(u, "--"); :}
+ss_unary_2 ::= ss_unary_2:u POS_INC {: RESULT = new ssU2PlusPlus(u); :}
+			| ss_unary_2:u NEG_INC {: RESULT = new ssU2MinusMinus(u); :}
 			| ss_paren:p {: RESULT = new ssU2(p); :};
 ss_paren ::= LEFT_PAREN ss_paren:p RIGHT_PAREN {: RESULT = new ssParen(p); :}
-			| sabi_sabi_end:e {: RESULT = new ssParen(e); :};
+			| sabi_sabi_end:e {: RESULT = new ssParenEnd(e); :};
 			
-equality ::= EQUAL_EQUAL
-			| NOT_EQUAL;
+equality ::= EQUAL_EQUAL {: RESULT = new equal("=="); :};
+			| NOT_EQUAL {: RESULT = new equal("!="); :};
 
-comparison ::= GT_EQUAL
-			| LT_EQUAL
-			| GREATER_THAN
-			| LESS_THAN;
+comparison ::= GT_EQUAL {: RESULT = new compare(">="); :}
+			| LT_EQUAL {: RESULT = new compare("<="); :}
+			| GREATER_THAN {: RESULT = new compare(">"); :}
+			| LESS_THAN {: RESULT = new compare("<"); :};
 			
-arithmetic_1 ::= PLUS
-			| MINUS;
+arithmetic_1 ::= PLUS {: RESULT = new arithmetic1("+"); :}
+			| MINUS {: RESULT = new arithmetic1("-"); :};
 
-arithmetic_2 ::= TIMES
-			| DIVIDE
-			| MODULO;
+arithmetic_2 ::= TIMES {: RESULT = new arithmetic2("*"); :}
+			| DIVIDE {: RESULT = new arithmetic2("/"); :}
+			| MODULO {: RESULT = new arithmetic2("%"); :};
 
