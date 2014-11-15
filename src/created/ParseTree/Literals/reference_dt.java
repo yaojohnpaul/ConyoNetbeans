@@ -36,7 +36,7 @@ public abstract class reference_dt implements created.iNode
         
         public String toString()
         {
-            return array_dt.toString();
+            return array.toString();
         }
     }
 }
