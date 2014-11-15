@@ -1,6 +1,5 @@
 package created;
 
-import created.OMG.*;
 import created.ParseTree.Array.*;
 import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
