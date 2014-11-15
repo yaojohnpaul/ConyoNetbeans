@@ -1023,7 +1023,7 @@ class CUP$Parser$actions {
 		int sleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).left;
 		int sright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		sub_yaya_list s = (sub_yaya_list)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
-		 RESULT = sub_yaya_section.subYayaSection(s); 
+		 RESULT = new sub_yaya_section.subYayaSection(s); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("sub_yaya_section",6, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1335,7 +1335,7 @@ class CUP$Parser$actions {
 		int rbleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).left;
 		int rbright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		ref_brackets rb = (ref_brackets)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
-		 RESULT = new valid_var.validVar(vn, rb); 
+		 RESULT = new valid_var.validVarRB(vn, rb); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("valid_var",15, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1524,7 +1524,7 @@ class CUP$Parser$actions {
           case 53: // arte_assign ::= 
             {
               arte_assign RESULT =null;
-		 RESULT = new arteAssign(); 
+		 RESULT = new arte_assign.arteAssign(); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("arte_assign",24, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
