@@ -205,7 +205,7 @@ literal ::= INT_LITERAL:i {: RESULT = new Inty(i); :}
 			| BOOL_LITERAL:b {: RESULT = new Booly(b); :}
 			| WALEY:w {: RESULT = new Waley(w); :}; 
 
-data_type ::= primitive_dt:p {: RESULT = new datatypePrimitive(p); :};
+data_type ::= primitive_dt:p {: RESULT = new datatypePrimitive(p); :}
 			| reference_dt:r {: RESULT = new datatypeReference(r); :};
 primitive_dt ::= INTY:i {: RESULT = new intType(i); :}
 			| FLOATY:f {: RESULT = new floatType(f); :}
@@ -360,7 +360,7 @@ ss_unary_2 ::= ss_unary_2:u POS_INC {: RESULT = new ssU2PlusPlus(u); :}
 ss_paren ::= LEFT_PAREN ss_paren:p RIGHT_PAREN {: RESULT = new ssParen(p); :}
 			| sabi_sabi_end:e {: RESULT = new ssParenEnd(e); :};
 			
-equality ::= EQUAL_EQUAL {: RESULT = new equal("=="); :};
+equality ::= EQUAL_EQUAL {: RESULT = new equal("=="); :}
 			| NOT_EQUAL {: RESULT = new equal("!="); :};
 
 comparison ::= GT_EQUAL {: RESULT = new compare(">="); :}
