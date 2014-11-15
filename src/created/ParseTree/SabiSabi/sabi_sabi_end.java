@@ -30,7 +30,7 @@ public abstract class sabi_sabi_end implements created.iNode
     {
         public utos_dec_val u;
         
-        public ssEndUtos(utos_dec_val u)
+        public ssEndUtos()
         {
             this.u = u;
         }

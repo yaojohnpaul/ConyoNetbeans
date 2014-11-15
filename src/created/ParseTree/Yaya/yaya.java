@@ -15,7 +15,7 @@ public abstract class yaya implements created.iNode
         public yaya_header h;
         public utos_block u;
         
-        public addYaya(yaya_header h, utos_block u)
+        public addYaya()
         {
             this.h = h;
             this.u = u;
