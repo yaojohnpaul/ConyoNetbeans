@@ -73,84 +73,84 @@ terminal			LONG_NAME, SHORT_NAME;
 /*Program*/
 non terminal Conyogram	conyogram;
 /*Program Breakdown*/
-non terminal OMGlist	OMG_section;
-non terminal OMGlist	OMG_list;
-non terminal OMG		OMG_dec;
-non terminal YayaList	yaya_section;
-non terminal YayaList	yaya_list;
-non terminal SubYayaList	sub_yaya_section;
-non terminal SubYayaList	sub_yaya_list;
-non terminal SuperYaya	super_yaya;
+non terminal OMG_section		OMG_section;
+non terminal OMG_list			OMG_list;
+non terminal OMG_dec			OMG_dec;
+non terminal yaya_section		yaya_section;
+non terminal yaya_list			yaya_list;
+non terminal sub_yaya_section	sub_yaya_section;
+non terminal sub_yaya_list		sub_yaya_list;
+non terminal super_yaya			super_yaya;
 /*Literals, Data Types, Names*/
-non terminal literal	literal;
-non terminal String		data_type;
-non terminal String		primitive_dt;
-non terminal String		reference_dt;
-non terminal String		array_dt;
-non terminal String		valid_name;
-non terminal validVar	valid_var;
+non terminal literal			literal;
+non terminal data_type			data_type;
+non terminal primitive_dt		primitive_dt;
+non terminal reference_dt		reference_dt;
+non terminal array_dt			array_dt;
+non terminal valid_name			valid_name;
+non terminal valid_var			valid_var;
 /*Class Declaration Productions*/
-non terminal SubYaya	sub_yaya;
-non terminal SubYayaBodyList	sy_body;
-non terminal SubYayaBodyList	sy_opt;
-non terminal SubYayaBodyList	sy_cont_list;
-non terminal			sy_cont;
-non terminal mSimula	constructor;
-non terminal			sy_init;
+non terminal sub_yaya			sub_yaya;
+non terminal sy_body			sy_body;
+non terminal sy_opt				sy_opt;
+non terminal sy_cont_list		sy_cont_list;
+non terminal sy_cont			sy_cont;
+non terminal constructor		constructor;
+non terminal sy_init			sy_init;
 /*Variable Declaration Productions*/
-non terminal			arte_dec;
-non terminal			arte_assign;
-non terminal			arte_init;
+non terminal arte_dec			arte_dec;
+non terminal arte_assign		arte_assign;
+non terminal arte_init			arte_init;
 /*Function Declaration Productions*/
-non terminal			yaya;
-non terminal			yaya_header;
-non terminal			yaya_param_sec;
-non terminal			yaya_param_list;
-non terminal			yaya_param;
+non terminal yaya				yaya; 
+non terminal yaya_header		yaya_header;
+non terminal yaya_param_sec		yaya_param_sec;
+non terminal yaya_param_list	yaya_param_list;
+non terminal yaya_param			yaya_param;
 /*Array Productions*/
-non terminal			array_init;
-non terminal			arte_init_list;
-non terminal			arte_init_opt;
-non terminal String		brackets;
-non terminal			ref_brackets;
+non terminal array_init	 		array_init;
+non terminal arte_init_list		arte_init_list;
+non terminal arte_init_opt		arte_init_opt;
+non terminal brackets			brackets;
+non terminal ref_brackets		ref_brackets;
 /*Program Code Productions*/
-non terminal			utos_block;
-non terminal			utos_block_opt;
-non terminal			block_content;
-non terminal			utos_dec;
-non terminal			utos_dec_nodb;
-non terminal			utos_dec_db;
-non terminal			utos_dec_val;
-non terminal			utos_makeKuha;
-non terminal			utos_makeTawag;
-non terminal			utos_makeSulat;
-non terminal			utos_makeBasa;
-non terminal			utos_likeKapag;
-non terminal			utos_thisNalang;
-non terminal			utos_makePalit;
-non terminal			makePalit_MRW;
-non terminal			utos_likeHabang;
-non terminal			utos_makeGawaHabang;
-non terminal			utos_makeUlit;
-non terminal			utos_makeArte;
-non terminal			utos_makeSabi;
+non terminal utos_block			utos_block;
+non terminal utos_block_opt		utos_block_opt;
+non terminal block_content		block_content;
+non terminal utos_dec			utos_dec;
+non terminal utos_dec_nodb		utos_dec_nodb;
+non terminal utos_dec_db	 	utos_dec_db;
+non terminal utos_dec_val		utos_dec_val;
+non terminal utos_makeKuha		utos_makeKuha;
+non terminal utos_makeTawag		utos_makeTawag;
+non terminal utos_makeSulat		utos_makeSulat;
+non terminal utos_makeBasa		utos_makeBasa;
+non terminal utos_likeKapag		utos_likeKapag;
+non terminal utos_thisNalang	utos_thisNalang;
+non terminal utos_makePalit		utos_makePalit;
+non terminal makePalit_MRW		makePalit_MRW;
+non terminal utos_likeHabang	utos_likeHabang;
+non terminal utos_makeGawaHabang	utos_makeGawaHabang;
+non terminal utos_makeUlit		utos_makeUlit;
+non terminal utos_makeArte		utos_makeArte;
+non terminal utos_makeSabi		utos_makeSabi;
 /*Expression Relations*/
-non terminal SabiSabi	sabi_sabi;
-non terminal ssEnd		sabi_sabi_end;
-non terminal SabiSabiFor	sabi_sabi_for;
-non terminal ssOR		ss_OR;
-non terminal ssAND		ss_AND;
-non terminal ssEquality	ss_equality;
-non terminal ssComparison	ss_comparison;
-non terminal ssA1		ss_a1;
-non terminal ssA2		ss_a2;
-non terminal ssU1		ss_unary_1;
-non terminal ssU2		ss_unary_2;
-non terminal ssParen	ss_paren;
-non terminal			equality;
-non terminal			comparison;
-non terminal			arithmetic_1;
-non terminal			arithmetic_2;
+non terminal sabi_sabi			sabi_sabi;
+non terminal sabi_sabi_end		sabi_sabi_end;
+non terminal sabi_sabi_for		sabi_sabi_for;
+non terminal ss_OR				ss_OR;
+non terminal ss_AND				ss_AND;
+non terminal ss_equality		ss_equality;
+non terminal ss_comparison		ss_comparison;
+non terminal ss_a1				ss_a1;
+non terminal ss_a2				ss_a2;
+non terminal ss_unary_1			ss_unary_1;
+non terminal ss_unary_2			ss_unary_2;
+non terminal ss_paren			ss_paren;
+non terminal equality			equality;
+non terminal comparison			comparison;
+non terminal arithmetic1		arithmetic_1;
+non terminal arithmetic2		arithmetic_2;
 
 /*Precedences*/
 precedence left SHORT_NAME;
@@ -166,34 +166,34 @@ start with conyogram;
 /*Program*/
 
 conyogram ::= OMG_section:o yaya_section:y sub_yaya_section:b super_yaya:p 
-			{: 
-				RESULT = new Conyogram(o, y, b, );
-				printText(); 
-			:};
+				{: 
+					RESULT = new Conyogram(o, y, b, );
+					printText(); 
+				:};
 
 /*Program Breakdown*/
 
-OMG_section ::= OMG_list:o {: RESULT = o; :}
-			| {: RESULT = new OMGlist(); :};
-OMG_list ::= OMG_dec:o {: RESULT = new OMGlist(o); :}
-			| OMG_dec:o OMG_list:l {: RESULT = new OMGlist(o, l); :};
+OMG_section ::= OMG_list:o {: RESULT = new OMGList(); :}
+			| {: RESULT = new OMGList(); :};
+OMG_list ::= OMG_dec:o {: RESULT = new OMGDec(o); :}
+			| OMG_dec:o OMG_list:l {: RESULT = new OMGDec(o, l); :};
 			
 OMG_dec ::= OMG IDENTIFIER:id MAKE_KUHA sabi_sabi:ss DB {: RESULT = new OMG(id, ss); :}
 			| OMG error DB {: RESULT = null; addText(" in Constant Declaration"); :}
 			| error DB {: RESULT = null; addText(" before main and function declarations"); :}
 ;
 
-yaya_section ::= yaya_list:y {: RESULT = new yayaSection(y); :}
-| {: RESULT = new yayaSection(); :};
-yaya_list ::= yaya:y {: RESULT = new yayaList(y); :}
-			| yaya:y yaya_list:l {: RESULT = new yayaList(y, l); :};
+yaya_section ::= yaya_list:l {: RESULT = new yayaList(l); :}
+			| {: RESULT = new yayaList(); :};
+yaya_list ::= yaya:y {: RESULT = new yayaDec(y); :}
+			| yaya:y yaya_list:l {: RESULT = new yayaDec(y, l); :};
 
-sub_yaya_section ::= sub_yaya_list:s {: RESULT = s; :}
-			| {: RESULT = new SubYayaList(); :};
-sub_yaya_list ::= sub_yaya:s {: RESULT = new SubYayaList(s); :}
-				| sub_yaya:s sub_yaya_list:l {: RESULT = new SubYayaList(s, l); :};
+sub_yaya_section ::= sub_yaya_list:s {: RESULT = subYayaList(s); :}
+			| {: RESULT = new subYayaList(); :};
+sub_yaya_list ::= sub_yaya:s {: RESULT = new subYayaDec(s); :}
+			| sub_yaya:s sub_yaya_list:l {: RESULT = new subYayaDec(s, l); :};
 				
-super_yaya ::= SUPER_YAYA utos_block:u {: RESULT = new SuperYaya(u); :};
+super_yaya ::= SUPER_YAYA utos_block:u {: RESULT = new superYaya(u); :};
 
 /*Literals, Data Types, Names*/
 
@@ -212,7 +212,7 @@ primitive_dt ::= INTY:i {: RESULT = new intType(i); :}
 			| STRINGY:s {: RESULT = new stringType(s); :}
 			| CHARY:c {: RESULT = new charType(c); :}
 			| BOOLY:b {: RESULT = new booleanType(b); :};
-reference_dt ::= valid_name:vn {: RESULT = new referenceValidName(vn); :}
+reference_dt ::= valid_name:vn {: RESULT = new referenceValidName(vn); :} 
 				| array_dt:a {: RESULT = new referenceArray(a); :};
 array_dt ::= primitive_dt:p brackets:b {: RESULT = new arrayPrimitive(p, b); :}
 			| valid_name:vn brackets:b {: RESULT = new arrayName(vn, b); :};
@@ -256,18 +256,18 @@ yaya_header ::= HIRE_YAYA IDENTIFIER:id BAYAD LEFT_PAREN yaya_param_sec:yps RIGH
 				{: RESULT = new yayaHeader(id, yps); :};
 
 yaya_param_sec ::= yaya_param_list:ypl {: RESULT = new yayaParamSec(ypl); :}
-			| {: RESULT = new yayaParamSec(); :};
+				| {: RESULT = new yayaParamSec(); :};
 yaya_param_list ::= yaya_param:yp COMMA yaya_param_list:ypl {: RESULT = new yayaParamList(yp, ypl); :}
-			| yaya_param:yp {: RESULT = new yayaParamList(yp); :};
-yaya_param ::= data_type IDENTIFIER;
+				| yaya_param:yp {: RESULT = new yayaParamList(yp); :};
+yaya_param ::= data_type:dt IDENTIFIER:id {: RESULT = new yayaParam(dt, id); :};
 
 /*Array Productions*/
 
 array_init ::= LEFT_CURLY arte_init_list:l RIGHT_CURLY {: RETURN = new arrayInit(l); :};
 arte_init_list ::= arte_init_opt:o {: RETURN = new arteInitList(o); :}
-			| {: RETURN = new arteInitList(); :};
+				| {: RETURN = new arteInitList(); :};
 arte_init_opt ::= arte_init COMMA arte_init_opt {: RETURN = new arteInitOpt(); :}
-			| arte_init {: RETURN = new arteInitOpt(); :};
+				| arte_init {: RETURN = new arteInitOpt(); :};
 				
 brackets ::= LEFT_BRACE RIGHT_BRACE {: RESULT = "[]"; :};
 ref_brackets ::= LEFT_BRACE sabi_sabi RIGHT_BRACE;
@@ -275,11 +275,11 @@ ref_brackets ::= LEFT_BRACE sabi_sabi RIGHT_BRACE;
 /*Program Code Productions*/
 
 utos_block ::= DOLLAR_SIGN utos_block_opt:opt DOLLAR_SIGN {: RESULT = new utosBlock(opt); :}
-			| error {: RESULT = null; addText(" in code block"); :};
+				| error {: RESULT = null; addText(" in code block"); :};
 utos_block_opt ::= block_content:c {: RESULT = new utosBlockOpt(b); :}
 			| {: RESULT = new utosBlockOpt(); :};
 block_content ::= utos_dec block_content {: RESULT = new blockContent(u, b); :}
-			| utos_dec {: RESULT = new blockContent(u); :};
+				| utos_dec {: RESULT = new blockContent(u); :};
 utos_dec ::= utos_dec_db:d {: RESULT = new utosDecDB(d); :}
 			| utos_dec_val:v DB {: RESULT = new utosDecVal(v); :}
 			| utos_dec_nodb:n {: RESULT = new utosDecNoDB(n); :}
@@ -312,44 +312,44 @@ utos_makeSulat ::= MAKE_SULAT LEFT_PAREN sabi_sabi:s RIGHT_PAREN {: RESULT = mak
 utos_makeBasa ::= MAKE_BASA LEFT_PAREN data_type:d RIGHT_PAREN {: RESULT = new makeBasa(d); :};
 utos_likeKapag ::= LIKE_KAPAG LEFT_PAREN sabi_sabi:s RIGHT_PAREN utos_block:b utos_thisNalang:t {: RESULT = new likeKapag(s, b, t); :};
 utos_thisNalang ::= THIS_NALANG utos_block:b {: RESULT = new thisNalang(b); :}
-			| THIS_NALANG_KAPAG LEFT_PAREN sabi_sabi:s RIGHT_PAREN utos_block:b utos_thisNalang:t {: RESULT = new thisNalangKapag(s, b, t); :}
-			| {: RESULT = new thisNalang(); :}
-			| THIS_NALANG error DB {: RESULT = null; addText(" in ELSE statement"); :}
-			| THIS_NALANG_KAPAG error DB {: RESULT = null; addText(" in ELSE IF statement"); :};
+				| THIS_NALANG_KAPAG LEFT_PAREN sabi_sabi:s RIGHT_PAREN utos_block:b utos_thisNalang:t {: RESULT = new thisNalangKapag(s, b, t); :}
+				| {: RESULT = new thisNalang(); :}
+				| THIS_NALANG error DB {: RESULT = null; addText(" in ELSE statement"); :}
+				| THIS_NALANG_KAPAG error DB {: RESULT = null; addText(" in ELSE IF statement"); :};
 utos_makePalit ::= MAKE_PALIT LEFT_PAREN sabi_sabi:s RIGHT_PAREN DOLLAR_SIGN makePalit_MRW:m DOLLAR_SIGN {: RESULT = new mPalit(s, m); :};
 makePalit_MRW ::= MRW sabi_sabi:s COLON utos_block_opt:o makePalit_MRW:m {: RESULT = new MRW(s, o, m); :}
-			| MRW error DB {: RESULT = null; addText(" in one of the cases of a SWITCH statement"); :}
-			| MDR COLON utos_block_opt:o {: RESULT = new MDR(o); :}
-			| MDR error DB {: RESULT = null; addText(" in the last case of a SWITCH statement"); :}
-			| {: RESULT = new MRW(); :};
+				| MRW error DB {: RESULT = null; addText(" in one of the cases of a SWITCH statement"); :}
+				| MDR COLON utos_block_opt:o {: RESULT = new MDR(o); :}
+				| MDR error DB {: RESULT = null; addText(" in the last case of a SWITCH statement"); :}
+				| {: RESULT = new MRW(); :};
 utos_likeHabang ::= LIKE_HABANG LEFT_PAREN sabi_sabi:s RIGHT_PAREN utos_block:u {: RESULT = new likeHabang(s, u); :}
-			| LIKE_HABANG LEFT_PAREN sabi_sabi:s RIGHT_PAREN DB {: RESULT = new likeHabang(s); :};
+				| LIKE_HABANG LEFT_PAREN sabi_sabi:s RIGHT_PAREN DB {: RESULT = new likeHabang(s); :};
 utos_makeGawaHabang ::= MAKE_GAWA utos_block:u LIKE_HABANG LEFT_PAREN sabi_sabi:s RIGHT_PAREN DB {: RESULT = new makeGawaHabang(u, s); :};
 utos_makeUlit ::= MAKE_ULIT LEFT_PAREN utos_makeKuha:m1 DB sabi_sabi_for:s utos_makeKuha:m2 RIGHT_PAREN utos_block:u {: RESULT = new makeUlit(m1, s1, m2, u); :}
-			| MAKE_ULIT LEFT_PAREN utos_makeKuha:m DB sabi_sabi_for:s1 sabi_sabi_for:s2 RIGHT_PAREN utos_block:u {: RESULT = new makeUlit(m1, s1, s2, u); :};
+				| MAKE_ULIT LEFT_PAREN utos_makeKuha:m DB sabi_sabi_for:s1 sabi_sabi_for:s2 RIGHT_PAREN utos_block:u {: RESULT = new makeUlit(m1, s1, s2, u); :};
 utos_makeArte ::= arte_dec:a {: RESULT = makeArte(a); :};
 utos_makeSabi ::= MAKE_SABI sabi_sabi:s {: RESULT = new makeSabi(s); :};
 
 /*Expression Productions*/
 
 sabi_sabi_end ::= valid_var:v {: RESULT = new ssEndValidVar(v); :}
-			| utos_dec_val:u {: RESULT = new ssEndUtos(u); :}
-			| literal:l {: RESULT = new ssEndLiteral(l); :};
+				| utos_dec_val:u {: RESULT = new ssEndUtos(u); :}
+				| literal:l {: RESULT = new ssEndLiteral(l); :};
 
 sabi_sabi_for ::= sabi_sabi:s DB {: RESULT = new SabiSabiFor(s); :};	
 sabi_sabi ::= ss_OR:o {: RESULT = new SabiSabi(o); :};
 ss_OR ::= ss_AND:a OR OR ss_OR:o {: RESULT = new ssORExpansion(a, o); :}
-			| ss_AND:a {: RESULT = new ssOR(a); :};
+		| ss_AND:a {: RESULT = new ssOR(a); :};
 ss_AND ::= ss_equality:e AND AND ss_AND:a {: RESULT = new ssANDExpansion(e, a); :}
-			| ss_equality:e {: RESULT = new ssAND(e); :};
+		| ss_equality:e {: RESULT = new ssAND(e); :};
 ss_equality ::= ss_comparison:c equality:eq ss_equality:e {: RESULT = new ssEqualityExpansion(c, eq, e); :}
 			| ss_comparison:c {: RESULT = new ssEquality(c); :};
 ss_comparison ::= ss_a1:a comparison:co ss_comparison:c {: RESULT = new ssComparisonExpansion(a, co, c); :}
 			|	ss_a1:a {: RESULT = new ssComparison(a); :};
 ss_a1 ::= ss_a2:a2 arithmetic_1:ar ss_a1:a1 {: RESULT = new ssA1Expansion(a2, ar, a1); :}
-			| ss_a2:a2 {: RESULT = new ssA1(a2); :};
+		| ss_a2:a2 {: RESULT = new ssA1(a2); :};
 ss_a2 ::= ss_unary_1:u arithmetic_2:ar ss_a2:a {: RESULT = new ssA2Expansion(u, ar, a); :}
-			| ss_unary_1:u {: RESULT = new ssA2(u); :};
+		| ss_unary_1:u {: RESULT = new ssA2(u); :};
 ss_unary_1 ::= NOT ss_unary_1:u {: RESULT = new ssU1Not(u); :}
 			| POS_INC ss_unary_1:u {: RESULT = new ssU1PlusPlus(u); :}
 			| NEG_INC ss_unary_1:u {: RESULT = new ssU1MinusMinus(u); :}

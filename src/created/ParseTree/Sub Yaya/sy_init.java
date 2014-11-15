@@ -13,7 +13,7 @@ abstract class sy_init implements iNode
         
         public String toString()
         {
-            return "brandNew " + rd.toString() + "(" + ai.toString() + ")";
+            return "brandNew " + rd.toString() + " (" + ai.toString() + ")";
         }
     }
     
