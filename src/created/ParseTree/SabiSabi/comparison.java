@@ -14,7 +14,7 @@ public abstract class comparison implements created.iNode
     {
         public String kind; // will contain either <, <=, >= or >
         
-        public arithmetic1(String type)
+        public compare(String type)
         {
             kind = type;
         }

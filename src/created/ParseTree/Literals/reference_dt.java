@@ -27,11 +27,11 @@ public abstract class reference_dt implements created.iNode
     
     public static class referenceArray extends reference_dt
     {
-        public array_dt array
+        public array_dt array;
         
         public referenceArray(array_dt array)
         {
-            this.array = array
+            this.array = array;
         }
         
         public String toString()

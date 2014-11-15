@@ -14,7 +14,7 @@ public abstract class arithmetic_2 implements created.iNode
     {
         public String kind; // will contain either /, * or % 
         
-        public arithmetic1(String type)
+        public arithmetic2(String type)
         {
             kind = type;
         }

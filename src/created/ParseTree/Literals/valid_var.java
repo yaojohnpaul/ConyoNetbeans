@@ -32,7 +32,7 @@ public abstract class valid_var implements created.iNode
         public valid_name vn;
         public ref_brackets rb;
         
-        public validVar(valid_name vn, ref_brackets rb)
+        public validVarRB(valid_name vn, ref_brackets rb)
         { 
             this.vn = vn;
             this.rb = rb;

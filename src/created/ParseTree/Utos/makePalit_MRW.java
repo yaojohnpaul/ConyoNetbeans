@@ -33,7 +33,7 @@ public abstract class makePalit_MRW implements created.iNode
     {
         public utos_block_opt o; 
         
-        public MDR(PLACEHOLDER_VARTYPE o)
+        public MDR(utos_block_opt o)
         {
             this.o = o;
         }

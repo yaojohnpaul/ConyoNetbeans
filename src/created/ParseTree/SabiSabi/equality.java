@@ -14,7 +14,7 @@ public abstract class equality implements created.iNode
     {
         public String kind; // will contain either != or == 
         
-        public arithmetic1(String type)
+        public equal(String type)
         {
             kind = type;
         }
