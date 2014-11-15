@@ -165,9 +165,9 @@ start with conyogram;
  
 /*Program*/
 
-conyogram ::= OMG_section:o yaya_section sub_yaya_section super_yaya 
+conyogram ::= OMG_section:o yaya_section:y sub_yaya_section super_yaya 
 				{: 
-					RESULT = new Conyogram(o);
+					RESULT = new Conyogram(o, y);
 					printText(); 
 				:};
 
@@ -183,59 +183,62 @@ OMG_dec ::= OMG IDENTIFIER:id MAKE_KUHA sabi_sabi:ss DB {: RESULT = new OMG(id, 
 			| error DB {: RESULT = null; addText(" before main and function declarations"); :}
 ;
 
-yaya_section ::= yaya_list | ;
-yaya_list ::= yaya
-			| yaya yaya_list;
+yaya_section ::= yaya_list:y {: RESULT = y; :}
+| {: RESULT = new YayaList(); :};
+yaya_list ::= yaya:y {: RESULT = new YayaList(y); :}
+			| yaya:y yaya_list:l {: RESULT = new YayaList(y, l); :};
 
-sub_yaya_section ::= sub_yaya_list | ;
-sub_yaya_list ::= sub_yaya
-				| sub_yaya sub_yaya_list;
+sub_yaya_section ::= sub_yaya_list:s {: RESULT = new SubYayaList(s); :}
+			| {: RESULT = new SubYayaList(); :};
+sub_yaya_list ::= sub_yaya:s {: RESULT = new SubYayaList(s); :}
+				| sub_yaya:s sub_yaya_list:l {: RESULT = new SubYayaList(s, l); :};
 				
-super_yaya ::= SUPER_YAYA utos_block;
+super_yaya ::= SUPER_YAYA utos_block:u {: RESULT = new SuperYaya(u); :};
 
 /*Literals, Data Types, Names*/
 
-literal ::= INT_LITERAL
-			| FLOAT_LITERAL
-			| STRING_LITERAL
-			| CHAR_LITERAL
-			| BOOL_LITERAL
-			| WALEY;
+literal ::= INT_LITERAL:i {: RESULT = new Inty(i); :}
+			| FLOAT_LITERAL:f {: RESULT = new Floaty(f); :}
+			| STRING_LITERAL:s {: RESULT = new Stringy(s); :}
+			| CHAR_LITERAL:c {: RESULT = new Chary(c); :}
+			| BOOL_LITERAL:b {: RESULT = new Booly(b); :}
+			| WALEY:w {: RESULT = new Waley(w); :}; 
 
-data_type ::= primitive_dt
-			| reference_dt;
-primitive_dt ::= INTY
-				| FLOATY
-				| STRINGY
-				| CHARY
-				| BOOLY;
-reference_dt ::= valid_name
-				| array_dt;
-array_dt ::= primitive_dt brackets
-			| valid_name brackets;
+data_type ::= primitive_dt:p {: RESULT = p; :}
+			| reference_dt:r {: RESULT = r; :};
+primitive_dt ::= INTY:i {: RESULT = i; :}
+			| FLOATY:f {: RESULT = f; :}
+			| STRINGY:s {: RESULT = s; :}
+			| CHARY:c {: RESULT = c; :}
+			| BOOLY:b {: RESULT = b; :};
+reference_dt ::= valid_name:vn {: RESULT = vn; :} 
+				| array_dt:a {: RESULT = a; :};
+array_dt ::= primitive_dt:p brackets:b {: RESULT = p + b; :}
+			| valid_name:vn brackets:b {: RESULT = vn + b; :};
 			
 valid_name ::= IDENTIFIER:id {:RESULT = id;:}
 			| valid_name:vn COLON IDENTIFIER:id {:RESULT = vn + ":" + id;:} %prec LONG_NAME;
-valid_var ::= valid_name %prec SHORT_NAME
-			| valid_name ref_brackets;
+valid_var ::= valid_name:vn {: RESULT = new validVar(vn); :} %prec SHORT_NAME 
+			| valid_name:vn ref_brackets:rb {: RESULT = new validVar(vn, rb); :};
 			
 /*Class Declaration Productions*/
 
-sub_yaya ::= MAKE_UTUSAN IDENTIFIER:id sy_body;
-sy_body ::= DOLLAR_SIGN sy_opt DOLLAR_SIGN;
-sy_opt ::= sy_cont_list | ;
-sy_cont_list ::= sy_cont sy_cont_list
-			| sy_cont;
+sub_yaya ::= MAKE_UTUSAN IDENTIFIER:id sy_body:body {: RESULT = new SubYaya(id, body); :};
+sy_body ::= DOLLAR_SIGN sy_opt:opt DOLLAR_SIGN {: RESULT = new SubYayaBodyList(opt); :};
+sy_opt ::= sy_cont_list:l {: RESULT = new SubYayaBodyList(l); :}
+			| {: RESULT = new SubYayaBodyList(); :};
+sy_cont_list ::= sy_cont:c sy_cont_list:l {: RESULT = new SubYayaBodyList(c, l); :}
+			| sy_cont:c {: RESULT = new SubYayaBodyList(c); :};
 sy_cont ::= arte_dec
-		| yaya
-		| constructor;
-constructor ::= MAKE_SIMULA IDENTIFIER utos_block;
+			| yaya
+			| constructor;
+constructor ::= MAKE_SIMULA IDENTIFIER:id utos_block:u {: RESULT = new mSimula(id, u); :};
 sy_init ::= BRAND_NEW reference_dt LEFT_PAREN arte_init_list RIGHT_PAREN;
 
 /*Variable Declaration Productions*/
 
 arte_dec ::= MAKE_ARTE data_type IDENTIFIER:id arte_assign DB
-		| MAKE_ARTE error DB {: addText(" in Variable Declaration"); :};
+			| MAKE_ARTE error DB {: addText(" in Variable Declaration"); :};
 arte_assign ::= MAKE_KUHA arte_init
 			| ;
 arte_init ::= array_init
@@ -262,9 +265,8 @@ arte_init_list ::= arte_init_opt
 arte_init_opt ::= arte_init COMMA arte_init_opt
 				| arte_init;
 				
-brackets ::= LEFT_BRACE RIGHT_BRACE brackets
-			| LEFT_BRACE RIGHT_BRACE;
-ref_brackets ::= LEFT_BRACE ss_OR RIGHT_BRACE;
+brackets ::= LEFT_BRACE RIGHT_BRACE {: RESULT = "[]"; :};
+ref_brackets ::= LEFT_BRACE sabi_sabi RIGHT_BRACE;
 
 /*Program Code Productions*/
 
@@ -326,33 +328,33 @@ utos_makeSabi ::= MAKE_SABI sabi_sabi;
 
 /*Expression Productions*/
 
-sabi_sabi_end ::= valid_var
-				| utos_dec_val
-				| literal;
+sabi_sabi_end ::= valid_var:v {: RESULT = new ssEnd(v); :}
+				| utos_dec_val:u {: RESULT = new ssEnd(u); :}
+				| literal:l {: RESULT = new ssEnd(l); :};
 
-sabi_sabi_for ::= sabi_sabi DB;	
-sabi_sabi ::= ss_OR {: RESULT = new SabiSabi(); :};
-ss_OR ::= ss_AND OR OR ss_OR
-		| ss_AND;
-ss_AND ::= ss_equality AND AND ss_AND
-		| ss_equality;
-ss_equality ::= ss_comparison equality ss_equality
-			| ss_comparison;
-ss_comparison ::= ss_a1 comparison ss_comparison
-			|	ss_a1;
-ss_a1 ::= ss_a2 arithmetic_1 ss_a1
-		| ss_a2;
-ss_a2 ::= ss_unary_1 arithmetic_2 ss_a2
-		| ss_unary_1;
-ss_unary_1 ::= NOT ss_unary_1
-			| PLUS PLUS ss_unary_1
-			| MINUS MINUS ss_unary_1
-			| ss_unary_2;
-ss_unary_2 ::= ss_unary_2 POS_INC
-			| ss_unary_2 NEG_INC
-			| ss_paren;
-ss_paren ::= LEFT_PAREN ss_paren RIGHT_PAREN
-			| sabi_sabi_end;
+sabi_sabi_for ::= sabi_sabi:s DB {: RESULT = new SabiSabiFor(s); :};	
+sabi_sabi ::= ss_OR:o {: RESULT = new SabiSabi(o); :};
+ss_OR ::= ss_AND:a OR OR ss_OR:o {: RESULT = new ssOR(a, o); :}
+		| ss_AND:a {: RESULT = new ssOR(a); :};
+ss_AND ::= ss_equality:e AND AND ss_AND:a {: RESULT = new ssAND(e, a); :}
+		| ss_equality:e {: RESULT = new ssAND(e); :};
+ss_equality ::= ss_comparison:c equality ss_equality:e {: RESULT = new ssEquality(c, e); :}
+			| ss_comparison:c {: RESULT = new ssEquality(c); :};
+ss_comparison ::= ss_a1:a comparison ss_comparison:c {: RESULT = new ssComparison(a, c); :}
+			|	ss_a1:a {: RESULT = new ssComparison(a); :};
+ss_a1 ::= ss_a2:a2 arithmetic_1 ss_a1:a1 {: RESULT = new ssA1(a2, a1); :}
+		| ss_a2:a2 {: RESULT = new ssA1(a2); :};
+ss_a2 ::= ss_unary_1:u arithmetic_2 ss_a2:a {: RESULT = new ssA2(u, a); :}
+		| ss_unary_1:u {: RESULT = new ssA2(u); :};
+ss_unary_1 ::= NOT ss_unary_1:u {: RESULT = new ssU1("!", u); :}
+			| PLUS PLUS ss_unary_1:u {: RESULT = new ssU1("++", u); :}
+			| MINUS MINUS ss_unary_1:u {: RESULT = new ssU1("--", u); :}
+			| ss_unary_2:u {: RESULT = new ssU1(u); :};
+ss_unary_2 ::= ss_unary_2:u POS_INC {: RESULT = new ssU2(u, "++"); :}
+			| ss_unary_2:u NEG_INC {: RESULT = new ssU2(u, "--"); :}
+			| ss_paren:p {: RESULT = new ssU2(p); :};
+ss_paren ::= LEFT_PAREN ss_paren:p RIGHT_PAREN {: RESULT = new ssParen(p); :}
+			| sabi_sabi_end:e {: RESULT = new ssParen(e); :};
 			
 equality ::= EQUAL_EQUAL
 			| NOT_EQUAL;
