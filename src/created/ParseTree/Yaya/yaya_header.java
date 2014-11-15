@@ -1,6 +1,14 @@
 package created.parseTree.Yaya;
 
-abstract class yaya_header implements created.iNode  
+import created.ParseTree.Array.*;
+import created.ParseTree.Arte.*;
+import created.ParseTree.Literals.*;
+import created.ParseTree.Program.*;
+import created.ParseTree.SabiSabi.*;
+import created.ParseTree.SubYaya.*;
+import created.ParseTree.Utos.*;
+
+public abstract class yaya_header implements created.iNode  
 {
     public static class yayaHeader extends yaya_header
     {
@@ -9,7 +17,7 @@ abstract class yaya_header implements created.iNode
         public data_type dt;
         public String ret;
         
-        public yayaHeader(String name, yaya_param_sec yps, data_type, dt, String ret)
+        public yayaHeader(String name, yaya_param_sec yps, data_type dt, String ret)
         {
             this.name = name;
             this.yps = yps;

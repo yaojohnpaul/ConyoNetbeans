@@ -1,12 +1,20 @@
 package created.ParseTree.SabiSabi;
 
-abstract class ss_unary_1 implements created.iNode
+import created.ParseTree.Array.*;
+import created.ParseTree.Arte.*;
+import created.ParseTree.Literals.*;
+import created.ParseTree.Program.*;
+import created.ParseTree.SubYaya.*;
+import created.ParseTree.Utos.*;
+import created.ParseTree.Yaya.*;
+
+public abstract class ss_unary_1 implements created.iNode
 {
     public static class ssU1Not extends ss_unary_1
     {
         public ss_unary_1 u;
         
-        public ssU1Not(ss_unary_1 u);
+        public ssU1Not(ss_unary_1 u)
         {
             this.u = u;
         }
@@ -21,7 +29,7 @@ abstract class ss_unary_1 implements created.iNode
     {
         public ss_unary_1 u;
         
-        public ssU1PlusPlus(ss_unary_1 u);
+        public ssU1PlusPlus(ss_unary_1 u)
         {
             this.u = u;
         }
@@ -36,7 +44,7 @@ abstract class ss_unary_1 implements created.iNode
     {
         public ss_unary_1 u;
         
-        public ssU1MinusMinus(ss_unary_1 u);
+        public ssU1MinusMinus(ss_unary_1 u)
         {
             this.u = u;
         }

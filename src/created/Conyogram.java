@@ -4,27 +4,30 @@ import created.OMG.*;
 
 public class Conyogram implements iNode
 {
-    private OMGlist omglist;
-    
-    //symbol lists
-    SymList OMGSym = null;
+    private OMG_section o;
+    private yaya_section y;
+    private sub_yaya_section s;
+    private super_yaya m;
     
     /**
      * Constructor
      */
-    public Conyogram(OMGlist o)
+    public Conyogram(OMG_section o, yaya_section y, sub_yaya_section s, super_yaya m)
     {
-        omglist = o;
+        this.o = o;
+        this.y = y;
+        this.s = s;
+        this.m = m;
     }
     
     /**
-     * Setup all symbol lists.
+     * To string function.
      */
-    public void setupSymList()
+    public String toString()
     {
-        System.out.println("Setting up symbol lists..");
-        OMGSym = new SymList();
-        omglist.addToSymList(OMGSym);
-        System.out.print(OMGSym.toString());
+        return "Constants: \n" + o.toString()
+                + "Functions: \n" + y.toString()
+                + "Classes: \n" + s.toString()
+                + "Main: \n" + m.toString();
     }
 }

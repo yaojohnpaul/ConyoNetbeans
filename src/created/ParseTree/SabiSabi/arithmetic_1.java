@@ -1,6 +1,14 @@
 package created.ParseTree.SabiSabi;
 
-abstract class arithmetic_1 implements created.iNode
+import created.ParseTree.Array.*;
+import created.ParseTree.Arte.*;
+import created.ParseTree.Literals.*;
+import created.ParseTree.Program.*;
+import created.ParseTree.SubYaya.*;
+import created.ParseTree.Utos.*;
+import created.ParseTree.Yaya.*;
+
+public abstract class arithmetic_1 implements created.iNode
 {
     public static class arithmetic1 extends arithmetic_1
     {

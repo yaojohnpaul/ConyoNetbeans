@@ -1,6 +1,14 @@
 package created.ParseTree.Program;
 
-abstract class super_yaya implements created.iNode 
+import created.ParseTree.Array.*;
+import created.ParseTree.Arte.*;
+import created.ParseTree.Literals.*;
+import created.ParseTree.SabiSabi.*;
+import created.ParseTree.SubYaya.*;
+import created.ParseTree.Utos.*;
+import created.ParseTree.Yaya.*;
+
+public abstract class super_yaya implements created.iNode 
 {
     public static class superYaya extends super_yaya
     {

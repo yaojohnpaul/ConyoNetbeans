@@ -1,6 +1,14 @@
 package created.ParseTree.Literals;
 
-abstract class valid_name implements created.iNode
+import created.ParseTree.Array.*;
+import created.ParseTree.Arte.*;
+import created.ParseTree.Program.*;
+import created.ParseTree.SabiSabi.*;
+import created.ParseTree.SubYaya.*;
+import created.ParseTree.Utos.*;
+import created.ParseTree.Yaya.*;
+
+public abstract class valid_name implements created.iNode
 {
     
     public static class identifier extends valid_name

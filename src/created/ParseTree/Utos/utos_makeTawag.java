@@ -1,8 +1,16 @@
 package created.parseTree.Utos;
 
-abstract class utos_makeTawag implements created.iNode  
+import created.ParseTree.Array.*;
+import created.ParseTree.Arte.*;
+import created.ParseTree.Literals.*;
+import created.ParseTree.Program.*;
+import created.ParseTree.SabiSabi.*;
+import created.ParseTree.SubYaya.*;
+import created.ParseTree.Yaya.*;
+
+public abstract class utos_makeTawag implements created.iNode  
 {
-    public static class makeTawag extends PLACEHOLDER_ABSTRACT
+    public static class makeTawag extends utos_makeTawag
     {
         public valid_name vn; 
         public arte_init_list l;
