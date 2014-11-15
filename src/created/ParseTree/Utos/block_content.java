@@ -1,4 +1,4 @@
-package created.parseTree.Utos;
+package created.ParseTree.Utos;
 
 import created.ParseTree.Array.*;
 import created.ParseTree.Arte.*;
@@ -29,7 +29,10 @@ public abstract class block_content implements created.iNode
         
         public String toString()
         {
-            return u.toString() + " " + b.toString();
+            if(b != null)
+                return u.toString() + "\n" + b.toString();
+            else
+                return u.toString();
         }
     }
 }

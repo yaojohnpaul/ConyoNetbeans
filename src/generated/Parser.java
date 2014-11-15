@@ -894,7 +894,7 @@ class CUP$Parser$actions {
 		int oleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).left;
 		int oright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		OMG_list o = (OMG_list)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
-		 RESULT = new OMG_section.OMGSection(); 
+		 RESULT = new OMG_section.OMGSection(o); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("OMG_section",1, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -2115,7 +2115,7 @@ class CUP$Parser$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		arte_assign a = (arte_assign)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
-		 RESULT = utos_makeKuha.makeKuha(vv, a); 
+		 RESULT = new utos_makeKuha.makeKuha(vv, a); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("utos_makeKuha",43, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -2130,7 +2130,7 @@ class CUP$Parser$actions {
 		int lleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
 		int lright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		arte_init_list l = (arte_init_list)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
-		 RESULT = utos_makeTawag.makeTawag(vn, l); 
+		 RESULT = new utos_makeTawag.makeTawag(vn, l); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("utos_makeTawag",44, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-4)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -2142,7 +2142,7 @@ class CUP$Parser$actions {
 		int sleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
 		int sright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		sabi_sabi s = (sabi_sabi)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
-		 RESULT = utos_makeSulat.makeSulat(s); 
+		 RESULT = new utos_makeSulat.makeSulat(s); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("utos_makeSulat",45, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -2397,7 +2397,7 @@ class CUP$Parser$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		arte_dec a = (arte_dec)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
-		 RESULT = utos_makeArte.makeArte(a); 
+		 RESULT = new utos_makeArte.makeArte(a); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("utos_makeArte",54, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;

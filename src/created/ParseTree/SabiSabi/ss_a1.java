@@ -16,7 +16,7 @@ public abstract class ss_a1 implements created.iNode
         public arithmetic_1 ar;
         public ss_a1 a1;
         
-        public ssA1Expansion(ss_a2 a, arithmetic_1 ar, ss_a1 c)
+        public ssA1Expansion(ss_a2 a2, arithmetic_1 ar, ss_a1 a1)
         {
             this.a1 = a1;
             this.ar = ar;

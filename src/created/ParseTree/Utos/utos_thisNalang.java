@@ -1,4 +1,4 @@
-package created.parseTree.Utos;
+package created.ParseTree.Utos;
 
 import created.ParseTree.Array.*;
 import created.ParseTree.Arte.*;
@@ -26,17 +26,20 @@ public abstract class utos_thisNalang implements created.iNode
         
         public String toString()
         {
-            return "thisNalang\n" + b.toString();
+            if(b != null)
+                return "thisNalang\n" + b.toString();
+            else
+                return null;
         }
     }
     
-    public static class likeKapag extends utos_likeKapag
+    public static class thisNalangKapag extends utos_thisNalang
     {
         public sabi_sabi s;
         public utos_block b;
         public utos_thisNalang t;
         
-        public likeKapag(sabi_sabi s, utos_block b, utos_thisNalang t)
+        public thisNalangKapag(sabi_sabi s, utos_block b, utos_thisNalang t)
         {
             this.s = s;
             this.b = b;

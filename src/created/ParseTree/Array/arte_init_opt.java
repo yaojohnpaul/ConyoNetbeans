@@ -29,7 +29,10 @@ public abstract class arte_init_opt implements created.iNode
         
         public String toString()
         {
-            return i.toString() + " " + o.toString();
+            if(o != null)
+                return i.toString() + "\n" + o.toString();
+            else
+                return i.toString();
         }
     }
 }
