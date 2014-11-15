@@ -120,8 +120,8 @@ float = {integer}\.{integer}(e{integer})?
 	">"  { return symbol(sym.GREATER_THAN); }
 	">=" { return symbol(sym.GT_EQUAL); }
 	"==" { return symbol(sym.EQUAL_EQUAL); }
-	"&"  { return symbol(sym.AND); }
-	"|"  { return symbol(sym.OR); }
+	"&&"  { return symbol(sym.AND); }
+	"||"  { return symbol(sym.OR); }
 	"!" { return symbol(sym.NOT); }
 	\'  { yybegin(CHARACTER); }
 	\" { yybegin(STRING); }
