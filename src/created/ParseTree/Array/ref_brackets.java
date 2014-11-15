@@ -1,4 +1,6 @@
-abstract class ref_brackets implements iNode 
+package created.ParseTree.Array;
+
+abstract class ref_brackets implements created.iNode 
 {
     public static class refBrackets extends ref_brackets
     {
@@ -11,7 +13,7 @@ abstract class ref_brackets implements iNode
         
         public String toString()
         {
-            return s.toString;
+            return s.toString();
         }
     }
 }

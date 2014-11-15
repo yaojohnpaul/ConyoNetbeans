@@ -1,15 +1,17 @@
-abstract class sub_yaya_section implements iNode 
+package created.ParseTree.Program;
+
+abstract class sub_yaya_section implements created.iNode 
 {
-    public static class subYayaList extends sub_yaya_section
+    public static class subYayaSection extends sub_yaya_section
     {
         public sub_yaya_list s;
         
-        public subYayaList()
+        public subYayaSection()
         {
             this.s = null;
         }
         
-        public subYayaList(sub_yaya_list s)
+        public subYayaSection(sub_yaya_list s)
         {
             this.s = s;
         }

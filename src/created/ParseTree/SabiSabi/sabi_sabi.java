@@ -1,4 +1,6 @@
-abstract class sabi_sabi implements iNode
+package created.ParseTree.SabiSabi;
+
+abstract class sabi_sabi implements created.iNode
 {
     public static class SabiSabi extends sabi_sabi
     {

@@ -1,4 +1,6 @@
-abstract class ss_OR implements iNode
+package created.ParseTree.SabiSabi;
+
+abstract class ss_OR implements created.iNode
 {
     public static class ssORExpansion extends ss_OR
     {

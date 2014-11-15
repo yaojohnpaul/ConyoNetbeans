@@ -1,4 +1,6 @@
-abstract class data_type
+package created.ParseTree.Literals;
+
+abstract class data_type implements created.iNode
 {
     public static class datatypePrimitive extends data_type
     {
@@ -9,7 +11,8 @@ abstract class data_type
             this.p = p;
         }
         
-        public String toString(){
+        public String toString()
+        {
             return p.toString();
         }
         
@@ -24,12 +27,12 @@ abstract class data_type
             this.r = r;
         }
         
-        public String toString(){
+        public String toString()
+        {
             return r.toString();
         }
         
     }
-    
 }
 
 /*

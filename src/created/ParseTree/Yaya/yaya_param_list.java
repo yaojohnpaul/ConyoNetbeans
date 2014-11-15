@@ -1,4 +1,6 @@
-abstract class yaya_param_list implements iNode 
+package created.parseTree.Yaya;
+
+abstract class yaya_param_list implements created.iNode 
 {
     public static class yayaParamList extends yaya_param_list
     {

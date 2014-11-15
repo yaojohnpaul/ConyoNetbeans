@@ -1,10 +1,12 @@
-abstract class OMG_section implements iNode 
+package created.ParseTree.Program;
+
+abstract class OMG_section implements created.iNode 
 {
-    public static class OMGlist extends OMG_section
+    public static class OMGSection extends OMG_section
     {
         public OMG_list o;
         
-        public OMGlist(OMG_list o)
+        public OMGSection(OMG_list o)
         {
             this.o = o;
         }

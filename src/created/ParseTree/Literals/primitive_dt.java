@@ -1,4 +1,7 @@
-abstract class primitive_dt{
+package created.ParseTree.Literals;
+
+abstract class primitive_dt implements created.iNode
+{
     
     public static class intType extends primitive_dt
     {

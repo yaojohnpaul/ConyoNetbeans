@@ -1,4 +1,5 @@
-abstract class utos_likeKapag implements iNode 
+package created.parseTree.Utos;
+abstract class utos_likeKapag implements created.iNode  
 {
     public static class likeKapag extends utos_likeKapag
     {

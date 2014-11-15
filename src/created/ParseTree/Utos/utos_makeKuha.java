@@ -1,4 +1,6 @@
-abstract class utos_makeKuha implements iNode 
+package created.parseTree.Utos;
+
+abstract class utos_makeKuha implements created.iNode  
 {
     public static class makeKuha extends utos_makeKuha
     {

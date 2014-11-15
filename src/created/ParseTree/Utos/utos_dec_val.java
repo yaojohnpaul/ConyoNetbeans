@@ -1,4 +1,5 @@
-abstract class utos_dec_val implements iNode 
+package created.parseTree.Utos;
+abstract class utos_dec_val implements created.iNode  
 {
     public static class utosMakeTawag extends utos_dec_val
     {

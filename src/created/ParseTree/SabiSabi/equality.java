@@ -1,4 +1,6 @@
-abstract class equality implements iNode
+package created.ParseTree.SabiSabi;
+
+abstract class equality implements created.iNode
 {
     public static class equal extends equality
     {

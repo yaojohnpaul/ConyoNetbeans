@@ -1,4 +1,6 @@
-abstract class ss_a2 implements iNode
+package created.ParseTree.SabiSabi;
+
+abstract class ss_a2 implements created.iNode
 {
     public static class ssA2Expansion extends ss_a2
     {

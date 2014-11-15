@@ -1,4 +1,6 @@
-abstract class comparison implements iNode
+package created.ParseTree.SabiSabi;
+
+abstract class comparison implements created.iNode
 {
     public static class compare extends comparison
     {

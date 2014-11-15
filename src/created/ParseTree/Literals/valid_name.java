@@ -1,4 +1,7 @@
-abstract class valid_name implements iNode{
+package created.ParseTree.Literals;
+
+abstract class valid_name implements created.iNode
+{
     
     public static class identifier extends valid_name
     {

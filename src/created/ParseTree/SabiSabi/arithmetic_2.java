@@ -1,4 +1,6 @@
-abstract class arithmetic_2 implements iNode
+package created.ParseTree.SabiSabi;
+
+abstract class arithmetic_2 implements created.iNode
 {
     ublic static class arithmetic2 extends arithmetic_2
     {

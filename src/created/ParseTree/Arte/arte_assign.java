@@ -1,4 +1,6 @@
-abstract class arte_assign implements iNode 
+package created.ParseTree.Arte;
+
+abstract class arte_assign implements created.iNode 
 {
     public static class arteAssign extends arte_assign
     {
@@ -16,7 +18,7 @@ abstract class arte_assign implements iNode
         
         public String toString()
         {
-            return i.toString;
+            return i.toString();
         }
     }
 }

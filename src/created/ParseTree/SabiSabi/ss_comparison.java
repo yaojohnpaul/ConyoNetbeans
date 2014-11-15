@@ -1,4 +1,6 @@
-abstract class ss_comparison implements iNode
+package created.ParseTree.SabiSabi;
+
+abstract class ss_comparison implements created.iNode
 {
     public static class ssComparisonExpansion extends ss_comparison
     {
