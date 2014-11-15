@@ -17,7 +17,7 @@ public abstract class valid_var implements created.iNode
         
         public validVar(valid_name vn)
         { 
-            this.vn = vn;;
+            this.vn = vn;
         }
         
         public String toString()
