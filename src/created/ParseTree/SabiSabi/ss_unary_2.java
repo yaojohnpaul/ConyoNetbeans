@@ -45,7 +45,7 @@ public abstract class ss_unary_2 implements created.iNode
     {
         public ss_paren p;
     
-        public ssU2(ss_paren p);
+        public ssU2(ss_paren p)
         {
             this.p = p;
         }

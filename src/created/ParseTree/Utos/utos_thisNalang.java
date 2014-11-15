@@ -6,7 +6,7 @@ import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
-import created.ParseTree..*;
+import created.ParseTree.Yaya.*;
 
 public abstract class utos_thisNalang implements created.iNode  
 {

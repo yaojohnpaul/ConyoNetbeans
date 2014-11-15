@@ -16,7 +16,7 @@ public abstract class ss_a2 implements created.iNode
         public arithmetic_2 ar;
         public ss_a2 a;
         
-        public ssComparisonExpansion(ss_unary_1 u, arithmetic_2 ar, ss_a2 a)
+        public ssA2Expansion(ss_unary_1 u, arithmetic_2 ar, ss_a2 a)
         {
             this.u = u;
             this.ar = ar;
@@ -33,7 +33,7 @@ public abstract class ss_a2 implements created.iNode
     {
         public ss_unary_1 u;
         
-        public ssComparison(ss_unary_1 u)
+        public ssA2(ss_unary_1 u)
         {
             this.u = u;
         }

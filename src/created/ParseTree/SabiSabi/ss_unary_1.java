@@ -55,11 +55,11 @@ public abstract class ss_unary_1 implements created.iNode
         }
     }
     
-    public static class ssU1MinusMinus extends ss_unary_1
+    public static class ssU1 extends ss_unary_1
     {
         public ss_unary_2 u;
         
-        public ssU1MinusMinus(ss_unary_2 u);
+        public ssU1(ss_unary_2 u)
         {
             this.u = u;
         }

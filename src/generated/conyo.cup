@@ -1,7 +1,7 @@
+package generated;
+
 import java_cup.runtime.*;
 import created.*;
-import created.OMG.*;
-import created.sabisabi.*;
 import created.ParseTree.Array.*;
 import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
