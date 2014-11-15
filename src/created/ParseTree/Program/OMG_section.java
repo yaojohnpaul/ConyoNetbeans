@@ -19,6 +19,11 @@ public abstract class OMG_section implements created.iNode
             this.o = o;
         }
         
+        public OMGSection()
+        {
+            this.o = null;
+        }
+        
         public String toString()
         {
             return o.toString();

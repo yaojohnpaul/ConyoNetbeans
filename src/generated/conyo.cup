@@ -157,8 +157,8 @@ non terminal ss_unary_2			ss_unary_2;
 non terminal ss_paren			ss_paren;
 non terminal equality			equality;
 non terminal comparison			comparison;
-non terminal arithmetic1		arithmetic_1;
-non terminal arithmetic2		arithmetic_2;
+non terminal arithmetic_1		arithmetic_1;
+non terminal arithmetic_2		arithmetic_2;
 
 /*Precedences*/
 precedence left SHORT_NAME;
@@ -225,8 +225,8 @@ reference_dt ::= valid_name:vn {: RESULT = new reference_dt.referenceValidName(v
 array_dt ::= primitive_dt:p brackets:b {: RESULT = new array_dt.arrayPrimitive(p, b); :}
 			| valid_name:vn brackets:b {: RESULT = new array_dt.arrayName(vn, b); :};
 			
-valid_name ::= IDENTIFIER:id {:RESULT = new valid_name.identifier(id)}
-			| valid_name:vn COLON IDENTIFIER:id {:RESULT = new valid_name.validName(vn, id) :} %prec LONG_NAME;
+valid_name ::= IDENTIFIER:id {:RESULT = new valid_name.identifier(id);:}
+			| valid_name:vn COLON IDENTIFIER:id {:RESULT = new valid_name.validName(vn, id); :} %prec LONG_NAME;
 valid_var ::= valid_name:vn {: RESULT = new valid_var.validVar(vn); :} %prec SHORT_NAME 
 			| valid_name:vn ref_brackets:rb {: RESULT = new valid_var.validVar(vn, rb); :};
 			
@@ -271,11 +271,11 @@ yaya_param ::= data_type:dt IDENTIFIER:id {: RESULT = new yaya_param.yayaParam(d
 
 /*Array Productions*/
 
-array_init ::= LEFT_CURLY arte_init_list:l RIGHT_CURLY {: RETURN = new array_init.arrayInit(l); :};
-arte_init_list ::= arte_init_opt:o {: RETURN = new arte_init_list.arteInitList(o); :}
-				| {: RETURN = new arte_init_list.arteInitList(); :};
-arte_init_opt ::= arte_init:i COMMA arte_init_opt:o {: RETURN = new arte_init_opt.arteInitOpt(i, o); :}
-				| arte_init:i {: RETURN = new arte_init_opt.arteInitOpt(i); :};
+array_init ::= LEFT_CURLY arte_init_list:l RIGHT_CURLY {: RESULT = new array_init.arrayInit(l); :};
+arte_init_list ::= arte_init_opt:o {: RESULT = new arte_init_list.arteInitList(o); :}
+				| {: RESULT = new arte_init_list.arteInitList(); :};
+arte_init_opt ::= arte_init:i COMMA arte_init_opt:o {: RESULT = new arte_init_opt.arteInitOpt(i, o); :}
+				| arte_init:i {: RESULT = new arte_init_opt.arteInitOpt(i); :};
 				
 brackets ::= LEFT_BRACE RIGHT_BRACE {: RESULT = new brackets(); :};
 ref_brackets ::= LEFT_BRACE sabi_sabi:s RIGHT_BRACE {: RESULT = new ref_brackets.refBrackets(s); :};
@@ -284,15 +284,15 @@ ref_brackets ::= LEFT_BRACE sabi_sabi:s RIGHT_BRACE {: RESULT = new ref_brackets
 
 utos_block ::= DOLLAR_SIGN utos_block_opt:opt DOLLAR_SIGN {: RESULT = new utos_block.utosBlock(opt); :}
 				| error {: RESULT = null; addText(" in code block"); :};
-utos_block_opt ::= block_content:c {: RESULT = new utos_block_opt.utosBlockOpt(b); :}
+utos_block_opt ::= block_content:b {: RESULT = new utos_block_opt.utosBlockOpt(b); :}
 			| {: RESULT = new utos_block_opt.utosBlockOpt(); :};
-block_content ::= utos_dec block_content {: RESULT = new block_content.blockContent(u, b); :}
-				| utos_dec {: RESULT = new block_content.blockContent(u); :};
+block_content ::= utos_dec:u block_content:b {: RESULT = new block_content.blockContent(u, b); :}
+				| utos_dec:u {: RESULT = new block_content.blockContent(u); :};
 utos_dec ::= utos_dec_db:d {: RESULT = new utos_dec.utosDecDB(d); :}
 			| utos_dec_val:v DB {: RESULT = new utos_dec.utosDecVal(v); :}
 			| utos_dec_nodb:n {: RESULT = new utos_dec.utosDecNoDB(n); :}
 			| error {: RESULT = null; addText(""); :};
-utos_dec_nodb ::= utos_likeKapag:uk {: RESULT = new utos_dec_nodb.utosLikeKapag(u); :}
+utos_dec_nodb ::= utos_likeKapag:uk {: RESULT = new utos_dec_nodb.utosLikeKapag(uk); :}
 			| utos_makePalit:up {: RESULT = new utos_dec_nodb.utosMakePalit(up); :}
 			| utos_likeHabang:uh {: RESULT = new utos_dec_nodb.utosLikeHabang(uh); :}
 			| utos_makeGawaHabang:ugh {: RESULT = new utos_dec_nodb.utosMakeGawaHabang(ugh); :}
@@ -329,12 +329,12 @@ makePalit_MRW ::= MRW sabi_sabi:s COLON utos_block_opt:o makePalit_MRW:m {: RESU
 				| MRW error DB {: RESULT = null; addText(" in one of the cases of a SWITCH statement"); :}
 				| MDR COLON utos_block_opt:o {: RESULT = new makePalit_MRW.MDR(o); :}
 				| MDR error DB {: RESULT = null; addText(" in the last case of a SWITCH statement"); :}
-				| {: RESULT = new MRW(); :};
+				| {: RESULT = new makePalit_MRW.MRW(); :};
 utos_likeHabang ::= LIKE_HABANG LEFT_PAREN sabi_sabi:s RIGHT_PAREN utos_block:u {: RESULT = new utos_likeHabang.likeHabang(s, u); :}
 				| LIKE_HABANG LEFT_PAREN sabi_sabi:s RIGHT_PAREN DB {: RESULT = new utos_likeHabang.likeHabang(s); :};
 utos_makeGawaHabang ::= MAKE_GAWA utos_block:u LIKE_HABANG LEFT_PAREN sabi_sabi:s RIGHT_PAREN DB {: RESULT = new utos_makeGawaHabang.makeGawaHabang(u, s); :};
-utos_makeUlit ::= MAKE_ULIT LEFT_PAREN utos_makeKuha:m1 DB sabi_sabi_for:s utos_makeKuha:m2 RIGHT_PAREN utos_block:u {: RESULT = new utos_makeUlit.makeUlit(m1, s1, m2, u); :}
-				| MAKE_ULIT LEFT_PAREN utos_makeKuha:m DB sabi_sabi_for:s1 sabi_sabi_for:s2 RIGHT_PAREN utos_block:u {: RESULT = new utos_makeUlit.makeUlit(m1, s1, s2, u); :};
+utos_makeUlit ::= MAKE_ULIT LEFT_PAREN utos_makeKuha:m1 DB sabi_sabi_for:s1 utos_makeKuha:m2 RIGHT_PAREN utos_block:u {: RESULT = new utos_makeUlit.makeUlit(m1, s1, m2, u); :}
+				| MAKE_ULIT LEFT_PAREN utos_makeKuha:m1 DB sabi_sabi_for:s1 sabi_sabi_for:s2 RIGHT_PAREN utos_block:u {: RESULT = new utos_makeUlit.makeUlit(m1, s1, s2, u); :};
 utos_makeArte ::= arte_dec:a {: RESULT = utos_makeArte.makeArte(a); :};
 utos_makeSabi ::= MAKE_SABI sabi_sabi:s {: RESULT = new utos_makeSabi.makeSabi(s); :};
 
@@ -361,10 +361,10 @@ ss_a2 ::= ss_unary_1:u arithmetic_2:ar ss_a2:a {: RESULT = new ss_a2.ssA2Expansi
 ss_unary_1 ::= NOT ss_unary_1:u {: RESULT = new ss_unary_1.ssU1Not(u); :}
 			| POS_INC ss_unary_1:u {: RESULT = new ss_unary_1.ssU1PlusPlus(u); :}
 			| NEG_INC ss_unary_1:u {: RESULT = new ss_unary_1.ssU1MinusMinus(u); :}
-			| ss_unary_2:u {: RESULT = new ssU1(u); :};
+			| ss_unary_2:u {: RESULT = new ss_unary_1.ssU1(u); :};
 ss_unary_2 ::= ss_unary_2:u POS_INC {: RESULT = new ss_unary_2.ssU2PlusPlus(u); :}
 			| ss_unary_2:u NEG_INC {: RESULT = new ss_unary_2.ssU2MinusMinus(u); :}
-			| ss_paren:p {: RESULT = new ssU2(p); :};
+			| ss_paren:p {: RESULT = new ss_unary_2.ssU2(p); :};
 ss_paren ::= LEFT_PAREN ss_paren:p RIGHT_PAREN {: RESULT = new ss_paren.ssParen(p); :}
 			| sabi_sabi_end:e {: RESULT = new ss_paren.ssParenEnd(e); :};
 			
