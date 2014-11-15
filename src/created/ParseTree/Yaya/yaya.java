@@ -1,4 +1,6 @@
-abstract class yaya implements iNode 
+package created.parseTree.Yaya;
+
+abstract class yaya implements created.iNode  
 {
     public static class addYaya extends yaya
     {

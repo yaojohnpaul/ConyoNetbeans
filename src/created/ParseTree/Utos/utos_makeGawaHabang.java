@@ -1,4 +1,6 @@
-abstract class utos_makeGawaHabang implements iNode 
+package created.parseTree.Utos;
+
+abstract class utos_makeGawaHabang implements created.iNode  
 {
     public static class makeGawaHabang extends utos_makeGawaHabang
     {

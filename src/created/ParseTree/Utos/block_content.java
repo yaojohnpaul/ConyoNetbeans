@@ -1,4 +1,7 @@
-abstract class block_content implements iNode 
+package created.parseTree.Utos;
+
+
+abstract class block_content implements created.iNode  
 {
     public static class blockContent extends block_content
     {

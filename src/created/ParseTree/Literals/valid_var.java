@@ -1,4 +1,6 @@
-abstract class valid_var implements iNode
+package created.ParseTree.Literals;
+
+abstract class valid_var implements created.iNode
 {
     
     public static class validVar extends valid_var
@@ -30,7 +32,7 @@ abstract class valid_var implements iNode
         
         public String toString()
         {
-            return vn.toString + rb.toString;
+            return vn.toString() + rb.toString();
         }
     }
     

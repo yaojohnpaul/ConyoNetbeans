@@ -1,4 +1,6 @@
-abstract class super_yaya implements iNode 
+package created.ParseTree.Program;
+
+abstract class super_yaya implements created.iNode 
 {
     public static class superYaya extends super_yaya
     {

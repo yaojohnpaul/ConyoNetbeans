@@ -1,4 +1,8 @@
-abstract class array_dt{
+package created.ParseTree.Literals
+;
+
+abstract class array_dt implements created.iNode
+{
     
     public static class arrayPrimitive extends array_dt
     {

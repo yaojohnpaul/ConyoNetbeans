@@ -1,4 +1,6 @@
-abstract class makePalit_MRW implements iNode 
+package created.parseTree.Utos;
+
+abstract class makePalit_MRW implements created.iNode  
 {
     public static class MRW extends makePalit_MRW
     {

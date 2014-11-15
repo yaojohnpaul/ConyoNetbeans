@@ -1,4 +1,6 @@
-abstract class utos_thisNalang implements iNode 
+package created.parseTree.Utos;
+
+abstract class utos_thisNalang implements created.iNode  
 {
     public static class thisNalang extends utos_thisNalang
     {

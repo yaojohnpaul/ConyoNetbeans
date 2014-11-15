@@ -167,31 +167,31 @@ start with conyogram;
 
 conyogram ::= OMG_section:o yaya_section:y sub_yaya_section:b super_yaya:p 
 				{: 
-					RESULT = new Conyogram(o, y, b, );
+					RESULT = new Conyogram(o, y, b, p);
 					printText(); 
 				:};
 
 /*Program Breakdown*/
 
-OMG_section ::= OMG_list:o {: RESULT = new OMGList(); :}
-			| {: RESULT = new OMGList(); :};
-OMG_list ::= OMG_dec:o {: RESULT = new OMGDec(o); :}
-			| OMG_dec:o OMG_list:l {: RESULT = new OMGDec(o, l); :};
+OMG_section ::= OMG_list:o {: RESULT = new OMGSection(); :}
+			| {: RESULT = new OMGSection(); :};
+OMG_list ::= OMG_dec:o {: RESULT = new OMGList(o); :}
+			| OMG_dec:o OMG_list:l {: RESULT = new OMGList(o, l); :};
 			
 OMG_dec ::= OMG IDENTIFIER:id MAKE_KUHA sabi_sabi:ss DB {: RESULT = new OMG(id, ss); :}
 			| OMG error DB {: RESULT = null; addText(" in Constant Declaration"); :}
 			| error DB {: RESULT = null; addText(" before main and function declarations"); :}
 ;
 
-yaya_section ::= yaya_list:l {: RESULT = new yayaList(l); :}
-			| {: RESULT = new yayaList(); :};
-yaya_list ::= yaya:y {: RESULT = new yayaDec(y); :}
-			| yaya:y yaya_list:l {: RESULT = new yayaDec(y, l); :};
+yaya_section ::= yaya_list:l {: RESULT = new yayaSection(l); :}
+			| {: RESULT = new yayaSection(); :};
+yaya_list ::= yaya:y {: RESULT = new yayaList(y); :}
+			| yaya:y yaya_list:l {: RESULT = new yayaList(y, l); :};
 
-sub_yaya_section ::= sub_yaya_list:s {: RESULT = subYayaList(s); :}
-			| {: RESULT = new subYayaList(); :};
-sub_yaya_list ::= sub_yaya:s {: RESULT = new subYayaDec(s); :}
-			| sub_yaya:s sub_yaya_list:l {: RESULT = new subYayaDec(s, l); :};
+sub_yaya_section ::= sub_yaya_list:s {: RESULT = subYayaSection(s); :}
+			| {: RESULT = new subYayaSection(); :};
+sub_yaya_list ::= sub_yaya:s {: RESULT = new subYayaList(s); :}
+			| sub_yaya:s sub_yaya_list:l {: RESULT = new subYayaList(s, l); :};
 				
 super_yaya ::= SUPER_YAYA utos_block:u {: RESULT = new superYaya(u); :};
 
@@ -226,15 +226,15 @@ valid_var ::= valid_name:vn {: RESULT = new validVar(vn); :} %prec SHORT_NAME
 
 sub_yaya ::= MAKE_UTUSAN IDENTIFIER:id sy_body:body {: RESULT = new SubYaya(id, body); :};
 sy_body ::= DOLLAR_SIGN sy_opt:opt DOLLAR_SIGN {: RESULT = new SubYayaBodyList(opt); :};
-sy_opt ::= sy_cont_list:l {: RESULT = new SubYayaBodyList(l); :}
-			| {: RESULT = new SubYayaBodyList(); :};
-sy_cont_list ::= sy_cont:c sy_cont_list:l {: RESULT = new SubYayaBodyList(c, l); :}
-			| sy_cont:c {: RESULT = new SubYayaBodyList(c); :};
-sy_cont ::= arte_dec
-			| yaya
-			| constructor;
+sy_opt ::= sy_cont_list:l {: RESULT = new SubYayaOpt(l); :}
+			| {: RESULT = new SubYayaOpt(); :};
+sy_cont_list ::= sy_cont:c sy_cont_list:l {: RESULT = new SubYayaContList(c, l); :}
+			| sy_cont:c {: RESULT = new SubYayaContList(c); :};
+sy_cont ::= arte_dec:a {: RESULT = new SubYayaContArte(a); :}
+			| yaya:y {: RESULT = new SubYayaContYaya(y); :}
+			| constructor:c {: RESULT = new SubYayaContConstructor(c); :};
 constructor ::= MAKE_SIMULA IDENTIFIER:id utos_block:u {: RESULT = new mSimula(id, u); :};
-sy_init ::= BRAND_NEW reference_dt LEFT_PAREN arte_init_list RIGHT_PAREN;
+sy_init ::= BRAND_NEW reference_dt:rd LEFT_PAREN arte_init_list:ai RIGHT_PAREN {: RESULT = new SubYayaInitialize(rd, ai); :};
 
 /*Variable Declaration Productions*/
 
@@ -266,8 +266,8 @@ yaya_param ::= data_type:dt IDENTIFIER:id {: RESULT = new yayaParam(dt, id); :};
 array_init ::= LEFT_CURLY arte_init_list:l RIGHT_CURLY {: RETURN = new arrayInit(l); :};
 arte_init_list ::= arte_init_opt:o {: RETURN = new arteInitList(o); :}
 				| {: RETURN = new arteInitList(); :};
-arte_init_opt ::= arte_init COMMA arte_init_opt {: RETURN = new arteInitOpt(); :}
-				| arte_init {: RETURN = new arteInitOpt(); :};
+arte_init_opt ::= arte_init:i COMMA arte_init_opt:o {: RETURN = new arteInitOpt(i, o); :}
+				| arte_init:i {: RETURN = new arteInitOpt(i); :};
 				
 brackets ::= LEFT_BRACE RIGHT_BRACE {: RESULT = "[]"; :};
 ref_brackets ::= LEFT_BRACE sabi_sabi RIGHT_BRACE;

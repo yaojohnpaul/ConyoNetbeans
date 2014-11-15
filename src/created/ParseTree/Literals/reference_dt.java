@@ -1,4 +1,6 @@
-abstract class reference_dt
+package created.ParseTree.Literals;
+
+abstract class reference_dt implements created.iNode
 {
     public static class referenceValidName extends reference_dt
     {
@@ -29,7 +31,6 @@ abstract class reference_dt
             return array_dt.toString();
         }
     }
-    
 }
 
 /*

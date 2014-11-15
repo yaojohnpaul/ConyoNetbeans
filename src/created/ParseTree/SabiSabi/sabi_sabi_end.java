@@ -1,5 +1,8 @@
-abstract class sabi_sabi_end implements iNode
+package created.ParseTree.SabiSabi;
+
+abstract class sabi_sabi_end implements created.iNode
 {
+    
     public static class ssEndValidVar extends sabi_sabi_end
     {
         public valid_var v;
@@ -11,7 +14,7 @@ abstract class sabi_sabi_end implements iNode
         
         public String toString()
         {
-            return v.toString;
+            return v.toString();
         }
     }
     
@@ -26,7 +29,7 @@ abstract class sabi_sabi_end implements iNode
         
         public String toString()
         {
-            return u.toString;
+            return u.toString();
         }
     }
     
@@ -41,7 +44,7 @@ abstract class sabi_sabi_end implements iNode
         
         public String toString()
         {
-            return l.toString;
+            return l.toString();
         }
     }
     

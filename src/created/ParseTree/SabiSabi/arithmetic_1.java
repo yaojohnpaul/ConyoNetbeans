@@ -1,4 +1,6 @@
-abstract class arithmetic_1 implements iNode
+package created.ParseTree.SabiSabi;
+
+abstract class arithmetic_1 implements created.iNode
 {
     public static class arithmetic1 extends arithmetic_1
     {

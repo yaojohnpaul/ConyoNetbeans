@@ -1,4 +1,6 @@
-abstract class utos_dec implements iNode
+package created.parseTree.Utos;
+
+abstract class utos_dec implements created.iNode 
 {
     public static class utosDecDB extends utos_dec
     {

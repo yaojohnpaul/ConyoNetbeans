@@ -1,4 +1,6 @@
-abstract class ss_unary_2 implements iNode
+package created.ParseTree.SabiSabi;
+
+abstract class ss_unary_2 implements created.iNode
 {
     
     public static class ssU2PlusPlus extends ss_unary_2

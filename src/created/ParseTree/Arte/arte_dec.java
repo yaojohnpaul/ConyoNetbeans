@@ -1,4 +1,6 @@
-abstract class arte_dec implements iNode 
+package created.ParseTree.Arte;
+
+abstract class arte_dec implements created.iNode 
 {
     public static class arteDec extends arte_dec
     {
@@ -15,7 +17,7 @@ abstract class arte_dec implements iNode
         
         public String toString()
         {
-            return dt.toString + " " + id.toString() + " " + a.toString();
+            return dt.toString() + " " + id.toString() + " " + a.toString();
         }
     }
 }

@@ -1,4 +1,6 @@
-abstract class ss_equality
+package created.ParseTree.SabiSabi;
+
+abstract class ss_equality implements created.iNode
 {
     public static class ssEqualityExpansion extends ss_equality
     {

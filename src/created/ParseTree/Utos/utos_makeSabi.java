@@ -1,4 +1,6 @@
-abstract class utos_makeSabi implements iNode 
+package created.parseTree.Utos;
+
+abstract class utos_makeSabi implements created.iNode  
 {
     public static class makeSabi extends utos_makeSabi
     {

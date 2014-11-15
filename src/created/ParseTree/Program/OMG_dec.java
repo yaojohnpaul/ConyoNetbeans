@@ -1,4 +1,6 @@
-abstract class OMG_dec implements iNode 
+package created.ParseTree.Program;
+
+abstract class OMG_dec implements created.iNode 
 {
     public static class OMG extends OMG_dec
     {

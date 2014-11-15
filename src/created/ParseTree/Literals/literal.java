@@ -1,4 +1,6 @@
-abstract class literal implements iNode
+package created.ParseTree.Literals;
+
+abstract class literal implements created.iNode
 {
     
     public static class Inty extends literal

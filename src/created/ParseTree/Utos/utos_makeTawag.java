@@ -1,4 +1,6 @@
-abstract class utos_makeTawag implements iNode 
+package created.parseTree.Utos;
+
+abstract class utos_makeTawag implements created.iNode  
 {
     public static class makeTawag extends PLACEHOLDER_ABSTRACT
     {

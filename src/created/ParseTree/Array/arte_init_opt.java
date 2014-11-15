@@ -1,4 +1,6 @@
-abstract class arte_init_opt implements iNode 
+package created.ParseTree.Array;
+
+abstract class arte_init_opt implements created.iNode 
 {
     public static class arteInitOpt extends arte_init_opt
     {
@@ -19,7 +21,7 @@ abstract class arte_init_opt implements iNode
         
         public String toString()
         {
-            return i.toString + " " + o.toString();
+            return i.toString() + " " + o.toString();
         }
     }
 }
