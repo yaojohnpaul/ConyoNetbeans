@@ -31,7 +31,7 @@ public abstract class block_content implements created.iNode
         {
             if(b != null)
                 return u.toString() + "\n" + b.toString();
-            else
+            else 
                 return u.toString();
         }
     }
