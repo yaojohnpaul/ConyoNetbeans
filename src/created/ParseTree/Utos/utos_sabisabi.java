@@ -28,8 +28,8 @@ public abstract class utos_sabisabi implements created.iNode
         
         public void evaluate(){
             switch(kind){
-                case "++" : ++vv.toEvaluate();
-                case "--" : --vv.toEvaluate();
+                case "++" : ++vv.evaluate();
+                case "--" : --vv.evaluate();
             }
         }
     }
@@ -53,8 +53,8 @@ public abstract class utos_sabisabi implements created.iNode
         public void evaluate()
         {
             switch(kind){
-                case "++" : vv.toEvaluate()++;
-                case "--" : vv.toEvaluate()--;
+                case "++" : vv.evaluate()++;
+                case "--" : vv.evaluate()--;
             }
         }
     }
