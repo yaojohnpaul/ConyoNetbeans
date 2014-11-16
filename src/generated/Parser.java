@@ -1833,7 +1833,10 @@ class CUP$Parser$actions {
           case 81: // utos_dec ::= utos_sabisabi DB 
             {
               utos_dec RESULT =null;
-
+		int usleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
+		int usright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
+		utos_sabisabi us = (utos_sabisabi)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		 RESULT = new utos_dec.utosDecSabiSabi(us); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("utos_dec",39, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
