@@ -129,6 +129,7 @@ non terminal utos_dec			utos_dec;
 non terminal utos_dec_nodb		utos_dec_nodb;
 non terminal utos_dec_db	 	utos_dec_db;
 non terminal utos_dec_val		utos_dec_val;
+non terminal utos_sabisabi		utos_sabisabi;
 non terminal utos_makeKuha		utos_makeKuha;
 non terminal utos_makeTawag		utos_makeTawag;
 non terminal utos_makeSulat		utos_makeSulat;
@@ -153,7 +154,6 @@ non terminal ss_comparison		ss_comparison;
 non terminal ss_a1				ss_a1;
 non terminal ss_a2				ss_a2;
 non terminal ss_unary_1			ss_unary_1;
-non terminal ss_unary_2			ss_unary_2;
 non terminal ss_paren			ss_paren;
 non terminal equality			equality;
 non terminal comparison			comparison;
@@ -290,6 +290,7 @@ block_content ::= utos_dec:u block_content:b {: RESULT = new block_content.block
 utos_dec ::= utos_dec_db:d {: RESULT = new utos_dec.utosDecDB(d); :}
 			| utos_dec_val:v DB {: RESULT = new utos_dec.utosDecVal(v); :}
 			| utos_dec_nodb:n {: RESULT = new utos_dec.utosDecNoDB(n); :}
+			| utos_sabisabi
 			| error {: RESULT = null; addText(""); :};
 utos_dec_nodb ::= utos_likeKapag:uk {: RESULT = new utos_dec_nodb.utosLikeKapag(uk); :}
 			| utos_makePalit:up {: RESULT = new utos_dec_nodb.utosMakePalit(up); :}
@@ -313,6 +314,10 @@ utos_dec_val ::= utos_makeTawag:ut {: RESULT = new utos_dec_val.utosMakeTawag(ut
 			| utos_makeBasa:ub {: RESULT = new utos_dec_val.utosMakeBasa(ub); :}
 			| MAKE_TAWAG error {: RESULT = null; addText(" in FUNCTION CALL"); :}
 			| MAKE_BASA error {: RESULT = null; addText(" in SCAN function"); :};
+utos_sabisabi ::= POS_INC valid_var:vv DB {: RESULT = new utos_sabisabi.utosSabiSabiFront(vv,"++"); :}
+			| NEG_INC valid_var:vv DB {: RESULT = new utos_sabisabi.utosSabiSabiFront(vv,"--"); :}
+			| valid_var:vv POS_INC DB {: RESULT = new utos_sabisabi.utosSabiSabiBack(vv,"++"); :}
+			| valid_var:vv NEG_INC DB {: RESULT = new utos_sabisabi.utosSabiSabiBack(vv,"--"); :};
 utos_makeKuha ::= valid_var:vv arte_assign:a {: RESULT = new utos_makeKuha.makeKuha(vv, a); :};
 utos_makeTawag ::= MAKE_TAWAG valid_name:vn LEFT_PAREN arte_init_list:l RIGHT_PAREN {: RESULT = new utos_makeTawag.makeTawag(vn, l); :};
 utos_makeSulat ::= MAKE_SULAT LEFT_PAREN sabi_sabi:s RIGHT_PAREN {: RESULT = new utos_makeSulat.makeSulat(s); :};
@@ -358,13 +363,8 @@ ss_a1 ::= ss_a2:a2 arithmetic_1:ar ss_a1:a1 {: RESULT = new ss_a1.ssA1Expansion(
 ss_a2 ::= ss_unary_1:u arithmetic_2:ar ss_a2:a {: RESULT = new ss_a2.ssA2Expansion(u, ar, a); :}
 		| ss_unary_1:u {: RESULT = new ss_a2.ssA2(u); :};
 ss_unary_1 ::= NOT ss_unary_1:u {: RESULT = new ss_unary_1.ssU1Not(u); :}
-			| POS_INC ss_unary_1:u {: RESULT = new ss_unary_1.ssU1PlusPlus(u); :}
-			| NEG_INC ss_unary_1:u {: RESULT = new ss_unary_1.ssU1MinusMinus(u); :}
-			| ss_unary_2:u {: RESULT = new ss_unary_1.ssU1(u); :};
-ss_unary_2 ::= ss_unary_2:u POS_INC {: RESULT = new ss_unary_2.ssU2PlusPlus(u); :}
-			| ss_unary_2:u NEG_INC {: RESULT = new ss_unary_2.ssU2MinusMinus(u); :}
-			| ss_paren:p {: RESULT = new ss_unary_2.ssU2(p); :};
-ss_paren ::= LEFT_PAREN ss_paren:p RIGHT_PAREN {: RESULT = new ss_paren.ssParen(p); :}
+			| ss_paren:p {: RESULT = new ss_unary_1.ssU1(p); :};
+ss_paren ::= LEFT_PAREN ss_a1:a RIGHT_PAREN {: RESULT = new ss_paren.ssParen(a); :}
 			| sabi_sabi_end:e {: RESULT = new ss_paren.ssParenEnd(e); :};
 			
 equality ::= EQUAL_EQUAL {: RESULT = new equality.equal("=="); :}

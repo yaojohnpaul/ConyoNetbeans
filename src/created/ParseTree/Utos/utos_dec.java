@@ -54,4 +54,19 @@ public abstract class utos_dec implements created.iNode
             return un.toString();
         }
     }
+    
+    public static class utosDecSabiSabi extends utos_dec
+    {
+        public utos_sabisabi un;
+        
+        public utosDecSabiSabi(utos_sabisabi un)
+        {
+            this.un = un;
+        }
+        
+        public String toString()
+        {
+            return un.toString();
+        }
+    }
 }

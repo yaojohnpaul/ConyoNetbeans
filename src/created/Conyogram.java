@@ -37,7 +37,7 @@ public class Conyogram implements iNode
     }
     
     /**
-     * Function to retrieve values from SymList for evaluation in interpret()
+     * Function to retrieve values from SymList for evaluation in evaluate()
      * Based on code by Klein and Rumpe, examples->interpreter
      */
     public void preInterpret()
@@ -49,7 +49,7 @@ public class Conyogram implements iNode
      * Function to interpret and evaluate expressions, functions, etc.
      * Based on code by Klein and Rumpe, examples->interpreter
      */
-    public void interpret()
+    public void evaluate()
     {
         
     }

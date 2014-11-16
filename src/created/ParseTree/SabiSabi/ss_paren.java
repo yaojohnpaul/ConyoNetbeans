@@ -12,14 +12,14 @@ public abstract class ss_paren implements created.iNode
 {
     public static class ssParen extends ss_paren
     {
-        public ss_paren p;
+        public ss_a1 a;
         
-        public ssParen(ss_paren p){
-            this.p = p;
+        public ssParen(ss_a1 a){
+            this.a = a;
         }
         
         public String toString(){
-            return "(" + p.toString() + ")";
+            return "(" + a.toString() + ")";
         }
     }
     
