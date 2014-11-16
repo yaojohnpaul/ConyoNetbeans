@@ -304,11 +304,9 @@ utos_dec_nodb ::= utos_likeKapag:uk {: RESULT = new utos_dec_nodb.utosLikeKapag(
 			| MAKE_ULIT error DB {: RESULT = null; addText(" in FOR LOOP"); :};
 utos_dec_db ::= utos_makeKuha:uk DB {: RESULT = new utos_dec_db.utosMakeKuha(uk); :}
 			| utos_makeSulat:usu DB {: RESULT = new utos_dec_db.utosMakeSulat(usu); :}
-			| utos_makeSabi:usa DB {: RESULT = new utos_dec_db.utosMakeSabi(usa); :}
 			| BREAKUP DB {: RESULT = new utos_dec_db.breakup(); :}
 			| MAKEUP DB {: RESULT = new utos_dec_db.makeup(); :}
 			| MAKE_SULAT error DB {: RESULT = null; addText(" in OUTPUT function"); :}
-			| MAKE_SABI error DB {: RESULT = null; addText(" in MAKESABI function"); :};
 utos_dec_val ::= utos_makeTawag:ut {: RESULT = new utos_dec_val.utosMakeTawag(ut); :}
 			| utos_makeBasa:ub {: RESULT = new utos_dec_val.utosMakeBasa(ub); :}
 			| MAKE_TAWAG error {: RESULT = null; addText(" in FUNCTION CALL"); :}

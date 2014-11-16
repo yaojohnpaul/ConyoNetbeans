@@ -40,21 +40,6 @@ public abstract class utos_dec_db implements created.iNode
         }
     }
     
-    public static class utosMakeSabi extends utos_dec_db
-    {
-        public utos_makeSabi usa; 
-        
-        public utosMakeSabi(utos_makeSabi usa)
-        {
-            this.usa = usa;
-        }
-        
-        public String toString()
-        {
-            return usa.toString() + " db";
-        }
-    }
-    
     public static class breakup extends utos_dec_db
     {
         public breakup()
