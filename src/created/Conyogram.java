@@ -36,7 +36,10 @@ public class Conyogram implements iNode
     public void setSymList()
     {
         OMG_sym = new SymList();
-        
+        if(o instanceof OMG_section.OMGSection)
+        {
+            ((OMG_section.OMGSection) o).setSymList(OMG_sym);
+        }
     }
     
     /**

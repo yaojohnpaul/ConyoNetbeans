@@ -31,6 +31,11 @@ public abstract class OMG_section implements created.iNode
             else
                 return "";
         }
+        
+        public void setSymList(SymList sl)
+        {
+            System.out.println("IT WORKS");
+        }
     }
     
 }
