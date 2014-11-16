@@ -1,12 +1,6 @@
 package created.ParseTree.Program;
 
-import created.ParseTree.Array.*;
-import created.ParseTree.Arte.*;
-import created.ParseTree.Literals.*;
-import created.ParseTree.SabiSabi.*;
-import created.ParseTree.SubYaya.*;
-import created.ParseTree.Utos.*;
-import created.ParseTree.Yaya.*;
+import created.*;
 
 public abstract class OMG_section implements created.iNode 
 {
