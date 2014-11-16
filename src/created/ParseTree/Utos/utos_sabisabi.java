@@ -22,12 +22,12 @@ public abstract class utos_sabisabi implements created.iNode
         }
         
         public String toString()
-        
-            return s + vv.toString();
+        {
+            return kind + vv.toString();
         }
         
         public void evaluate(){
-            switch(s){
+            switch(kind){
                 case "++" : ++vv.toEvaluate();
                 case "--" : --vv.toEvaluate();
             }
@@ -47,11 +47,12 @@ public abstract class utos_sabisabi implements created.iNode
         
         public String toString()
         {
-            return vv.toString() + s;
+            return vv.toString() + kind;
         }
         
-        public void evaluate(){
-            switch(s){
+        public void evaluate()
+        {
+            switch(kind){
                 case "++" : vv.toEvaluate()++;
                 case "--" : vv.toEvaluate()--;
             }
