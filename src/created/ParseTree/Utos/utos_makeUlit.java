@@ -16,6 +16,7 @@ public abstract class utos_makeUlit implements created.iNode
         public utos_makeKuha m2;
         public sabi_sabi_for s1;
         public sabi_sabi_for s2;
+        public utos_sabisabi m3;
         public utos_block u;
         
         public makeUlit(utos_makeKuha m1, sabi_sabi_for s1, utos_makeKuha m2, utos_block u)
@@ -24,6 +25,7 @@ public abstract class utos_makeUlit implements created.iNode
             this.m2 = m2;
             this.s1 = s1;
             this.s2 = null;
+            this.m3 = null;
             this.u = u;
         }
         
@@ -33,6 +35,17 @@ public abstract class utos_makeUlit implements created.iNode
             this.m2 = null;
             this.s1 = s1;
             this.s2 = s2;
+            this.m3 = null;
+            this.u = u;
+        }
+        
+        public makeUlit(utos_makeKuha m1, sabi_sabi_for s1, utos_sabisabi m3, utos_block u)
+        {
+            this.m1 = m1;
+            this.m2 = null;
+            this.s1 = s1;
+            this.s2 = s2;
+            this.m3 = m3;
             this.u = u;
         }
         
