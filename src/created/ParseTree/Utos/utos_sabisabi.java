@@ -10,7 +10,7 @@ import created.ParseTree.Yaya.*;
 
 public abstract class utos_sabisabi implements created.iNode 
 {
-    public static class utosSabiSabiFront extends utos_dec
+    public static class utosSabiSabiFront extends utos_sabisabi
     {
         public valid_var vv;
         public String kind;
@@ -34,7 +34,7 @@ public abstract class utos_sabisabi implements created.iNode
         }
     }
     
-    public static class utosSabiSabiBack extends utos_dec
+    public static class utosSabiSabiBack extends utos_sabisabi
     {
         public valid_var vv;
         public String kind;
