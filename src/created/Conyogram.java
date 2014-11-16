@@ -33,8 +33,8 @@ public class Conyogram implements iNode
     public String toString()
     {
         return "Constants: \n" + o.toString()
-                + "Functions: \n" + y.toString()
-                + "Classes: \n" + s.toString()
-                + "Main: \n" + m.toString();
+                + "\n\nFunctions: \n" + y.toString()
+                + "\n\nClasses: \n" + s.toString()
+                + "\n\nMain: \n" + m.toString();
     }
 }
