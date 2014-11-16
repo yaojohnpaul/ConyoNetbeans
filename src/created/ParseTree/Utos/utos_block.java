@@ -26,7 +26,10 @@ public abstract class utos_block implements created.iNode
         
         public String toString()
         {
-            return "$\n" + uo.toString() + "\n";
+            if(uo != null)
+                return "$\n" + uo.toString() + "\n";
+            else
+                return "";
         }
     }
 }

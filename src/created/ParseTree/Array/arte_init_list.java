@@ -29,7 +29,7 @@ public abstract class arte_init_list implements created.iNode
             if(o != null)
                 return o.toString();
             else
-                return null;
+                return "";
         }
     }
 }

@@ -4,7 +4,7 @@ hireYaya printAllExceptAlpha bayad (stringy[] names) makeBalik poor
 $
 	makeArte inty i db
 
-	makeUlit(i makeKuha 0 db i <= makeTawag names:length() db i++ db)
+	makeUlit(i makeKuha 0 db i <= makeTawag names:length() db i++)
 	$
 		likeKapag(i == "Alpha")
 		$
@@ -27,7 +27,7 @@ $
 			makeTawag indices:add(i) db
 		$
 
-		makeSabi i-- db
+		i-- db
 	$
 $
 
@@ -63,7 +63,7 @@ $
 	makeSulat("Index(es) of Echo: " + makeTawag search(makeTawag 
     createNames(3), "Echo")) db
 	sum makeKuha makeBasa(inty) + makeBasa(inty) db
-	makeUlit(sum db sum < 1 db sum-- db)
+	makeUlit(sum db sum < 1 db sum--)
 	$
 		likeKapag(sum > 10)
 		$

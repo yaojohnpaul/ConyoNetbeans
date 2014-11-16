@@ -29,7 +29,10 @@ public abstract class utos_likeHabang implements created.iNode
         
         public String toString()
         {
-            return "likeHabang(" + s.toString() + ")\n" + u.toString(); 
+            if(u != null)
+                return "likeHabang(" + s.toString() + ")\n" + u.toString(); 
+            else
+                return "likeHabang(" + s.toString() + ")\n";
         }
     }
 }

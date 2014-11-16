@@ -30,7 +30,7 @@ public abstract class sy_cont_list implements created.iNode
         public String toString()
         {
             if(l != null)
-            return c.toString() + l.toString();
+                return c.toString() + l.toString();
             else
             return c.toString();
             

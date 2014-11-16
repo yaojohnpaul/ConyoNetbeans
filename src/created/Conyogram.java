@@ -27,14 +27,53 @@ public class Conyogram implements iNode
         this.m = m;
     }
     
+    private SymList OMG_sym;
+    
+    /**
+     * Function for setting up symbol lists.
+     * Based on code by Klein and Rumpe, examples->interpreter
+     */
+    public void setSymList()
+    {
+        OMG_sym = new SymList();
+        
+    }
+    
+    /**
+     * Function to check for semantic errors in code.
+     * Based on code by Klein and Rumpe, examples->interpreter
+     */
+    public void checkContext()
+    {
+        
+    }
+    
+    /**
+     * Function to retrieve values from SymList for evaluation in evaluate()
+     * Based on code by Klein and Rumpe, examples->interpreter
+     */
+    public void preInterpret()
+    {
+        
+    }
+    
+    /**
+     * Function to interpret and evaluate expressions, functions, etc.
+     * Based on code by Klein and Rumpe, examples->interpreter
+     */
+    public void evaluate()
+    {
+        
+    }
+    
     /**
      * To string function.
      */
     public String toString()
     {
         return "Constants: \n" + o.toString()
-                + "Functions: \n" + y.toString()
-                + "Classes: \n" + s.toString()
-                + "Main: \n" + m.toString();
+                + "\n\nFunctions: \n" + y.toString()
+                + "\n\nClasses: \n" + s.toString()
+                + "\n\nMain: \n" + m.toString();
     }
 }

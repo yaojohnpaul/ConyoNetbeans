@@ -27,9 +27,9 @@ public abstract class sy_opt implements created.iNode
         public String toString()
         {
             if(l != null)
-            return l.toString();
+                return l.toString();
             else
-            return null;
+                return "";
         }
     }
     

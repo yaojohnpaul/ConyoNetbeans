@@ -29,7 +29,7 @@ public abstract class yaya_param_sec implements created.iNode
             if(ypl != null)
                 return ypl.toString();
             else
-                return null;
+                return "";
         }
     }
     

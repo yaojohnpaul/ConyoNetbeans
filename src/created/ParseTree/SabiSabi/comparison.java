@@ -23,5 +23,10 @@ public abstract class comparison implements created.iNode
         {
             return kind;
         }
+        
+        public String evaluate()
+        {
+            return kind;
+        }
     }
 }
