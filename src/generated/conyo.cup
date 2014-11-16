@@ -289,7 +289,7 @@ block_content ::= utos_dec:u block_content:b {: RESULT = new block_content.block
 utos_dec ::= utos_dec_db:d {: RESULT = new utos_dec.utosDecDB(d); :}
 			| utos_dec_val:v DB {: RESULT = new utos_dec.utosDecVal(v); :}
 			| utos_dec_nodb:n {: RESULT = new utos_dec.utosDecNoDB(n); :}
-			| utos_sabisabi
+			| utos_sabisabi DB
 			| error {: RESULT = null; addText(""); :};
 utos_dec_nodb ::= utos_likeKapag:uk {: RESULT = new utos_dec_nodb.utosLikeKapag(uk); :}
 			| utos_makePalit:up {: RESULT = new utos_dec_nodb.utosMakePalit(up); :}
@@ -313,10 +313,10 @@ utos_dec_val ::= utos_makeTawag:ut {: RESULT = new utos_dec_val.utosMakeTawag(ut
 			| utos_makeBasa:ub {: RESULT = new utos_dec_val.utosMakeBasa(ub); :}
 			| MAKE_TAWAG error {: RESULT = null; addText(" in FUNCTION CALL"); :}
 			| MAKE_BASA error {: RESULT = null; addText(" in SCAN function"); :};
-utos_sabisabi ::= POS_INC valid_var:vv DB {: RESULT = new utos_sabisabi.utosSabiSabiFront(vv,"++"); :}
-			| NEG_INC valid_var:vv DB {: RESULT = new utos_sabisabi.utosSabiSabiFront(vv,"--"); :}
-			| valid_var:vv POS_INC DB {: RESULT = new utos_sabisabi.utosSabiSabiBack(vv,"++"); :}
-			| valid_var:vv NEG_INC DB {: RESULT = new utos_sabisabi.utosSabiSabiBack(vv,"--"); :};
+utos_sabisabi ::= POS_INC valid_var:vv  {: RESULT = new utos_sabisabi.utosSabiSabiFront(vv,"++"); :}
+			| NEG_INC valid_var:vv  {: RESULT = new utos_sabisabi.utosSabiSabiFront(vv,"--"); :}
+			| valid_var:vv POS_INC  {: RESULT = new utos_sabisabi.utosSabiSabiBack(vv,"++"); :}
+			| valid_var:vv NEG_INC  {: RESULT = new utos_sabisabi.utosSabiSabiBack(vv,"--"); :};
 utos_makeKuha ::= valid_var:vv arte_assign:a {: RESULT = new utos_makeKuha.makeKuha(vv, a); :};
 utos_makeTawag ::= MAKE_TAWAG valid_name:vn LEFT_PAREN arte_init_list:l RIGHT_PAREN {: RESULT = new utos_makeTawag.makeTawag(vn, l); :};
 utos_makeSulat ::= MAKE_SULAT LEFT_PAREN sabi_sabi:s RIGHT_PAREN {: RESULT = new utos_makeSulat.makeSulat(s); :};
@@ -337,6 +337,7 @@ utos_likeHabang ::= LIKE_HABANG LEFT_PAREN sabi_sabi:s RIGHT_PAREN utos_block:u 
 				| LIKE_HABANG LEFT_PAREN sabi_sabi:s RIGHT_PAREN DB {: RESULT = new utos_likeHabang.likeHabang(s); :};
 utos_makeGawaHabang ::= MAKE_GAWA utos_block:u LIKE_HABANG LEFT_PAREN sabi_sabi:s RIGHT_PAREN DB {: RESULT = new utos_makeGawaHabang.makeGawaHabang(u, s); :};
 utos_makeUlit ::= MAKE_ULIT LEFT_PAREN utos_makeKuha:m1 DB sabi_sabi_for:s1 utos_makeKuha:m2 RIGHT_PAREN utos_block:u {: RESULT = new utos_makeUlit.makeUlit(m1, s1, m2, u); :}
+				| MAKE_ULIT LEFT_PAREN utos_makeKuha:m1 DB sabi_sabi_for:s1 utos_sabisabi:m2 RIGHT_PAREN utos_block:u {: RESULT = new utos_makeUlit.makeUlit(m1, s1, m2, u); :}
 				| MAKE_ULIT LEFT_PAREN utos_makeKuha:m1 DB sabi_sabi_for:s1 sabi_sabi_for:s2 RIGHT_PAREN utos_block:u {: RESULT = new utos_makeUlit.makeUlit(m1, s1, s2, u); :};
 utos_makeArte ::= arte_dec:a {: RESULT = new utos_makeArte.makeArte(a); :};
 

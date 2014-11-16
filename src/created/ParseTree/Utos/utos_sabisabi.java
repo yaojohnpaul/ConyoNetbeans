@@ -22,8 +22,8 @@ public abstract class utos_sabisabi implements created.iNode
         }
         
         public String toString()
-        {
-            return s + vv.toString() + " DB";
+        
+            return s + vv.toString();
         }
         
         public void evaluate(){
@@ -47,7 +47,7 @@ public abstract class utos_sabisabi implements created.iNode
         
         public String toString()
         {
-            return vv.toString() + s + " DB";
+            return vv.toString() + s;
         }
         
         public void evaluate(){
