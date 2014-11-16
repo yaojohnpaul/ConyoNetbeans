@@ -29,7 +29,7 @@ public abstract class utos_block_opt implements created.iNode
             if(b != null)
                 return b.toString();
             else
-                return null;
+                return "";
         }
     }
 }

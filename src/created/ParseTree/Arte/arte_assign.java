@@ -29,7 +29,7 @@ public abstract class arte_assign implements created.iNode
             if(i != null)
                 return i.toString();
             else
-                return null;
+                return "";
         }
     }
 }

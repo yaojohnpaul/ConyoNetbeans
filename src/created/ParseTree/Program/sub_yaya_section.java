@@ -29,7 +29,7 @@ public abstract class sub_yaya_section implements created.iNode
             if(s != null)
                 return s.toString();
             else
-                return null;
+                return "";
         }
     }
     

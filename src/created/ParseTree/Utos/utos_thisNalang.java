@@ -29,7 +29,7 @@ public abstract class utos_thisNalang implements created.iNode
             if(b != null)
                 return "thisNalang\n" + b.toString();
             else
-                return null;
+                return "";
         }
     }
     

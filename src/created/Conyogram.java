@@ -35,6 +35,7 @@ public class Conyogram implements iNode
      */
     public void setSymList()
     {
+        OMG_sym = new SymList();
         
     }
     

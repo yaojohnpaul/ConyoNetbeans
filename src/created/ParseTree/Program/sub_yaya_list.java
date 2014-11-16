@@ -29,7 +29,10 @@ public abstract class sub_yaya_list implements created.iNode
         
         public String toString()
         {
-            return s.toString() + "\n" + l.toString();
+            if(l != null)
+                return s.toString() + "\n" + l.toString();
+            else
+                return "";
         }
     }
     

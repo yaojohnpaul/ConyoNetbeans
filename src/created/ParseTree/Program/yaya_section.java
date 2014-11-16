@@ -26,7 +26,10 @@ public abstract class yaya_section implements created.iNode
         
         public String toString()
         {
-            return l.toString();
+            if(l != null)
+                return l.toString();
+            else
+                return "";
         }
     }
     
