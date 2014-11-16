@@ -14,13 +14,7 @@ public abstract class OMG_list implements created.iNode
     {
         public OMG_dec o; 
         public OMG_list l;
-        
-        public OMGList()
-        {
-            this.o = null;
-            this.l = null;
-        }
-        
+                
         public OMGList(OMG_dec o)
         {
             this.o = o;
@@ -35,7 +29,10 @@ public abstract class OMG_list implements created.iNode
         
         public String toString()
         {
-            return o.toString() + "\n" + l.toString();
+            if(l != null)
+                return o.toString() + "\n" + l.toString();
+            else
+                return o.toString();
         }
     }
 }

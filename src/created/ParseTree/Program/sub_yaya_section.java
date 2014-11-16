@@ -26,7 +26,10 @@ public abstract class sub_yaya_section implements created.iNode
         
         public String toString()
         {
-            return s.toString();
+            if(s != null)
+                return s.toString();
+            else
+                return null;
         }
     }
     

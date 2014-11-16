@@ -181,11 +181,10 @@ conyogram ::= OMG_section:o yaya_section:y sub_yaya_section:b super_yaya:p
 
 /*Program Breakdown*/
 
-OMG_section ::= OMG_list:o {: RESULT = new OMG_section.OMGSection(); :}
+OMG_section ::= OMG_list:o {: RESULT = new OMG_section.OMGSection(o); :}
 			| {: RESULT = new OMG_section.OMGSection(); :};
 OMG_list ::= OMG_dec:o {: RESULT = new OMG_list.OMGList(o); :}
 			| OMG_dec:o OMG_list:l {: RESULT = new OMG_list.OMGList(o, l); :};
-			
 OMG_dec ::= OMG IDENTIFIER:id MAKE_KUHA sabi_sabi:ss DB {: RESULT = new OMG_dec.OMG(id, ss); :}
 			| OMG error DB {: RESULT = null; addText(" in Constant Declaration"); :}
 			| error DB {: RESULT = null; addText(" before main and function declarations"); :}
@@ -314,9 +313,9 @@ utos_dec_val ::= utos_makeTawag:ut {: RESULT = new utos_dec_val.utosMakeTawag(ut
 			| utos_makeBasa:ub {: RESULT = new utos_dec_val.utosMakeBasa(ub); :}
 			| MAKE_TAWAG error {: RESULT = null; addText(" in FUNCTION CALL"); :}
 			| MAKE_BASA error {: RESULT = null; addText(" in SCAN function"); :};
-utos_makeKuha ::= valid_var:vv arte_assign:a {: RESULT = utos_makeKuha.makeKuha(vv, a); :};
-utos_makeTawag ::= MAKE_TAWAG valid_name:vn LEFT_PAREN arte_init_list:l RIGHT_PAREN {: RESULT = utos_makeTawag.makeTawag(vn, l); :};
-utos_makeSulat ::= MAKE_SULAT LEFT_PAREN sabi_sabi:s RIGHT_PAREN {: RESULT = utos_makeSulat.makeSulat(s); :};
+utos_makeKuha ::= valid_var:vv arte_assign:a {: RESULT = new utos_makeKuha.makeKuha(vv, a); :};
+utos_makeTawag ::= MAKE_TAWAG valid_name:vn LEFT_PAREN arte_init_list:l RIGHT_PAREN {: RESULT = new utos_makeTawag.makeTawag(vn, l); :};
+utos_makeSulat ::= MAKE_SULAT LEFT_PAREN sabi_sabi:s RIGHT_PAREN {: RESULT = new utos_makeSulat.makeSulat(s); :};
 utos_makeBasa ::= MAKE_BASA LEFT_PAREN data_type:d RIGHT_PAREN {: RESULT = new utos_makeBasa.makeBasa(d); :};
 utos_likeKapag ::= LIKE_KAPAG LEFT_PAREN sabi_sabi:s RIGHT_PAREN utos_block:b utos_thisNalang:t {: RESULT = new utos_likeKapag.likeKapag(s, b, t); :};
 utos_thisNalang ::= THIS_NALANG utos_block:b {: RESULT = new utos_thisNalang.thisNalang(b); :}
@@ -335,7 +334,7 @@ utos_likeHabang ::= LIKE_HABANG LEFT_PAREN sabi_sabi:s RIGHT_PAREN utos_block:u 
 utos_makeGawaHabang ::= MAKE_GAWA utos_block:u LIKE_HABANG LEFT_PAREN sabi_sabi:s RIGHT_PAREN DB {: RESULT = new utos_makeGawaHabang.makeGawaHabang(u, s); :};
 utos_makeUlit ::= MAKE_ULIT LEFT_PAREN utos_makeKuha:m1 DB sabi_sabi_for:s1 utos_makeKuha:m2 RIGHT_PAREN utos_block:u {: RESULT = new utos_makeUlit.makeUlit(m1, s1, m2, u); :}
 				| MAKE_ULIT LEFT_PAREN utos_makeKuha:m1 DB sabi_sabi_for:s1 sabi_sabi_for:s2 RIGHT_PAREN utos_block:u {: RESULT = new utos_makeUlit.makeUlit(m1, s1, s2, u); :};
-utos_makeArte ::= arte_dec:a {: RESULT = utos_makeArte.makeArte(a); :};
+utos_makeArte ::= arte_dec:a {: RESULT = new utos_makeArte.makeArte(a); :};
 utos_makeSabi ::= MAKE_SABI sabi_sabi:s {: RESULT = new utos_makeSabi.makeSabi(s); :};
 
 /*Expression Productions*/

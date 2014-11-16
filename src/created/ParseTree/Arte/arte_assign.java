@@ -26,7 +26,10 @@ public abstract class arte_assign implements created.iNode
         
         public String toString()
         {
-            return i.toString();
+            if(i != null)
+                return i.toString();
+            else
+                return null;
         }
     }
 }

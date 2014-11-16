@@ -1,4 +1,4 @@
-package created.parseTree.Utos;
+package created.ParseTree.Utos;
 
 import created.ParseTree.Array.*;
 import created.ParseTree.Arte.*;
@@ -15,6 +15,13 @@ public abstract class makePalit_MRW implements created.iNode
         public sabi_sabi s; 
         public utos_block_opt u;
         public makePalit_MRW m;
+        
+        public MRW()
+        {
+            this.s = null;
+            this.u = null;
+            this.m = null;
+        }
         
         public MRW(sabi_sabi s, utos_block_opt u, makePalit_MRW m)
         {

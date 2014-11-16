@@ -1,4 +1,4 @@
-package created.parseTree.Yaya;
+package created.ParseTree.Yaya;
 
 import created.ParseTree.Array.*;
 import created.ParseTree.Arte.*;

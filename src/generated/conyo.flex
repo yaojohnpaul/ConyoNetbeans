@@ -129,8 +129,8 @@ float = {integer}\.{integer}(e{integer})?
 	"--" { return symbol(sym.NEG_INC); }
 	
 	/*Literals*/
-	{integer} {return symbol(sym.INT_LITERAL, Integer.parseInt(yytext()));}
-	{float} {return symbol(sym.FLOAT_LITERAL, Float.parseFloat(yytext()));}
+	{integer} {return symbol(sym.INT_LITERAL, yytext());}
+	{float} {return symbol(sym.FLOAT_LITERAL, yytext());}
 	{identifier} {return symbol(sym.IDENTIFIER, yytext());}
 }
 

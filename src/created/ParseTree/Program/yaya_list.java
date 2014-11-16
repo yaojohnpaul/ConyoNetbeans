@@ -18,7 +18,7 @@ public abstract class yaya_list implements created.iNode
         public yayaList(yaya y)
         {
             this.y = y;
-            this.l = l;
+            this.l = null;
         }
         
         public yayaList(yaya y, yaya_list l)
@@ -29,7 +29,10 @@ public abstract class yaya_list implements created.iNode
         
         public String toString()
         {
-            return y.toString() + "\n" + l.toString();
+            if(l != null)
+                return y.toString() + "\n" + l.toString();
+            else
+                return y.toString();
         }
     }
     
