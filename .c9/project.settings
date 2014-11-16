@@ -4,7 +4,8 @@
         "configs": {
             "json()": {},
             "@inited": "true"
-        }
+        },
+        "@runner": "CustomJavaRunner"
     },
     "share": {
         "@preview": false,
@@ -29,6 +30,6 @@
     "build": {
         "@path": "/.c9/builders",
         "@saveall": true,
-        "@builder": "auto"
+        "@builder": "CustomJavaBuilder"
     }
 }

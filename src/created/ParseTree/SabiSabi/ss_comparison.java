@@ -27,6 +27,15 @@ public abstract class ss_comparison implements created.iNode
             return a.toString() + " " + co.toString() + " " + c.toString();
         }
         
+        public boolean evaluate(){
+            switch(co.evaluate()){
+                case "<" : return a.evaluate() <= e.evaluate();
+                case "<=" : return a.evaluate() <= e.evaluate();
+                case ">" : return a.evaluate() > e.evaluate();
+                case ">=" : return a.evaluate() >= e.evaluate();
+            }
+        }
+        
     }
     
     public static class ssComparison extends  ss_comparison
@@ -40,7 +49,12 @@ public abstract class ss_comparison implements created.iNode
         
         public String toString(){
             return a.toString();
-        }   
+        }
+        
+        public double evaluate(){
+            return a.evaluate();
+        }
+        
     }
 }
 

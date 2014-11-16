@@ -28,6 +28,33 @@ public class Conyogram implements iNode
     }
     
     /**
+     * Function to check for semantic errors in code.
+     * Based on code by Klein and Rumpe, examples->interpreter
+     */
+    public void checkContext()
+    {
+        
+    }
+    
+    /**
+     * Function to retrieve values from SymList for evaluation in interpret()
+     * Based on code by Klein and Rumpe, examples->interpreter
+     */
+    public void preInterpret()
+    {
+        
+    }
+    
+    /**
+     * Function to interpret and evaluate expressions, functions, etc.
+     * Based on code by Klein and Rumpe, examples->interpreter
+     */
+    public void interpret()
+    {
+        
+    }
+    
+    /**
      * To string function.
      */
     public String toString()

@@ -23,6 +23,11 @@ public abstract class arithmetic_1 implements created.iNode
         {
             return kind;
         }
+        
+        public String evaluate()
+        {
+            return kind;
+        }
     }
     
 }

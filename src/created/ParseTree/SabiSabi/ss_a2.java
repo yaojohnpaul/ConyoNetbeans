@@ -27,6 +27,15 @@ public abstract class ss_a2 implements created.iNode
             return u.toString() + " " + ar.toString() + " " + a.toString();
         }
         
+        public double evaluate(){
+            switch(ar.evaluate())
+            {
+                case "+" : return u.evaluate() * a.evaluate();
+                case "-" : return u.evaluate() / a.evaluate();
+                case "-" : return u.evaluate() % a.evaluate();
+            }
+        }
+        
     }
     
     public static class ssA2 extends  ss_a2
@@ -38,9 +47,15 @@ public abstract class ss_a2 implements created.iNode
             this.u = u;
         }
         
-        public String toString(){
+        public String toString()
+        {
             return u.toString();
         }   
+        
+        public double evaluate()
+        {
+            return u.evaluate()
+        }
     }
     
     
