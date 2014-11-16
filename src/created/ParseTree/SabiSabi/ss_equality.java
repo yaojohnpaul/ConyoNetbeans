@@ -27,12 +27,12 @@ public abstract class ss_equality implements created.iNode
             return c.toString() + " " + eq.toString() + " " + e.toString();
         }
         
-//        public boolean evaluate(){
-//            switch(eq.evaluate()){
-//                case "!=" : return c.evaluate() != e.evaluate()
-//                case "==" : return c.evaluate() == e.evaluate();
-//            }
-//        }
+        public boolean evaluate(){
+            switch(eq.evaluate()){
+                case "!=" : return c.evaluate() != e.evaluate()
+                case "==" : return c.evaluate() == e.evaluate();
+            }
+        }
     }
     
     public static class ssEquality extends ss_equality
@@ -48,9 +48,9 @@ public abstract class ss_equality implements created.iNode
             return c.toString();
         }
         
-//        public boolean evaluate(){
-//            c.evaluate();
-//        }
+        public boolean evaluate(){
+            c.evaluate();
+        }
     }
 }
 

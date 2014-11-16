@@ -289,7 +289,7 @@ block_content ::= utos_dec:u block_content:b {: RESULT = new block_content.block
 utos_dec ::= utos_dec_db:d {: RESULT = new utos_dec.utosDecDB(d); :}
 			| utos_dec_val:v DB {: RESULT = new utos_dec.utosDecVal(v); :}
 			| utos_dec_nodb:n {: RESULT = new utos_dec.utosDecNoDB(n); :}
-			| utos_sabisabi:us DB {: RESULT = new utos_dec.utosDecSabiSabi(us); :}
+			| utos_sabisabi
 			| error {: RESULT = null; addText(""); :};
 utos_dec_nodb ::= utos_likeKapag:uk {: RESULT = new utos_dec_nodb.utosLikeKapag(uk); :}
 			| utos_makePalit:up {: RESULT = new utos_dec_nodb.utosMakePalit(up); :}

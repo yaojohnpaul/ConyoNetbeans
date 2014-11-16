@@ -27,13 +27,13 @@ public abstract class ss_a1 implements created.iNode
             return a2.toString() + " " + ar.toString() + " " + a1.toString();
         }
         
-        public double evaluate(){
-            switch(ar.evaluate())
-            {
-                case "+" : return a2.evaluate() + a1.evaluate();
-                case "-" : return a2.evaluate() - a1.evaluate();
-            }
-        }
+//        public double evaluate(){
+//            switch(ar.evaluate())
+//            {
+//                case "+" : return a2.evaluate() + a1.evaluate();
+//                case "-" : return a2.evaluate() - a1.evaluate();
+//            }
+//        }
         
     }
     
@@ -50,9 +50,9 @@ public abstract class ss_a1 implements created.iNode
             return a2.toString();
         }
         
-        public double evaluate(){
-            return a2.evaluate();
-        }
+//        public double evaluate(){
+//            return a2.evaluate();
+//        }
     }
 }
 

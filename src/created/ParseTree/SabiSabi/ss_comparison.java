@@ -27,14 +27,14 @@ public abstract class ss_comparison implements created.iNode
             return a.toString() + " " + co.toString() + " " + c.toString();
         }
         
-        public boolean evaluate(){
-            switch(co.evaluate()){
-                case "<" : return a.evaluate() <= e.evaluate();
-                case "<=" : return a.evaluate() <= e.evaluate();
-                case ">" : return a.evaluate() > e.evaluate();
-                case ">=" : return a.evaluate() >= e.evaluate();
-            }
-        }
+//        public boolean evaluate(){
+//            switch(co.evaluate()){
+//                case "<" : return a.evaluate() <= e.evaluate();
+//                case "<=" : return a.evaluate() <= e.evaluate();
+//                case ">" : return a.evaluate() > e.evaluate();
+//                case ">=" : return a.evaluate() >= e.evaluate();
+//            }
+//        }
         
     }
     
@@ -51,9 +51,9 @@ public abstract class ss_comparison implements created.iNode
             return a.toString();
         }
         
-        public double evaluate(){
-            return a.evaluate();
-        }
+//        public double evaluate(){
+//            return a.evaluate();
+//        }
         
     }
 }
