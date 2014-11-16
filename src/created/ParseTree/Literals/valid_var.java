@@ -10,7 +10,7 @@ import created.ParseTree.Yaya.*;
 
 public abstract class valid_var implements created.iNode
 {
-    public void evaluate()
+    public int evaluate()
     {}
     
     public static class validVar extends valid_var
