@@ -142,7 +142,6 @@ non terminal utos_likeHabang	utos_likeHabang;
 non terminal utos_makeGawaHabang	utos_makeGawaHabang;
 non terminal utos_makeUlit		utos_makeUlit;
 non terminal utos_makeArte		utos_makeArte;
-non terminal utos_makeSabi		utos_makeSabi;
 /*Expression Relations*/
 non terminal sabi_sabi			sabi_sabi;
 non terminal sabi_sabi_end		sabi_sabi_end;
@@ -340,7 +339,6 @@ utos_makeGawaHabang ::= MAKE_GAWA utos_block:u LIKE_HABANG LEFT_PAREN sabi_sabi:
 utos_makeUlit ::= MAKE_ULIT LEFT_PAREN utos_makeKuha:m1 DB sabi_sabi_for:s1 utos_makeKuha:m2 RIGHT_PAREN utos_block:u {: RESULT = new utos_makeUlit.makeUlit(m1, s1, m2, u); :}
 				| MAKE_ULIT LEFT_PAREN utos_makeKuha:m1 DB sabi_sabi_for:s1 sabi_sabi_for:s2 RIGHT_PAREN utos_block:u {: RESULT = new utos_makeUlit.makeUlit(m1, s1, s2, u); :};
 utos_makeArte ::= arte_dec:a {: RESULT = new utos_makeArte.makeArte(a); :};
-utos_makeSabi ::= MAKE_SABI sabi_sabi:s {: RESULT = new utos_makeSabi.makeSabi(s); :};
 
 /*Expression Productions*/
 

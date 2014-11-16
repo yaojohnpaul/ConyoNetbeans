@@ -27,7 +27,7 @@ $
 			makeTawag indices:add(i) db
 		$
 
-		makeSabi i-- db
+		i-- db
 	$
 $
 
