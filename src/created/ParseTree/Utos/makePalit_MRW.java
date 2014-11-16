@@ -32,7 +32,10 @@ public abstract class makePalit_MRW implements created.iNode
         
         public String toString()
         {
-            return "MRW " + s.toString() + " : " + u.toString() + "\n" + m.toString();
+            if(s != null && u != null && m != null)
+                return "MRW " + s.toString() + " : " + u.toString() + "\n" + m.toString();
+            else    
+                return null;
         }
     }
     

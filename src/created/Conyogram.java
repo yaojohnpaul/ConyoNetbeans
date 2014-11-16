@@ -27,6 +27,17 @@ public class Conyogram implements iNode
         this.m = m;
     }
     
+    private SymList OMG_sym;
+    
+    /**
+     * Function for setting up symbol lists.
+     * Based on code by Klein and Rumpe, examples->interpreter
+     */
+    public void setSymList()
+    {
+        
+    }
+    
     /**
      * Function to check for semantic errors in code.
      * Based on code by Klein and Rumpe, examples->interpreter
