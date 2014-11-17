@@ -7,6 +7,8 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
+import error.*;
 
 public abstract class arte_dec implements created.iNode 
 {
@@ -26,6 +28,38 @@ public abstract class arte_dec implements created.iNode
         public String toString()
         {
             return dt.toString() + " " + id.toString() + " " + a.toString();
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            Boolean avail = sl.addToList(id, new SymVar(id, dt, null));
+ 
+            if(!avail)
+            {
+                ErrorReport.error("Duplicate variable defined!: " + id);
+            }
+            
+            if(a instanceof arte_assign.arteAssign)
+            {
+                ((arte_assign.arteAssign) a).setSymList(id, sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(a instanceof arte_assign.arteAssign)
+            {
+                String temp = ((arte_assign.arteAssign) a).checkContext(id, sl);
+            }
+            // Check if assignment = datatype
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(a instanceof arte_assign.arteAssign)
+            {
+                ((arte_assign.arteAssign) a).preInterpret(id, sl);
+            }
         }
     }
 }

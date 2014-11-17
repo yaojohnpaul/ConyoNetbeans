@@ -7,6 +7,7 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
+import created.Sym.*;
 
 public abstract class yaya_param_sec implements created.iNode 
 {
@@ -30,6 +31,30 @@ public abstract class yaya_param_sec implements created.iNode
                 return ypl.toString();
             else
                 return "";
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            // if(ypl instanceof yaya_param_list.yayaParamList)
+            // {
+            //     ((yaya_param_list.yayaParamList) ypl).setSymList(sl);
+            // }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(ypl instanceof yaya_param_list.yayaParamList)
+            {
+                ((yaya_param_list.yayaParamList) ypl).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(ypl instanceof yaya_param_list.yayaParamList)
+            {
+                ((yaya_param_list.yayaParamList) ypl).preInterpret(sl);
+            }
         }
     }
     

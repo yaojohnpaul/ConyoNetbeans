@@ -7,6 +7,7 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
+import created.Sym.*;
 
 public abstract class yaya_param implements created.iNode  
 {
@@ -24,6 +25,42 @@ public abstract class yaya_param implements created.iNode
         public String toString()
         {
             return dt.toString() + " " + id;
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            // if(dt instanceof data_type.datatypePrimitive)
+            // {
+            //     ((data_type.datatypePrimitive) dt).setSymList(sl);
+            // }
+            // else if(dt instanceof data_type.datatypeReference)
+            // {
+            //     ((data_type.datatypeReference) dt).setSymList(sl);
+            // }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(dt instanceof data_type.datatypePrimitive)
+            {
+                ((data_type.datatypePrimitive) dt).checkContext(sl);
+            }
+            else if(dt instanceof data_type.datatypeReference)
+            {
+                ((data_type.datatypeReference) dt).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(dt instanceof data_type.datatypePrimitive)
+            {
+                ((data_type.datatypePrimitive) dt).preInterpret(sl);
+            }
+            else if(dt instanceof data_type.datatypeReference)
+            {
+                ((data_type.datatypeReference) dt).preInterpret(sl);
+            }
         }
     }
     

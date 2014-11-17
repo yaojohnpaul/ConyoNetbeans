@@ -7,6 +7,7 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
 
 public abstract class data_type implements created.iNode
 {
@@ -24,6 +25,35 @@ public abstract class data_type implements created.iNode
             return p.toString();
         }
         
+        public void setSymList(SymList sl)
+        {
+            if(p instanceof primitive_dt.intType)
+            {
+                
+            }
+            else if(p instanceof primitive_dt.floatType)
+            {
+                
+            }
+            else if(p instanceof primitive_dt.stringType)
+            {
+                
+            }
+            else if(p instanceof primitive_dt.charType)
+            {
+                
+            }
+            else if(p instanceof primitive_dt.booleanType)
+            {
+                
+            }
+        }
+        
+        public String checkContext(SymList st) 
+        { // for sabi sabi plng
+            //other context here
+            return p.toString();
+        }
     }
     
     public static class datatypeReference extends data_type
@@ -40,6 +70,31 @@ public abstract class data_type implements created.iNode
             return r.toString();
         }
         
+        public void setSymList(SymList sl)
+        {
+            if(r instanceof reference_dt.referenceArray)
+            {
+                
+            }
+            else if(r instanceof reference_dt.referenceValidName)
+            {
+                
+            }
+        }
+        
+        public String checkContext(SymList st) 
+        { // for sabi sabi plng
+            //other context here
+            if(r instanceof reference_dt.referenceArray)
+            {
+                ((reference_dt.referenceArray) r).checkContext(st);
+            }
+            else if(r instanceof reference_dt.referenceValidName)
+            {
+                return ((reference_dt.referenceValidName) r).checkContext(st);
+            }
+            return "";
+        }
     }
 }
 

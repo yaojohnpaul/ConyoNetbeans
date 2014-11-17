@@ -7,6 +7,7 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
 
 public abstract class array_init implements created.iNode 
 {
@@ -22,6 +23,30 @@ public abstract class array_init implements created.iNode
         public String toString()
         {
             return l.toString();
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            if(l instanceof arte_init_list.arteInitList)
+            {
+                ((arte_init_list.arteInitList) l).setSymList(sl);
+            }
+        }
+        
+        public String checkContext(SymList sl)
+        {
+            if(l instanceof arte_init_list.arteInitList)
+            {
+                return ((arte_init_list.arteInitList) l).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(l instanceof arte_init_list.arteInitList)
+            {
+                ((arte_init_list.arteInitList) l).preInterpret(sl);
+            } 
         }
     }
 }

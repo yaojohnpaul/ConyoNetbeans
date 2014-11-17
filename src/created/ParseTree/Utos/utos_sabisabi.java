@@ -7,6 +7,7 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
 
 public abstract class utos_sabisabi implements created.iNode 
 {
@@ -24,6 +25,42 @@ public abstract class utos_sabisabi implements created.iNode
         public String toString()
         {
             return kind + vv.toString();
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            if(vv instanceof valid_var.validVar)
+            {
+                ((valid_var.validVar) vv).setSymList(sl);
+            }
+            else if(vv instanceof valid_var.validVarRB)
+            {
+                ((valid_var.validVarRB) vv).setSymList(sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(vv instanceof valid_var.validVar)
+            {
+                ((valid_var.validVar) vv).checkContext(sl);
+            }
+            else if(vv instanceof valid_var.validVarRB)
+            {
+                ((valid_var.validVarRB) vv).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(vv instanceof valid_var.validVar)
+            {
+                ((valid_var.validVar) vv).preInterpret(sl);
+            }
+            else if(vv instanceof valid_var.validVarRB)
+            {
+                ((valid_var.validVarRB) vv).preInterpret(sl);
+            }
         }
         
         public void evaluate(){
@@ -48,6 +85,42 @@ public abstract class utos_sabisabi implements created.iNode
         public String toString()
         {
             return vv.toString() + kind;
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            if(vv instanceof valid_var.validVar)
+            {
+                ((valid_var.validVar) vv).setSymList(sl);
+            }
+            else if(vv instanceof valid_var.validVarRB)
+            {
+                ((valid_var.validVarRB) vv).setSymList(sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(vv instanceof valid_var.validVar)
+            {
+                ((valid_var.validVar) vv).checkContext(sl);
+            }
+            else if(vv instanceof valid_var.validVarRB)
+            {
+                ((valid_var.validVarRB) vv).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(vv instanceof valid_var.validVar)
+            {
+                ((valid_var.validVar) vv).preInterpret(sl);
+            }
+            else if(vv instanceof valid_var.validVarRB)
+            {
+                ((valid_var.validVarRB) vv).preInterpret(sl);
+            }
         }
         
         public void evaluate()

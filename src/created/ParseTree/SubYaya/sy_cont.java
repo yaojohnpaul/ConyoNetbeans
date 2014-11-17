@@ -7,6 +7,7 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
 
 public abstract class sy_cont implements created.iNode 
 {
@@ -23,6 +24,30 @@ public abstract class sy_cont implements created.iNode
         {
             return a.toString();
         }
+        
+        public void setSymList(SymList sl)
+        {
+            if(a instanceof arte_dec.arteDec)
+            {
+                ((arte_dec.arteDec) a).setSymList(sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(a instanceof arte_dec.arteDec)
+            {
+                ((arte_dec.arteDec) a).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(a instanceof arte_dec.arteDec)
+            {
+                ((arte_dec.arteDec) a).preInterpret(sl);
+            }
+        }
     }
     
     public static class SubYayaContYaya extends sy_cont
@@ -38,6 +63,30 @@ public abstract class sy_cont implements created.iNode
         {
             return a.toString();
         }
+        
+        public void setSymList(SymList sl)
+        {
+            if(a instanceof yaya.addYaya)
+            {
+                ((yaya.addYaya) a).setSymList(sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(a instanceof yaya.addYaya)
+            {
+                ((yaya.addYaya) a).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(a instanceof yaya.addYaya)
+            {
+                ((yaya.addYaya) a).preInterpret(sl);
+            }
+        }
     }
     
     public static class SubYayaContConstructor extends sy_cont
@@ -52,6 +101,30 @@ public abstract class sy_cont implements created.iNode
         public String toString()
         {
             return a.toString();
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            if(a instanceof constructor.mSimula)
+            {
+                ((constructor.mSimula) a).setSymList(sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(a instanceof constructor.mSimula)
+            {
+                ((constructor.mSimula) a).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(a instanceof constructor.mSimula)
+            {
+                ((constructor.mSimula) a).preInterpret(sl);
+            }
         }
     }
     

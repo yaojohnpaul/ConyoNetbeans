@@ -7,6 +7,7 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Yaya.*;
+import created.*;
 
 public abstract class utos_makeSulat implements created.iNode  
 {
@@ -22,6 +23,15 @@ public abstract class utos_makeSulat implements created.iNode
         public String toString()
         {
             return "makeSulat(" + s.toString() + ")";
+        }
+        
+        public void evaluate()
+        {
+            if(s instanceof sabi_sabi.SabiSabi)
+            {
+                //Change evaluate() to String if ever return type of evaluate changes
+                OutGen.addOut(((sabi_sabi.SabiSabi) s).evaluate());
+            }
         }
     }
 }

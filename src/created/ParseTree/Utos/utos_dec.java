@@ -7,6 +7,7 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
 
 public abstract class utos_dec implements created.iNode 
 {
@@ -23,6 +24,66 @@ public abstract class utos_dec implements created.iNode
         {
             return ud.toString();
         }
+        
+        public void setSymList(SymList sl)
+        {
+            if(ud instanceof utos_dec_db.utosMakeKuha)
+            {
+                ((utos_dec_db.utosMakeKuha) ud).setSymList(sl);
+            }
+            else if(ud instanceof utos_dec_db.utosMakeSulat)
+            {
+                ((utos_dec_db.utosMakeSulat) ud).setSymList(sl);
+            }
+            else if(ud instanceof utos_dec_db.breakup)
+            {
+                ((utos_dec_db.breakup) ud).setSymList(sl);
+            }
+            else if(ud instanceof utos_dec_db.makeup)
+            {
+                ((utos_dec_db.makeup) ud).setSymList(sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(ud instanceof utos_dec_db.utosMakeKuha)
+            {
+                ((utos_dec_db.utosMakeKuha) ud).checkContext(sl);
+            }
+            else if(ud instanceof utos_dec_db.utosMakeSulat)
+            {
+                ((utos_dec_db.utosMakeSulat) ud).checkContext(sl);
+            }
+            else if(ud instanceof utos_dec_db.breakup)
+            {
+                ((utos_dec_db.breakup) ud).checkContext(sl);
+            }
+            else if(ud instanceof utos_dec_db.makeup)
+            {
+                ((utos_dec_db.makeup) ud).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(ud instanceof utos_dec_db.utosMakeKuha)
+            {
+                ((utos_dec_db.utosMakeKuha) ud).preInterpret(sl);
+            }
+            else if(ud instanceof utos_dec_db.utosMakeSulat)
+            {
+                ((utos_dec_db.utosMakeSulat) ud).preInterpret(sl);
+            }
+            else if(ud instanceof utos_dec_db.breakup)
+            {
+                ((utos_dec_db.breakup) ud).preInterpret(sl);
+            }
+            else if(ud instanceof utos_dec_db.makeup)
+            {
+                ((utos_dec_db.makeup) ud).preInterpret(sl);
+            }
+        }
     }
     
     public static class utosDecVal extends utos_dec
@@ -37,6 +98,42 @@ public abstract class utos_dec implements created.iNode
         public String toString()
         {
             return uv.toString();
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            if(uv instanceof utos_dec_val.makeTawag)
+            {
+                ((utos_dec_val.makeTawag) ud).setSymList(sl);
+            }
+            else if(uv instanceof utos_dec_val.makeBasa)
+            {
+                ((utos_dec_val.makeBasa) ud).setSymList(sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(uv instanceof utos_dec_val.makeTawag)
+            {
+                ((utos_dec_val.makeTawag) ud).checkContext(sl);
+            }
+            else if(uv instanceof utos_dec_val.makeBasa)
+            {
+                ((utos_dec_val.makeBasa) ud).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(uv instanceof utos_dec_val.makeTawag)
+            {
+                ((utos_dec_val.makeTawag) ud).preInterpret(sl);
+            }
+            else if(uv instanceof utos_dec_val.makeBasa)
+            {
+                ((utos_dec_val.makeBasa) ud).preInterpret(sl);
+            }
         }
     }
     
@@ -53,6 +150,78 @@ public abstract class utos_dec implements created.iNode
         {
             return un.toString();
         }
+        
+        public void setSymList(SymList sl)
+        {
+            if(un instanceof utos_dec_nodb.utosLikeKapag)
+            {
+                ((utos_dec_nodb.utosLikeKapag) un).setSymList(sl);
+            }
+            else if(un instanceof utos_dec_nodb.makePalit)
+            {
+                ((utos_dec_nodb.makePalit) un).setSymList(sl);
+            }
+            else if(un instanceof utos_dec_nodb.likeHabang)
+            {
+                ((utos_dec_nodb.likeHabang) un).setSymList(sl);
+            }
+            else if(un instanceof utos_dec_nodb.makeGawaHabang)
+            {
+                ((utos_dec_nodb.makeGawaHabang) un).setSymList(sl);
+            }
+            else if(un instanceof utos_dec_nodb.makeArte)
+            {
+                ((utos_dec_nodb.makeArte) un).setSymList(sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(un instanceof utos_dec_nodb.utosLikeKapag)
+            {
+                ((utos_dec_nodb.utosLikeKapag) un).checkContext(sl);
+            }
+            else if(un instanceof utos_dec_nodb.makePalit)
+            {
+                ((utos_dec_nodb.makePalit) un).checkContext(sl);
+            }
+            else if(un instanceof utos_dec_nodb.likeHabang)
+            {
+                ((utos_dec_nodb.likeHabang) un).checkContext(sl);
+            }
+            else if(un instanceof utos_dec_nodb.makeGawaHabang)
+            {
+                ((utos_dec_nodb.makeGawaHabang) un).checkContext(sl);
+            }
+            else if(un instanceof utos_dec_nodb.makeArte)
+            {
+                ((utos_dec_nodb.makeArte) un).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(un instanceof utos_dec_nodb.utosLikeKapag)
+            {
+                ((utos_dec_nodb.utosLikeKapag) un).preInterpret(sl);
+            }
+            else if(un instanceof utos_dec_nodb.makePalit)
+            {
+                ((utos_dec_nodb.makePalit) un).preInterpret(sl);
+            }
+            else if(un instanceof utos_dec_nodb.likeHabang)
+            {
+                ((utos_dec_nodb.likeHabang) un).preInterpret(sl);
+            }
+            else if(un instanceof utos_dec_nodb.makeGawaHabang)
+            {
+                ((utos_dec_nodb.makeGawaHabang) un).preInterpret(sl);
+            }
+            else if(un instanceof utos_dec_nodb.makeArte)
+            {
+                ((utos_dec_nodb.makeArte) un).preInterpret(sl);
+            }
+        }
     }
     
     public static class utosDecSabiSabi extends utos_dec
@@ -67,6 +236,42 @@ public abstract class utos_dec implements created.iNode
         public String toString()
         {
             return us.toString();
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            if(us instanceof utos_sabisabi.utosSabiSabiFront)
+            {
+                ((utos_sabisabi.utosSabiSabiFront) us).setSymList(sl);
+            }
+            else if(us instanceof utos_sabisabi.utosSabiSabiBack)
+            {
+                ((utos_sabisabi.utosSabiSabiBack) us).setSymList(sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(us instanceof utos_sabisabi.utosSabiSabiFront)
+            {
+                ((utos_sabisabi.utosSabiSabiFront) us).checkContext(sl);
+            }
+            else if(us instanceof utos_sabisabi.utosSabiSabiBack)
+            {
+                ((utos_sabisabi.utosSabiSabiBack) us).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(us instanceof utos_sabisabi.utosSabiSabiFront)
+            {
+                ((utos_sabisabi.utosSabiSabiFront) us).preInterpret(sl);
+            }
+            else if(us instanceof utos_sabisabi.utosSabiSabiBack)
+            {
+                ((utos_sabisabi.utosSabiSabiBack) us).preInterpret(sl);
+            }
         }
     }
 }

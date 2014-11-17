@@ -7,6 +7,7 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
 
 public abstract class utos_thisNalang implements created.iNode  
 {
@@ -31,6 +32,30 @@ public abstract class utos_thisNalang implements created.iNode
             else
                 return "";
         }
+        
+        public void setSymList(SymList sl)
+        {
+            if(b instanceof utos_block.utosBlock)
+            {
+                ((utos_block.utosBlock) b).setSymList(sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(b instanceof utos_block.utosBlock)
+            {
+                ((utos_block.utosBlock) b).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(b instanceof utos_block.utosBlock)
+            {
+                ((utos_block.utosBlock) b).preInterpret(sl);
+            }
+        }
     }
     
     public static class thisNalangKapag extends utos_thisNalang
@@ -49,6 +74,72 @@ public abstract class utos_thisNalang implements created.iNode
         public String toString()
         {
             return "thisNalangKapag(" + s.toString() + ")\n" + b.toString() + "\n" + t.toString();
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            if(s instanceof sabi_sabi.sabiSabi)
+            {
+                ((sabi_sabi.sabiSabi) s).setSymList(sl);
+            }
+            
+            if(b instanceof utos_block.utosBlock)
+            {
+                ((utos_block.utosBlock) b).setSymList(sl);
+            }
+            
+            if(t instanceof utos_thisNalang.thisNalang)
+            {
+                ((utos_thisNalang.thisNalang) t).setSymList(sl);
+            }
+            else if(t instanceof utos_thisNalang.thisNalangKapag)
+            {
+                ((utos_thisNalang.thisNalangKapag) t).setSymList(sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(s instanceof sabi_sabi.sabiSabi)
+            {
+                ((sabi_sabi.sabiSabi) s).checkContext(sl);
+            }
+            
+            if(b instanceof utos_block.utosBlock)
+            {
+                ((utos_block.utosBlock) b).checkContext(sl);
+            }
+            
+            if(t instanceof utos_thisNalang.thisNalang)
+            {
+                ((utos_thisNalang.thisNalang) t).checkContext(sl);
+            }
+            else if(t instanceof utos_thisNalang.thisNalangKapag)
+            {
+                ((utos_thisNalang.thisNalangKapag) t).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(s instanceof sabi_sabi.sabiSabi)
+            {
+                ((sabi_sabi.sabiSabi) s).preInterpret(sl);
+            }
+            
+            if(b instanceof utos_block.utosBlock)
+            {
+                ((utos_block.utosBlock) b).preInterpret(sl);
+            }
+            
+            if(t instanceof utos_thisNalang.thisNalang)
+            {
+                ((utos_thisNalang.thisNalang) t).preInterpret(sl);
+            }
+            else if(t instanceof utos_thisNalang.thisNalangKapag)
+            {
+                ((utos_thisNalang.thisNalangKapag) t).preInterpret(sl);
+            }
         }
     }
 }

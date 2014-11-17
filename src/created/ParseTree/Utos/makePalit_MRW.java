@@ -7,6 +7,7 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
 
 public abstract class makePalit_MRW implements created.iNode  
 {
@@ -37,6 +38,72 @@ public abstract class makePalit_MRW implements created.iNode
             else    
                 return "";
         }
+        
+        public void setSymList(SymList sl)
+        {
+            if(s instanceof sabi_sabi.sabiSabi)
+            {
+                ((sabi_sabi.sabiSabi) s).setSymList(sl);
+            }
+            
+            if(u instanceof utos_block_opt.utosBlockOpt)
+            {
+                ((utos_block_opt.utosBlockOpt) u).setSymList(sl);
+            }
+            
+            if(m instanceof makePalit_MRW.MRW)
+            {
+                ((makePalit_MRW.MRW) m).setSymList(sl);
+            }
+            else if(m instanceof makePalit_MRW.MDR)
+            {
+                ((makePalit_MRW.MDR) m).setSymList(sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(s instanceof sabi_sabi.sabiSabi)
+            {
+                ((sabi_sabi.sabiSabi) s).checkContext(sl);
+            }
+            
+            if(u instanceof utos_block_opt.utosBlockOpt)
+            {
+                ((utos_block_opt.utosBlockOpt) u).checkContext(sl);
+            }
+            
+            if(m instanceof makePalit_MRW.MRW)
+            {
+                ((makePalit_MRW.MRW) m).checkContext(sl);
+            }
+            else if(m instanceof makePalit_MRW.MDR)
+            {
+                ((makePalit_MRW.MDR) m).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(s instanceof sabi_sabi.sabiSabi)
+            {
+                ((sabi_sabi.sabiSabi) s).preInterpret(sl);
+            }
+            
+            if(u instanceof utos_block_opt.utosBlockOpt)
+            {
+                ((utos_block_opt.utosBlockOpt) u).preInterpret(sl);
+            }
+            
+            if(m instanceof makePalit_MRW.MRW)
+            {
+                ((makePalit_MRW.MRW) m).preInterpret(sl);
+            }
+            else if(m instanceof makePalit_MRW.MDR)
+            {
+                ((makePalit_MRW.MDR) m).preInterpret(sl);
+            }
+        }
     }
     
     public static class MDR extends makePalit_MRW
@@ -51,6 +118,30 @@ public abstract class makePalit_MRW implements created.iNode
         public String toString()
         {
             return "MDR: " + o.toString();
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            if(o instanceof utos_block_opt.utosBlockOpt)
+            {
+                ((utos_block_opt.utosBlockOpt) o).setSymList(sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(o instanceof utos_block_opt.utosBlockOpt)
+            {
+                ((utos_block_opt.utosBlockOpt) o).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(o instanceof utos_block_opt.utosBlockOpt)
+            {
+                ((utos_block_opt.utosBlockOpt) o).preInterpret(sl);
+            }
         }
     }
 }

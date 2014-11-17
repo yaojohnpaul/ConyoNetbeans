@@ -24,6 +24,16 @@ public abstract class equality implements created.iNode
             return kind;
         }
         
+        public void setSymList(SymList sl)
+        {
+            
+        }
+        
+        public String checkContext(SymList sl) 
+        {
+            return kind;
+        }
+        
         public String evaluate()
         {
             return kind;

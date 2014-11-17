@@ -28,5 +28,15 @@ public abstract class arithmetic_2 implements created.iNode
         {
             return kind;
         }
+        
+        public void setSymList(SymList sl)
+        {
+            
+        }
+        
+        public String checkContext(SymList sl) 
+        {
+            return kind;
+        }
     }
 }

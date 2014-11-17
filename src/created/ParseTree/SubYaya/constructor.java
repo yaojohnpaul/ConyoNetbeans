@@ -7,6 +7,8 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
+import error.*;
 
 public abstract class constructor implements created.iNode 
 {
@@ -24,6 +26,21 @@ public abstract class constructor implements created.iNode
         public String toString()
         {
             return "makeSimula" + id + u.toString();
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            Boolean avail = sl.addToList(id, new SymConstructor(id, this));
+            if(!avail)
+            {
+                ErrorReport.error("Constructor name taken! Replacing with constructor..");
+                sl.editSymbol(id, new SymConstructor(id, this));
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            
         }
     }
     

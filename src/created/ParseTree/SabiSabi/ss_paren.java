@@ -7,6 +7,8 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
+import error.*;
 
 public abstract class ss_paren implements created.iNode
 {
@@ -21,6 +23,32 @@ public abstract class ss_paren implements created.iNode
         public String toString(){
             return "(" + a.toString() + ")";
         }
+        
+        public void setSymList(SymList sl)
+        {
+            if(a instanceof ss_a1.ssA1)
+            {
+                ((ss_a1.ssA1) a).setSymList(sl);
+            }
+            else if(a instanceof ss_a1.ssA1Expansion)
+            {
+                ((ss_a1.ssA1Expansion) a).setSymList(sl);
+            }
+            
+        }
+        
+        public String checkContext(SymList sl) 
+        { // for sabi sabi plng
+            if(a instanceof ss_a1.ssA1)
+            {
+                return ((ss_a1.ssA1) a).checkContext(sl);
+            }
+            else if(a instanceof ss_a1.ssA1Expansion)
+            {
+                return ((ss_a1.ssA1Expansion) a).checkContext(sl);
+            }
+            return null;
+        } 
     }
     
     public static class ssParenEnd extends ss_paren
@@ -36,6 +64,41 @@ public abstract class ss_paren implements created.iNode
         {
             return e.toString();
         }
+        
+        public void setSymList(SymList sl)
+        {
+            if(e instanceof sabi_sabi_end.ssEndUtos)
+            {
+                ((sabi_sabi_end.ssEndUtos) e).setSymList(sl);
+            }
+            else if(e instanceof sabi_sabi_end.ssEndValidVar)
+            {
+                ((ss_a1.ssEndValidVar) e).setSymList(sl);
+            }
+            else if(e instanceof sabi_sabi_end.ssEndLiteral)
+            {
+                ((ss_a1.ssEndLiteral) e).setSymList(sl);
+            }
+            
+        }
+        
+        public String checkContext(SymList s) 
+        { // for sabi sabi plng
+            if(e instanceof sabi_sabi_end.ssEndUtos)
+            {
+                return ((sabi_sabi_end.ssEndUtos) e).checkContext(sl);
+            }
+            else if(e instanceof sabi_sabi_end.ssEndValidVar)
+            {
+                return ((ss_a1.ssEndValidVar) e).checkContext(sl);
+            }
+            else if(e instanceof sabi_sabi_end.ssEndLiteral)
+            {
+                return ((ss_a1.ssEndLiteral) e).checkContext(sl);
+            }
+        
+            return null;
+        } 
     }
 }
 

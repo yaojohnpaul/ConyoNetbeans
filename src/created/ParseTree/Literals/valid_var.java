@@ -7,13 +7,10 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
 
 public abstract class valid_var implements created.iNode
 {
-    public int evaluate()
-    {
-    }
-    
     public static class validVar extends valid_var
     {
         public valid_name vn;
@@ -27,6 +24,30 @@ public abstract class valid_var implements created.iNode
         {
             return vn.toString();
         }
+        
+        public void setSymList(SymList sl)
+        {
+            if(vn instanceof valid_name.validName)
+            {
+                ((valid_name.validName) vn).setSymList(sl);
+            }
+            else if(vn instanceof valid_name.identifier)
+            {
+                ((valid_name.identifier) vn).setSymList(sl);
+            }
+        }
+        
+        public String checkContext(SymList s) 
+        { // for sabi sabi plng
+            if(vn instanceof valid_name.validName)
+            {
+                return ((valid_name.validName) vn).checkContext(sl);
+            }
+            else if(vn instanceof valid_name.identifier)
+            {
+                return ((valid_name.identifier) vn).checkContext(sl);
+            }
+        } 
         
     }
     
@@ -44,6 +65,57 @@ public abstract class valid_var implements created.iNode
         public String toString()
         {
             return vn.toString() + rb.toString();
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            if(vn instanceof valid_name.validName)
+            {
+                ((valid_name.validName) vn).setSymList(sl);
+            }
+            else if(vn instanceof valid_name.identifier)
+            {
+                ((valid_name.identifier) vn).setSymList(sl);
+            }
+            
+            if(rb instanceof ref_brackets.refBrackets)
+            {
+                ((ref_brackets.refBrackets) rb).setSymList(sl);
+            }
+        }
+        
+        public String checkContext(SymList sl)
+        {
+            if(rb instanceof ref_brackets.refBrackets)
+            {
+                ((ref_brackets.refBrackets) rb).checkContext(sl);
+            }
+            
+            if(vn instanceof valid_name.validName)
+            {
+                return ((valid_name.validName) vn).checkContext(sl);
+            }
+            else if(vn instanceof valid_name.identifier)
+            {
+                return ((valid_name.identifier) vn).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(vn instanceof valid_name.validName)
+            {
+                ((valid_name.validName) vn).preInterpret(sl);
+            }
+            else if(vn instanceof valid_name.identifier)
+            {
+                ((valid_name.identifier) vn).preInterpret(sl);
+            }
+            
+            if(rb instanceof ref_brackets.refBrackets)
+            {
+                ((ref_brackets.refBrackets) rb).preInterpret(sl);
+            }
         }
     }
     

@@ -25,5 +25,12 @@ public abstract class utos_makePalit implements created.iNode
         {
             return "makePalit(" + s.toString() + ")\n$\n" + m.toString() + "\n$"; 
         }
+        
+        public void checkContext(SymList sl)
+        {
+            if(s instanceof sabi_sabi.sabiSabi)
+            {
+                ((sabi_sabi.sabiSabi) s).checkContext(sl);
+            }
     }
 }

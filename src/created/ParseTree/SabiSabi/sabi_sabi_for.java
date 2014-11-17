@@ -7,6 +7,8 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
+import error.*;
 
 public abstract class sabi_sabi_for implements created.iNode
 {
@@ -20,6 +22,12 @@ public abstract class sabi_sabi_for implements created.iNode
         
         public String toString(){
             return s + " DB";
+        }
+        
+        public String checkContext(SymList s) 
+        { // for sabi sabi plng
+            //other context here
+            return s.checkContext();
         }
         
     }

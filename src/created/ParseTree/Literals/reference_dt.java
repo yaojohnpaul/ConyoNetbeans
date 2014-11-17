@@ -7,6 +7,7 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
 
 public abstract class reference_dt implements created.iNode
 {
@@ -23,6 +24,18 @@ public abstract class reference_dt implements created.iNode
         {
             return vn.toString();
         }
+        
+        public String checkContext(SymList sl)
+        {
+            if(vn instanceof valid_name.validName)
+            {
+                return ((valid_name.validName) vn).checkContext(sl);
+            }
+            else if(vn instanceof valid_name.identifier)
+            {
+                return ((valid_name.identifier) vn).checkContext(sl);
+            }
+        }
     }
     
     public static class referenceArray extends reference_dt
@@ -37,6 +50,18 @@ public abstract class reference_dt implements created.iNode
         public String toString()
         {
             return array.toString();
+        }
+        
+        public String checkContext(SymList sl)
+        {
+            if(array instanceof array_dt.arrayName)
+            {
+                return ((array_dt.arrayName) array).checkContext(sl);
+            }
+            else if(array instanceof array_dt.arrayPrimitive)
+            {
+                return ((array_dt.arrayPrimitive) array).checkContext(sl);
+            }
         }
     }
 }
