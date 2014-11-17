@@ -51,16 +51,28 @@ public abstract class yaya_header implements created.iNode
                 ErrorReport.error("Duplicate function!: " + name); 
             }
             
-            if(dt instanceof data_type.datatypePrimitive)
+            if(dt != null || ret != null)
             {
-                local.addToList(ret, new SymVar(ret, dt, null));
-                //((data_type.datatypePrimitive) dt).setSymList(sl);
+                if(dt instanceof data_type.datatypePrimitive)
+                {
+                    avail = local.addToList(ret, new SymVar(ret, dt, null));
+                    if(!avail)
+                    {
+                        ErrorReport.error("Duplicate variable name!: " + ret);
+                    }
+                    //((data_type.datatypePrimitive) dt).setSymList(sl);
+                }
+                else if(dt instanceof data_type.datatypeReference)
+                {
+                    avail = local.addToList(ret, new SymVar(ret, dt, null));
+                    if(!avail)
+                    {
+                        ErrorReport.error("Duplicate variable name!: " + ret);
+                    }
+                    //((data_type.datatypeReference) dt).setSymList(sl);
+                }
             }
-            else if(dt instanceof data_type.datatypeReference)
-            {
-                local.addToList(ret, new SymVar(ret, dt, null));
-                //((data_type.datatypeReference) dt).setSymList(sl);
-            }
+            
             
             if(yps instanceof yaya_param_sec.yayaParamSec)
             {
@@ -75,14 +87,14 @@ public abstract class yaya_header implements created.iNode
                 ((yaya_param_sec.yayaParamSec) yps).checkContext(sl);
             }
             
-            if(dt != null || ret != null)
-            {
-                Boolean avail = sl.addToList(ret, new SymVar(ret, dt, null));
-                if(!avail)
-                {
-                    ErrorReport.error("Duplicate variable name!: " + ret);
-                }
-            }
+            // if(dt != null || ret != null)
+            // {
+            //     Boolean avail = sl.addToList(ret, new SymVar(ret, dt, null));
+            //     if(!avail)
+            //     {
+            //         ErrorReport.error("Duplicate variable name!: " + ret);
+            //     }
+            // }
         }
         
         public void preInterpret(SymList sl)

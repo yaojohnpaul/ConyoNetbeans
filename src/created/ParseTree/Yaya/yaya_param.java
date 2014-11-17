@@ -52,11 +52,7 @@ public abstract class yaya_param implements created.iNode
         
         public void checkContext(SymList sl)
         {
-            Boolean avail = sl.addToList(id, new SymVar(id, dt, null));
-            if(!avail)
-            {
-                ErrorReport.error("Duplicate variable name!: " + id);
-            }
+            
         }
         
         public void preInterpret(SymList sl)
