@@ -124,7 +124,7 @@ public abstract class ss_a1 implements created.iNode
                 return arith2;
                 
             ErrorReport.error("Datatype Mismatch");
-            return "";
+            return ""l;
         } 
         
         public void setSymList(SymList sl)

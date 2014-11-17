@@ -119,7 +119,7 @@ public abstract class arte_init implements created.iNode
             {
                 return ((sabi_sabi.SabiSabi) s).checkContext(sl);
             }
-            return "";
+            return ;
         }
         
         public void preInterpret(SymList sl)
