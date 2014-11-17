@@ -84,6 +84,27 @@ public abstract class utos_dec implements created.iNode
                 // ((utos_dec_db.makeup) ud).preInterpret(sl);
             }
         }
+        
+        public void evaluate(SymList sl)
+        {
+//            if(ud instanceof utos_dec_db.utosMakeKuha)
+//            {
+//                ((utos_dec_db.utosMakeKuha) ud).preInterpret(sl);
+//            }
+//            else 
+            if(ud instanceof utos_dec_db.utosMakeSulat)
+            {
+                ((utos_dec_db.utosMakeSulat) ud).evaluate(sl);
+            }
+//            else if(ud instanceof utos_dec_db.breakup)
+//            {
+//                // ((utos_dec_db.breakup) ud).preInterpret(sl);
+//            }
+//            else if(ud instanceof utos_dec_db.makeup)
+//            {
+//                // ((utos_dec_db.makeup) ud).preInterpret(sl);
+//            }
+        }
     }
     
     public static class utosDecVal extends utos_dec

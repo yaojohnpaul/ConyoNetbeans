@@ -77,26 +77,26 @@ public abstract class ss_OR implements created.iNode
             return "";
         } 
         
-        public Object evaluate(sl)
+        public Object evaluate(SymList sl)
         {
-            Object o1;
-            Object o2;
+            Object o1 = null;
+            Object o2 = null;
             
             if(a instanceof ss_AND.ssAND)
             {
-                o1 = ((ss_AND.ssAND) a).setSymList(sl);
+                o1 = ((ss_AND.ssAND) a).evaluate(sl);
             }
             else if(a instanceof ss_AND.ssANDExpansion)
             {
-                o1 = ((ss_AND.ssANDExpansion) a).setSymList(sl);
+                o1 = ((ss_AND.ssANDExpansion) a).evaluate(sl);
             }
             if(o instanceof ss_OR.ssOR)
             {
-                o2 = ((ss_OR.ssOR) o).setSymList(sl);
+                o2 = ((ss_OR.ssOR) o).evaluate(sl);
             }
             else if(o instanceof ss_OR.ssORExpansion)
             {
-                o2 = ((ss_OR.ssORExpansion) o).setSymList(sl);
+                o2 = ((ss_OR.ssORExpansion) o).evaluate(sl);
             }   
             
             return (Boolean)o1 || (Boolean)o2;
@@ -143,7 +143,7 @@ public abstract class ss_OR implements created.iNode
             return "";
         }
         
-        public Object evaluate(sl)
+        public Object evaluate(SymList sl)
         {
             if(a instanceof ss_AND.ssAND)
             {
@@ -153,6 +153,8 @@ public abstract class ss_OR implements created.iNode
             {
                 return ((ss_AND.ssANDExpansion) a).evaluate(sl);
             }
+            
+            return null;
         }
     }
     

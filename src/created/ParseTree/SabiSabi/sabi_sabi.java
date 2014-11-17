@@ -67,12 +67,14 @@ public abstract class sabi_sabi implements created.iNode
         {
             if(o instanceof ss_OR.ssOR)
             {
-                return ((ss_OR.ssOR) o).setSymList(sl);
+                return ((ss_OR.ssOR) o).evaluate(sl);
             }
             else if(o instanceof ss_OR.ssORExpansion)
             {
                 return ((ss_OR.ssORExpansion) o).evaluate(sl);
             }
+            
+            return null;
         }
     }
 }

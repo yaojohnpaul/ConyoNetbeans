@@ -60,8 +60,9 @@ public abstract class ss_paren implements created.iNode
             {
                 return ((ss_a1.ssA1Expansion) a).evaluate(sl);
             }
+            
+            return null;
         }
-        return "";
     }
     
     public static class ssParenEnd extends ss_paren

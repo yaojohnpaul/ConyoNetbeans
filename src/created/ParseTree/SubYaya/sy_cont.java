@@ -48,6 +48,11 @@ public abstract class sy_cont implements created.iNode
                 ((arte_dec.arteDec) a).preInterpret(sl);
             }
         }
+        
+        public void evaluate(SymList sl)
+        {
+            
+        }
     }
     
     public static class SubYayaContYaya extends sy_cont
@@ -87,6 +92,11 @@ public abstract class sy_cont implements created.iNode
                 ((yaya.addYaya) a).preInterpret(sl);
             }
         }
+        
+        public void evaluate(SymList sl)
+        {
+            
+        }
     }
     
     public static class SubYayaContConstructor extends sy_cont
@@ -124,6 +134,11 @@ public abstract class sy_cont implements created.iNode
             if(a instanceof constructor.mSimula)
             {
             }
+        }
+        
+        public void evaluate(SymList sl)
+        {
+            
         }
     }
     
