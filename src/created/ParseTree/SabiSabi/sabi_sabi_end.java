@@ -139,7 +139,7 @@ public abstract class sabi_sabi_end implements created.iNode
             {
                 return ((literal.Booly) l).checkContext(sl);
             }
-            return null;
+            return "";
         }
     }
     

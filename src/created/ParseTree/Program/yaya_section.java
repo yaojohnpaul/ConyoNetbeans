@@ -40,12 +40,12 @@ public abstract class yaya_section implements created.iNode
                 ((yaya_list.yayaList) l).setSymList(sl);
             }
         }
-        
+            
         public void checkContext(SymList sl)
         {
             if(l instanceof yaya_list.yayaList)
             {
-                ((yaya_list.yayaList) l).setSymList(sl);
+                ((yaya_list.yayaList) l).checkContext(sl);
             }
         }
         

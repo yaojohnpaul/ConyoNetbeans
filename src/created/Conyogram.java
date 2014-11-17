@@ -80,7 +80,7 @@ public class Conyogram implements iNode
         {
             ((sub_yaya_section.subYayaSection) s).checkContext(sub_yaya_sym);
         }
-        
+        D
         //Super Yaya
         if(m instanceof super_yaya.superYaya)
         {

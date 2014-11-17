@@ -57,6 +57,8 @@ public abstract class utos_makeUlit implements created.iNode
                 return "makeUlit(" + m1.toString() + " db " + s1.toString() + " " + m2.toString() + ")\n" + u.toString();
             else if(s2 != null)
                 return "makeUlit(" + m1.toString() + " db " + s1.toString() + " " + s2.toString() + ")\n" + u.toString();
+            else if(m3 != null)
+                return "makeUlit(" + m1.toString() + " db " + s1.toString() + " " + m3.toString() + ")\n" + u.toString();
             return "";
         }
         

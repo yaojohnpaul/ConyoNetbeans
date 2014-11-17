@@ -53,12 +53,12 @@ public abstract class yaya_list implements created.iNode
         {
             if(y instanceof yaya.addYaya)
             {
-                ((yaya.addYaya) y).setSymList(sl);
+                ((yaya.addYaya) y).checkContext(sl);
             }
             
             if(l instanceof yaya_list.yayaList)
             {
-                ((yaya_list.yayaList) l).setSymList(sl);
+                ((yaya_list.yayaList) l).checkContext(sl);
             }
         }
     }
