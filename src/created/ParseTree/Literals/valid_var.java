@@ -47,6 +47,8 @@ public abstract class valid_var implements created.iNode
             {
                 return ((valid_name.identifier) vn).checkContext(sl);
             }
+            
+            return "";
         } 
         
         public void preInterpret(SymList sl) 
@@ -102,6 +104,8 @@ public abstract class valid_var implements created.iNode
             {
                 return ((valid_name.identifier) vn).checkContext(sl);
             }
+            
+            return "";
         }
         
         public void preInterpret(SymList sl)

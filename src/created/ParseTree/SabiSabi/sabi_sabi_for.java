@@ -32,17 +32,26 @@ public abstract class sabi_sabi_for implements created.iNode
             }
         }
         
-        public String checkContext(SymList s) 
+        public void preInterpret(SymList sl)
+        {
+            
+        }
+        
+        public String checkContext(SymList sl) 
         { // for sabi sabi plng
             //other context here
             if(s instanceof sabi_sabi.SabiSabi)
             {
                 return ((sabi_sabi.SabiSabi) s).checkContext(sl);
             }
-            return null;
+            return "";
         }
         
     }
 }
 
-//sabi_sabi_for ::= sabi_sabi:s DB {: RESULT = new SabiSabiFor(s); :};
+//sabi_sabi_for ::= sabi_sabi:s DB {: RESULT = new SabiSabiFor(s); :};package created.ParseTree.SabiSabi;
+
+// import created.ParseTree.Array.*;
+// import created.ParseTree.Arte.*;
+// impo

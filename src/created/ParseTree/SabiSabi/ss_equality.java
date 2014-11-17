@@ -98,7 +98,7 @@ public abstract class ss_equality implements created.iNode
                     case "null"     :
                     case "inty"     :
                     case "floaty"   :
-                    case "chary"    : return "booly"
+                    case "chary"    : return "booly";
                     default         : ErrorReport.error("Datatype Mismatch");
                 }
             }
@@ -111,7 +111,7 @@ public abstract class ss_equality implements created.iNode
                     case "null"     :
                     case "inty"     :
                     case "floaty"   :
-                    case "chary"    : return "booly"
+                    case "chary"    : return "booly";
                     default         : ErrorReport.error("Datatype Mismatch");
                 }
             }

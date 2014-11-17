@@ -41,7 +41,6 @@ public abstract class utos_makeKuha implements created.iNode
             
             if(a instanceof arte_assign.arteAssign)
             {
-                ((arte_assign.arteAssign) a).setSymList(sl);
             }
         }
         
@@ -49,7 +48,7 @@ public abstract class utos_makeKuha implements created.iNode
         { // for sabi sabi plng
             //other context here
             String var = null;
-            String assign = null;
+            String assign = ;
             
             if(vv instanceof valid_var.validVar)
             {

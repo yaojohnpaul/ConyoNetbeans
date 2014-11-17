@@ -31,11 +31,11 @@ public abstract class sy_init implements created.iNode
         {
             if(rd instanceof reference_dt.referenceArray)
             {
-                ((reference_dt.referenceArray) rd).setSymList(st);
+                ((reference_dt.referenceArray) rd).setSymList(sl);
             }
             else if(rd instanceof reference_dt.referenceValidName)
             {
-                ((reference_dt.referenceValidName) rd).setSymList(st);
+                ((reference_dt.referenceValidName) rd).setSymList(sl);
             }
             
             if(al instanceof arte_init_list.arteInitList)
@@ -48,11 +48,11 @@ public abstract class sy_init implements created.iNode
         {
             if(rd instanceof reference_dt.referenceArray)
             {
-                return ((reference_dt.referenceArray) rd).checkContext(st);
+                return ((reference_dt.referenceArray) rd).checkContext(sl);
             }
             else if(rd instanceof reference_dt.referenceValidName)
             {
-                return ((reference_dt.referenceValidName) rd).checkContext(st);
+                return ((reference_dt.referenceValidName) rd).checkContext(sl);
             }
             
             if(al instanceof arte_init_list.arteInitList)
@@ -60,18 +60,18 @@ public abstract class sy_init implements created.iNode
                 ((arte_init_list.arteInitList) al).checkContext(sl);
             } 
             
-            return null;
+            return "";
         }
         
         public void preInterpret(SymList sl)
         {
             if(rd instanceof reference_dt.referenceArray)
             {
-                ((reference_dt.referenceArray) rd).preInterpret(st);
+                ((reference_dt.referenceArray) rd).preInterpret(sl);
             }
             else if(rd instanceof reference_dt.referenceValidName)
             {
-                ((reference_dt.referenceValidName) rd).preInterpret(st);
+                ((reference_dt.referenceValidName) rd).preInterpret(sl);
             }
             
             if(al instanceof arte_init_list.arteInitList)
