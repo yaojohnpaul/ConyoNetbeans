@@ -8,7 +8,7 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.Sym.*;
-import error.*
+import error.*;
 
 public abstract class yaya_header implements created.iNode  
 {
@@ -47,19 +47,24 @@ public abstract class yaya_header implements created.iNode
         {
             Boolean avail = sl.addToList(name, new SymFunc(name, yps, dt, ret));
             if(!avail)
-            
-            if(yps instanceof yaya_param_sec.yayaParamSec)
             {
-                ((yaya_param_sec.yayaParamSec) y).setSymList(local);
+                ErrorReport.error("Duplicate function!: " + name);
             }
             
             if(dt instanceof data_type.datatypePrimitive)
             {
-                ((data_type.datatypePrimitive) dt).setSymList(sl);
+                local.addToList(ret, new SymVar(ret, dt, null));
+                //((data_type.datatypePrimitive) dt).setSymList(sl);
             }
             else if(dt instanceof data_type.datatypeReference)
             {
-                ((data_type.datatypeReference) dt).setSymList(sl);
+                local.addToList(ret, new SymVar(ret, dt, null));
+                //((data_type.datatypeReference) dt).setSymList(sl);
+            }
+            
+            if(yps instanceof yaya_param_sec.yayaParamSec)
+            {
+                ((yaya_param_sec.yayaParamSec) yps).setSymList(local);
             }
         }
         
@@ -72,7 +77,7 @@ public abstract class yaya_header implements created.iNode
             
             if(dt != null || ret != null)
             {
-                Boolean avail = sl.addToList(id, new SymVar(ret, dt, null));
+                Boolean avail = sl.addToList(ret, new SymVar(ret, dt, null));
                 if(!avail)
                 {
                     ErrorReport.error("Duplicate variable name!: " + ret);
