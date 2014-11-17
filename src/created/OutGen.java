@@ -3,7 +3,7 @@ package created;
 /**
  * Class for showing output.
  */
-public class ErrorReport 
+public class OutGen 
 {
     private static StringBuilder sb = new StringBuilder();
         

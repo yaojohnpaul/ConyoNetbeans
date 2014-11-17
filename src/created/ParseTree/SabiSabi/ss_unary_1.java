@@ -41,7 +41,7 @@ public abstract class ss_unary_1 implements created.iNode
         
         public String checkContext(SymList sl) 
         { // for sabi sabi plng
-            Strin unary = "";
+            String unary = "";
             if(u instanceof ss_unary_1.ssU1)
             {
                 unary = ((ss_unary_1.ssU1) u).checkContext(sl);
@@ -57,6 +57,8 @@ public abstract class ss_unary_1 implements created.iNode
             ErrorReport.error("Datatype Mismatch");
             return "";
         } 
+        
+        
         
         
     }
@@ -100,7 +102,9 @@ public abstract class ss_unary_1 implements created.iNode
                 return ((ss_paren.ssParenEnd) p).checkContext(sl);
             }
             return null;
-        } 
+        }
+        
+       
         
     }
 }

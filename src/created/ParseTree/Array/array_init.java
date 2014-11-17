@@ -39,6 +39,8 @@ public abstract class array_init implements created.iNode
             {
                 return ((arte_init_list.arteInitList) l).checkContext(sl);
             }
+            
+            return "";
         }
         
         public void preInterpret(SymList sl)

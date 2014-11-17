@@ -33,7 +33,7 @@ public abstract class utos_dec_val implements created.iNode
             }
         }
         
-        public String checkContext(SymList st) 
+        public String checkContext(SymList sl) 
         { // for sabi sabi plng
             //other context here
             if(ut instanceof utos_makeTawag.makeTawag)
@@ -73,7 +73,7 @@ public abstract class utos_dec_val implements created.iNode
             }
         }
         
-        public String checkContext(SymList st) 
+        public String checkContext(SymList sl) 
         { // for sabi sabi plng
             //other context here
             if(ub instanceof utos_makeBasa.makeBasa)

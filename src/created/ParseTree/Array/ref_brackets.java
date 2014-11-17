@@ -45,7 +45,6 @@ public abstract class ref_brackets implements created.iNode
         {
             if(s instanceof sabi_sabi.SabiSabi)
             {
-                ((sabi_sabi.SabiSabi) s).preInterpret(sl);
             }
         }
         

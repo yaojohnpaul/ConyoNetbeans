@@ -25,7 +25,7 @@ public abstract class arte_init implements created.iNode
             return a.toString();
         }
         
-        public void setSymList()
+        public void setSymList(SymList sl)
         {
             if(a instanceof array_init.arrayInit)
             {
@@ -33,7 +33,7 @@ public abstract class arte_init implements created.iNode
             }
         }
         
-        public String checkContext()
+        public String checkContext(SymList sl)
         {
             if(a instanceof array_init.arrayInit)
             {
@@ -42,7 +42,7 @@ public abstract class arte_init implements created.iNode
             return null;
         }
         
-        public void preInterpret()
+        public void preInterpret(SymList sl)
         {
             if(a instanceof array_init.arrayInit)
             {
@@ -65,7 +65,7 @@ public abstract class arte_init implements created.iNode
             return sy.toString();
         }
         
-        public void setSymList()
+        public void setSymList(SymList sl)
         {
             if(sy instanceof sy_init.syInit)
             {
@@ -73,7 +73,7 @@ public abstract class arte_init implements created.iNode
             }
         }
         
-        public String checkContext()
+        public String checkContext(SymList sl)
         {
             if(sy instanceof sy_init.syInit)
             {
@@ -82,7 +82,7 @@ public abstract class arte_init implements created.iNode
             return null;
         }
         
-        public void preInterpret()
+        public void preInterpret(SymList sl)
         {
             if(sy instanceof sy_init.syInit)
             {
@@ -105,7 +105,7 @@ public abstract class arte_init implements created.iNode
             return s.toString();
         }
         
-        public void setSymList()
+        public void setSymList(SymList sl)
         {
             if(s instanceof sabi_sabi.sabiSabi)
             {
@@ -113,7 +113,7 @@ public abstract class arte_init implements created.iNode
             }
         }
         
-        public String checkContext()
+        public String checkContext(SymList sl)
         {
             if(s instanceof sabi_sabi.sabiSabi)
             {
@@ -122,7 +122,7 @@ public abstract class arte_init implements created.iNode
             return null;
         }
         
-        public void preInterpret()
+        public void preInterpret(SymList sl)
         {
             if(s instanceof sabi_sabi.sabiSabi)
             {

@@ -48,6 +48,10 @@ public abstract class yaya_section implements created.iNode
                 ((yaya_list.yayaList) l).setSymList(sl);
             }
         }
+        
+        public void preInterpret(SymList sl)
+        {
+        }
     }
     
 }

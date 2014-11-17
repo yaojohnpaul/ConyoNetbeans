@@ -54,6 +54,11 @@ public abstract class data_type implements created.iNode
             //other context here
             return p.toString();
         }
+        
+        public void preInterpret(SymList sl)
+        {
+            
+        }
     }
     
     public static class datatypeReference extends data_type
@@ -94,6 +99,11 @@ public abstract class data_type implements created.iNode
                 return ((reference_dt.referenceValidName) r).checkContext(st);
             }
             return "";
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            
         }
     }
 }

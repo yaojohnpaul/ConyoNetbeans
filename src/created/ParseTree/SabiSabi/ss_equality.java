@@ -29,12 +29,12 @@ public abstract class ss_equality implements created.iNode
             return c.toString() + " " + eq.toString() + " " + e.toString();
         }
         
-        public boolean evaluate(){
-            switch(eq.evaluate()){
-                case "!=" : return c.evaluate() != e.evaluate()
-                case "==" : return c.evaluate() == e.evaluate();
-            }
-        }
+        // public boolean evaluate(){
+        //     switch(eq.evaluate()){
+        //         case "!=" : return c.evaluate() != e.evaluate();
+        //         case "==" : return c.evaluate() == e.evaluate();
+        //     }
+        // }
         
         public void setSymList(SymList sl)
         {
@@ -92,24 +92,28 @@ public abstract class ss_equality implements created.iNode
             if(equal.equals("stringy"))
             {
                 switch(compare)
-                case "stringy"  :
-                case "booly"    :
-                case "null"     :
-                case "inty"     :
-                case "floaty"   :
-                case "chary"    : return "booly"
-                default         : ErrorReport.error("Datatype Mismatch");
+                {
+                    case "stringy"  :
+                    case "booly"    :
+                    case "null"     :
+                    case "inty"     :
+                    case "floaty"   :
+                    case "chary"    : return "booly"
+                    default         : ErrorReport.error("Datatype Mismatch");
+                }
             }
             else if(compare.equals("stringy"))
             {
                 switch(equal)
-                case "stringy"  :
-                case "booly"    :
-                case "null"     :
-                case "inty"     :
-                case "floaty"   :
-                case "chary"    : return "booly"
-                default         : ErrorReport.error("Datatype Mismatch");
+                {
+                    case "stringy"  :
+                    case "booly"    :
+                    case "null"     :
+                    case "inty"     :
+                    case "floaty"   :
+                    case "chary"    : return "booly"
+                    default         : ErrorReport.error("Datatype Mismatch");
+                }
             }
             switch(compare){
                 case "booly" : break;
@@ -138,9 +142,9 @@ public abstract class ss_equality implements created.iNode
             return c.toString();
         }
         
-        public boolean evaluate(){
+        /*public boolean evaluate(){
             c.evaluate();
-        }
+        }*/
         
         public void setSymList(SymList sl)
         {
@@ -154,7 +158,7 @@ public abstract class ss_equality implements created.iNode
             }
         }
         
-        public String checkContext(SymList s) 
+        public String checkContext(SymList sl) 
         { // for sabi sabi plng
             //other context here
             if(c instanceof ss_comparison.ssComparison)

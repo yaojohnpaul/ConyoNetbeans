@@ -37,7 +37,7 @@ public abstract class valid_var implements created.iNode
             }
         }
         
-        public String checkContext(SymList s) 
+        public String checkContext(SymList sl) 
         { // for sabi sabi plng
             if(vn instanceof valid_name.validName)
             {
@@ -49,6 +49,9 @@ public abstract class valid_var implements created.iNode
             }
         } 
         
+        public void preInterpret(SymList sl) 
+        { 
+        } 
     }
     
     public static class validVarRB extends valid_var

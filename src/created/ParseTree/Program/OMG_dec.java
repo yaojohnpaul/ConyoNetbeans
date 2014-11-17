@@ -57,9 +57,6 @@ public abstract class OMG_dec implements created.iNode
         
         public void evaluate(SymList sl)
         {
-            // Add method to edit sabi_sabi
-            dec.sabiSabi().evaluate();
-            sl.editSymbol(dec);
         }
     }
 }

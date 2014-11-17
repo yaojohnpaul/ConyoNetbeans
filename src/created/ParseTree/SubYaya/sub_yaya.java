@@ -32,7 +32,7 @@ public abstract class sub_yaya implements created.iNode
         
         public void setSymList(SymList sl)
         {   
-            Boolean avail = sl.addToList(id, new SymEntry(id, sl));
+            Boolean avail = sl.addToList(id, new SymClass(id, sl));
             if(!avail)
             {
                 ErrorReport.error("Duplicate class defined!: " + id);
@@ -41,7 +41,7 @@ public abstract class sub_yaya implements created.iNode
             this.sl = new SymList();
             if(body instanceof sy_body.SubYayaBodyList)
             {
-                ((sy_body.SubYaya) body).setSymList(this.sl);   
+                ((sy_body.SubYayaBodyList) body).setSymList(this.sl);   
             }
         }
         
@@ -49,7 +49,7 @@ public abstract class sub_yaya implements created.iNode
         { 
             if(body instanceof sy_body.SubYayaBodyList)
             {
-                ((sy_body.SubYaya) body).checkContext(this.sl);   
+                ((sy_body.SubYayaBodyList) body).checkContext(this.sl);   
             }
         }
         

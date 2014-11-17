@@ -7,6 +7,8 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
+import error.*;
 
 public abstract class arithmetic_1 implements created.iNode
 {

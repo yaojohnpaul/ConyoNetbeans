@@ -104,7 +104,7 @@ public abstract class ss_AND implements created.iNode
             }
         }
         
-        public String checkContext(SymList s) 
+        public String checkContext(SymList sl) 
         { // for sabi sabi plng
             //other context here
             if(e instanceof ss_equality.ssEquality)
