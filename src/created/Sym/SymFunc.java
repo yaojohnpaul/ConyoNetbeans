@@ -53,6 +53,9 @@ public class SymFunc extends SymEntry
     @Override
     public String toString()
     {
-        return symName + "-" + yps.toString() + "-" + dt.toString() + "-" + ret;
+        if(dt == null || ret == null)
+            return symName + "-" + yps.toString();
+        else
+            return symName + "-" + yps.toString() + "-" + dt.toString() + "-" + ret;
     }
 }
