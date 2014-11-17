@@ -35,8 +35,11 @@ public abstract class arte_assign implements created.iNode
         
         public void setSymList(String id, SymList sl)
         {
-            SymVar temp = (SymVar) sl.getSymbol(id);
-            sl.editSymbol(id, new SymVar(id, temp.dataType(), i));
+            if(i != null)
+            {
+                SymVar temp = (SymVar) sl.getSymbol(id);
+                sl.editSymbol(id, new SymVar(id, temp.dataType(), i));
+            }
         }
         
         public String checkContext(SymList sl)
@@ -53,7 +56,7 @@ public abstract class arte_assign implements created.iNode
             {
                 return ((arte_init.sabiInit) i).checkContext(sl);
             }
-            return ;
+            return "";
         }
         
         public void preInterpret(SymList sl)

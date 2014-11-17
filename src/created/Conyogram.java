@@ -62,6 +62,14 @@ public class Conyogram implements iNode
         {
             ((sub_yaya_section.subYayaSection) s).setSymList(sub_yaya_sym);
         }
+        
+        super_sym = new SymList(sub_yaya_sym);
+        
+        //Super Yaya
+        if(m instanceof super_yaya.superYaya)
+        {
+            ((super_yaya.superYaya) m).setSymList(super_sym);
+        }
     }
     
     /**
@@ -81,8 +89,6 @@ public class Conyogram implements iNode
         {
             ((sub_yaya_section.subYayaSection) s).checkContext(sub_yaya_sym);
         }
-        
-        super_sym = new SymList(sub_yaya_sym);
         
         //Super Yaya
         if(m instanceof super_yaya.superYaya)
