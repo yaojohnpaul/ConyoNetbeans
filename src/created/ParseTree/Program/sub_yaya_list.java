@@ -53,7 +53,7 @@ public abstract class sub_yaya_list implements created.iNode
         {
             if(s instanceof sub_yaya.SubYaya)
             {
-                ((sub_yaya.SubYaya) s).setSymList(sl);
+                ((sub_yaya.SubYaya) s).c(sl);
             }
             
             if(l instanceof sub_yaya_list.subYayaList)

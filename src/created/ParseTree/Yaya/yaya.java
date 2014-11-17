@@ -31,7 +31,7 @@ public abstract class yaya implements created.iNode
         
         public void setSymList(SymList sl)
         {
-            this.sl = new SymList();
+            this.sl = new SymList(sl);
             
             if(h instanceof yaya_header.yayaHeader)
             {
@@ -48,12 +48,12 @@ public abstract class yaya implements created.iNode
         {
             if(h instanceof yaya_header.yayaHeader)
             {
-                ((yaya_header.yayaHeader) h).checkContext(sl);
+                ((yaya_header.yayaHeader) h).checkContext(this.sl);
             }
             
             if(u instanceof utos_block.utosBlock)
             {
-                ((utos_block.utosBlock) u).checkContext(sl);
+                ((utos_block.utosBlock) u).checkContext(this.sl);
             }
         }
         

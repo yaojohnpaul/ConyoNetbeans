@@ -62,12 +62,6 @@ public class Conyogram implements iNode
         {
             ((sub_yaya_section.subYayaSection) s).setSymList(sub_yaya_sym);
         }
-        
-        OMG_sym.toString();
-        yaya_sym.toString();
-        sub_yaya_sym.toString();
-        
-        System.out.println("====================\n\n");
     }
     
     /**
@@ -95,12 +89,6 @@ public class Conyogram implements iNode
         {
             ((super_yaya.superYaya) m).checkContext(super_sym);
         }
-        
-        yaya_sym.toString();
-        sub_yaya_sym.toString();
-        super_sym.toString();
-        
-        System.out.println("====================\n\n");
     }
     
     /**

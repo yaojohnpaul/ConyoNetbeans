@@ -29,10 +29,10 @@ public abstract class super_yaya implements created.iNode
         
         public void checkContext(SymList sl)
         {
-            sl = new SymList();
+            this.sl = new SymList(sl);
             if(u instanceof utos_block.utosBlock)
             {
-                ((utos_block.utosBlock) u).setSymList(sl);
+                ((utos_block.utosBlock) u).checkContext(this.sl);
             }
         }
         
