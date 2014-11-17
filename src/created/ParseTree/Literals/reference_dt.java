@@ -58,6 +58,11 @@ public abstract class reference_dt implements created.iNode
             return array.toString();
         }
         
+        public void setSymList(SymList sl)
+        {
+            
+        }
+        
         public String checkContext(SymList sl)
         {
             if(array instanceof array_dt.arrayName)

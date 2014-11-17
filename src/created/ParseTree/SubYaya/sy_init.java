@@ -35,7 +35,7 @@ public abstract class sy_init implements created.iNode
             }
             else if(rd instanceof reference_dt.referenceValidName)
             {
-                ((reference_dt.referenceValidName) rd).setSymList(sl);
+             
             }
             
             if(al instanceof arte_init_list.arteInitList)

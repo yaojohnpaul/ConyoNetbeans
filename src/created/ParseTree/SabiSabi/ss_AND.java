@@ -66,7 +66,7 @@ public abstract class ss_AND implements created.iNode
             {
                 equal = ((ss_equality.ssEquality) e).checkContext(sl);
             }
-            else if(e instanceof ss_eq.ssEqualityExpansion)
+            else if(e instanceof ss_equality.ssEqualityExpansion)
             {
                 equal = ((ss_equality.ssEqualityExpansion) e).checkContext(sl);
             }
@@ -98,7 +98,7 @@ public abstract class ss_AND implements created.iNode
             {
                 ((ss_equality.ssEquality) e).setSymList(sl);
             }
-            else if(e instanceof ss_OR.ssORExpansion)
+            else if(e instanceof ss_equality.ssEqualityExpansion)
             {
                 ((ss_equality.ssEqualityExpansion) e).setSymList(sl);
             }
@@ -111,7 +111,7 @@ public abstract class ss_AND implements created.iNode
             {
                 return ((ss_equality.ssEquality) e).checkContext(sl);
             }
-            else if(e instanceof ss_OR.ssORExpansion)
+            else if(e instanceof ss_equality.ssEqualityExpansion)
             {
                 return ((ss_equality.ssEqualityExpansion) e).checkContext(sl);
             }
