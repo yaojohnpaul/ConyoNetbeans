@@ -92,7 +92,7 @@ public abstract class data_type implements created.iNode
             //other context here
             if(r instanceof reference_dt.referenceArray)
             {
-                ((reference_dt.referenceArray) r).checkContext(st);
+                return ((reference_dt.referenceArray) r).checkContext(st);
             }
             else if(r instanceof reference_dt.referenceValidName)
             {

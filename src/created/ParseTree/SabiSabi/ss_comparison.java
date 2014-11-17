@@ -98,15 +98,59 @@ public abstract class ss_comparison implements created.iNode
             return "";
         } 
         
-//        public boolean evaluate(){
-//            switch(co.evaluate()){
-//                case "<" : return a.evaluate() <= e.evaluate();
-//                case "<=" : return a.evaluate() <= e.evaluate();
-//                case ">" : return a.evaluate() > e.evaluate();
-//                case ">=" : return a.evaluate() >= e.evaluate();
-//            }
-//        }
-        
+        public Object evaluate(SymList sl)
+        {
+            Object arith = "";
+            Object compare = "";
+            if(a instanceof ss_a1.ssA1)
+            {
+                arith = ((ss_a1.ssA1) a).evaluate(sl);
+            }
+            else if(a instanceof ss_a1.ssA1Expansion)
+            {
+                arith = ((ss_a1.ssA1Expansion) a).evaluate(sl);
+            }
+            
+            if(c instanceof ss_comparison.ssComparison)
+            {
+                compare = ((ss_comparison.ssComparison) c).evaluate(sl);
+            }
+            else if(c instanceof ss_comparison.ssComparisonExpansion)
+            {
+                compare = ((ss_comparison.ssComparisonExpansion) c).evaluate(sl);
+            }
+            
+            if(co instanceof comparison.compare)
+            {
+                switch(((comparison.compare) co).checkContext(sl))
+                {
+                    case "<" :  if(arith instanceof boolean) 
+                                    return (boolean)arith <= (boolean)compare;
+                                else if (arith instanceof float)
+                                    return (float)arith <= (float)compare;
+                                else if (arith instanceof int)
+                                    return (int)arith <= (int)compare;
+                    case "<=" : if(arith instanceof boolean) 
+                                    return (boolean)arith < (boolean)compare;
+                                else if (arith instanceof float)
+                                    return (float)arith < (float)compare;
+                                else if (arith instanceof int)
+                                    return (int)arith < (int)compare;
+                    case ">" : if(arith instanceof boolean) 
+                                    return (boolean)arith > (boolean)compare;
+                                else if (arith instanceof float)
+                                    return (float)arith > (float)compare;
+                                else if (arith instanceof int)
+                                    return (int)arith > (int)compare;
+                    case ">=" : if(arith instanceof boolean) 
+                                    return (boolean)arith >= (boolean)compare;
+                                else if (arith instanceof float)
+                                    return (float)arith >= (float)compare;
+                                else if (arith instanceof int)
+                                    return (int)arith >= (int)compare;
+                    default   : return "error"
+                }
+            }
     }
     
     public static class ssComparison extends  ss_comparison
@@ -148,10 +192,17 @@ public abstract class ss_comparison implements created.iNode
             return "";
         } 
         
-//        public double evaluate(){
-//            return a.evaluate();
-//        }
-        
+        public Object evaluate(SymList sl)
+        {
+            if(a instanceof ss_a1.ssA1)
+            {
+                return ((ss_a1.ssA1) a).evaluate(sl);
+            }
+            else if(a instanceof ss_a1.ssA1Expansion)
+            {
+                return ((ss_a1.ssA1Expansion) a).evaluate(sl);
+            }
+        }
     }
 }
 

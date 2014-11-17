@@ -48,7 +48,7 @@ public abstract class utos_makeTawag implements created.iNode
         public String checkContext(SymList sl) 
         { // for sabi sabi plng
             //other context here
-            String ret = null;
+            String ret = "";
             if(vn instanceof valid_name.validName)
             {
                 ret = ((valid_name.validName) vn).checkContext(sl);

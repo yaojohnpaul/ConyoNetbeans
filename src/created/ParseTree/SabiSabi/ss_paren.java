@@ -48,7 +48,20 @@ public abstract class ss_paren implements created.iNode
                 return ((ss_a1.ssA1Expansion) a).checkContext(sl);
             }
             return "";
-        } 
+        }
+        
+        public Object evaluate(SymList sl) 
+        { // for sabi sabi plng
+            if(a instanceof ss_a1.ssA1)
+            {
+                return ((ss_a1.ssA1) a).evaluate(sl);
+            }
+            else if(a instanceof ss_a1.ssA1Expansion)
+            {
+                return ((ss_a1.ssA1Expansion) a).evaluate(sl);
+            }
+        }
+        return "";
     }
     
     public static class ssParenEnd extends ss_paren
@@ -98,6 +111,25 @@ public abstract class ss_paren implements created.iNode
             }
         
             return "";
+        }
+        
+        public Object evaluate(SymList sl)
+        {
+            // if(e instanceof sabi_sabi_end.ssEndUtos)
+            // {
+            //     return ((sabi_sabi_end.ssEndUtos) e).evaluate(sl);
+            // }
+            // else if(e instanceof sabi_sabi_end.ssEndValidVar)
+            // {
+            //     return ((sabi_sabi_end.ssEndValidVar) e).evaluate(sl);
+            // }
+            // else 
+            if(e instanceof sabi_sabi_end.ssEndLiteral)
+            {
+                return ((sabi_sabi_end.ssEndLiteral) e).evaluate(sl);
+            }
+            return "";
+            
         }
     }
 }

@@ -87,6 +87,14 @@ public abstract class utos_dec_db implements created.iNode
                 ((utos_makeSulat.makeSulat) usu).preInterpret(sl);
             }
         }
+        
+        public void evaluate(SymList sl)
+        {
+            if(usu instanceof utos_makeSulat.makeSulat)
+            {
+                ((utos_makeSulat.makeSulat) usu).evaluate(sl);
+            }
+        }
     }
     
     public static class breakup extends utos_dec_db

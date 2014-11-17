@@ -97,14 +97,39 @@ public abstract class ss_a2 implements created.iNode
         
         
         
-//        public double evaluate(){
-//            switch(ar.evaluate())
-//            {
-//                case "+" : return u.evaluate() * a.evaluate();
-//                case "-" : return u.evaluate() / a.evaluate();
-//                case "-" : return u.evaluate() % a.evaluate();
-//            }
-//        }
+        public double evaluate()
+        {
+            Object o1 = null;
+            Object o2 = null;
+            
+            if(u instanceof ss_unary_1.ssU1)
+            {
+                o1 = ((ss_unary_1.ssU1) u).setSymList(sl);
+            }
+            else if(u instanceof ss_unary_1.ssU1Not)
+            {
+                o1 = ((ss_unary_1.ssU1Not) u).setSymList(sl);
+            }
+            
+            if(a instanceof ss_a2.ssA2)
+            {
+                o2 = ((ss_a2.ssA2) a).setSymList(sl);
+            }
+            else if(a instanceof ss_a2.ssA2Expansion)
+            {
+                o2 = ((ss_a2.ssA2Expansion) a).setSymList(sl);
+            }
+            
+            if(ar instanceof arithmetic_2.arithmetic2)
+            {
+                switch(((arithmetic_2.arithmetic2) ar).setSymList(sl))
+                {
+                    case "*" : return (double)o1 * (double)o2;
+                    case "/" : return (double)o1 / (double)o2;
+                    case "%" : return (double)o1 % (double)o2;
+                }
+            }
+        }
         
     }
     
@@ -146,10 +171,18 @@ public abstract class ss_a2 implements created.iNode
             }
             return "";
         } 
-//        public double evaluate()
-//        {
-//            return u.evaluate()
-//        }
+        
+        public Object evaluate(SymList sl)
+        {
+            if(u instanceof ss_unary_1.ssU1)
+            {
+                ((ss_unary_1.ssU1) u).evaluate(sl);
+            }
+            else if(u instanceof ss_unary_1.ssU1Not)
+            {
+                ((ss_unary_1.ssU1Not) u).evaluate(sl);
+            }
+        }
     }
     
     

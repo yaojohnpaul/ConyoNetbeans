@@ -76,6 +76,31 @@ public abstract class ss_OR implements created.iNode
             ErrorReport.error("Datatype Mismatch");
             return "";
         } 
+        
+        public Object evaluate(sl)
+        {
+            Object o1;
+            Object o2;
+            
+            if(a instanceof ss_AND.ssAND)
+            {
+                o1 = ((ss_AND.ssAND) a).setSymList(sl);
+            }
+            else if(a instanceof ss_AND.ssANDExpansion)
+            {
+                o1 = ((ss_AND.ssANDExpansion) a).setSymList(sl);
+            }
+            if(o instanceof ss_OR.ssOR)
+            {
+                o2 = ((ss_OR.ssOR) o).setSymList(sl);
+            }
+            else if(o instanceof ss_OR.ssORExpansion)
+            {
+                o2 = ((ss_OR.ssORExpansion) o).setSymList(sl);
+            }   
+            
+            return (Boolean)o1 || (Boolean)o2;
+        }
     }
     
     public static class ssOR extends ss_OR
@@ -116,7 +141,19 @@ public abstract class ss_OR implements created.iNode
                 return ((ss_AND.ssANDExpansion) a).checkContext(sl);
             }
             return "";
-        } 
+        }
+        
+        public Object evaluate(sl)
+        {
+            if(a instanceof ss_AND.ssAND)
+            {
+                return ((ss_AND.ssAND) a).evaluate(sl);
+            }
+            else if(a instanceof ss_AND.ssANDExpansion)
+            {
+                return ((ss_AND.ssANDExpansion) a).evaluate(sl);
+            }
+        }
     }
     
 }

@@ -49,7 +49,7 @@ public abstract class sabi_sabi_end implements created.iNode
             {
                 return ((valid_var.validVarRB) v).checkContext(sl);
             }
-            return null;
+            return "";
         } 
     }
     
@@ -89,7 +89,7 @@ public abstract class sabi_sabi_end implements created.iNode
             {
                 return ((utos_dec_val.utosMakeTawag) u).checkContext(sl);
             }
-            return null;
+            return "";
         } 
     }
     
@@ -138,6 +138,40 @@ public abstract class sabi_sabi_end implements created.iNode
             else if(l instanceof literal.Inty)
             {
                 return ((literal.Inty) l).checkContext(sl);
+            }
+            return "";
+        }
+        
+        public Object evaluate(SymList sl) 
+        { // for sabi sabi plng
+            //other context here
+            
+            if(l instanceof literal.Booly)
+            {
+                if((((literal.Booly) l).value).equals("yuhh"))
+                    return true;
+                else
+                    return false;
+            }
+            else if(l instanceof literal.Waley)
+            {
+                return null;
+            }
+            else if(l instanceof literal.Chary)
+            {
+                return (((literal.Chary) l).value).charAt(0);
+            }
+            else if(l instanceof literal.Stringy)
+            {
+                return ((literal.Stringy) l).value;
+            }
+            else if(l instanceof literal.Floaty)
+            {
+                return Double.valueOf(((literal.Floaty) l).value);
+            }
+            else if(l instanceof literal.Inty)
+            {
+                return Integer.valueOf(((literal.Inty) l).value);
             }
             return "";
         }

@@ -56,5 +56,13 @@ public abstract class utos_block_opt implements created.iNode
                 ((block_content.blockContent) b).preInterpret(sl);
             }
         }
+        
+        public void evaluate(SymList sl)
+        {
+            if(b instanceof block_content.blockContent)
+            {
+                ((block_content.blockContent) b).evaluate(sl);
+            }
+        }
     }
 }

@@ -124,16 +124,99 @@ public abstract class ss_a1 implements created.iNode
                 return arith2;
                 
             ErrorReport.error("Datatype Mismatch");
-            return ""l;
+            return "";
         } 
         
-//        public double evaluate(){
-//            switch(ar.evaluate())
-//            {
-//                case "+" : return a2.evaluate() + a1.evaluate();
-//                case "-" : return a2.evaluate() - a1.evaluate();
-//            }
-//        }
+        public void setSymList(SymList sl)
+        {
+            Object o1 = null;
+            Object o2 = null;
+            
+            if(a2 instanceof ss_a2.ssA2)
+            {
+                o2 = ((ss_a2.ssA2) a2).evaluate(sl);
+            }
+            else if(a2 instanceof ss_a2.ssA2Expansion)
+            {
+                o2 = ((ss_a2.ssA2Expansion) a2).evaluate(sl);
+            }
+            
+            if(a1 instanceof ss_a1.ssA1)
+            {
+                o1 = ((ss_a1.ssA1) a1).evaluate(sl);
+            }
+            else if(a1 instanceof ss_a1.ssA1Expansion)
+            {
+                o1 = ((ss_a1.ssA1Expansion) a1).evaluate(sl);
+            }
+            
+            if(ar instanceof arithmetic_1.arithmetic1)
+            {
+                switch(((arithmetic_1.arithmetic1) ar).evaluate(sl))
+                {
+                    case "+":   if(o1 instanceof boolean) 
+                                    return (boolean)o1 + (boolean)o2;
+                                else if(o1 instanceof int) 
+                                    return (int)o1 + (int)o2;
+                                else if(o1 instanceof float) 
+                                    return (float)o1 + (float)o2;
+                                else if(o1 instanceof String)
+                                {
+                                    if(o2 instanceof boolean) 
+                                        return (String)o1 + (boolean)o2;
+                                    else if(o2 instanceof int) 
+                                        return (String)o1 + (int)o2;
+                                    else if(o2 instanceof float) 
+                                        return (String)o1 + (float)o2;
+                                    else if(o2 instanceof char) 
+                                        return (String)o1 + (char)o2;
+                                    else if(o2 instanceof String){
+                                        return (String)o1 + (String)o2;
+                                }
+                                else if(o2 instanceof String)
+                                {
+                                    if(o1 instanceof boolean) 
+                                        return (boolean)o1 + (String)o2;
+                                    else if(o1 instanceof int) 
+                                        return (int)o1 + (String)o2;
+                                    else if(o1 instanceof float) 
+                                        return (float)o1 + (String)o2;
+                                    else if(o1 instanceof char) 
+                                        return (char)o1 + (String)o2;
+                                }
+                    case "-":   if(o1 instanceof boolean) 
+                                    return (boolean)o1 - (boolean)o2;
+                                else if(o1 instanceof int) 
+                                    return (int)o1 - (int)o2;
+                                else if(o1 instanceof float) 
+                                    return (float)o1 - (float)o2;
+                                else if(o1 instanceof String)
+                                {
+                                    if(o2 instanceof boolean) 
+                                        return (String)o1 - (boolean)o2;
+                                    else if(o2 instanceof int) 
+                                        return (String)o1 - (int)o2;
+                                    else if(o2 instanceof float) 
+                                        return (String)o1 - (float)o2;
+                                    else if(o2 instanceof char) 
+                                        return (String)o1 - (char)o2;
+                                    else if(o2 instanceof String)
+                                        return (String)o1 - (String)o2;
+                                }
+                                else if(o2 instanceof String)
+                                {
+                                    if(o1 instanceof boolean) 
+                                        return (boolean)o1 - (String)o2;
+                                    else if(o1 instanceof int) 
+                                        return (int)o1 - (String)o2;
+                                    else if(o1 instanceof float) 
+                                        return (float)o1 - (String)o2;
+                                    else if(o1 instanceof char) 
+                                        return (char)o1 - (String)o2;
+                                }
+                }
+            }
+        }
         
     }
     
@@ -176,9 +259,17 @@ public abstract class ss_a1 implements created.iNode
             return "";
         } 
         
-//        public double evaluate(){
-//            return a2.evaluate();
-//        }
+        public Object evaluate(SymList sl)
+        {
+            if(a2 instanceof ss_a2.ssA2)
+            {
+                return ((ss_a2.ssA2) a2).evaluate(sl);
+            }
+            else if(a2 instanceof ss_a2.ssA2Expansion)
+            {
+                return ((ss_a2.ssA2Expansion) a2).evaluate(sl);
+            }
+        }
     }
 }
 

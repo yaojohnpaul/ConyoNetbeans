@@ -61,6 +61,32 @@ public abstract class yaya_list implements created.iNode
                 ((yaya_list.yayaList) l).checkContext(sl);
             }
         }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(y instanceof yaya.addYaya)
+            {
+                ((yaya.addYaya) y).preInterpret(sl);
+            }
+            
+            if(l instanceof yaya_list.yayaList)
+            {
+                ((yaya_list.yayaList) l).preInterpret(sl);
+            }
+        }
+        
+        public void evaluate(SymList sl)
+        {
+            if(y instanceof yaya.addYaya)
+            {
+                ((yaya.addYaya) y).evaluate(sl);
+            }
+            
+            if(l instanceof yaya_list.yayaList)
+            {
+                ((yaya_list.yayaList) l).evaluate(sl);
+            }
+        }
     }
     
 }

@@ -58,9 +58,18 @@ public abstract class ss_unary_1 implements created.iNode
             return "";
         } 
         
-        
-        
-        
+        public Object evaluate(SymList sl)
+        {
+            if(u instanceof ss_unary_1.ssU1)
+            {
+                return !((boolean)((ss_unary_1.ssU1) u).evaluate(sl));
+            }
+            else if(u instanceof ss_unary_1.ssU1Not)
+            {
+                return !((boolean)((ss_unary_1.ssU1Not) u).evaluate(sl));
+            }
+            
+        }
     }
     
     public static class ssU1 extends ss_unary_1
@@ -104,8 +113,18 @@ public abstract class ss_unary_1 implements created.iNode
             return "";
         }
         
-       
-        
+        public Object setSymList(SymList sl)
+        {
+            if(p instanceof ss_paren.ssParen)
+            {
+                return ((ss_paren.ssParen) p).setSymList(sl);
+            }
+            else if(p instanceof ss_paren.ssParenEnd)
+            {
+                return ((ss_paren.ssParenEnd) p).setSymList(sl);
+            }
+            
+        }
     }
 }
 

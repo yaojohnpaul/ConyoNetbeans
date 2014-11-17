@@ -76,6 +76,31 @@ public abstract class ss_AND implements created.iNode
             ErrorReport.error("Datatype Mismatch");
             return "";
         } 
+        
+        public Object evaluate(SymList sl)
+        {
+            Object o1 = null;
+            Object o2 = null;
+            
+            if(a instanceof ss_AND.ssAND)
+            {
+                o1 = ((ss_AND.ssAND) a).evaluate(sl);
+            }
+            else if(a instanceof ss_AND.ssANDExpansion)
+            {
+                o1 = ((ss_AND.ssANDExpansion) a).evaluate(sl);
+            }
+            if(e instanceof ss_equality.ssEquality)
+            {
+                o2 = ((ss_equality.ssEquality) e).evaluate(sl);
+            }
+            else if(e instanceof ss_equality.ssEqualityExpansion)
+            {
+                o2 = ((ss_equality.ssEqualityExpansion) e).evaluate(sl);
+            }
+            
+            return (Boolean)o1 && (Boolean)o2;
+        }
     }
     
     public static class ssAND extends ss_AND
@@ -117,6 +142,18 @@ public abstract class ss_AND implements created.iNode
             }
             return "";
         } 
+        
+        public Object evaluate(SymList sl)
+        {
+            if(e instanceof ss_equality.ssEquality)
+            {
+                return ((ss_equality.ssEquality) e).evaluate(sl);
+            }
+            else if(e instanceof ss_equality.ssEqualityExpansion)
+            {
+                return ((ss_equality.ssEqualityExpansion) e).evaluate(sl);
+            }
+        }
     }
     
 }

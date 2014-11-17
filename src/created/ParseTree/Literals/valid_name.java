@@ -33,7 +33,13 @@ public abstract class valid_name implements created.iNode
         
         public String checkContext(SymList sl) 
         { // for sabi sabi plng
-            SymEntry ste = sl.getSymbol(id); 
+            SymEntry ste = null;
+            if(sl.getSymbol(id) instanceof SymVar)
+                ste = (SymVar) sl.getSymbol(id);
+            else if(sl.getSymbol(id) instanceof SymFunc)
+                ste = (SymFunc) sl.getSymbol(id);
+            else if(sl.getSymbol(id) instanceof SymConst)
+                ste = (SymConst) sl.getSymbol(id);
             
             if(ste == null)
             {
@@ -45,7 +51,11 @@ public abstract class valid_name implements created.iNode
                 return ((data_type.datatypeReference) ste.type()).checkContext(sl);
             else if (ste.type() instanceof data_type.datatypePrimitive)
                 return ((data_type.datatypePrimitive) ste.type()).checkContext(sl);
-            return "";
+                
+            if(ste.type() == null)
+                return "poor";
+                
+            return ste.type().toString();
         } 
         
         public void preInterpret(SymList sl)
