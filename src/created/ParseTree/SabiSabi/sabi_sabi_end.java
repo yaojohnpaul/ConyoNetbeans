@@ -121,23 +121,23 @@ public abstract class sabi_sabi_end implements created.iNode
             }
             else if(l instanceof literal.Waley)
             {
-                return ((literal.Booly) l).checkContext(sl);
+                return ((literal.Waley) l).checkContext(sl);
             }
             else if(l instanceof literal.Chary)
             {
-                return ((literal.Booly) l).checkContext(sl);
+                return ((literal.Chary) l).checkContext(sl);
             }
             else if(l instanceof literal.Stringy)
             {
-                return ((literal.Booly) l).checkContext(sl);
+                return ((literal.Stringy) l).checkContext(sl);
             }
             else if(l instanceof literal.Floaty)
             {
-                return ((literal.Booly) l).checkContext(sl);
+                return ((literal.Floaty) l).checkContext(sl);
             }
             else if(l instanceof literal.Inty)
             {
-                return ((literal.Booly) l).checkContext(sl);
+                return ((literal.Inty) l).checkContext(sl);
             }
             return "";
         }
