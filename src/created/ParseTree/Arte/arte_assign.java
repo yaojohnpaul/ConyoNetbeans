@@ -56,7 +56,7 @@ public abstract class arte_assign implements created.iNode
             {
                 return ((arte_init.sabiInit) i).checkContext(sl);
             }
-            return ;
+            return "";
         }
         
         public void preInterpret(SymList sl)

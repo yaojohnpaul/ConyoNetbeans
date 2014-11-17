@@ -1,0 +1,39 @@
+/* TESTING Constant */
+OMG floaty TESTING makeKuha 1.2 db
+
+hireYaya function1 bayad () makeBalik poor
+$
+	makeArte inty counter1 db
+	makeArte inty counter1 db /*Duplicate variable*/
+	makeArte inty counter2 db
+
+	makeArte stringy string1 db
+
+	string1 makeKuha "Hello" db
+	
+	i makeKuha 21 db /*Undeclared variable and data type mismatch*/
+        counter1 makeKuha "asdf" db /*Data type mismatch*/
+	
+	counter1 makeKuha 31 db
+	
+	counter2 makeKuha counter1 + string1 db /*Data type mismatch*/
+
+        makeUlit(counter1 makeKuha 0 db i <= 5 db i++) /*Not declared i, Datatype not allowed with comparison*/
+        $
+
+        $
+        
+        
+$
+
+/*Duplicate function1*/
+hireYaya function1 bayad (inty a) makeBalik stringy s
+$
+	/* Nothing here */
+$
+
+superYaya
+$
+	makeSulat("Value of function1: ") db
+	makeTawag function1() db
+$

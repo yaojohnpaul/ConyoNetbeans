@@ -1,0 +1,53 @@
+/* This is a comment. */
+OMG floaty PI makeKuha 3.14 db 
+
+hireYaya getTwenty bayad () makeBalik inty a
+$
+	makeArte inty h db
+	h makeKuha 1 db
+	a makeKuha 19 + h db
+$
+
+hireYaya forLoopTest bayad (inty total) makeBalik poor
+$
+	makeArte inty i db
+	
+	makeUlit(i makeKuha 0 db i <= total db i++)
+	$
+		likeKapag(i <> 0)
+		$
+			makeSulat(i) db
+		$
+		thisNalang
+		$
+			makeSulat("0 not included") db
+		$
+	$
+$
+
+hireYaya whileLoopTest bayad (inty total) makeBalik poor
+$
+	makeArte inty j db
+	j makeKuha total db
+	
+	likeHabang(j <> 0)
+	$
+		makePalit(j)
+		$
+			MRW 3: 	makeSulat("this is 3") db
+					breakup db
+			MRW 2: 	makeSulat ("this is 2") db
+					breakup db
+			MDR:	makeSulat ("i don't know how to count") db
+					breakup db
+		$
+		j-- db
+	$
+$
+ 
+superYaya
+$
+ 	makeTawag forLoopTest(makeTawag getTwenty()) db
+	makeTawag whileLoopTest(5) db
+	makeSulat("Yey.") db
+$

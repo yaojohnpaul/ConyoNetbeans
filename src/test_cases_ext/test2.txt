@@ -1,0 +1,18 @@
+/* Comment */
+OMG floaty PI makeKuha 3.14 db
+
+hireYaya test1 bayad () makeBalik poor
+$
+	makeArte inty j db
+$
+
+superYaya
+$
+	makeArte inty i db
+	
+	i makeKuha 2 db
+	
+	makeSulat("Hello, world.") db
+	
+	i++ db
+$

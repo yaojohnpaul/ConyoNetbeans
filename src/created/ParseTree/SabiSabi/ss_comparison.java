@@ -88,7 +88,7 @@ public abstract class ss_comparison implements created.iNode
                 case "booly" : break;
                 case "floaty" : break;
                 case "inty" : break;
-                default : ErrorReport.error("Datatype Not Allowed");
+                default : ErrorReport.error("Datatype Not Allowed with Comparison Operator");
                             return "";
             }
             if(arith.equals(compare))

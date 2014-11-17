@@ -96,6 +96,7 @@ public abstract class ss_a1 implements created.iNode
                     case "floaty"   :
                     case "chary"    : return "stringy";
                     default         : ErrorReport.error("Datatype Mismatch");
+                                        return "";
                                     
                 }
             }

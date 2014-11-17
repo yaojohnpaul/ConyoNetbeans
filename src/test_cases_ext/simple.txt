@@ -1,0 +1,8 @@
+/* Comment */
+OMG floaty TEST makeKuha 1.2 db
+
+superYaya
+$
+	makeSulat("Hello, world.") db
+        makeSulat("LOOK AT THIS AMAZING ARITHMETIC: " + 1 + 1 - 3) db
+$
