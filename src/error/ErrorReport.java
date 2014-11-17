@@ -13,4 +13,9 @@ public class ErrorReport
     {
         System.out.println("Error " + errorNo++ + ": " + err);
     }
+    
+    public static int semanticErrorsCount()
+    {
+        return semanticErrorsCount;
+    }
 }
