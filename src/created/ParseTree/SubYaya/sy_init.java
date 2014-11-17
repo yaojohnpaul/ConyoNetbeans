@@ -29,7 +29,19 @@ public abstract class sy_init implements created.iNode
         
         public void setSymList(SymList sl)
         {
+            if(r instanceof reference_dt.referenceArray)
+            {
+                ((reference_dt.referenceArray) r).setSymList(st);
+            }
+            else if(r instanceof reference_dt.referenceValidName)
+            {
+                ((reference_dt.referenceValidName) r).setSymList(st);
+            }
             
+            if(al instanceof arte_init_list.arteInitList)
+            {
+                ((arte_init_list.arteInitList) al).setSymList(sl);
+            } 
         }
         
         public String checkContext(SymList sl)
@@ -42,12 +54,30 @@ public abstract class sy_init implements created.iNode
             {
                 return ((reference_dt.referenceValidName) r).checkContext(st);
             }
-            return "";
+            
+            if(al instanceof arte_init_list.arteInitList)
+            {
+                ((arte_init_list.arteInitList) al).checkContext(sl);
+            } 
+            
+            return null;
         }
         
         public void preInterpret(SymList sl)
         {
+            if(r instanceof reference_dt.referenceArray)
+            {
+                ((reference_dt.referenceArray) r).preInterpret(st);
+            }
+            else if(r instanceof reference_dt.referenceValidName)
+            {
+                ((reference_dt.referenceValidName) r).preInterpret(st);
+            }
             
+            if(al instanceof arte_init_list.arteInitList)
+            {
+                ((arte_init_list.arteInitList) al).preInterpret(sl);
+            } 
         }
     }
     

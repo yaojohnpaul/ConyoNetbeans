@@ -37,7 +37,6 @@ public abstract class sabi_sabi_end implements created.iNode
             {
                 ((valid_var.validVarRB) v).setSymList(sl);
             }
-            
         }
         
         public String checkContext(SymList sl) 

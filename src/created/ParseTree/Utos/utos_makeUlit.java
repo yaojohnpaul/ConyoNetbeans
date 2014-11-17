@@ -7,6 +7,7 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
 
 public abstract class utos_makeUlit implements created.iNode  
 {
@@ -57,6 +58,117 @@ public abstract class utos_makeUlit implements created.iNode
             else if(s2 != null)
                 return "makeUlit(" + m1.toString() + " db " + s1.toString() + " " + s2.toString() + ")\n" + u.toString();
             return "";
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            if(m1 instanceof utos_makeKuha.makeKuha)
+            {
+                ((utos_makeKuha.makeKuha) m1).setSymList(sl);
+            }
+            
+            if(m2 instanceof utos_makeKuha.makeKuha)
+            {
+                ((utos_makeKuha.makeKuha) m2).setSymList(sl);
+            }
+            
+            if(s1 instanceof sabi_sabi_for.SabiSabiFor)
+            {
+                ((sabi_sabi_for.SabiSabiFor) s1).setSymList(sl);
+            }
+            
+            if(s2 instanceof sabi_sabi_for.SabiSabiFor)
+            {
+                ((sabi_sabi_for.SabiSabiFor) s2).setSymList(sl);
+            }
+            
+            if(m3 instanceof utos_sabisabi.utosSabiSabiFront)
+            {
+                ((utos_sabisabi.utosSabiSabiFront) m3).setSymList(sl);
+            }
+            else if(m3 instanceof utos_sabisabi.utosSabiSabiBack)
+            {
+                ((utos_sabisabi.utosSabiSabiBack) m3).setSymList(sl);
+            }
+            
+            if(u instanceof utos_block.utosBlock)
+            {
+                ((utos_block.utosBlock) u).setSymList(sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(m1 instanceof utos_makeKuha.makeKuha)
+            {
+                ((utos_makeKuha.makeKuha) m1).checkContext(sl);
+            }
+            
+            if(m2 instanceof utos_makeKuha.makeKuha)
+            {
+                ((utos_makeKuha.makeKuha) m2).checkContext(sl);
+            }
+            
+            if(s1 instanceof sabi_sabi_for.SabiSabiFor)
+            {
+                ((sabi_sabi_for.SabiSabiFor) s1).checkContext(sl);
+            }
+            
+            if(s2 instanceof sabi_sabi_for.SabiSabiFor)
+            {
+                ((sabi_sabi_for.SabiSabiFor) s2).checkContext(sl);
+            }
+            
+            if(m3 instanceof utos_sabisabi.utosSabiSabiFront)
+            {
+                ((utos_sabisabi.utosSabiSabiFront) m3).checkContext(sl);
+            }
+            else if(m3 instanceof utos_sabisabi.utosSabiSabiBack)
+            {
+                ((utos_sabisabi.utosSabiSabiBack) m3).checkContext(sl);
+            }
+            
+            if(u instanceof utos_block.utosBlock)
+            {
+                ((utos_block.utosBlock) u).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(m1 instanceof utos_makeKuha.makeKuha)
+            {
+                ((utos_makeKuha.makeKuha) m1).preInterpret(sl);
+            }
+            
+            if(m2 instanceof utos_makeKuha.makeKuha)
+            {
+                ((utos_makeKuha.makeKuha) m2).preInterpret(sl);
+            }
+            
+            if(s1 instanceof sabi_sabi_for.SabiSabiFor)
+            {
+                ((sabi_sabi_for.SabiSabiFor) s1).preInterpret(sl);
+            }
+            
+            if(s2 instanceof sabi_sabi_for.SabiSabiFor)
+            {
+                ((sabi_sabi_for.SabiSabiFor) s2).preInterpret(sl);
+            }
+            
+            if(m3 instanceof utos_sabisabi.utosSabiSabiFront)
+            {
+                ((utos_sabisabi.utosSabiSabiFront) m3).preInterpret(sl);
+            }
+            else if(m3 instanceof utos_sabisabi.utosSabiSabiBack)
+            {
+                ((utos_sabisabi.utosSabiSabiBack) m3).preInterpret(sl);
+            }
+            
+            if(u instanceof utos_block.utosBlock)
+            {
+                ((utos_block.utosBlock) u).preInterpret(sl);
+            }
         }
     }
 }

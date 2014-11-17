@@ -28,6 +28,23 @@ public abstract class utos_makeTawag implements created.iNode
             return "makeTawag " + vn.toString() + " (" + l.toString() + "";
         }
         
+        public void setSymList(SymList sl)
+        {
+            if(vn instanceof valid_name.validName)
+            {
+                ((valid_name.validName) vn).setSymList(sl);
+            }
+            else if(vn instanceof valid_name.identifier)
+            {
+                ((valid_name.identifier) vn).setSymList(sl);
+            }
+            
+            if(l instanceof arte_init_list.arteInitList)
+            {
+                ((arte_init_list.arteInitList) l).setSymList(sl);
+            } 
+        }
+        
         public String checkContext(SymList sl) 
         { // for sabi sabi plng
             //other context here
@@ -36,6 +53,7 @@ public abstract class utos_makeTawag implements created.iNode
                 //((valid_name.validName) vn).setSymList(sl);
                 
             }
+            
             if(vn instanceof valid_name.identifier)
             {
                 //((valid_name.identifier) vn).setSymList(sl);
@@ -47,7 +65,30 @@ public abstract class utos_makeTawag implements created.iNode
                     return "";
                 }
             }
+            
+            if(l instanceof arte_init_list.arteInitList)
+            {
+                ((arte_init_list.arteInitList) l).checkContext(sl);
+            } 
+            
             return vn.checkContext();
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(vn instanceof valid_name.validName)
+            {
+                ((valid_name.validName) vn).preInterpret(sl);
+            }
+            else if(vn instanceof valid_name.identifier)
+            {
+                ((valid_name.identifier) vn).preInterpret(sl);
+            }
+            
+            if(l instanceof arte_init_list.arteInitList)
+            {
+                ((arte_init_list.arteInitList) l).preInterpret(sl);
+            } 
         }
     }
 }

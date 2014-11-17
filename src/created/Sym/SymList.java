@@ -1,6 +1,14 @@
 package created.Sym;
 
 import java.util.*;
+import created.ParseTree.Array.*;
+import created.ParseTree.Arte.*;
+import created.ParseTree.Literals.*;
+import created.ParseTree.Program.*;
+import created.ParseTree.SabiSabi.*;
+import created.ParseTree.SubYaya.*;
+import created.ParseTree.Utos.*;
+import created.ParseTree.Yaya.*;
 
 /**
  * A class to act as a list of symbols (variables, functions, etc.).

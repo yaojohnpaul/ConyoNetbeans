@@ -94,7 +94,7 @@ public abstract class ss_comparison implements created.iNode
                 return "booly";
                 
             ErrorReport.error("Datatype Mismatch");
-            return "";
+            return null;
         } 
         
 //        public boolean evaluate(){
@@ -138,13 +138,13 @@ public abstract class ss_comparison implements created.iNode
             //other context here
             if(a instanceof ss_a1.ssA1)
             {
-                return ((ss_a1.ssA1) a).c(sl);
+                return ((ss_a1.ssA1) a).checkContext(sl);
             }
             else if(a instanceof ss_a1.ssA1Expansion)
             {
                 return ((ss_a1.ssA1Expansion) a).checkContext(sl);
             }
-            return "";
+            return null;
         } 
         
 //        public double evaluate(){

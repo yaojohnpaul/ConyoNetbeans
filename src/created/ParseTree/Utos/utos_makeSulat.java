@@ -7,6 +7,7 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
 import created.*;
 
 public abstract class utos_makeSulat implements created.iNode  
@@ -23,6 +24,30 @@ public abstract class utos_makeSulat implements created.iNode
         public String toString()
         {
             return "makeSulat(" + s.toString() + ")";
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            if(s instanceof sabi_sabi.sabiSabi)
+            {
+                ((sabi_sabi.sabiSabi) s).setSymList(sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(s instanceof sabi_sabi.sabiSabi)
+            {
+                ((sabi_sabi.sabiSabi) s).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(s instanceof sabi_sabi.sabiSabi)
+            {
+                ((sabi_sabi.sabiSabi) s).preInterpret(sl);
+            }
         }
         
         public void evaluate()

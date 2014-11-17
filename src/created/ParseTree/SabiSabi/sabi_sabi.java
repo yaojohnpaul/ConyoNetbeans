@@ -55,7 +55,7 @@ public abstract class sabi_sabi implements created.iNode
             {
                 return ((ss_OR.ssORExpansion) o).checkContext(sl);
             }
-            return "";
+            return null;
         }
     }
 }

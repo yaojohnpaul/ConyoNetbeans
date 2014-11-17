@@ -41,7 +41,7 @@ public abstract class utos_makeKuha implements created.iNode
             
             if(a instanceof arte_assign.arteAssign)
             {
-                ((arte_assign.arteAssign) a).checkContext(sl);
+                ((arte_assign.arteAssign) a).setSymList(sl);
             }
         }
         
@@ -63,7 +63,7 @@ public abstract class utos_makeKuha implements created.iNode
             
             if(a instanceof arte_assign.arteAssign)
             {
-                ((arte_assign.arteAssign) a).checkContext(sl);
+                assign = ((arte_assign.arteAssign) a).checkContext(sl);
             }
             
             
@@ -73,6 +73,7 @@ public abstract class utos_makeKuha implements created.iNode
             }
             
             ErrorReport.error("Datatype Mismatch");
+            return null;
         }
         
         public void preInterpret(SymList sl)

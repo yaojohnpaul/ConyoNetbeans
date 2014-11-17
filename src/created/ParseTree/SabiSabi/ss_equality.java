@@ -121,7 +121,7 @@ public abstract class ss_equality implements created.iNode
                 return "booly";
                 
             ErrorReport.error("Datatype Mismatch");
-            return "error";
+            return null;
         } 
     }
     
@@ -165,7 +165,7 @@ public abstract class ss_equality implements created.iNode
             {
                 return ((ss_comparison.ssComparisonExpansion) c).checkContext(sl);
             }
-            return "";
+            return null;
         } 
     }
 }

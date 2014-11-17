@@ -39,6 +39,7 @@ public abstract class arte_init implements created.iNode
             {
                 return ((array_init.arrayInit) a).checkContext(sl);
             }
+            return null;
         }
         
         public void preInterpret()
@@ -78,6 +79,7 @@ public abstract class arte_init implements created.iNode
             {
                 return ((sy_init.syInit) sy).checkContext(sl);
             }
+            return null;
         }
         
         public void preInterpret()
@@ -117,6 +119,7 @@ public abstract class arte_init implements created.iNode
             {
                 return ((sabi_sabi.sabiSabi) s).checkContext(sl);
             }
+            return null;
         }
         
         public void preInterpret()

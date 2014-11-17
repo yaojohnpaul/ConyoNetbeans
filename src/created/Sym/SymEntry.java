@@ -1,6 +1,15 @@
 
 package created.Sym;
 
+import created.ParseTree.Array.*;
+import created.ParseTree.Arte.*;
+import created.ParseTree.Literals.*;
+import created.ParseTree.Program.*;
+import created.ParseTree.SabiSabi.*;
+import created.ParseTree.SubYaya.*;
+import created.ParseTree.Utos.*;
+import created.ParseTree.Yaya.*;
+
 /**
  * An entry for the symbol list.
  * Based on SymtabEntry class by Klein and Rumpe. (jflex examples, interpreter)

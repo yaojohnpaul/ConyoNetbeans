@@ -23,13 +23,32 @@ public abstract class sabi_sabi_for implements created.iNode
         public String toString(){
             return s + " DB";
         }
+       
+        public void setSymList(SymList sl)
+        {
+            if(s instanceof sabi_sabi.sabiSabi)
+            {
+                ((sabi_sabi.sabiSabi) s).setSymList(sl);
+            }
+        }
         
         public String checkContext(SymList s) 
         { // for sabi sabi plng
             //other context here
-            return s.checkContext();
+            if(s instanceof sabi_sabi.sabiSabi)
+            {
+                return ((sabi_sabi.sabiSabi) s).checkContext(sl);
+            }
+            return null;
         }
         
+        public void preInterpret(SymList sl)
+        {
+            if(s instanceof sabi_sabi.sabiSabi)
+            {
+                ((sabi_sabi.sabiSabi) s).preInterpret(sl);
+            }
+        }
     }
 }
 

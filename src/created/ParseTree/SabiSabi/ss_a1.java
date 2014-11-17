@@ -117,7 +117,7 @@ public abstract class ss_a1 implements created.iNode
                 return arith2;
                 
             ErrorReport.error("Datatype Mismatch");
-            return "";
+            return null;
         } 
         
 //        public double evaluate(){
@@ -166,7 +166,7 @@ public abstract class ss_a1 implements created.iNode
             {
                 return ((ss_a2.ssA2Expansion) a2).checkContext(sl);
             }
-            return "";
+            return null;
         } 
         
 //        public double evaluate(){
