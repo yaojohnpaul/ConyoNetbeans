@@ -7,6 +7,7 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
 
 public abstract class OMG_list implements created.iNode 
 {
@@ -33,6 +34,32 @@ public abstract class OMG_list implements created.iNode
                 return o.toString() + "\n" + l.toString();
             else
                 return o.toString();
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            if(o instanceof OMG_dec.OMG)
+            {
+                ((OMG_dec.OMG) o).setSymList(sl);
+            }
+            
+            if(l instanceof OMG_list.OMGList)
+            {
+                ((OMG_list.OMGList) l).setSymList(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(o instanceof OMG_dec.OMG)
+            {
+                ((OMG_dec.OMG) o).preInterpret(sl);
+            }
+            
+            if(l instanceof OMG_list.OMGList)
+            {
+                ((OMG_list.OMGList) l).preInterpret(sl);
+            }
         }
     }
 }

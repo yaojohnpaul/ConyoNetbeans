@@ -7,6 +7,7 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
 
 public abstract class array_dt implements created.iNode
 {
@@ -27,6 +28,77 @@ public abstract class array_dt implements created.iNode
             return p.toString() + b.toString();
         }
         
+        public void setSymList(SymList sl)
+        {
+            if(p instanceof primitive_dt.intType)
+            {
+                
+            }
+            else if(p instanceof primitive_dt.floatType)
+            {
+                
+            }
+            else if(p instanceof primitive_dt.stringType)
+            {
+                
+            }
+            else if(p instanceof primitive_dt.charType)
+            {
+                
+            }
+            else if(p instanceof primitive_dt.booleanType)
+            {
+                
+            }
+        }
+        
+        public String checkContext(SymList sl)
+        {
+            if(p instanceof primitive_dt.intType)
+            {
+                return "inty";
+            }
+            else if(p instanceof primitive_dt.floatType)
+            {
+                return "floaty"
+            }
+            else if(p instanceof primitive_dt.stringType)
+            {
+                return "stringy"
+            }
+            else if(p instanceof primitive_dt.charType)
+            {
+                return "chary"
+            }
+            else if(p instanceof primitive_dt.booleanType)
+            {
+                return "booly"
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(p instanceof primitive_dt.intType)
+            {
+                
+            }
+            else if(p instanceof primitive_dt.floatType)
+            {
+                
+            }
+            else if(p instanceof primitive_dt.stringType)
+            {
+                
+            }
+            else if(p instanceof primitive_dt.charType)
+            {
+                
+            }
+            else if(p instanceof primitive_dt.booleanType)
+            {
+                
+            }
+        }
     }
     
     public static class arrayName extends array_dt
@@ -45,7 +117,29 @@ public abstract class array_dt implements created.iNode
             return vn.toString() + b.toString();
         }
         
+        public void setSymList(SymList sl)
+        {
+            if(vn instanceof valid_name.validName)
+            {
+                ((valid_name.validName) vn).setSymList(sl);
+            }
+        }
         
+        public String checkContext(SymList sl)
+        {
+            if(vn instanceof valid_name.validName)
+            {
+                return ((valid_name.validName) vn).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(vn instanceof valid_name.validName)
+            {
+                ((valid_name.validName) vn).preInterpret(sl);
+            }
+        }
     }
 }
 

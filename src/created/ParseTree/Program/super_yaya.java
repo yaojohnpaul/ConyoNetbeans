@@ -7,6 +7,7 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
 
 public abstract class super_yaya implements created.iNode 
 {
@@ -22,6 +23,14 @@ public abstract class super_yaya implements created.iNode
         public String toString()
         {
             return "superYaya\n" + u.toString();
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(u instanceof utos_block.utosBlock)
+            {
+                ((utos_block.utosBlock) u).setSymList(sl);
+            }
         }
     }
     

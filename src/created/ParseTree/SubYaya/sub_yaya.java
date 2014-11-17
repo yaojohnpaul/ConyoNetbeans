@@ -7,6 +7,8 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
+import error.*;
 
 public abstract class sub_yaya implements created.iNode 
 {
@@ -25,6 +27,32 @@ public abstract class sub_yaya implements created.iNode
         {
             return "makeUtusan" + id.toString() + body.toString();
         }
+        
+        private SymList sl;
+        
+        public void setSymList(SymList sl)
+        {   
+            Boolean avail = sl.addToList(id, new SymEntry(id, sl));
+            if(!avail)
+            {
+                ErrorReport.error("Duplicate class defined!: " + id);
+            }
+            
+            this.sl = new SymList();
+            if(body instanceof sy_body.SubYayaBodyList)
+            {
+                ((sy_body.SubYaya) body).setSymList(this.sl);   
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        { 
+            if(body instanceof sy_body.SubYayaBodyList)
+            {
+                ((sy_body.SubYaya) body).checkContext(this.sl);   
+            }
+        }
+        
     }
     
 }

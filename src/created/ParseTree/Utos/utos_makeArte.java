@@ -7,6 +7,7 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
 
 public abstract class utos_makeArte implements created.iNode  
 {
@@ -22,6 +23,30 @@ public abstract class utos_makeArte implements created.iNode
         public String toString()
         {
             return a.toString();
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            if(a instanceof arte_dec.arteDec)
+            {
+                ((arte_dec.arteDec) a).setSymList(sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(a instanceof arte_dec.arteDec)
+            {
+                ((arte_dec.arteDec) a).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(a instanceof arte_dec.arteDec)
+            {
+                ((arte_dec.arteDec) a).preInterpret(sl);
+            }
         }
     }
 }

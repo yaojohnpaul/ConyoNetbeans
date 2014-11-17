@@ -24,6 +24,12 @@ public abstract class literal implements created.iNode
             return value;
         }
         
+        public String checkContext(SymList st) 
+        { // for sabi sabi plng
+            //other context here
+            return "inty";
+        }
+        
     }
     
     public static class Floaty extends literal
@@ -37,6 +43,12 @@ public abstract class literal implements created.iNode
         
         public String toString(){
             return value;
+        }
+        
+        public String checkContext(SymList st) 
+        { // for sabi sabi plng
+            //other context here
+            return "floaty";
         }
     }
     
@@ -52,6 +64,12 @@ public abstract class literal implements created.iNode
         public String toString(){
             return value;
         }
+        
+        public String checkContext(SymList st) 
+        { // for sabi sabi plng
+            //other context here
+            return "stringy";
+        }
     }
     
     public static class Chary extends literal
@@ -65,6 +83,12 @@ public abstract class literal implements created.iNode
         
         public String toString(){
             return value;
+        }
+        
+        public String checkContext(SymList st) 
+        { // for sabi sabi plng
+            //other context here
+            return "chary";
         }
     }
     
@@ -80,6 +104,12 @@ public abstract class literal implements created.iNode
         public String toString(){
             return value;
         }
+        
+        public String checkContext(SymList st) 
+        { // for sabi sabi plng
+            //other context here
+            return "booly";
+        }
     }
     
     public static class Waley extends literal
@@ -93,6 +123,12 @@ public abstract class literal implements created.iNode
         
         public String toString(){
             return value;
+        }
+        
+        public String checkContext(SymList st) 
+        { // for sabi sabi plng
+            //other context here
+            return "waley";
         }
     }
 }

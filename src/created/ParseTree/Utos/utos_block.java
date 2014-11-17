@@ -7,6 +7,7 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
 
 public abstract class utos_block implements created.iNode 
 {
@@ -27,9 +28,33 @@ public abstract class utos_block implements created.iNode
         public String toString()
         {
             if(uo != null)
-                return "$\n" + uo.toString() + "\n";
+                return "$\n" + uo.toString() + "\n$";
             else
-                return "";
+                return "$$";
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            if(uo instanceof utos_block_opt.utosBlockOpt)
+            {
+                ((utos_block_opt.utosBlockOpt) uo).setSymList(sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(uo instanceof utos_block_opt.utosBlockOpt)
+            {
+                ((utos_block_opt.utosBlockOpt) uo).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(uo instanceof utos_block_opt.utosBlockOpt)
+            {
+                ((utos_block_opt.utosBlockOpt) uo).preInterpret(sl);
+            }
         }
     }
 }

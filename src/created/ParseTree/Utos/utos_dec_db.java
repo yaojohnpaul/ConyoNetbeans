@@ -7,6 +7,7 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
 
 public abstract class utos_dec_db implements created.iNode  
 {
@@ -23,6 +24,30 @@ public abstract class utos_dec_db implements created.iNode
         {
             return uk.toString() + " db";
         }
+        
+        public void setSymList(SymList sl)
+        {
+            if(uk instanceof utos_makeKuha.makeKuha)
+            {
+                ((utos_makeKuha.makeKuha) uk).setSymList(sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(uk instanceof utos_makeKuha.makeKuha)
+            {
+                ((utos_makeKuha.makeKuha) uk).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(uk instanceof utos_makeKuha.makeKuha)
+            {
+                ((utos_makeKuha.makeKuha) uk).preInterpret(sl);
+            }
+        }
     }
     
     public static class utosMakeSulat extends utos_dec_db
@@ -37,6 +62,30 @@ public abstract class utos_dec_db implements created.iNode
         public String toString()
         {
             return usu.toString() + " db";
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            if(usu instanceof utos_makeSulat.makeSulat)
+            {
+                ((utos_makeSulat.makeSulat) usu).setSymList(sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(usu instanceof utos_makeSulat.makeSulat)
+            {
+                ((utos_makeSulat.makeSulat) usu).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(usu instanceof utos_makeSulat.makeSulat)
+            {
+                ((utos_makeSulat.makeSulat) usu).preInterpret(sl);
+            }
         }
     }
     

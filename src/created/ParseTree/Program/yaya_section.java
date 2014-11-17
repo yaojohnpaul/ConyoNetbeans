@@ -7,6 +7,7 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
 
 public abstract class yaya_section implements created.iNode 
 {
@@ -30,6 +31,22 @@ public abstract class yaya_section implements created.iNode
                 return l.toString();
             else
                 return "";
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            if(l instanceof yaya_list.yayaList)
+            {
+                ((yaya_list.yayaList) l).setSymList(sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(l instanceof yaya_list.yayaList)
+            {
+                ((yaya_list.yayaList) l).setSymList(sl);
+            }
         }
     }
     

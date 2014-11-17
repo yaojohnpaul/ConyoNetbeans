@@ -1,5 +1,14 @@
 
-package created;
+package created.Sym;
+
+import created.ParseTree.Array.*;
+import created.ParseTree.Arte.*;
+import created.ParseTree.Literals.*;
+import created.ParseTree.Program.*;
+import created.ParseTree.SabiSabi.*;
+import created.ParseTree.SubYaya.*;
+import created.ParseTree.Utos.*;
+import created.ParseTree.Yaya.*;
 
 /**
  * An entry for the symbol list.
@@ -13,6 +22,7 @@ public class SymEntry
     public static final int CONST = 102;
     public static final int FUNC = 103;
     public static final int CLASS = 104;
+    public static final int CONSTRUCTOR = 105;
     
     protected String symName = "";
     
@@ -32,6 +42,11 @@ public class SymEntry
     public int symType()
     {
         return NONE;
+    }
+    
+    public data_type type()
+    {
+        return null;
     }
     
     @Override

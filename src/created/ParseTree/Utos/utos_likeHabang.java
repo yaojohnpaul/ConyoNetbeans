@@ -7,6 +7,7 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
 
 public abstract class utos_likeHabang implements created.iNode  
 {
@@ -33,6 +34,45 @@ public abstract class utos_likeHabang implements created.iNode
                 return "likeHabang(" + s.toString() + ")\n" + u.toString(); 
             else
                 return "likeHabang(" + s.toString() + ")\n";
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            if(s instanceof sabi_sabi.sabiSabi)
+            {
+                ((sabi_sabi.sabiSabi) s).setSymList(sl);
+            }
+            
+            if(u instanceof utos_block.utosBlock)
+            {
+                ((utos_block.utosBlock) u).setSymList(sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(s instanceof sabi_sabi.sabiSabi)
+            {
+                ((sabi_sabi.sabiSabi) s).checkContext(sl);
+            }
+            
+            if(u instanceof utos_block.utosBlock)
+            {
+                ((utos_block.utosBlock) u).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(s instanceof sabi_sabi.sabiSabi)
+            {
+                ((sabi_sabi.sabiSabi) s).preInterpret(sl);
+            }
+            
+            if(u instanceof utos_block.utosBlock)
+            {
+                ((utos_block.utosBlock) u).preInterpret(sl);
+            }
         }
     }
 }

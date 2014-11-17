@@ -7,6 +7,8 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
+import error.*;
 
 public abstract class sabi_sabi_end implements created.iNode
 {
@@ -24,6 +26,31 @@ public abstract class sabi_sabi_end implements created.iNode
         {
             return v.toString();
         }
+        
+        public void setSymList(SymList sl)
+        {
+            if(v instanceof valid_var.validVar)
+            {
+                ((valid_var.validVar) v).setSymList(sl);
+            }
+            else if(v instanceof valid_var.validVarRB)
+            {
+                ((valid_var.validVarRB) v).setSymList(sl);
+            }
+        }
+        
+        public String checkContext(SymList sl) 
+        { // for sabi sabi plng
+            if(v instanceof valid_var.validVar)
+            {
+                return ((valid_var.validVar) v).checkContext(sl);
+            }
+            else if(v instanceof valid_var.validVarRB)
+            {
+                return ((valid_var.validVarRB) v).checkContext(sl);
+            }
+            return null;
+        } 
     }
     
     public static class ssEndUtos extends sabi_sabi_end
@@ -39,6 +66,31 @@ public abstract class sabi_sabi_end implements created.iNode
         {
             return u.toString();
         }
+        
+        public void setSymList(SymList sl)
+        {
+            if(u instanceof utos_dec_val.utosMakeBasa)
+            {
+                ((utos_dec_val.utosMakeBasa) u).setSymList(sl);
+            }
+            else if(u instanceof utos_dec_val.utosMakeTawag)
+            {
+                ((utos_dec_val.utosMakeTawag) u).setSymList(sl);
+            }
+        }
+        
+        public String checkContext(SymList sl) 
+        { // for sabi sabi plng
+            if(u instanceof utos_dec_val.utosMakeBasa)
+            {
+                return ((utos_dec_val.utosMakeBasa) u).checkContext(sl);
+            }
+            else if(u instanceof utos_dec_val.utosMakeTawag)
+            {
+                return ((utos_dec_val.utosMakeTawag) u).checkContext(sl);
+            }
+            return null;
+        } 
     }
     
     public static class ssEndLiteral extends sabi_sabi_end
@@ -53,6 +105,65 @@ public abstract class sabi_sabi_end implements created.iNode
         public String toString()
         {
             return l.toString();
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            if(l instanceof literal.Booly)
+            {
+                ((literal.Booly) l).setSymList(sl);
+            }
+            else if(l instanceof literal.Waley)
+            {
+                ((literal.Booly) l).setSymList(sl);
+            }
+            else if(l instanceof literal.Chary)
+            {
+                ((literal.Booly) l).setSymList(sl);
+            }
+            else if(l instanceof literal.Stringy)
+            {
+                ((literal.Booly) l).setSymList(sl);
+            }
+            else if(l instanceof literal.Floaty)
+            {
+                ((literal.Booly) l).setSymList(sl);
+            }
+            else if(l instanceof literal.Inty)
+            {
+                ((literal.Booly) l).setSymList(sl);
+            }
+
+        }
+        
+        public String checkContext(SymList sl) 
+        { // for sabi sabi plng
+            //other context here
+            if(l instanceof literal.Booly)
+            {
+                return ((literal.Booly) l).checkContext(sl);
+            }
+            else if(l instanceof literal.Waley)
+            {
+                return ((literal.Booly) l).checkContext(sl);
+            }
+            else if(l instanceof literal.Chary)
+            {
+                return ((literal.Booly) l).checkContext(sl);
+            }
+            else if(l instanceof literal.Stringy)
+            {
+                return ((literal.Booly) l).checkContext(sl);
+            }
+            else if(l instanceof literal.Floaty)
+            {
+                return ((literal.Booly) l).checkContext(sl);
+            }
+            else if(l instanceof literal.Inty)
+            {
+                return ((literal.Booly) l).checkContext(sl);
+            }
+            return null;
         }
     }
     

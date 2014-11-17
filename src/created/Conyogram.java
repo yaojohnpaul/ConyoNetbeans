@@ -1,5 +1,6 @@
 package created;
 
+import created.Sym.*;
 import created.ParseTree.Array.*;
 import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
@@ -28,6 +29,8 @@ public class Conyogram implements iNode
     }
     
     private SymList OMG_sym;
+    private SymList yaya_sym;
+    private SymList sub_yaya_sym;
     
     /**
      * Function for setting up symbol lists.
@@ -37,6 +40,27 @@ public class Conyogram implements iNode
     {
         OMG_sym = new SymList();
         
+        //OMG
+        if(o instanceof OMG_section.OMGSection)
+        {
+            ((OMG_section.OMGSection) o).setSymList(OMG_sym);
+        }
+        
+        yaya_sym = new SymList(OMG_sym);
+        
+        //Yaya
+        if(y instanceof yaya_section.yayaSection)
+        {
+            ((yaya_section.yayaSection) y).setSymList(yaya_sym);
+        }
+        
+        sub_yaya_sym = new SymList(yaya_sym);
+        
+        //Sub Yaya 
+        if(s instanceof sub_yaya_section.subYayaSection)
+        {
+            ((sub_yaya_section.subYayaSection) s).setSymList(sub_yaya_sym);
+        }
     }
     
     /**
@@ -45,7 +69,23 @@ public class Conyogram implements iNode
      */
     public void checkContext()
     {
+        //Yaya
+        if(y instanceof yaya_section.yayaSection)
+        {
+            ((yaya_section.yayaSection) y).checkContext(yaya_sym);
+        }
         
+        //Sub Yaya 
+        if(s instanceof sub_yaya_section.subYayaSection)
+        {
+            ((sub_yaya_section.subYayaSection) s).checkContext(sub_yaya_sym);
+        }
+        
+        //Super Yaya
+        if(m instanceof super_yaya.superYaya)
+        {
+            ((super_yaya.superYaya) m).checkContext(sub_yaya_sym);
+        }
     }
     
     /**
@@ -54,7 +94,29 @@ public class Conyogram implements iNode
      */
     public void preInterpret()
     {
+        //OMG
+        if(o instanceof OMG_section.OMGSection)
+        {
+            ((OMG_section.OMGSection) o).preInterpret(OMG_sym);
+        }
         
+        //Yaya
+        if(y instanceof yaya_section.yayaSection)
+        {
+            ((yaya_section.yayaSection) y).preInterpret(yaya_sym);
+        }
+        
+        //Sub Yaya 
+        if(s instanceof sub_yaya_section.subYayaSection)
+        {
+            ((sub_yaya_section.subYayaSection) s).preInterpret(sub_yaya_sym);
+        }
+        
+        //Super Yaya
+        if(m instanceof super_yaya.superYaya)
+        {
+            ((super_yaya.superYaya) m).preInterpret(sub_yaya_sym);
+        }
     }
     
     /**
@@ -63,7 +125,7 @@ public class Conyogram implements iNode
      */
     public void evaluate()
     {
-        
+        OutGen.printResult();
     }
     
     /**

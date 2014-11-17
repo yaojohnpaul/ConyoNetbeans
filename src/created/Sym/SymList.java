@@ -1,6 +1,14 @@
-package created;
+package created.Sym;
 
 import java.util.*;
+import created.ParseTree.Array.*;
+import created.ParseTree.Arte.*;
+import created.ParseTree.Literals.*;
+import created.ParseTree.Program.*;
+import created.ParseTree.SabiSabi.*;
+import created.ParseTree.SubYaya.*;
+import created.ParseTree.Utos.*;
+import created.ParseTree.Yaya.*;
 
 /**
  * A class to act as a list of symbols (variables, functions, etc.).
@@ -59,6 +67,21 @@ public class SymList
             symbol = anc.getSymbol(s);
         }
         return symbol;
+    }
+    
+    /**
+     * Function for editing a symbol in the list.
+     * @param s Name of symbol.
+     * @param se New value for symbol.
+     */
+    public void editSymbol(String s, SymEntry se)
+    {
+        SymEntry symbol = m.get(s);
+        Boolean symbolAvail = (symbol == null); //if symbol is not taken
+        if(!symbolAvail)
+        {
+            m.put(s, se);
+        }
     }
     
     @Override

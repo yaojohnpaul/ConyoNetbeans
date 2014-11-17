@@ -7,6 +7,7 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
 
 public abstract class ref_brackets implements created.iNode 
 {
@@ -21,7 +22,32 @@ public abstract class ref_brackets implements created.iNode
         
         public String toString()
         {
-            return s.toString();
+            return "[" + s.toString() + "]";
         }
+        
+        public void setSymList(SymList sl)
+        {
+            if(s instanceof sabi_sabi.SabiSabi)
+            {
+                ((sabi_sabi.SabiSabi) s).setSymList(sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(s instanceof sabi_sabi.SabiSabi)
+            {
+                ((sabi_sabi.SabiSabi) s).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(s instanceof sabi_sabi.SabiSabi)
+            {
+                ((sabi_sabi.SabiSabi) s).preInterpret(sl);
+            }
+        }
+        
     }
 }

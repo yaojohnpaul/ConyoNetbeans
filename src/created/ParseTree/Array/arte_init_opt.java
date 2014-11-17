@@ -7,6 +7,7 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
 
 public abstract class arte_init_opt implements created.iNode 
 {
@@ -33,6 +34,69 @@ public abstract class arte_init_opt implements created.iNode
                 return i.toString() + "\n" + o.toString();
             else
                 return i.toString();
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            if(i instanceof arte_init.arrayInit)
+            {
+                ((arte_init.arrayInit) i).setSymList(sl);
+            }
+            else if(i instanceof arte_init.syInit)
+            {
+                ((arte_init.syInit) i).setSymList(sl);
+            }
+            else if(i instanceof arte_init.sabiInit)
+            {
+                ((arte_init.sabiInit) i).setSymList(sl);
+            }
+            
+            if(o instanceof arte_init_opt.arteInitOpt)
+            {
+                ((arte_init_opt.arteInitOpt) o).setSymList(sl);
+            }
+        }
+        
+        public String checkContext(SymList sl)
+        {
+            if(i instanceof arte_init.arrayInit)
+            {
+                ((arte_init.arrayInit) i).checkContext(sl);
+            }
+            else if(i instanceof arte_init.syInit)
+            {
+                ((arte_init.syInit) i).checkContext(sl);
+            }
+            else if(i instanceof arte_init.sabiInit)
+            {
+                ((arte_init.sabiInit) i).checkContext(sl);
+            }
+            
+            if(o instanceof arte_init_opt.arteInitOpt)
+            {
+                ((arte_init_opt.arteInitOpt) o).checkContext(sl);
+            }
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(i instanceof arte_init.arrayInit)
+            {
+                ((arte_init.arrayInit) i).preInterpret(sl);
+            }
+            else if(i instanceof arte_init.syInit)
+            {
+                ((arte_init.syInit) i).preInterpret(sl);
+            }
+            else if(i instanceof arte_init.sabiInit)
+            {
+                ((arte_init.sabiInit) i).preInterpret(sl);
+            }
+            
+            if(o instanceof arte_init_opt.arteInitOpt)
+            {
+                ((arte_init_opt.arteInitOpt) o).preInterpret(sl);
+            }
         }
     }
 }

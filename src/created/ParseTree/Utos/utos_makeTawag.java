@@ -7,6 +7,8 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Yaya.*;
+import created.Sym.*;
+import error.*;
 
 public abstract class utos_makeTawag implements created.iNode  
 {
@@ -24,6 +26,69 @@ public abstract class utos_makeTawag implements created.iNode
         public String toString()
         {
             return "makeTawag " + vn.toString() + " (" + l.toString() + "";
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            if(vn instanceof valid_name.validName)
+            {
+                ((valid_name.validName) vn).setSymList(sl);
+            }
+            else if(vn instanceof valid_name.identifier)
+            {
+                ((valid_name.identifier) vn).setSymList(sl);
+            }
+            
+            if(l instanceof arte_init_list.arteInitList)
+            {
+                ((arte_init_list.arteInitList) l).setSymList(sl);
+            } 
+        }
+        
+        public String checkContext(SymList sl) 
+        { // for sabi sabi plng
+            //other context here
+            if(vn instanceof valid_name.validName)
+            {
+                //((valid_name.validName) vn).setSymList(sl);
+                
+            }
+            
+            if(vn instanceof valid_name.identifier)
+            {
+                //((valid_name.identifier) vn).setSymList(sl);
+                SymEntry ste = sl.getSymbol(vn.id); 
+            
+                if(ste.symType() != 103)
+                {
+                    ErrorReport.error("Not a function used as a function!: " + id);
+                    return "";
+                }
+            }
+            
+            if(l instanceof arte_init_list.arteInitList)
+            {
+                ((arte_init_list.arteInitList) l).checkContext(sl);
+            } 
+            
+            return vn.checkContext();
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(vn instanceof valid_name.validName)
+            {
+                ((valid_name.validName) vn).preInterpret(sl);
+            }
+            else if(vn instanceof valid_name.identifier)
+            {
+                ((valid_name.identifier) vn).preInterpret(sl);
+            }
+            
+            if(l instanceof arte_init_list.arteInitList)
+            {
+                ((arte_init_list.arteInitList) l).preInterpret(sl);
+            } 
         }
     }
 }
