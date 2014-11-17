@@ -73,16 +73,16 @@ public abstract class ss_paren implements created.iNode
             }
             else if(e instanceof sabi_sabi_end.ssEndValidVar)
             {
-                ((ss_a1.ssEndValidVar) e).setSymList(sl);
+                ((sa.ssEndValidVar) e).setSymList(sl);
             }
             else if(e instanceof sabi_sabi_end.ssEndLiteral)
             {
-                ((ss_a1.ssEndLiteral) e).setSymList(sl);
+                ((sabi_sabi_end.ssEndLiteral) e).setSymList(sl);
             }
             
         }
         
-        public String checkContext(SymList s) 
+        public String checkContext(SymList sl) 
         { // for sabi sabi plng
             if(e instanceof sabi_sabi_end.ssEndUtos)
             {
@@ -90,15 +90,15 @@ public abstract class ss_paren implements created.iNode
             }
             else if(e instanceof sabi_sabi_end.ssEndValidVar)
             {
-                return ((ss_a1.ssEndValidVar) e).checkContext(sl);
+                return ((sabi_sabi_end.ssEndValidVar) e).checkContext(sl);
             }
             else if(e instanceof sabi_sabi_end.ssEndLiteral)
             {
-                return ((ss_a1.ssEndLiteral) e).checkContext(sl);
+                return ((sabi_sabi_end.ssEndLiteral) e).checkContext(sl);
             }
         
             return null;
-        } 
+        }
     }
 }
 

@@ -49,7 +49,7 @@ public abstract class ss_a1 implements created.iNode
             {
                 ((ss_a1.ssA1) a1).setSymList(sl);
             }
-            else if(a instanceof ss_a1.ssA1Expansion)
+            else if(a1 instanceof ss_a1.ssA1Expansion)
             {
                 ((ss_a1.ssA1Expansion) a1).setSymList(sl);
             }
@@ -88,24 +88,28 @@ public abstract class ss_a1 implements created.iNode
             if(arith1.equals("stringy") &&  operator.equals("+"))
             {
                 switch(arith2)
-                case "stringy"  :
-                case "booly"    :
-                case "null"     :
-                case "inty"     :
-                case "floaty"   :
-                case "chary"    : return "stringy"
-                default         : ErrorReport.error("Datatype Mismatch");
+                {
+                    case "stringy"  :
+                    case "booly"    :
+                    case "null"     :
+                    case "inty"     :
+                    case "floaty"   :
+                    case "chary"    : return "stringy";
+                    default         : ErrorReport.error("Datatype Mismatch");
+                }
             }
             else if(arith2.equals("stringy") && operator.equals("+") )
             {
                 switch(arith1)
+                {
                 case "stringy"  :
                 case "booly"    :
                 case "null"     :
                 case "inty"     :
                 case "floaty"   :
-                case "chary"    : return "stringy"
+                case "chary"    : return "stringy";
                 default         : ErrorReport.error("Datatype Mismatch");
+                }
             }
             switch(arith2){
                 case "booly" : break;

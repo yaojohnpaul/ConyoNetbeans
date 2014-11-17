@@ -78,9 +78,9 @@ public abstract class utos_thisNalang implements created.iNode
         
         public void setSymList(SymList sl)
         {
-            if(s instanceof sabi_sabi.sabiSabi)
+            if(s instanceof sabi_sabi.SabiSabi)
             {
-                ((sabi_sabi.sabiSabi) s).setSymList(sl);
+                ((sabi_sabi.SabiSabi) s).setSymList(sl);
             }
             
             if(b instanceof utos_block.utosBlock)
@@ -100,9 +100,9 @@ public abstract class utos_thisNalang implements created.iNode
         
         public void checkContext(SymList sl)
         {
-            if(s instanceof sabi_sabi.sabiSabi)
+            if(s instanceof sabi_sabi.SabiSabi)
             {
-                ((sabi_sabi.sabiSabi) s).checkContext(sl);
+                ((sabi_sabi.SabiSabi) s).checkContext(sl);
             }
             
             if(b instanceof utos_block.utosBlock)
@@ -122,9 +122,9 @@ public abstract class utos_thisNalang implements created.iNode
         
         public void preInterpret(SymList sl)
         {
-            if(s instanceof sabi_sabi.sabiSabi)
+            if(s instanceof sabi_sabi.SabiSabi)
             {
-                ((sabi_sabi.sabiSabi) s).preInterpret(sl);
+                ((sabi_sabi.SabiSabi) s).preInterpret(sl);
             }
             
             if(b instanceof utos_block.utosBlock)

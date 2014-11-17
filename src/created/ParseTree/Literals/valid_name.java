@@ -33,7 +33,7 @@ public abstract class valid_name implements created.iNode
         
         public String checkContext(SymList sl) 
         { // for sabi sabi plng
-            SymEntry ste = s.getSymbol(id); 
+            SymEntry ste = sl.getSymbol(id); 
             
             if(ste == null)
             {
@@ -44,6 +44,10 @@ public abstract class valid_name implements created.iNode
             return ste.type().toString();
         } 
         
+        public void preInterpret(SymList sl)
+        {
+            
+        }
     }
     
     public static class validName extends valid_name
@@ -79,7 +83,11 @@ public abstract class valid_name implements created.iNode
             ErrorReport.error("Not yet implemented");
             return null;
         }
+          
+        public void preInterpret(SymList sl)
+        {
             
+        } 
     }
     
 }

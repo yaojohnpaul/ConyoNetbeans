@@ -109,31 +109,7 @@ public abstract class sabi_sabi_end implements created.iNode
         
         public void setSymList(SymList sl)
         {
-            if(l instanceof literal.Booly)
-            {
-                ((literal.Booly) l).setSymList(sl);
-            }
-            else if(l instanceof literal.Waley)
-            {
-                ((literal.Booly) l).setSymList(sl);
-            }
-            else if(l instanceof literal.Chary)
-            {
-                ((literal.Booly) l).setSymList(sl);
-            }
-            else if(l instanceof literal.Stringy)
-            {
-                ((literal.Booly) l).setSymList(sl);
-            }
-            else if(l instanceof literal.Floaty)
-            {
-                ((literal.Booly) l).setSymList(sl);
-            }
-            else if(l instanceof literal.Inty)
-            {
-                ((literal.Booly) l).setSymList(sl);
-            }
-
+            
         }
         
         public String checkContext(SymList sl) 

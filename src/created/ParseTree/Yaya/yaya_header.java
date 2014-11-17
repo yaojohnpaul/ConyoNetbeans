@@ -65,7 +65,7 @@ public abstract class yaya_header implements created.iNode
         {
             if(yps instanceof yaya_param_sec.yayaParamSec)
             {
-                ((yaya_param_sec.yayaParamSec) y).checkContext(sl);
+                ((yaya_param_sec.yayaParamSec) yps).checkContext(sl);
             }
             
             if(dt instanceof data_type.datatypePrimitive)
@@ -82,7 +82,7 @@ public abstract class yaya_header implements created.iNode
         {
             if(yps instanceof yaya_param_sec.yayaParamSec)
             {
-                ((yaya_param_sec.yayaParamSec) y).preInterpret(sl);
+                ((yaya_param_sec.yayaParamSec) yps).preInterpret(sl);
             }
             
             if(dt instanceof data_type.datatypePrimitive)

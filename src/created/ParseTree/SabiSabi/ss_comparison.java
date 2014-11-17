@@ -133,7 +133,7 @@ public abstract class ss_comparison implements created.iNode
             }
         }
         
-        public String checkContext(SymList s) 
+        public String checkContext(SymList sl) 
         { // for sabi sabi plng
             //other context here
             if(a instanceof ss_a1.ssA1)

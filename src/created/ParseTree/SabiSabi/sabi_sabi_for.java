@@ -26,29 +26,22 @@ public abstract class sabi_sabi_for implements created.iNode
        
         public void setSymList(SymList sl)
         {
-            if(s instanceof sabi_sabi.sabiSabi)
+            if(s instanceof sabi_sabi.SabiSabi)
             {
-                ((sabi_sabi.sabiSabi) s).setSymList(sl);
+                ((sabi_sabi.SabiSabi) s).setSymList(sl);
             }
         }
         
         public String checkContext(SymList s) 
         { // for sabi sabi plng
             //other context here
-            if(s instanceof sabi_sabi.sabiSabi)
+            if(s instanceof sabi_sabi.SabiSabi)
             {
-                return ((sabi_sabi.sabiSabi) s).checkContext(sl);
+                return ((sabi_sabi.SabiSabi) s).checkContext(sl);
             }
             return null;
         }
         
-        public void preInterpret(SymList sl)
-        {
-            if(s instanceof sabi_sabi.sabiSabi)
-            {
-                ((sabi_sabi.sabiSabi) s).preInterpret(sl);
-            }
-        }
     }
 }
 

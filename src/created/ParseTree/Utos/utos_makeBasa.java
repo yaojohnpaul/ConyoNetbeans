@@ -13,16 +13,16 @@ public abstract class utos_makeBasa implements created.iNode
 {
     public static class makeBasa extends utos_makeBasa
     {
-        public data_type d; 
+        public data_type dt; 
         
-        public makeBasa(data_type d)
+        public makeBasa(data_type dt)
         {
-            this.d = d;
+            this.dt = dt;
         }
         
         public String toString()
         {
-            return "makeBasa(" + d.toString() + "";
+            return "makeBasa(" + dt.toString() + "";
         }
         
         public void setSymList(SymList sl)
@@ -37,7 +37,7 @@ public abstract class utos_makeBasa implements created.iNode
             }
         }
         
-        public String checkContext(SymList st) 
+        public String checkContext(SymList sl) 
         { // for sabi sabi plng
             //other context here
             if(dt instanceof data_type.datatypePrimitive)

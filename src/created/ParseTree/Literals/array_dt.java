@@ -60,19 +60,19 @@ public abstract class array_dt implements created.iNode
             }
             else if(p instanceof primitive_dt.floatType)
             {
-                return "floaty"
+                return "floaty";
             }
             else if(p instanceof primitive_dt.stringType)
             {
-                return "stringy"
+                return "stringy";
             }
             else if(p instanceof primitive_dt.charType)
             {
-                return "chary"
+                return "chary";
             }
             else if(p instanceof primitive_dt.booleanType)
             {
-                return "booly"
+                return "booly";
             }
         }
         
@@ -137,7 +137,6 @@ public abstract class array_dt implements created.iNode
         {
             if(vn instanceof valid_name.validName)
             {
-                ((valid_name.validName) vn).preInterpret(sl);
             }
         }
     }

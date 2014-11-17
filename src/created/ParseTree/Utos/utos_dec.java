@@ -37,11 +37,11 @@ public abstract class utos_dec implements created.iNode
             }
             else if(ud instanceof utos_dec_db.breakup)
             {
-                ((utos_dec_db.breakup) ud).setSymList(sl);
+                // ((utos_dec_db.breakup) ud).setSymList(sl);
             }
             else if(ud instanceof utos_dec_db.makeup)
             {
-                ((utos_dec_db.makeup) ud).setSymList(sl);
+                // ((utos_dec_db.makeup) ud).setSymList(sl);
             }
         }
         
@@ -57,11 +57,11 @@ public abstract class utos_dec implements created.iNode
             }
             else if(ud instanceof utos_dec_db.breakup)
             {
-                ((utos_dec_db.breakup) ud).checkContext(sl);
+                // ((utos_dec_db.breakup) ud).checkContext(sl);
             }
             else if(ud instanceof utos_dec_db.makeup)
             {
-                ((utos_dec_db.makeup) ud).checkContext(sl);
+                // ((utos_dec_db.makeup) ud).checkContext(sl);
             }
         }
         
@@ -77,11 +77,11 @@ public abstract class utos_dec implements created.iNode
             }
             else if(ud instanceof utos_dec_db.breakup)
             {
-                ((utos_dec_db.breakup) ud).preInterpret(sl);
+                // ((utos_dec_db.breakup) ud).preInterpret(sl);
             }
             else if(ud instanceof utos_dec_db.makeup)
             {
-                ((utos_dec_db.makeup) ud).preInterpret(sl);
+                // ((utos_dec_db.makeup) ud).preInterpret(sl);
             }
         }
     }
@@ -102,37 +102,37 @@ public abstract class utos_dec implements created.iNode
         
         public void setSymList(SymList sl)
         {
-            if(uv instanceof utos_dec_val.makeTawag)
+            if(uv instanceof utos_dec_val.utosMakeTawag)
             {
-                ((utos_dec_val.makeTawag) ud).setSymList(sl);
+                ((utos_dec_val.utosMakeTawag) uv).setSymList(sl);
             }
-            else if(uv instanceof utos_dec_val.makeBasa)
+            else if(uv instanceof utos_dec_val.utosMakeBasa)
             {
-                ((utos_dec_val.makeBasa) ud).setSymList(sl);
+                ((utos_dec_val.utosMakeBasa) uv).setSymList(sl);
             }
         }
         
         public void checkContext(SymList sl)
         {
-            if(uv instanceof utos_dec_val.makeTawag)
+            if(uv instanceof utos_dec_val.utosMakeTawag)
             {
-                ((utos_dec_val.makeTawag) ud).checkContext(sl);
+                ((utos_dec_val.utosMakeTawag) uv).checkContext(sl);
             }
-            else if(uv instanceof utos_dec_val.makeBasa)
+            else if(uv instanceof utos_dec_val.utosMakeBasa)
             {
-                ((utos_dec_val.makeBasa) ud).checkContext(sl);
+                ((utos_dec_val.utosMakeBasa) uv).checkContext(sl);
             }
         }
         
         public void preInterpret(SymList sl)
         {
-            if(uv instanceof utos_dec_val.makeTawag)
+            if(uv instanceof utos_dec_val.utosMakeTawag)
             {
-                ((utos_dec_val.makeTawag) ud).preInterpret(sl);
+                ((utos_dec_val.utosMakeTawag) uv).preInterpret(sl);
             }
-            else if(uv instanceof utos_dec_val.makeBasa)
+            else if(uv instanceof utos_dec_val.utosMakeBasa)
             {
-                ((utos_dec_val.makeBasa) ud).preInterpret(sl);
+                ((utos_dec_val.utosMakeBasa) uv).preInterpret(sl);
             }
         }
     }
@@ -157,21 +157,21 @@ public abstract class utos_dec implements created.iNode
             {
                 ((utos_dec_nodb.utosLikeKapag) un).setSymList(sl);
             }
-            else if(un instanceof utos_dec_nodb.makePalit)
+            else if(un instanceof utos_dec_nodb.utosMakePalit)
             {
-                ((utos_dec_nodb.makePalit) un).setSymList(sl);
+                ((utos_dec_nodb.utosMakePalit) un).setSymList(sl);
             }
-            else if(un instanceof utos_dec_nodb.likeHabang)
+            else if(un instanceof utos_dec_nodb.utosLikeHabang)
             {
-                ((utos_dec_nodb.likeHabang) un).setSymList(sl);
+                ((utos_dec_nodb.utosLikeHabang) un).setSymList(sl);
             }
-            else if(un instanceof utos_dec_nodb.makeGawaHabang)
+            else if(un instanceof utos_dec_nodb.utosMakeGawaHabang)
             {
-                ((utos_dec_nodb.makeGawaHabang) un).setSymList(sl);
+                ((utos_dec_nodb.utosMakeGawaHabang) un).setSymList(sl);
             }
-            else if(un instanceof utos_dec_nodb.makeArte)
+            else if(un instanceof utos_dec_nodb.utosMakeArte)
             {
-                ((utos_dec_nodb.makeArte) un).setSymList(sl);
+                ((utos_dec_nodb.utosMakeArte) un).setSymList(sl);
             }
         }
         
@@ -181,21 +181,21 @@ public abstract class utos_dec implements created.iNode
             {
                 ((utos_dec_nodb.utosLikeKapag) un).checkContext(sl);
             }
-            else if(un instanceof utos_dec_nodb.makePalit)
+            else if(un instanceof utos_dec_nodb.utosMakePalit)
             {
-                ((utos_dec_nodb.makePalit) un).checkContext(sl);
+                ((utos_dec_nodb.utosMakePalit) un).checkContext(sl);
             }
-            else if(un instanceof utos_dec_nodb.likeHabang)
+            else if(un instanceof utos_dec_nodb.utosLikeHabang)
             {
-                ((utos_dec_nodb.likeHabang) un).checkContext(sl);
+                ((utos_dec_nodb.utosLikeHabang) un).checkContext(sl);
             }
-            else if(un instanceof utos_dec_nodb.makeGawaHabang)
+            else if(un instanceof utos_dec_nodb.utosMakeGawaHabang)
             {
-                ((utos_dec_nodb.makeGawaHabang) un).checkContext(sl);
+                ((utos_dec_nodb.utosMakeGawaHabang) un).checkContext(sl);
             }
-            else if(un instanceof utos_dec_nodb.makeArte)
+            else if(un instanceof utos_dec_nodb.utosMakeArte)
             {
-                ((utos_dec_nodb.makeArte) un).checkContext(sl);
+                ((utos_dec_nodb.utosMakeArte) un).checkContext(sl);
             }
         }
         
@@ -205,21 +205,21 @@ public abstract class utos_dec implements created.iNode
             {
                 ((utos_dec_nodb.utosLikeKapag) un).preInterpret(sl);
             }
-            else if(un instanceof utos_dec_nodb.makePalit)
+            else if(un instanceof utos_dec_nodb.utosMakePalit)
             {
-                ((utos_dec_nodb.makePalit) un).preInterpret(sl);
+                ((utos_dec_nodb.utosMakePalit) un).preInterpret(sl);
             }
-            else if(un instanceof utos_dec_nodb.likeHabang)
+            else if(un instanceof utos_dec_nodb.utosLikeHabang)
             {
-                ((utos_dec_nodb.likeHabang) un).preInterpret(sl);
+                ((utos_dec_nodb.utosLikeHabang) un).preInterpret(sl);
             }
-            else if(un instanceof utos_dec_nodb.makeGawaHabang)
+            else if(un instanceof utos_dec_nodb.utosMakeGawaHabang)
             {
-                ((utos_dec_nodb.makeGawaHabang) un).preInterpret(sl);
+                ((utos_dec_nodb.utosMakeGawaHabang) un).preInterpret(sl);
             }
-            else if(un instanceof utos_dec_nodb.makeArte)
+            else if(un instanceof utos_dec_nodb.utosMakeArte)
             {
-                ((utos_dec_nodb.makeArte) un).preInterpret(sl);
+                ((utos_dec_nodb.utosMakeArte) un).preInterpret(sl);
             }
         }
     }

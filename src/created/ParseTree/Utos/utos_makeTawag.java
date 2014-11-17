@@ -48,30 +48,34 @@ public abstract class utos_makeTawag implements created.iNode
         public String checkContext(SymList sl) 
         { // for sabi sabi plng
             //other context here
+            String ret = null;
             if(vn instanceof valid_name.validName)
             {
-                //((valid_name.validName) vn).setSymList(sl);
-                
+                ret = ((valid_name.validName) vn).checkContext(sl);
             }
             
             if(vn instanceof valid_name.identifier)
             {
-                //((valid_name.identifier) vn).setSymList(sl);
-                SymEntry ste = sl.getSymbol(vn.id); 
+                ret = ((valid_name.identifier) vn).checkContext(sl);
+
+                SymEntry ste = sl.getSymbol (((valid_name.identifier) vn).toString()); 
             
                 if(ste.symType() != 103)
                 {
-                    ErrorReport.error("Not a function used as a function!: " + id);
-                    return "";
+                    ErrorReport.error("Not a function used as a function!: " + ((valid_name.identifier) vn).toString());
+                    return null;
                 }
+                
+                return ret;
+                
             }
             
             if(l instanceof arte_init_list.arteInitList)
             {
                 ((arte_init_list.arteInitList) l).checkContext(sl);
-            } 
+            }
             
-            return vn.checkContext();
+            return ret;
         }
         
         public void preInterpret(SymList sl)

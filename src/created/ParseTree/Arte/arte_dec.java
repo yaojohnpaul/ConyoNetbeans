@@ -49,16 +49,15 @@ public abstract class arte_dec implements created.iNode
         {
             if(a instanceof arte_assign.arteAssign)
             {
-                String temp = ((arte_assign.arteAssign) a).checkContext(id, sl);
+                ((arte_assign.arteAssign) a).checkContext(sl);
             }
-            // Check if assignment = datatype
         }
         
         public void preInterpret(SymList sl)
         {
             if(a instanceof arte_assign.arteAssign)
             {
-                ((arte_assign.arteAssign) a).preInterpret(id, sl);
+                ((arte_assign.arteAssign) a).preInterpret(sl);
             }
         }
     }

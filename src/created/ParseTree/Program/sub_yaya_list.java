@@ -38,9 +38,9 @@ public abstract class sub_yaya_list implements created.iNode
         
         public void setSymList(SymList sl)
         {
-            if(s instanceof sub_yaya.subYaya)
+            if(s instanceof sub_yaya.SubYaya)
             {
-                ((sub_yaya.subYaya) s).setSymList(sl);
+                ((sub_yaya.SubYaya) s).setSymList(sl);
             }
             
             if(l instanceof sub_yaya_list.subYayaList)
@@ -51,9 +51,9 @@ public abstract class sub_yaya_list implements created.iNode
         
         public void checkContext(SymList sl)
         {
-            if(s instanceof sub_yaya.subYaya)
+            if(s instanceof sub_yaya.SubYaya)
             {
-                ((sub_yaya.subYaya) s).setSymList(sl);
+                ((sub_yaya.SubYaya) s).setSymList(sl);
             }
             
             if(l instanceof sub_yaya_list.subYayaList)

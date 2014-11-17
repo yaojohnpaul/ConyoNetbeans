@@ -57,6 +57,11 @@ public abstract class sabi_sabi implements created.iNode
             }
             return null;
         }
+        
+        public void preInterpret(SymList sl)
+        {
+            
+        }
     }
 }
 

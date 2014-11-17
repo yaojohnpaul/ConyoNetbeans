@@ -14,28 +14,28 @@ public abstract class sy_init implements created.iNode
     public static class SubYayaInitialize extends sy_init
     {
         public reference_dt rd;
-        public arte_init_list ai;
+        public arte_init_list al;
         
-        public SubYayaInitialize(reference_dt rd, arte_init_list ai)
+        public SubYayaInitialize(reference_dt rd, arte_init_list al)
         {
             this.rd = rd;
-            this.ai = ai;
+            this.al = al;
         }
         
         public String toString()
         {
-            return "brandNew " + rd.toString() + " (" + ai.toString() + ")";
+            return "brandNew " + rd.toString() + " (" + al.toString() + ")";
         }
         
         public void setSymList(SymList sl)
         {
-            if(r instanceof reference_dt.referenceArray)
+            if(rd instanceof reference_dt.referenceArray)
             {
-                ((reference_dt.referenceArray) r).setSymList(st);
+                ((reference_dt.referenceArray) rd).setSymList(st);
             }
-            else if(r instanceof reference_dt.referenceValidName)
+            else if(rd instanceof reference_dt.referenceValidName)
             {
-                ((reference_dt.referenceValidName) r).setSymList(st);
+                ((reference_dt.referenceValidName) rd).setSymList(st);
             }
             
             if(al instanceof arte_init_list.arteInitList)
@@ -46,13 +46,13 @@ public abstract class sy_init implements created.iNode
         
         public String checkContext(SymList sl)
         {
-            if(r instanceof reference_dt.referenceArray)
+            if(rd instanceof reference_dt.referenceArray)
             {
-                return ((reference_dt.referenceArray) r).checkContext(st);
+                return ((reference_dt.referenceArray) rd).checkContext(st);
             }
-            else if(r instanceof reference_dt.referenceValidName)
+            else if(rd instanceof reference_dt.referenceValidName)
             {
-                return ((reference_dt.referenceValidName) r).checkContext(st);
+                return ((reference_dt.referenceValidName) rd).checkContext(st);
             }
             
             if(al instanceof arte_init_list.arteInitList)
@@ -65,13 +65,13 @@ public abstract class sy_init implements created.iNode
         
         public void preInterpret(SymList sl)
         {
-            if(r instanceof reference_dt.referenceArray)
+            if(rd instanceof reference_dt.referenceArray)
             {
-                ((reference_dt.referenceArray) r).preInterpret(st);
+                ((reference_dt.referenceArray) rd).preInterpret(st);
             }
-            else if(r instanceof reference_dt.referenceValidName)
+            else if(rd instanceof reference_dt.referenceValidName)
             {
-                ((reference_dt.referenceValidName) r).preInterpret(st);
+                ((reference_dt.referenceValidName) rd).preInterpret(st);
             }
             
             if(al instanceof arte_init_list.arteInitList)

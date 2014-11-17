@@ -123,7 +123,6 @@ public abstract class sy_cont implements created.iNode
         {
             if(a instanceof constructor.mSimula)
             {
-                ((constructor.mSimula) a).preInterpret(sl);
             }
         }
     }

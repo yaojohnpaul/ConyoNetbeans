@@ -365,7 +365,7 @@ ss_paren ::= LEFT_PAREN ss_a1:a RIGHT_PAREN {: RESULT = new ss_paren.ssParen(a);
 			| sabi_sabi_end:e {: RESULT = new ss_paren.ssParenEnd(e); :};
 			
 equality ::= EQUAL_EQUAL {: RESULT = new equality.equal("=="); :}
-			| NOT_EQUAL {: RESULT = new equality.equal("<>"); :}; // Changed != to <>, re-run CUP
+			| NOT_EQUAL {: RESULT = new equality.equal("<>"); :};
 
 comparison ::= GT_EQUAL {: RESULT = new comparison.compare(">="); :}
 			| LT_EQUAL {: RESULT = new comparison.compare("<="); :}

@@ -55,7 +55,7 @@ public abstract class sy_cont_list implements created.iNode
             //list
             if(l instanceof sy_cont_list.SubYayaContList)
             {
-                ((sy_cont_list.SubYayaContList) l).setSymList(var, func);
+                ((sy_cont_list.SubYayaContList) l).setSymList(sl);
             }
         }
         
@@ -77,7 +77,7 @@ public abstract class sy_cont_list implements created.iNode
             //list
             if(l instanceof sy_cont_list.SubYayaContList)
             {
-                ((sy_cont_list.SubYayaContList) l).checkContext(var, func);
+                ((sy_cont_list.SubYayaContList) l).checkContext(sl);
             }
         }
         
@@ -99,7 +99,7 @@ public abstract class sy_cont_list implements created.iNode
             //list
             if(l instanceof sy_cont_list.SubYayaContList)
             {
-                ((sy_cont_list.SubYayaContList) l).preInterpret(var, func);
+                ((sy_cont_list.SubYayaContList) l).preInterpret(sl);
             }
         }
     }
