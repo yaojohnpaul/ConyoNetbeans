@@ -113,6 +113,23 @@ public abstract class yaya_header implements created.iNode
                 ((data_type.datatypeReference) dt).preInterpret(sl);
             }
         }
+        
+        public void evaluate(SymList sl)
+        {
+            // if(yps instanceof yaya_param_sec.yayaParamSec)
+            // {
+            //     ((yaya_param_sec.yayaParamSec) yps).evaluate(sl);
+            // }
+            
+            // if(dt instanceof data_type.datatypePrimitive)
+            // {
+            //     ((data_type.datatypePrimitive) dt).evaluate(sl);
+            // }
+            // else if(dt instanceof data_type.datatypeReference)
+            // {
+            //     ((data_type.datatypeReference) dt).evaluate(sl);
+            // }
+        }
     }
     
 }

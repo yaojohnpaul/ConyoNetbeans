@@ -52,6 +52,14 @@ public abstract class yaya_section implements created.iNode
         public void preInterpret(SymList sl)
         {
         }
+        
+        public void evaluate(SymList sl)
+        {
+            if(l instanceof yaya_list.yayaList)
+            {
+                ((yaya_list.yayaList) l).evaluate(sl);
+            }
+        }
     }
     
 }

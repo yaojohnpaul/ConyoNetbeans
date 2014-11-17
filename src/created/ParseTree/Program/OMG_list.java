@@ -61,5 +61,18 @@ public abstract class OMG_list implements created.iNode
                 ((OMG_list.OMGList) l).preInterpret(sl);
             }
         }
+        
+        public void evaluate(SymList sl)
+        {
+            if(o instanceof OMG_dec.OMG)
+            {
+                ((OMG_dec.OMG) o).evaluate(sl);
+            }
+            
+            if(l instanceof OMG_list.OMGList)
+            {
+                ((OMG_list.OMGList) l).evaluate(sl);
+            }
+        }
     }
 }

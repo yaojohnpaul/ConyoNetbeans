@@ -53,6 +53,11 @@ public abstract class sub_yaya implements created.iNode
             }
         }
         
+        public void evaluate(SymList sl)
+        {
+            
+        }
+        
     }
     
 }

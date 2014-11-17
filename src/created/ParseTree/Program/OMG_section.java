@@ -48,6 +48,14 @@ public abstract class OMG_section implements created.iNode
                 ((OMG_list.OMGList) o).preInterpret(sl);
             }
         }
+        
+        public void evaluate(SymList sl)
+        {
+            if(o instanceof OMG_list.OMGList)
+            {
+                ((OMG_list.OMGList) o).evaluate(sl);
+            }
+        }
     }
     
 }

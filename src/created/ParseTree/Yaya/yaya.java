@@ -69,6 +69,19 @@ public abstract class yaya implements created.iNode
                 ((utos_block.utosBlock) u).preInterpret(sl);
             }
         }
+        
+        public void evaluate(SymList sl)
+        {
+            if(h instanceof yaya_header.yayaHeader)
+            {
+                ((yaya_header.yayaHeader) h).evaluate(sl);
+            }
+            
+            if(u instanceof utos_block.utosBlock)
+            {
+                ((utos_block.utosBlock) u).evaluate(sl);
+            }
+        }
     }
     
 }

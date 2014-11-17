@@ -28,14 +28,12 @@ public class SymFunc extends SymEntry
         return yps;
     }
     
-    public data_type dataType()
-    {
-        return dt;
-    }
-    
     public String ret()
     {
-        return ret;
+        if(ret != null)
+            return ret;
+            
+        return "";
     }
     
     @Override

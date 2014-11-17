@@ -48,15 +48,16 @@ public abstract class OMG_dec implements created.iNode
             }
         }
         
-        SymEntry dec;
+        SymConst dec;
         
         public void preInterpret(SymList sl)
         { 
-            dec = sl.getSymbol(id);
+            dec = (SymConst) sl.getSymbol(id);
         }
         
         public void evaluate(SymList sl)
         {
+            //Object result = ss.evaluate(sl);
         }
     }
 }

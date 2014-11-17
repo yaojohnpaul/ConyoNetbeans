@@ -61,6 +61,19 @@ public abstract class sub_yaya_list implements created.iNode
                 ((sub_yaya_list.subYayaList) l).checkContext(sl);
             }
         }
+        
+        public void evaluate(SymList sl)
+        {
+            if(s instanceof sub_yaya.SubYaya)
+            {
+                ((sub_yaya.SubYaya) s).evaluate(sl);
+            }
+            
+            if(l instanceof sub_yaya_list.subYayaList)
+            {
+                ((sub_yaya_list.subYayaList) l).evaluate(sl);
+            }
+        }
     }
     
 }

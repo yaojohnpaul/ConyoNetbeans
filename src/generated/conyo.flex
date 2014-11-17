@@ -49,6 +49,13 @@ white_space = [\n\r\ \t\b\012] | {newline}
 valid_char = [^\n\r\"\\]
 valid_string = {valid_char}*
 identifier = [a-zA-Z_][a-zA-Z0-9_]*
+/* comments based on examples->java */
+comment = {TraditionalComment} | {EndOfLineComment} | 
+          {DocumentationComment}
+
+TraditionalComment = "/*" [^*] ~"*/" | "/*" "*"+ "/"
+EndOfLineComment = "//" {InputCharacter}* {LineTerminator}?
+DocumentationComment = "/*" "*"+ [^/*] ~"*/"
 
 /*Numeric values*/
 integer = 0 | [1-9]{number}*
@@ -132,6 +139,8 @@ float = {integer}\.{integer}(e{integer})?
 	{integer} {return symbol(sym.INT_LITERAL, yytext());}
 	{float} {return symbol(sym.FLOAT_LITERAL, yytext());}
 	{identifier} {return symbol(sym.IDENTIFIER, yytext());}
+	
+	{comment} {/*Comment*/}
 }
 
 /*When inputting a string*/
