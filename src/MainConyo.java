@@ -1,6 +1,7 @@
 
 import generated.*;
 import created.*;
+import error.*;
 
 class MainConyo 
 {
@@ -30,7 +31,7 @@ class MainConyo
                 System.out.println(c.toString());
                 c.setSymList();
                 c.checkContext();
-                if(ErrorReport.semanticErrorsCount == 0)
+                if(ErrorReport.semanticErrorsCount() == 0)
                 {
                     c.preInterpret();
                     c.evaluate();
