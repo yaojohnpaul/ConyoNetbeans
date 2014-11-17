@@ -124,7 +124,7 @@ public abstract class ss_a1 implements created.iNode
                 return arith2;
                 
             ErrorReport.error("Datatype Mismatch");
-            return ""l;
+            return "";
         } 
         
         public Object evaluate(SymList sl)
@@ -134,20 +134,20 @@ public abstract class ss_a1 implements created.iNode
             
             if(a2 instanceof ss_a2.ssA2)
             {
-                o2 = ((ss_a2.ssA2) a2).evaluate(sl);
+                o1 = ((ss_a2.ssA2) a2).evaluate(sl);
             }
             else if(a2 instanceof ss_a2.ssA2Expansion)
             {
-                o2 = ((ss_a2.ssA2Expansion) a2).evaluate(sl);
+                o1 = ((ss_a2.ssA2Expansion) a2).evaluate(sl);
             }
             
             if(a1 instanceof ss_a1.ssA1)
             {
-                o1 = ((ss_a1.ssA1) a1).evaluate(sl);
+                o2 = ((ss_a1.ssA1) a1).evaluate(sl);
             }
             else if(a1 instanceof ss_a1.ssA1Expansion)
             {
-                o1 = ((ss_a1.ssA1Expansion) a1).evaluate(sl);
+                o2 = ((ss_a1.ssA1Expansion) a1).evaluate(sl);
             }
             
             if(ar instanceof arithmetic_1.arithmetic1)

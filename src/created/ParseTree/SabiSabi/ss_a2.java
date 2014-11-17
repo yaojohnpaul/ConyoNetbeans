@@ -178,11 +178,11 @@ public abstract class ss_a2 implements created.iNode
         {
             if(u instanceof ss_unary_1.ssU1)
             {
-                ((ss_unary_1.ssU1) u).evaluate(sl);
+                return ((ss_unary_1.ssU1) u).evaluate(sl);
             }
             else if(u instanceof ss_unary_1.ssU1Not)
             {
-                ((ss_unary_1.ssU1Not) u).evaluate(sl);
+                return ((ss_unary_1.ssU1Not) u).evaluate(sl);
             }
             
             return null;

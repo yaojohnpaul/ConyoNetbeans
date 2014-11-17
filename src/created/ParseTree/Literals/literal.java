@@ -63,7 +63,7 @@ public abstract class literal implements created.iNode
         }
         
         public String toString(){
-            return value;
+            return "\"" + value + "\"";
         }
         
         public String checkContext(SymList st) 
