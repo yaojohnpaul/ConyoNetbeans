@@ -35,7 +35,12 @@ public abstract class reference_dt implements created.iNode
             {
                 return ((valid_name.identifier) vn).checkContext(sl);
             }
-            return null;
+            return "";
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            
         }
     }
     
@@ -63,7 +68,12 @@ public abstract class reference_dt implements created.iNode
             {
                 return ((array_dt.arrayPrimitive) array).checkContext(sl);
             }
-            return null;
+            return "";
+        }
+        
+        public void preInterpret(SymList sl)
+        {
+            
         }
     }
 }

@@ -47,8 +47,8 @@ public abstract class utos_makeKuha implements created.iNode
         public String checkContext(SymList sl) 
         { // for sabi sabi plng
             //other context here
-            String var = null;
-            String assign = ;
+            String var = "";
+            String assign = "";
             
             if(vv instanceof valid_var.validVar)
             {
@@ -72,7 +72,7 @@ public abstract class utos_makeKuha implements created.iNode
             }
             
             ErrorReport.error("Datatype Mismatch");
-            return null;
+            return "";
         }
         
         public void preInterpret(SymList sl)
