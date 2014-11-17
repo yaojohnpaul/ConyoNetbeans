@@ -35,7 +35,7 @@ public abstract class yaya_param_sec implements created.iNode
         
         public void setSymList(SymList sl)
         {
-            // if(ypl instanceof yaya_param_list.yayaParamList)
+            if(ypl instanceof yaya_param_list.yayaParamList)
             {
                 ((yaya_param_list.yayaParamList) ypl).setSymList(sl);
             }

@@ -89,12 +89,13 @@ public abstract class ss_comparison implements created.iNode
                 case "floaty" : break;
                 case "inty" : break;
                 default : ErrorReport.error("Datatype Not Allowed");
+                            return "";
             }
             if(arith.equals(compare))
                 return "booly";
                 
             ErrorReport.error("Datatype Mismatch");
-            return null;
+            return "";
         } 
         
 //        public boolean evaluate(){
@@ -144,7 +145,7 @@ public abstract class ss_comparison implements created.iNode
             {
                 return ((ss_a1.ssA1Expansion) a).checkContext(sl);
             }
-            return null;
+            return "";
         } 
         
 //        public double evaluate(){

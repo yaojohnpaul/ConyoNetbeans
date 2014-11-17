@@ -101,7 +101,7 @@ public abstract class ss_unary_1 implements created.iNode
             {
                 return ((ss_paren.ssParenEnd) p).checkContext(sl);
             }
-            return null;
+            return "";
         }
         
        
