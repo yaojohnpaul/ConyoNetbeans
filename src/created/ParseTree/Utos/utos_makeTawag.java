@@ -63,7 +63,7 @@ public abstract class utos_makeTawag implements created.iNode
                 if(ste.symType() != 103)
                 {
                     ErrorReport.error("Not a function used as a function!: " + ((valid_name.identifier) vn).toString());
-                    return null;
+                    return "";
                 }
                 
                 return ret;

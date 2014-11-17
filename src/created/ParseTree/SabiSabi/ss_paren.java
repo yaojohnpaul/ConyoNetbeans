@@ -73,7 +73,7 @@ public abstract class ss_paren implements created.iNode
             }
             else if(e instanceof sabi_sabi_end.ssEndValidVar)
             {
-                ((sa.ssEndValidVar) e).setSymList(sl);
+                ((sabi_sabi_end.ssEndValidVar) e).setSymList(sl);
             }
             else if(e instanceof sabi_sabi_end.ssEndLiteral)
             {

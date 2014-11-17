@@ -28,15 +28,53 @@ public abstract class ss_OR implements created.iNode
             return a.toString() + " || " + o.toString();
         }
         
-        public String checkContext(SymList s) 
+        public void setSymList(SymList sl)
+        {
+            if(a instanceof ss_AND.ssAND)
+            {
+                ((ss_AND.ssAND) a).setSymList(sl);
+            }
+            else if(a instanceof ss_AND.ssANDExpansion)
+            {
+                ((ss_AND.ssANDExpansion) a).setSymList(sl);
+            }
+            if(o instanceof ss_OR.ssOR)
+            {
+                ((ss_OR.ssOR) o).setSymList(sl);
+            }
+            else if(o instanceof ss_OR.ssORExpansion)
+            {
+                ((ss_OR.ssORExpansion) o).setSymList(sl);
+            }
+            
+        }
+        
+        public String checkContext(SymList sl) 
         { // for sabi sabi plng
             //other context here
-            String or = o.checkContext();
-            String and = a.checkContext();
+            String or = "";
+            String and = "";
+            if(a instanceof ss_AND.ssAND)
+            {
+                and = ((ss_AND.ssAND) a).checkContext(sl);
+            }
+            else if(a instanceof ss_AND.ssANDExpansion)
+            {
+                and = ((ss_AND.ssANDExpansion) a).checkContext(sl);
+            }
+            if(o instanceof ss_OR.ssOR)
+            {
+                or = ((ss_OR.ssOR) o).checkContext(sl);
+            }
+            else if(o instanceof ss_OR.ssORExpansion)
+            {
+                or = ((ss_OR.ssORExpansion) o).checkContext(sl);
+            }
             if(and.equals(or))
                 return "booly";
                 
             ErrorReport.error("Datatype Mismatch");
+            return "";
         } 
     }
     
@@ -54,10 +92,30 @@ public abstract class ss_OR implements created.iNode
             return a.toString();
         }
         
+        public void setSymList(SymList sl)
+        {
+            if(a instanceof ss_AND.ssAND)
+            {
+                ((ss_AND.ssAND) a).setSymList(sl);
+            }
+            else if(a instanceof ss_AND.ssANDExpansion)
+            {
+                ((ss_AND.ssANDExpansion) a).setSymList(sl);
+            }
+        }
+        
         public String checkContext(SymList sl) 
         { // for sabi sabi plng
             //other context here
-            return a.checkContext();
+            if(a instanceof ss_AND.ssAND)
+            {
+                return ((ss_AND.ssAND) a).checkContext(sl);
+            }
+            else if(a instanceof ss_AND.ssANDExpansion)
+            {
+                return ((ss_AND.ssANDExpansion) a).checkContext(sl);
+            }
+            return "";
         } 
     }
     
