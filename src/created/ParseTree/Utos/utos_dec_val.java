@@ -40,6 +40,8 @@ public abstract class utos_dec_val implements created.iNode
             {
                 return ((utos_makeTawag.makeTawag) ut).checkContext(sl);
             }
+            
+            return "";
         }
         
         public void preInterpret(SymList sl)
@@ -80,6 +82,8 @@ public abstract class utos_dec_val implements created.iNode
             {
                 return ((utos_makeBasa.makeBasa) ub).checkContext(sl);
             }
+            
+            return "";
         }
         
         public void preInterpret(SymList sl)

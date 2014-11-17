@@ -32,6 +32,14 @@ public abstract class super_yaya implements created.iNode
                 ((utos_block.utosBlock) u).setSymList(sl);
             }
         }
+        
+        public void preInterpret(SymList sl)
+        {
+            if(u instanceof utos_block.utosBlock)
+            {
+                ((utos_block.utosBlock) u).preInterpret(sl);
+            }
+        }
     }
     
 }

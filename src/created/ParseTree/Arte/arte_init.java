@@ -67,26 +67,26 @@ public abstract class arte_init implements created.iNode
         
         public void setSymList(SymList sl)
         {
-            if(sy instanceof sy_init.syInit)
+            if(sy instanceof sy_init.SubYayaInitialize)
             {
-                ((sy_init.syInit) sy).setSymList(sl);
+                ((sy_init.SubYayaInitialize) sy).setSymList(sl);
             }
         }
         
         public String checkContext(SymList sl)
         {
-            if(sy instanceof sy_init.syInit)
+            if(sy instanceof sy_init.SubYayaInitialize)
             {
-                return ((sy_init.syInit) sy).checkContext(sl);
+                return ((sy_init.SubYayaInitialize) sy).checkContext(sl);
             }
             return null;
         }
         
         public void preInterpret(SymList sl)
         {
-            if(sy instanceof sy_init.syInit)
+            if(sy instanceof sy_init.SubYayaInitialize)
             {
-                ((sy_init.syInit) sy).preInterpret(sl);
+                ((sy_init.SubYayaInitialize) sy).preInterpret(sl);
             }
         }
     }
@@ -107,26 +107,26 @@ public abstract class arte_init implements created.iNode
         
         public void setSymList(SymList sl)
         {
-            if(s instanceof sabi_sabi.sabiSabi)
+            if(s instanceof sabi_sabi.SabiSabi)
             {
-                ((sabi_sabi.sabiSabi) s).setSymList(sl);
+                ((sabi_sabi.SabiSabi) s).setSymList(sl);
             }
         }
         
         public String checkContext(SymList sl)
         {
-            if(s instanceof sabi_sabi.sabiSabi)
+            if(s instanceof sabi_sabi.SabiSabi)
             {
-                return ((sabi_sabi.sabiSabi) s).checkContext(sl);
+                return ((sabi_sabi.SabiSabi) s).checkContext(sl);
             }
             return null;
         }
         
         public void preInterpret(SymList sl)
         {
-            if(s instanceof sabi_sabi.sabiSabi)
+            if(s instanceof sabi_sabi.SabiSabi)
             {
-                ((sabi_sabi.sabiSabi) s).preInterpret(sl);
+                ((sabi_sabi.SabiSabi) s).preInterpret(sl);
             }
         }
     }

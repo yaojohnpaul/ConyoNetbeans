@@ -48,6 +48,7 @@ public abstract class utos_makeBasa implements created.iNode
             {
                 return ((data_type.datatypeReference) dt).checkContext(sl);
             }
+            return "";
         }
         
         public void preInterpret(SymList sl)

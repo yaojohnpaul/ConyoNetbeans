@@ -76,6 +76,8 @@ public abstract class arte_init_opt implements created.iNode
             {
                 ((arte_init_opt.arteInitOpt) o).checkContext(sl);
             }
+            
+            return "";
         }
         
         public void preInterpret(SymList sl)
