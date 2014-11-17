@@ -31,7 +31,7 @@ public abstract class sy_init implements created.iNode
         {
             if(rd instanceof reference_dt.referenceArray)
             {
-                ((reference_dt.referenceArray) rd).setSymList(sl);
+            
             }
             else if(rd instanceof reference_dt.referenceValidName)
             {
