@@ -74,7 +74,7 @@ public abstract class ss_AND implements created.iNode
                 return "booly";
                 
             ErrorReport.error("Datatype Mismatch");
-            return null;
+            return "";
         } 
     }
     
@@ -115,7 +115,7 @@ public abstract class ss_AND implements created.iNode
             {
                 return ((ss_equality.ssEqualityExpansion) e).checkContext(sl);
             }
-            return null;
+            return "";
         } 
     }
     

@@ -47,7 +47,7 @@ public abstract class ss_paren implements created.iNode
             {
                 return ((ss_a1.ssA1Expansion) a).checkContext(sl);
             }
-            return null;
+            return "";
         } 
     }
     
@@ -97,7 +97,7 @@ public abstract class ss_paren implements created.iNode
                 return ((sabi_sabi_end.ssEndLiteral) e).checkContext(sl);
             }
         
-            return null;
+            return "";
         }
     }
 }

@@ -48,7 +48,7 @@ public abstract class yaya_header implements created.iNode
             Boolean avail = sl.addToList(name, new SymFunc(name, yps, dt, ret));
             if(!avail)
             {
-                ErrorReport.error("Duplicate function!: " + name);
+                ErrorReport.error("Duplicate function!: " + name); 
             }
             
             if(dt instanceof data_type.datatypePrimitive)

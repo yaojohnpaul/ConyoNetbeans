@@ -96,6 +96,7 @@ public abstract class ss_a1 implements created.iNode
                     case "floaty"   :
                     case "chary"    : return "stringy";
                     default         : ErrorReport.error("Datatype Mismatch");
+                                    
                 }
             }
             else if(arith2.equals("stringy") && operator.equals("+") )
@@ -109,6 +110,7 @@ public abstract class ss_a1 implements created.iNode
                 case "floaty"   :
                 case "chary"    : return "stringy";
                 default         : ErrorReport.error("Datatype Mismatch");
+                                return "";
                 }
             }
             switch(arith2){
@@ -116,12 +118,13 @@ public abstract class ss_a1 implements created.iNode
                 case "floaty" : break;
                 case "inty" : break;
                 default : ErrorReport.error("Datatype Not Allowed");
+                            return "";
             }
             if(arith2.equals(arith1))
                 return arith2;
                 
             ErrorReport.error("Datatype Mismatch");
-            return null;
+            return ""l;
         } 
         
 //        public double evaluate(){
@@ -170,7 +173,7 @@ public abstract class ss_a1 implements created.iNode
             {
                 return ((ss_a2.ssA2Expansion) a2).checkContext(sl);
             }
-            return null;
+            return "";
         } 
         
 //        public double evaluate(){

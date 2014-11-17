@@ -100,6 +100,7 @@ public abstract class ss_equality implements created.iNode
                     case "floaty"   :
                     case "chary"    : return "booly";
                     default         : ErrorReport.error("Datatype Mismatch");
+                                        
                 }
             }
             else if(compare.equals("stringy"))
@@ -113,6 +114,7 @@ public abstract class ss_equality implements created.iNode
                     case "floaty"   :
                     case "chary"    : return "booly";
                     default         : ErrorReport.error("Datatype Mismatch");
+                                        return "";
                 }
             }
             switch(compare){
@@ -120,6 +122,7 @@ public abstract class ss_equality implements created.iNode
                 case "floaty" : break;
                 case "inty" : break;
                 default : ErrorReport.error("Datatype Not Allowed");
+                            return "";
             }
             if(compare.equals(equal))
                 return "booly";
@@ -170,7 +173,7 @@ public abstract class ss_equality implements created.iNode
             {
                 return ((ss_comparison.ssComparisonExpansion) c).checkContext(sl);
             }
-            return null;
+            return "";
         } 
     }
 }
