@@ -25,8 +25,11 @@ public abstract class super_yaya implements created.iNode
             return "superYaya\n" + u.toString();
         }
         
+        private SymList sl;
+        
         public void checkContext(SymList sl)
         {
+            sl = new SymList();
             if(u instanceof utos_block.utosBlock)
             {
                 ((utos_block.utosBlock) u).setSymList(sl);

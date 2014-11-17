@@ -88,7 +88,7 @@ public abstract class ss_equality implements created.iNode
             else if(e instanceof ss_equality.ssEqualityExpansion)
             {
                 equal = ((ss_equality.ssEqualityExpansion) e).checkContext(sl);
-            }
+        }
             if(equal.equals("stringy"))
             {
                 switch(compare)
@@ -125,7 +125,8 @@ public abstract class ss_equality implements created.iNode
                 return "booly";
                 
             ErrorReport.error("Datatype Mismatch");
-            return null;
+            
+            return "";
         } 
     }
     

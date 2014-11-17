@@ -7,6 +7,7 @@ package error;
 public class ErrorReport 
 {
     private static int errorNo = 1;
+    private static int semanticErrorsCount = 0;
         
     public static void error(String err)
     {

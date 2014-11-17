@@ -173,6 +173,10 @@ public abstract class utos_dec implements created.iNode
             {
                 ((utos_dec_nodb.utosMakeArte) un).setSymList(sl);
             }
+            else if(un instanceof utos_dec_nodb.utosMakeUlit)
+            {
+                ((utos_dec_nodb.utosMakeUlit) un).setSymList(sl);
+            }
         }
         
         public void checkContext(SymList sl)
@@ -196,6 +200,10 @@ public abstract class utos_dec implements created.iNode
             else if(un instanceof utos_dec_nodb.utosMakeArte)
             {
                 ((utos_dec_nodb.utosMakeArte) un).checkContext(sl);
+            }
+            else if(un instanceof utos_dec_nodb.utosMakeUlit)
+            {
+                ((utos_dec_nodb.utosMakeUlit) un).checkContext(sl);
             }
         }
         

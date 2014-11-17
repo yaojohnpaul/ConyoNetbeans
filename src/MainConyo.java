@@ -30,6 +30,11 @@ class MainConyo
                 System.out.println(c.toString());
                 c.setSymList();
                 c.checkContext();
+                if(ErrorReport.semanticErrorsCount == 0)
+                {
+                    c.preInterpret();
+                    c.evaluate();
+                }
             }
             catch (Exception e) 
             {
