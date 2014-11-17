@@ -157,13 +157,14 @@ public abstract class ss_equality implements created.iNode
             
             if(eq instanceof equality.equal)
             {
-                switch(((equality.equal) eq).evaluate(sl))
+                switch(((equality.equal) eq).evaluate())
                 {
                     case "==":  return o1 == o2; 
                     case "<>":  return o1 != o2;
                 }
             }
-
+            
+            return null;
         }
     }
     
@@ -220,6 +221,8 @@ public abstract class ss_equality implements created.iNode
             {
                 return ((ss_comparison.ssComparisonExpansion) c).evaluate(sl);
             }
+            
+            return null;
         }
     }
 }

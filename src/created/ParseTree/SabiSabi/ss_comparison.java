@@ -124,33 +124,28 @@ public abstract class ss_comparison implements created.iNode
             {
                 switch(((comparison.compare) co).checkContext(sl))
                 {
-                    case "<" :  if(arith instanceof boolean) 
-                                    return (boolean)arith <= (boolean)compare;
-                                else if (arith instanceof float)
+                    case "<" :  if (arith instanceof Float)
                                     return (float)arith <= (float)compare;
-                                else if (arith instanceof int)
+                                else if (arith instanceof Integer)
                                     return (int)arith <= (int)compare;
-                    case "<=" : if(arith instanceof boolean) 
-                                    return (boolean)arith < (boolean)compare;
-                                else if (arith instanceof float)
+                    case "<=" : if (arith instanceof Float)
                                     return (float)arith < (float)compare;
-                                else if (arith instanceof int)
+                                else if (arith instanceof Integer)
                                     return (int)arith < (int)compare;
-                    case ">" : if(arith instanceof boolean) 
-                                    return (boolean)arith > (boolean)compare;
-                                else if (arith instanceof float)
+                    case ">" :  if (arith instanceof Float)
                                     return (float)arith > (float)compare;
-                                else if (arith instanceof int)
+                                else if (arith instanceof Integer)
                                     return (int)arith > (int)compare;
-                    case ">=" : if(arith instanceof boolean) 
-                                    return (boolean)arith >= (boolean)compare;
-                                else if (arith instanceof float)
+                    case ">=" : if (arith instanceof Float)
                                     return (float)arith >= (float)compare;
-                                else if (arith instanceof int)
+                                else if (arith instanceof Integer)
                                     return (int)arith >= (int)compare;
-                    default   : return "error"
+                    default   : return null;
                 }
             }
+            
+            return null;
+        }
     }
     
     public static class ssComparison extends  ss_comparison
@@ -202,6 +197,8 @@ public abstract class ss_comparison implements created.iNode
             {
                 return ((ss_a1.ssA1Expansion) a).evaluate(sl);
             }
+            
+            return null;
         }
     }
 }

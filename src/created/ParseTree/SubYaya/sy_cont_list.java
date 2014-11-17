@@ -102,6 +102,28 @@ public abstract class sy_cont_list implements created.iNode
                 ((sy_cont_list.SubYayaContList) l).preInterpret(sl);
             }
         }
+        
+        public void evaluate(SymList sl)
+        {
+            if(c instanceof sy_cont.SubYayaContArte)
+            {
+                ((sy_cont.SubYayaContArte) c).evaluate(sl);
+            }
+            else if(c instanceof sy_cont.SubYayaContYaya)
+            {
+                ((sy_cont.SubYayaContYaya) c).evaluate(sl);
+            }
+            else if(c instanceof sy_cont.SubYayaContConstructor)
+            {
+                ((sy_cont.SubYayaContConstructor) c).evaluate(sl);
+            }
+            
+            //list
+            if(l instanceof sy_cont_list.SubYayaContList)
+            {
+                ((sy_cont_list.SubYayaContList) l).evaluate(sl);
+            }
+        }
     }
     
 }

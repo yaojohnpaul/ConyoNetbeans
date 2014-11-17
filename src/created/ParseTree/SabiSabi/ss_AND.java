@@ -153,6 +153,8 @@ public abstract class ss_AND implements created.iNode
             {
                 return ((ss_equality.ssEqualityExpansion) e).evaluate(sl);
             }
+            
+            return null;
         }
     }
     

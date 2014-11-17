@@ -69,6 +69,7 @@ public abstract class ss_unary_1 implements created.iNode
                 return !((boolean)((ss_unary_1.ssU1Not) u).evaluate(sl));
             }
             
+            return null;
         }
     }
     
@@ -113,17 +114,18 @@ public abstract class ss_unary_1 implements created.iNode
             return "";
         }
         
-        public Object setSymList(SymList sl)
+        public Object evaluate(SymList sl)
         {
             if(p instanceof ss_paren.ssParen)
             {
-                return ((ss_paren.ssParen) p).setSymList(sl);
+                return ((ss_paren.ssParen) p).evaluate(sl);
             }
             else if(p instanceof ss_paren.ssParenEnd)
             {
-                return ((ss_paren.ssParenEnd) p).setSymList(sl);
-            }
+                return ((ss_paren.ssParenEnd) p).evaluate(sl);
+            }   
             
+            return null;
         }
     }
 }

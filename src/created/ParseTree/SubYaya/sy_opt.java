@@ -56,6 +56,14 @@ public abstract class sy_opt implements created.iNode
                 ((sy_cont_list.SubYayaContList) l).preInterpret(sl);
             }
         }
+        
+        public void evaluate(SymList sl)
+        {
+            if(l instanceof sy_cont_list.SubYayaContList)
+            {
+                ((sy_cont_list.SubYayaContList) l).evaluate(sl);
+            }
+        }
     }
     
 }

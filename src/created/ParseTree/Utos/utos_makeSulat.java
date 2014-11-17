@@ -50,12 +50,12 @@ public abstract class utos_makeSulat implements created.iNode
             }
         }
         
-        public void evaluate()
+        public void evaluate(SymList sl)
         {
             if(s instanceof sabi_sabi.SabiSabi)
             {
                 //Change evaluate() to String if ever return type of evaluate changes
-                OutGen.addOut(((sabi_sabi.SabiSabi) s).evaluate());
+                OutGen.addOut(String.valueOf(((sabi_sabi.SabiSabi) s).evaluate(sl)));
             }
         }
     }

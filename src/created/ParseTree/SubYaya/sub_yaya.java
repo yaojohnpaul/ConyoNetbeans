@@ -55,7 +55,10 @@ public abstract class sub_yaya implements created.iNode
         
         public void evaluate(SymList sl)
         {
-            
+            if(body instanceof sy_body.SubYayaBodyList)
+            {
+                ((sy_body.SubYayaBodyList) body).evaluate(this.sl);   
+            }
         }
         
     }

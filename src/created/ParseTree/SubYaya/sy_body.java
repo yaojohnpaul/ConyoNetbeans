@@ -48,6 +48,14 @@ public abstract class sy_body implements created.iNode
                 ((sy_opt.SubYayaOpt) opt).preInterpret(sl);
             }
         }
+        
+        public void evaluate(SymList sl)
+        {
+            if(opt instanceof sy_opt.SubYayaOpt)
+            {
+                ((sy_opt.SubYayaOpt) opt).evaluate(sl);
+            }
+        }
     }
     
 }
