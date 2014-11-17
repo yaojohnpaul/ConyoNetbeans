@@ -27,16 +27,20 @@ public abstract class yaya implements created.iNode
             return h.toString() + u.toString();
         }
         
+        private SymList sl;
+        
         public void setSymList(SymList sl)
         {
+            this.sl = new SymList();
+            
             if(h instanceof yaya_header.yayaHeader)
             {
-                ((yaya_header.yayaHeader) h).setSymList(sl);
+                ((yaya_header.yayaHeader) h).setSymList(sl, this.sl);
             }
             
             if(u instanceof utos_block.utosBlock)
             {
-                ((utos_block.utosBlock) u).setSymList(sl);
+                ((utos_block.utosBlock) u).setSymList(this.sl);
             }
         }
         

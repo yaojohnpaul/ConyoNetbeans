@@ -8,6 +8,7 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.Sym.*;
+import error.*;
 
 public abstract class yaya_param implements created.iNode  
 {
@@ -29,25 +30,32 @@ public abstract class yaya_param implements created.iNode
         
         public void setSymList(SymList sl)
         {
-            // if(dt instanceof data_type.datatypePrimitive)
-            // {
-            //     ((data_type.datatypePrimitive) dt).setSymList(sl);
-            // }
-            // else if(dt instanceof data_type.datatypeReference)
-            // {
-            //     ((data_type.datatypeReference) dt).setSymList(sl);
-            // }
+            if(dt instanceof data_type.datatypePrimitive)
+            {
+                Boolean avail = sl.addToList(id, new SymVar(id, dt, null));
+                if(!avail)
+                {
+                    ErrorReport.error("Duplicate parameter!: " + id);
+                }
+                // ((data_type.datatypePrimitive) dt).setSymList(sl);
+            }
+            else if(dt instanceof data_type.datatypeReference)
+            {
+                Boolean avail = sl.addToList(id, new SymVar(id, dt, null));
+                if(!avail)
+                {
+                    ErrorReport.error("Duplicate parameter!: " + id);
+                }
+                // ((data_type.datatypeReference) dt).setSymList(sl);
+            }
         }
         
         public void checkContext(SymList sl)
         {
-            if(dt instanceof data_type.datatypePrimitive)
+            Boolean avail = sl.addToList(id, new SymVar(id, dt, null));
+            if(!avail)
             {
-                ((data_type.datatypePrimitive) dt).checkContext(sl);
-            }
-            else if(dt instanceof data_type.datatypeReference)
-            {
-                ((data_type.datatypeReference) dt).checkContext(sl);
+                ErrorReport.error("Duplicate variable name!: " + id);
             }
         }
         

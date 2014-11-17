@@ -38,15 +38,15 @@ public abstract class yaya_param_list implements created.iNode
         
         public void setSymList(SymList sl)
         {
-            // if(yp instanceof yaya_param.yayaParam)
-            // {
-            //     ((yaya_param.yayaParam) yp).setSymList(sl);
-            // }
+            if(yp instanceof yaya_param.yayaParam)
+            {
+                ((yaya_param.yayaParam) yp).setSymList(sl);
+            }
             
-            // if(ypl instanceof yaya_param_list.yayaParamList)
-            // {
-            //     ((yaya_param_list.yayaParamList) ypl).setSymList(sl);
-            // }
+            if(ypl instanceof yaya_param_list.yayaParamList)
+            {
+                ((yaya_param_list.yayaParamList) ypl).setSymList(sl);
+            }
         }
         
         public void checkContext(SymList sl)

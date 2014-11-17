@@ -41,7 +41,11 @@ public abstract class valid_name implements created.iNode
                 return null;
             }
                 
-            return ste.type().toString();
+            if(ste.type() instanceof data_type.datatypeReference)
+                return ((data_type.datatypeReference) ste.type()).checkContext(sl);
+            else if (ste.type() instanceof data_type.datatypePrimitive)
+                return ((data_type.datatypePrimitive) ste.type()).checkContext(sl);
+            return "";
         } 
         
         public void preInterpret(SymList sl)

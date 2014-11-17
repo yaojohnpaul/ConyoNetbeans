@@ -31,6 +31,7 @@ public class Conyogram implements iNode
     private SymList OMG_sym;
     private SymList yaya_sym;
     private SymList sub_yaya_sym;
+    private SymList super_sym;
     
     /**
      * Function for setting up symbol lists.
@@ -61,6 +62,12 @@ public class Conyogram implements iNode
         {
             ((sub_yaya_section.subYayaSection) s).setSymList(sub_yaya_sym);
         }
+        
+        OMG_sym.toString();
+        yaya_sym.toString();
+        sub_yaya_sym.toString();
+        
+        System.out.println("====================\n\n");
     }
     
     /**
@@ -80,12 +87,20 @@ public class Conyogram implements iNode
         {
             ((sub_yaya_section.subYayaSection) s).checkContext(sub_yaya_sym);
         }
-        D
+        
+        super_sym = new SymList(sub_yaya_sym);
+        
         //Super Yaya
         if(m instanceof super_yaya.superYaya)
         {
-            ((super_yaya.superYaya) m).checkContext(sub_yaya_sym);
+            ((super_yaya.superYaya) m).checkContext(super_sym);
         }
+        
+        yaya_sym.toString();
+        sub_yaya_sym.toString();
+        super_sym.toString();
+        
+        System.out.println("====================\n\n");
     }
     
     /**
@@ -115,7 +130,7 @@ public class Conyogram implements iNode
         //Super Yaya
         if(m instanceof super_yaya.superYaya)
         {
-            ((super_yaya.superYaya) m).preInterpret(sub_yaya_sym);
+            ((super_yaya.superYaya) m).preInterpret(super_sym);
         }
     }
     
@@ -125,6 +140,30 @@ public class Conyogram implements iNode
      */
     public void evaluate()
     {
+        //OMG
+        if(o instanceof OMG_section.OMGSection)
+        {
+            ((OMG_section.OMGSection) o).evaluate(OMG_sym);
+        }
+        
+        //Yaya
+        if(y instanceof yaya_section.yayaSection)
+        {
+            ((yaya_section.yayaSection) y).evaluate(yaya_sym);
+        }
+        
+        //Sub Yaya 
+        if(s instanceof sub_yaya_section.subYayaSection)
+        {
+            ((sub_yaya_section.subYayaSection) s).evaluate(sub_yaya_sym);
+        }
+        
+        //Super Yaya
+        if(m instanceof super_yaya.superYaya)
+        {
+            ((super_yaya.superYaya) m).evaluate(super_sym);
+        }
+        
         OutGen.printResult();
     }
     
