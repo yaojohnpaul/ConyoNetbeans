@@ -38,7 +38,7 @@ public abstract class valid_name implements created.iNode
             if(ste == null)
             {
                 ErrorReport.error("Not yet declared!: " + id);
-                return null;
+                return "";
             }
                 
             if(ste.type() instanceof data_type.datatypeReference)
@@ -85,7 +85,7 @@ public abstract class valid_name implements created.iNode
             //     return ((valid_name.identifier) vn).checkContext(sl);
             // }
             ErrorReport.error("Not yet implemented");
-            return null;
+            return "";
         }
           
         public void preInterpret(SymList sl)

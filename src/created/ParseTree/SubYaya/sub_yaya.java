@@ -38,7 +38,7 @@ public abstract class sub_yaya implements created.iNode
                 ErrorReport.error("Duplicate class defined!: " + id);
             }
             
-            this.sl = new SymList();
+            this.sl = new SymList(sl);
             if(body instanceof sy_body.SubYayaBodyList)
             {
                 ((sy_body.SubYayaBodyList) body).setSymList(this.sl);   
