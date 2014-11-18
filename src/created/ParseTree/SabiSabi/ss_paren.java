@@ -14,9 +14,9 @@ public abstract class ss_paren implements created.iNode
 {
     public static class ssParen extends ss_paren
     {
-        public ss_a1 a;
+        public ss_OR a;
         
-        public ssParen(ss_a1 a){
+        public ssParen(ss_OR a){
             this.a = a;
         }
         
@@ -26,39 +26,39 @@ public abstract class ss_paren implements created.iNode
         
         public void setSymList(SymList sl)
         {
-            if(a instanceof ss_a1.ssA1)
+            if(a instanceof ss_OR.ssOR)
             {
-                ((ss_a1.ssA1) a).setSymList(sl);
+                ((ss_OR.ssOR) a).setSymList(sl);
             }
-            else if(a instanceof ss_a1.ssA1Expansion)
+            else if(a instanceof ss_OR.ss_ORExpansion)
             {
-                ((ss_a1.ssA1Expansion) a).setSymList(sl);
+                ((ss_OR.ssORExpansion) a).setSymList(sl);
             }
             
         }
         
         public String checkContext(SymList sl) 
         { // for sabi sabi plng
-            if(a instanceof ss_a1.ssA1)
+            if(a instanceof ss_OR.ssOR)
             {
-                return ((ss_a1.ssA1) a).checkContext(sl);
+                return ((ss_OR.ssOR) a).checkContext(sl);
             }
-            else if(a instanceof ss_a1.ssA1Expansion)
+            else if(a instanceof ss_OR.ssORExpansion)
             {
-                return ((ss_a1.ssA1Expansion) a).checkContext(sl);
+                return ((ss_OR.ssORExpansion) a).checkContext(sl);
             }
             return "";
         }
         
         public Object evaluate(SymList sl) 
         { // for sabi sabi plng
-            if(a instanceof ss_a1.ssA1)
+            if(a instanceof ss_OR.ssOR)
             {
-                return ((ss_a1.ssA1) a).evaluate(sl);
+                return ((ss_OR.ssOR) a).evaluate(sl);
             }
-            else if(a instanceof ss_a1.ssA1Expansion)
+            else if(a instanceof ss_OR.ssORExpansion)
             {
-                return ((ss_a1.ssA1Expansion) a).evaluate(sl);
+                return ((ss_OR.ssORExpansion) a).evaluate(sl);
             }
             
             return null;
