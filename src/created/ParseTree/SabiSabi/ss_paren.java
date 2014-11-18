@@ -30,7 +30,7 @@ public abstract class ss_paren implements created.iNode
             {
                 ((ss_OR.ssOR) a).setSymList(sl);
             }
-            else if(a instanceof ss_OR.ss_ORExpansion)
+            else if(a instanceof ss_OR.ssORExpansion)
             {
                 ((ss_OR.ssORExpansion) a).setSymList(sl);
             }
