@@ -54,7 +54,7 @@ comment = {TraditionalComment} | {EndOfLineComment} |
           {DocumentationComment}
 
 TraditionalComment = "/*" [^*] ~"*/" | "/*" "*"+ "/"
-EndOfLineComment = "//" {InputCharacter}* {LineTerminator}?
+EndOfLineComment = "//" {ascii}* {newline}?
 DocumentationComment = "/*" "*"+ [^/*] ~"*/"
 
 /*Numeric values*/
@@ -87,7 +87,6 @@ float = {integer}\.{integer}(e{integer})?
 <YYINITIAL> "likeHabang" {return symbol(sym.LIKE_HABANG);}
 <YYINITIAL> "makeGawa" {return symbol(sym.MAKE_GAWA);}
 <YYINITIAL> "makeUlit" {return symbol(sym.MAKE_ULIT);}
-<YYINITIAL> "makeSabi" {return symbol(sym.MAKE_SABI);}
 <YYINITIAL> "inty" {return symbol(sym.INTY, yytext());}
 <YYINITIAL> "floaty" {return symbol(sym.FLOATY, yytext());}
 <YYINITIAL> "chary" {return symbol(sym.CHARY, yytext());}
@@ -98,7 +97,6 @@ float = {integer}\.{integer}(e{integer})?
 <YYINITIAL> "poor" {return symbol(sym.POOR, yytext());}
 <YYINITIAL> "waley" {return symbol(sym.WALEY, yytext());}
 <YYINITIAL> "makeKuha" {return symbol(sym.MAKE_KUHA);}
-<YYINITIAL> "makeSimula" {return symbol(sym.MAKE_SIMULA);}
 <YYINITIAL> "db" {return symbol(sym.DB);}
 
 /*YYINITIAL State*/
@@ -113,7 +111,6 @@ float = {integer}\.{integer}(e{integer})?
 	"]" { return symbol(sym.RIGHT_BRACE); }
 	"{" { return symbol(sym.LEFT_CURLY); }
 	"}" { return symbol(sym.RIGHT_CURLY); }
-	"." { return symbol(sym.PERIOD); }
 	"+" { return symbol(sym.PLUS); }
 	"-" { return symbol(sym.MINUS); }
 	"*" { return symbol(sym.TIMES); }

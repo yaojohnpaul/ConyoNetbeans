@@ -8,75 +8,68 @@ package generated;
 /** CUP generated interface containing symbol constants. */
 public interface sym {
   /* terminals */
-  public static final int BREAKUP = 10;
-  public static final int MAKE_SULAT = 13;
-  public static final int MAKE_PALIT = 18;
-  public static final int DIVIDE = 47;
-  public static final int MDR = 20;
-  public static final int LONG_NAME = 67;
-  public static final int STRING_LITERAL = 61;
-  public static final int RIGHT_PAREN = 38;
-  public static final int POOR = 29;
-  public static final int MAKE_ULIT = 23;
-  public static final int CHAR_LITERAL = 62;
-  public static final int DB = 33;
-  public static final int PERIOD = 43;
-  public static final int NOT_EQUAL = 49;
-  public static final int MAKEUP = 11;
-  public static final int LEFT_CURLY = 41;
-  public static final int MAKE_GAWA = 22;
-  public static final int MINUS = 45;
-  public static final int GREATER_THAN = 52;
-  public static final int SHORT_NAME = 68;
-  public static final int NOT = 57;
-  public static final int AND = 55;
-  public static final int GT_EQUAL = 53;
-  public static final int THIS_NALANG_KAPAG = 17;
-  public static final int OR = 56;
-  public static final int LEFT_BRACE = 39;
-  public static final int COMMA = 34;
+  public static final int BREAKUP = 8;
+  public static final int MAKE_SULAT = 11;
+  public static final int MAKE_PALIT = 16;
+  public static final int DIVIDE = 42;
+  public static final int MDR = 18;
+  public static final int STRING_LITERAL = 56;
+  public static final int RIGHT_PAREN = 34;
+  public static final int POOR = 27;
+  public static final int MAKE_ULIT = 21;
+  public static final int CHAR_LITERAL = 57;
+  public static final int DB = 29;
+  public static final int NOT_EQUAL = 44;
+  public static final int MAKEUP = 9;
+  public static final int LEFT_CURLY = 37;
+  public static final int MAKE_GAWA = 20;
+  public static final int MINUS = 40;
+  public static final int GREATER_THAN = 47;
+  public static final int NOT = 52;
+  public static final int AND = 50;
+  public static final int GT_EQUAL = 48;
+  public static final int THIS_NALANG_KAPAG = 15;
+  public static final int OR = 51;
+  public static final int LEFT_BRACE = 35;
+  public static final int COMMA = 30;
   public static final int BAYAD = 4;
-  public static final int MAKE_TAWAG = 12;
-  public static final int MRW = 19;
-  public static final int THIS_NALANG = 16;
-  public static final int RIGHT_CURLY = 42;
-  public static final int PLUS = 44;
-  public static final int MAKE_KUHA = 30;
-  public static final int MAKE_BASA = 14;
+  public static final int MAKE_TAWAG = 10;
+  public static final int MRW = 17;
+  public static final int THIS_NALANG = 14;
+  public static final int RIGHT_CURLY = 38;
+  public static final int PLUS = 39;
+  public static final int MAKE_KUHA = 28;
+  public static final int MAKE_BASA = 12;
   public static final int SUPER_YAYA = 6;
   public static final int HIRE_YAYA = 3;
-  public static final int BOOLY = 28;
+  public static final int BOOLY = 26;
   public static final int EOF = 0;
-  public static final int DOLLAR_SIGN = 36;
+  public static final int DOLLAR_SIGN = 32;
   public static final int error = 1;
-  public static final int MODULO = 48;
-  public static final int RIGHT_BRACE = 40;
-  public static final int INTY = 24;
-  public static final int WALEY = 66;
-  public static final int POS_INC = 58;
-  public static final int LIKE_HABANG = 21;
-  public static final int TIMES = 46;
-  public static final int LT_EQUAL = 51;
-  public static final int COLON = 35;
+  public static final int MODULO = 43;
+  public static final int RIGHT_BRACE = 36;
+  public static final int INTY = 22;
+  public static final int WALEY = 61;
+  public static final int POS_INC = 53;
+  public static final int LIKE_HABANG = 19;
+  public static final int TIMES = 41;
+  public static final int LT_EQUAL = 46;
+  public static final int COLON = 31;
   public static final int MAKE_ARTE = 7;
-  public static final int NEG_INC = 59;
-  public static final int MAKE_UTUSAN = 9;
-  public static final int LEFT_PAREN = 37;
-  public static final int MAKE_SIMULA = 31;
-  public static final int BRAND_NEW = 8;
-  public static final int FLOATY = 25;
-  public static final int LIKE_KAPAG = 15;
-  public static final int FLOAT_LITERAL = 63;
-  public static final int MAKE_SABI = 32;
-  public static final int LESS_THAN = 50;
-  public static final int STRINGY = 27;
+  public static final int NEG_INC = 54;
+  public static final int LEFT_PAREN = 33;
+  public static final int FLOATY = 23;
+  public static final int LIKE_KAPAG = 13;
+  public static final int FLOAT_LITERAL = 58;
+  public static final int LESS_THAN = 45;
+  public static final int STRINGY = 25;
   public static final int MAKE_BALIK = 5;
-  public static final int BOOL_LITERAL = 65;
-  public static final int EQUAL_EQUAL = 54;
+  public static final int BOOL_LITERAL = 60;
+  public static final int EQUAL_EQUAL = 49;
   public static final int OMG = 2;
-  public static final int INT_LITERAL = 64;
-  public static final int IDENTIFIER = 60;
-  public static final int CHARY = 26;
+  public static final int INT_LITERAL = 59;
+  public static final int IDENTIFIER = 55;
+  public static final int CHARY = 24;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
@@ -86,8 +79,6 @@ public interface sym {
   "MAKE_BALIK",
   "SUPER_YAYA",
   "MAKE_ARTE",
-  "BRAND_NEW",
-  "MAKE_UTUSAN",
   "BREAKUP",
   "MAKEUP",
   "MAKE_TAWAG",
@@ -109,8 +100,6 @@ public interface sym {
   "BOOLY",
   "POOR",
   "MAKE_KUHA",
-  "MAKE_SIMULA",
-  "MAKE_SABI",
   "DB",
   "COMMA",
   "COLON",
@@ -121,7 +110,6 @@ public interface sym {
   "RIGHT_BRACE",
   "LEFT_CURLY",
   "RIGHT_CURLY",
-  "PERIOD",
   "PLUS",
   "MINUS",
   "TIMES",
@@ -144,9 +132,7 @@ public interface sym {
   "FLOAT_LITERAL",
   "INT_LITERAL",
   "BOOL_LITERAL",
-  "WALEY",
-  "LONG_NAME",
-  "SHORT_NAME"
+  "WALEY"
   };
 }
 

@@ -61,10 +61,10 @@ terminal			SUPER_YAYA, MAKE_ARTE, BREAKUP, MAKEUP;
 terminal			MAKE_TAWAG, MAKE_SULAT, MAKE_BASA, LIKE_KAPAG, THIS_NALANG, THIS_NALANG_KAPAG;
 terminal			MAKE_PALIT, MRW, MDR, LIKE_HABANG, MAKE_GAWA, MAKE_ULIT;
 terminal String		INTY, FLOATY, CHARY, STRINGY, BOOLY, POOR;
-terminal			MAKE_KUHA, MAKE_SIMULA, MAKE_SABI, DB;
+terminal			MAKE_KUHA, DB;
 terminal			COMMA, COLON, DOLLAR_SIGN, LEFT_PAREN, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE;
 terminal			LEFT_CURLY, RIGHT_CURLY; 
-terminal			PERIOD, PLUS, MINUS, TIMES, DIVIDE, MODULO;
+terminal			PLUS, MINUS, TIMES, DIVIDE, MODULO;
 terminal			NOT_EQUAL, LESS_THAN, LT_EQUAL, GREATER_THAN, GT_EQUAL, EQUAL_EQUAL, AND, OR, NOT;
 terminal 			POS_INC, NEG_INC;
 terminal String		IDENTIFIER;
@@ -74,8 +74,6 @@ terminal String		FLOAT_LITERAL;
 terminal String		INT_LITERAL;
 terminal String		BOOL_LITERAL;
 terminal String		WALEY;
-/*Terminals for precedence*/
-terminal			LONG_NAME, SHORT_NAME;
 
 /* Non terminals */
 /*Program*/
@@ -149,10 +147,6 @@ non terminal comparison			comparison;
 non terminal arithmetic_1		arithmetic_1;
 non terminal arithmetic_2		arithmetic_2;
 
-/*Precedences*/
-precedence left SHORT_NAME;
-precedence left LONG_NAME;
-
 /*Start*/
 start with conyogram;
 
@@ -208,8 +202,8 @@ reference_dt ::= valid_name:vn {: RESULT = new reference_dt.referenceValidName(v
 array_dt ::= primitive_dt:p brackets:b {: RESULT = new array_dt.arrayPrimitive(p, b); :}
 			| valid_name:vn brackets:b {: RESULT = new array_dt.arrayName(vn, b); :};
 			
-valid_name ::= IDENTIFIER:id {:RESULT = new valid_name.identifier(id);:}
-valid_var ::= valid_name:vn {: RESULT = new valid_var.validVar(vn); :} %prec SHORT_NAME 
+valid_name ::= IDENTIFIER:id {:RESULT = new valid_name.identifier(id);:};
+valid_var ::= valid_name:vn {: RESULT = new valid_var.validVar(vn); :}
 			| valid_name:vn ref_brackets:rb {: RESULT = new valid_var.validVarRB(vn, rb); :};
 
 /*Variable Declaration Productions*/
@@ -219,7 +213,6 @@ arte_dec ::= MAKE_ARTE data_type:dt IDENTIFIER:id arte_assign:a DB {: RESULT = n
 arte_assign ::= MAKE_KUHA arte_init:i {: RESULT = new arte_assign.arteAssign(i); :}
 			| {: RESULT = new arte_assign.arteAssign(); :}; 
 arte_init ::= array_init:a {: RESULT = new arte_init.arrayInit(a); :}
-			| sy_init:sy {: RESULT = new arte_init.syInit(sy); :}
 			| sabi_sabi:s {: RESULT = new arte_init.sabiInit(s); :};
 
 /*Function Declaration Productions*/

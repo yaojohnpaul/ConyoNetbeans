@@ -1,6 +1,11 @@
 /* Comment */
 OMG floaty TEST makeKuha 1.2 db
 
+hireYaya test1 bayad (inty i) makeBalik poor
+$
+        makeSulat(i) db
+$
+
 superYaya
 $
 	makeSulat("Hello, world.") db
