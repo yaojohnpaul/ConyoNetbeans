@@ -57,7 +57,7 @@ parser code {:
 
 /* Terminals */
 terminal            OMG, HIRE_YAYA, BAYAD, MAKE_BALIK;
-terminal			SUPER_YAYA, MAKE_ARTE, BRAND_NEW, MAKE_UTUSAN, BREAKUP, MAKEUP;
+terminal			SUPER_YAYA, MAKE_ARTE, BREAKUP, MAKEUP;
 terminal			MAKE_TAWAG, MAKE_SULAT, MAKE_BASA, LIKE_KAPAG, THIS_NALANG, THIS_NALANG_KAPAG;
 terminal			MAKE_PALIT, MRW, MDR, LIKE_HABANG, MAKE_GAWA, MAKE_ULIT;
 terminal String		INTY, FLOATY, CHARY, STRINGY, BOOLY, POOR;
@@ -86,8 +86,6 @@ non terminal OMG_list			OMG_list;
 non terminal OMG_dec			OMG_dec;
 non terminal yaya_section		yaya_section;
 non terminal yaya_list			yaya_list;
-non terminal sub_yaya_section	sub_yaya_section;
-non terminal sub_yaya_list		sub_yaya_list;
 non terminal super_yaya			super_yaya;
 /*Literals, Data Types, Names*/
 non terminal literal			literal;
@@ -97,14 +95,6 @@ non terminal reference_dt		reference_dt;
 non terminal array_dt			array_dt;
 non terminal valid_name			valid_name;
 non terminal valid_var			valid_var;
-/*Class Declaration Productions*/
-non terminal sub_yaya			sub_yaya;
-non terminal sy_body			sy_body;
-non terminal sy_opt				sy_opt;
-non terminal sy_cont_list		sy_cont_list;
-non terminal sy_cont			sy_cont;
-non terminal constructor		constructor;
-non terminal sy_init			sy_init;
 /*Variable Declaration Productions*/
 non terminal arte_dec			arte_dec;
 non terminal arte_assign		arte_assign;
@@ -172,9 +162,9 @@ start with conyogram;
  
 /*Program*/
 
-conyogram ::= OMG_section:o yaya_section:y sub_yaya_section:b super_yaya:p 
+conyogram ::= OMG_section:o yaya_section:y super_yaya:p 
 				{: 
-					RESULT = new Conyogram(o, y, b, p);
+					RESULT = new Conyogram(o, y, p);
 					printText(); 
 				:};
 
@@ -193,11 +183,6 @@ yaya_section ::= yaya_list:l {: RESULT = new yaya_section.yayaSection(l); :}
 			| {: RESULT = new yaya_section.yayaSection(); :};
 yaya_list ::= yaya:y {: RESULT = new yaya_list.yayaList(y); :}
 			| yaya:y yaya_list:l {: RESULT = new yaya_list.yayaList(y, l); :};
-
-sub_yaya_section ::= sub_yaya_list:s {: RESULT = new sub_yaya_section.subYayaSection(s); :}
-			| {: RESULT = new sub_yaya_section.subYayaSection(); :};
-sub_yaya_list ::= sub_yaya:s {: RESULT = new sub_yaya_list.subYayaList(s); :}
-			| sub_yaya:s sub_yaya_list:l {: RESULT = new sub_yaya_list.subYayaList(s, l); :};
 				
 super_yaya ::= SUPER_YAYA utos_block:u {: RESULT = new super_yaya.superYaya(u); :};
 
@@ -224,23 +209,8 @@ array_dt ::= primitive_dt:p brackets:b {: RESULT = new array_dt.arrayPrimitive(p
 			| valid_name:vn brackets:b {: RESULT = new array_dt.arrayName(vn, b); :};
 			
 valid_name ::= IDENTIFIER:id {:RESULT = new valid_name.identifier(id);:}
-			| valid_name:vn COLON IDENTIFIER:id {:RESULT = new valid_name.validName(vn, id); :} %prec LONG_NAME;
 valid_var ::= valid_name:vn {: RESULT = new valid_var.validVar(vn); :} %prec SHORT_NAME 
 			| valid_name:vn ref_brackets:rb {: RESULT = new valid_var.validVarRB(vn, rb); :};
-			
-/*Class Declaration Productions*/
-
-sub_yaya ::= MAKE_UTUSAN IDENTIFIER:id sy_body:body {: RESULT = new sub_yaya.SubYaya(id, body); :};
-sy_body ::= DOLLAR_SIGN sy_opt:opt DOLLAR_SIGN {: RESULT = new sy_body.SubYayaBodyList(opt); :};
-sy_opt ::= sy_cont_list:l {: RESULT = new sy_opt.SubYayaOpt(l); :}
-			| {: RESULT = new sy_opt.SubYayaOpt(); :};
-sy_cont_list ::= sy_cont:c sy_cont_list:l {: RESULT = new sy_cont_list.SubYayaContList(c, l); :}
-			| sy_cont:c {: RESULT = new sy_cont_list.SubYayaContList(c); :};
-sy_cont ::= arte_dec:a {: RESULT = new sy_cont.SubYayaContArte(a); :}
-			| yaya:y {: RESULT = new sy_cont.SubYayaContYaya(y); :}
-			| constructor:c {: RESULT = new sy_cont.SubYayaContConstructor(c); :};
-constructor ::= MAKE_SIMULA IDENTIFIER:id utos_block:u {: RESULT = new constructor.mSimula(id, u); :};
-sy_init ::= BRAND_NEW reference_dt:rd LEFT_PAREN arte_init_list:ai RIGHT_PAREN {: RESULT = new sy_init.SubYayaInitialize(rd, ai); :};
 
 /*Variable Declaration Productions*/
 

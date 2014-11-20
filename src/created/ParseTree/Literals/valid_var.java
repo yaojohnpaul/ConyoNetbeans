@@ -27,23 +27,15 @@ public abstract class valid_var implements created.iNode
         
         public void setSymList(SymList sl)
         {
-            if(vn instanceof valid_name.validName)
-            {
-                ((valid_name.validName) vn).setSymList(sl);
-            }
-            else if(vn instanceof valid_name.identifier)
+            if(vn instanceof valid_name.identifier)
             {
                 ((valid_name.identifier) vn).setSymList(sl);
             }
         }
         
         public String checkContext(SymList sl) 
-        { // for sabi sabi plng
-            if(vn instanceof valid_name.validName)
-            {
-                return ((valid_name.validName) vn).checkContext(sl);
-            }
-            else if(vn instanceof valid_name.identifier)
+        { // for sabi sabi plngreturn ((valid_name.validName) vn).checkContext(sl);
+            if(vn instanceof valid_name.identifier)
             {
                 return ((valid_name.identifier) vn).checkContext(sl);
             }
@@ -74,11 +66,7 @@ public abstract class valid_var implements created.iNode
         
         public void setSymList(SymList sl)
         {
-            if(vn instanceof valid_name.validName)
-            {
-                ((valid_name.validName) vn).setSymList(sl);
-            }
-            else if(vn instanceof valid_name.identifier)
+            if(vn instanceof valid_name.identifier)
             {
                 ((valid_name.identifier) vn).setSymList(sl);
             }
@@ -96,11 +84,7 @@ public abstract class valid_var implements created.iNode
                 ((ref_brackets.refBrackets) rb).checkContext(sl);
             }
             
-            if(vn instanceof valid_name.validName)
-            {
-                return ((valid_name.validName) vn).checkContext(sl);
-            }
-            else if(vn instanceof valid_name.identifier)
+            if(vn instanceof valid_name.identifier)
             {
                 return ((valid_name.identifier) vn).checkContext(sl);
             }
@@ -110,11 +94,7 @@ public abstract class valid_var implements created.iNode
         
         public void preInterpret(SymList sl)
         {
-            if(vn instanceof valid_name.validName)
-            {
-                ((valid_name.validName) vn).preInterpret(sl);
-            }
-            else if(vn instanceof valid_name.identifier)
+            if(vn instanceof valid_name.identifier)
             {
                 ((valid_name.identifier) vn).preInterpret(sl);
             }

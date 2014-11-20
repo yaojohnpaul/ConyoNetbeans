@@ -73,8 +73,6 @@ float = {integer}\.{integer}(e{integer})?
 <YYINITIAL> "makeBalik" {return symbol(sym.MAKE_BALIK);}
 <YYINITIAL> "superYaya" {return symbol(sym.SUPER_YAYA);}
 <YYINITIAL> "makeArte" {return symbol(sym.MAKE_ARTE);}
-<YYINITIAL> "brandNew" {return symbol(sym.BRAND_NEW);}
-<YYINITIAL> "makeUtusan" {return symbol(sym.MAKE_UTUSAN);}
 <YYINITIAL> "breakup" {return symbol(sym.BREAKUP);}
 <YYINITIAL> "makeup" {return symbol(sym.MAKEUP);}
 <YYINITIAL> "makeTawag" {return symbol(sym.MAKE_TAWAG);}

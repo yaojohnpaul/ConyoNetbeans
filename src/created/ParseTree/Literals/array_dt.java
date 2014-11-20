@@ -121,17 +121,17 @@ public abstract class array_dt implements created.iNode
         
         public void setSymList(SymList sl)
         {
-            if(vn instanceof valid_name.validName)
+            if(vn instanceof valid_name.identifier)
             {
-                ((valid_name.validName) vn).setSymList(sl);
+                ((valid_name.identifier) vn).setSymList(sl);
             }
         }
         
         public String checkContext(SymList sl)
         {
-            if(vn instanceof valid_name.validName)
+            if(vn instanceof valid_name.identifier)
             {
-                return ((valid_name.validName) vn).checkContext(sl);
+                return ((valid_name.identifier) vn).checkContext(sl);
             }
             
             return "";
@@ -139,8 +139,9 @@ public abstract class array_dt implements created.iNode
         
         public void preInterpret(SymList sl)
         {
-            if(vn instanceof valid_name.validName)
+            if(vn instanceof valid_name.identifier)
             {
+                ((valid_name.identifier) vn).preInterpret(sl);
             }
         }
     }

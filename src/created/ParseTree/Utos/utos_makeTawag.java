@@ -30,11 +30,7 @@ public abstract class utos_makeTawag implements created.iNode
         
         public void setSymList(SymList sl)
         {
-            if(vn instanceof valid_name.validName)
-            {
-                ((valid_name.validName) vn).setSymList(sl);
-            }
-            else if(vn instanceof valid_name.identifier)
+            if(vn instanceof valid_name.identifier)
             {
                 ((valid_name.identifier) vn).setSymList(sl);
             }
@@ -49,10 +45,6 @@ public abstract class utos_makeTawag implements created.iNode
         { // for sabi sabi plng
             //other context here
             String ret = "";
-            if(vn instanceof valid_name.validName)
-            {
-                ret = ((valid_name.validName) vn).checkContext(sl);
-            }
             
             if(vn instanceof valid_name.identifier)
             {
@@ -80,11 +72,7 @@ public abstract class utos_makeTawag implements created.iNode
         
         public void preInterpret(SymList sl)
         {
-            if(vn instanceof valid_name.validName)
-            {
-                ((valid_name.validName) vn).preInterpret(sl);
-            }
-            else if(vn instanceof valid_name.identifier)
+            if(vn instanceof valid_name.identifier)
             {
                 ((valid_name.identifier) vn).preInterpret(sl);
             }

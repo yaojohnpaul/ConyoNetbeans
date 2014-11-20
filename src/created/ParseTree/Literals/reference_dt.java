@@ -65,11 +65,7 @@ public abstract class reference_dt implements created.iNode
         
         public String checkContext(SymList sl)
         {
-            if(array instanceof array_dt.arrayName)
-            {
-                return ((array_dt.arrayName) array).checkContext(sl);
-            }
-            else if(array instanceof array_dt.arrayPrimitive)
+            if(array instanceof array_dt.arrayPrimitive)
             {
                 return ((array_dt.arrayPrimitive) array).checkContext(sl);
             }

@@ -14,23 +14,20 @@ public class Conyogram implements iNode
 {
     private OMG_section o;
     private yaya_section y;
-    private sub_yaya_section s;
-    private super_yaya m;
+    private super_yaya s;
     
     /**
      * Constructor
      */
-    public Conyogram(OMG_section o, yaya_section y, sub_yaya_section s, super_yaya m)
+    public Conyogram(OMG_section o, yaya_section y, super_yaya s)
     {
         this.o = o;
         this.y = y;
         this.s = s;
-        this.m = m;
     }
     
     private SymList OMG_sym;
     private SymList yaya_sym;
-    private SymList sub_yaya_sym;
     private SymList super_sym;
     
     /**
@@ -55,20 +52,12 @@ public class Conyogram implements iNode
             ((yaya_section.yayaSection) y).setSymList(yaya_sym);
         }
         
-        sub_yaya_sym = new SymList(yaya_sym);
-        
-        //Sub Yaya 
-        if(s instanceof sub_yaya_section.subYayaSection)
-        {
-            ((sub_yaya_section.subYayaSection) s).setSymList(sub_yaya_sym);
-        }
-        
-        super_sym = new SymList(sub_yaya_sym);
+        super_sym = new SymList(yaya_sym);
         
         //Super Yaya
-        if(m instanceof super_yaya.superYaya)
+        if(s instanceof super_yaya.superYaya)
         {
-            ((super_yaya.superYaya) m).setSymList(super_sym);
+            ((super_yaya.superYaya) s).setSymList(super_sym);
         }
     }
     
@@ -84,16 +73,10 @@ public class Conyogram implements iNode
             ((yaya_section.yayaSection) y).checkContext(yaya_sym);
         }
         
-        //Sub Yaya 
-        if(s instanceof sub_yaya_section.subYayaSection)
-        {
-            ((sub_yaya_section.subYayaSection) s).checkContext(sub_yaya_sym);
-        }
-        
         //Super Yaya
-        if(m instanceof super_yaya.superYaya)
+        if(s instanceof super_yaya.superYaya)
         {
-            ((super_yaya.superYaya) m).checkContext(super_sym);
+            ((super_yaya.superYaya) s).checkContext(super_sym);
         }
     }
     
@@ -115,16 +98,10 @@ public class Conyogram implements iNode
             ((yaya_section.yayaSection) y).preInterpret(yaya_sym);
         }
         
-        //Sub Yaya 
-        if(s instanceof sub_yaya_section.subYayaSection)
-        {
-            ((sub_yaya_section.subYayaSection) s).preInterpret(sub_yaya_sym);
-        }
-        
         //Super Yaya
-        if(m instanceof super_yaya.superYaya)
+        if(s instanceof super_yaya.superYaya)
         {
-            ((super_yaya.superYaya) m).preInterpret(super_sym);
+            ((super_yaya.superYaya) s).preInterpret(super_sym);
         }
     }
     
@@ -146,16 +123,10 @@ public class Conyogram implements iNode
             ((yaya_section.yayaSection) y).evaluate(yaya_sym);
         }
         
-        //Sub Yaya 
-        if(s instanceof sub_yaya_section.subYayaSection)
-        {
-            ((sub_yaya_section.subYayaSection) s).evaluate(sub_yaya_sym);
-        }
-        
         //Super Yaya
-        if(m instanceof super_yaya.superYaya)
+        if(s instanceof super_yaya.superYaya)
         {
-            ((super_yaya.superYaya) m).evaluate(super_sym);
+            ((super_yaya.superYaya) s).evaluate(super_sym);
         }
         
         OutGen.printResult();
@@ -168,7 +139,6 @@ public class Conyogram implements iNode
     {
         return "Constants: \n" + o.toString()
                 + "\n\nFunctions: \n" + y.toString()
-                + "\n\nClasses: \n" + s.toString()
-                + "\n\nMain: \n" + m.toString();
+                + "\n\nMain: \n" + s.toString();
     }
 }
