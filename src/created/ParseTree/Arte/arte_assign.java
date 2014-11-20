@@ -4,7 +4,6 @@ import created.ParseTree.Array.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
@@ -48,10 +47,6 @@ public abstract class arte_assign implements created.iNode
             {
                 return ((arte_init.arrayInit) i).checkContext(sl);
             }
-            else if(i instanceof arte_init.syInit)
-            {
-                return ((arte_init.syInit) i).checkContext(sl);
-            }
             else if(i instanceof arte_init.sabiInit)
             {
                 return ((arte_init.sabiInit) i).checkContext(sl);
@@ -64,10 +59,6 @@ public abstract class arte_assign implements created.iNode
             if(i instanceof arte_init.arrayInit)
             {
                 ((arte_init.arrayInit) i).preInterpret(sl);
-            }
-            else if(i instanceof arte_init.syInit)
-            {
-                ((arte_init.syInit) i).preInterpret(sl);
             }
             else if(i instanceof arte_init.sabiInit)
             {

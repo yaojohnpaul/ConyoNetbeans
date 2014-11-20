@@ -4,7 +4,6 @@ import created.ParseTree.Array.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
@@ -47,46 +46,6 @@ public abstract class arte_init implements created.iNode
             if(a instanceof array_init.arrayInit)
             {
                 ((array_init.arrayInit) a).preInterpret(sl);
-            }
-        }
-    }
-    
-    public static class syInit extends arte_init
-    {
-        public sy_init sy; 
-        
-        public syInit(sy_init sy)
-        {
-            this.sy = sy;
-        }
-        
-        public String toString()
-        {
-            return sy.toString();
-        }
-        
-        public void setSymList(SymList sl)
-        {
-            if(sy instanceof sy_init.SubYayaInitialize)
-            {
-                ((sy_init.SubYayaInitialize) sy).setSymList(sl);
-            }
-        }
-        
-        public String checkContext(SymList sl)
-        {
-            if(sy instanceof sy_init.SubYayaInitialize)
-            {
-                return ((sy_init.SubYayaInitialize) sy).checkContext(sl);
-            }
-            return "";
-        }
-        
-        public void preInterpret(SymList sl)
-        {
-            if(sy instanceof sy_init.SubYayaInitialize)
-            {
-                ((sy_init.SubYayaInitialize) sy).preInterpret(sl);
             }
         }
     }

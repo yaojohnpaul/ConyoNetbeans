@@ -4,7 +4,6 @@ import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
@@ -42,10 +41,6 @@ public abstract class arte_init_opt implements created.iNode
             {
                 ((arte_init.arrayInit) i).setSymList(sl);
             }
-            else if(i instanceof arte_init.syInit)
-            {
-                ((arte_init.syInit) i).setSymList(sl);
-            }
             else if(i instanceof arte_init.sabiInit)
             {
                 ((arte_init.sabiInit) i).setSymList(sl);
@@ -62,10 +57,6 @@ public abstract class arte_init_opt implements created.iNode
             if(i instanceof arte_init.arrayInit)
             {
                 ((arte_init.arrayInit) i).checkContext(sl);
-            }
-            else if(i instanceof arte_init.syInit)
-            {
-                ((arte_init.syInit) i).checkContext(sl);
             }
             else if(i instanceof arte_init.sabiInit)
             {
@@ -85,10 +76,6 @@ public abstract class arte_init_opt implements created.iNode
             if(i instanceof arte_init.arrayInit)
             {
                 ((arte_init.arrayInit) i).preInterpret(sl);
-            }
-            else if(i instanceof arte_init.syInit)
-            {
-                ((arte_init.syInit) i).preInterpret(sl);
             }
             else if(i instanceof arte_init.sabiInit)
             {
