@@ -27,11 +27,7 @@ public abstract class reference_dt implements created.iNode
         
         public String checkContext(SymList sl)
         {
-            if(vn instanceof valid_name.validName)
-            {
-                return ((valid_name.validName) vn).checkContext(sl);
-            }
-            else if(vn instanceof valid_name.identifier)
+            if(vn instanceof valid_name.identifier)
             {
                 return ((valid_name.identifier) vn).checkContext(sl);
             }
