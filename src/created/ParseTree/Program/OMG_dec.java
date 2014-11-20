@@ -16,13 +16,13 @@ public abstract class OMG_dec implements created.iNode
     {
         data_type dt; //Data type
         String id; //Constant name
-        sabi_sabi ss; //Expression, value of constant
+        literal l; //value of constant
         
-        public OMG(data_type dt, String id, sabi_sabi ss)
+        public OMG(data_type dt, String id, literal l)
         {
             this.dt = dt;
             this.id = id;
-            this.ss = ss;
+            this.l = l;
         }
     
         public String toString()
@@ -34,14 +34,14 @@ public abstract class OMG_dec implements created.iNode
          * Get the value of the constant.
          * @return Constant value.
          */
-        public sabi_sabi getValue()
+        public literal getValue()
         {
-            return ss;
+            return l;
         }
         
         public void setSymList(SymList sl)
         { 
-            Boolean avail = sl.addToList(id, new SymConst(id, ss, dt));
+            Boolean avail = sl.addToList(id, new SymConst(id, l, dt));
             if(!avail)
             {
                 ErrorReport.error("Duplicate constant!: " + id);

@@ -168,7 +168,7 @@ OMG_section ::= OMG_list:o {: RESULT = new OMG_section.OMGSection(o); :}
 			| {: RESULT = new OMG_section.OMGSection(); :};
 OMG_list ::= OMG_dec:o {: RESULT = new OMG_list.OMGList(o); :}
 			| OMG_dec:o OMG_list:l {: RESULT = new OMG_list.OMGList(o, l); :};
-OMG_dec ::= OMG data_type:dt IDENTIFIER:id MAKE_KUHA sabi_sabi:ss DB {: RESULT = new OMG_dec.OMG(dt, id, ss); :}
+OMG_dec ::= OMG data_type:dt IDENTIFIER:id MAKE_KUHA literal:l DB {: RESULT = new OMG_dec.OMG(dt, id, l); :}
 			| OMG error DB {: RESULT = null; addText(" in Constant Declaration"); :}
 			| error DB {: RESULT = null; addText(" before main and function declarations"); :}
 ;

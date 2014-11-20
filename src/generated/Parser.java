@@ -486,13 +486,13 @@ public class Parser extends java_cup.runtime.lr_parser {
     "\uffd7\042\uffd7\001\002\000\004\071\371\001\002\000\006" +
     "\003\uffd8\042\uffd8\001\002\000\006\040\uffd2\044\uffd2\001" +
     "\002\000\004\037\u0101\001\002\000\004\071\375\001\002" +
-    "\000\004\036\376\001\002\000\030\014\026\016\031\043" +
-    "\113\066\115\071\033\072\124\073\131\074\140\075\125" +
-    "\076\112\077\141\001\002\000\004\037\u0100\001\002\000" +
-    "\012\003\ufffb\004\ufffb\005\ufffb\010\ufffb\001\002\000\012" +
-    "\003\ufffa\004\ufffa\005\ufffa\010\ufffa\001\002\000\012\003" +
-    "\ufff9\004\ufff9\005\ufff9\010\ufff9\001\002\000\006\005\ufffc" +
-    "\010\ufffc\001\002\000\004\002\001\001\002" });
+    "\000\004\036\376\001\002\000\016\072\124\073\131\074" +
+    "\140\075\125\076\112\077\141\001\002\000\004\037\u0100" +
+    "\001\002\000\012\003\ufffb\004\ufffb\005\ufffb\010\ufffb\001" +
+    "\002\000\012\003\ufffa\004\ufffa\005\ufffa\010\ufffa\001\002" +
+    "\000\012\003\ufff9\004\ufff9\005\ufff9\010\ufff9\001\002\000" +
+    "\006\005\ufffc\010\ufffc\001\002\000\004\002\001\001\002" +
+    "" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -654,12 +654,9 @@ public class Parser extends java_cup.runtime.lr_parser {
     "\002\001\001\000\014\012\367\013\072\014\103\015\075" +
     "\016\076\001\001\000\002\001\001\000\002\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\042\011\132\016\042\017" +
-    "\116\043\125\046\062\050\053\061\376\062\120\064\133" +
-    "\065\117\066\131\067\121\070\127\071\126\072\135\073" +
-    "\113\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001" });
+    "\001\001\000\002\001\001\000\004\011\376\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001" });
 
   /** Access to <code>reduce_goto</code> table. */
   public short[][] reduce_table() {return _reduce_table;}
@@ -849,7 +846,7 @@ class CUP$Parser$actions {
           return CUP$Parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 6: // OMG_dec ::= OMG data_type IDENTIFIER MAKE_KUHA sabi_sabi DB 
+          case 6: // OMG_dec ::= OMG data_type IDENTIFIER MAKE_KUHA literal DB 
             {
               OMG_dec RESULT =null;
 		int dtleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-4)).left;
@@ -858,10 +855,10 @@ class CUP$Parser$actions {
 		int idleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)).left;
 		int idright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)).right;
 		String id = (String)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-3)).value;
-		int ssleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
-		int ssright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
-		sabi_sabi ss = (sabi_sabi)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
-		 RESULT = new OMG_dec.OMG(dt, id, ss); 
+		int lleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
+		int lright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
+		literal l = (literal)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		 RESULT = new OMG_dec.OMG(dt, id, l); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("OMG_dec",3, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-5)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
