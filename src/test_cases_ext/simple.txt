@@ -8,11 +8,8 @@ $
 
 superYaya
 $
-        makeArte inty i makeKuha 5.2 db
-        i makeKuha "hello" db
-        i makeKuha 1 db
-        //makeArte inty[] a db
-        //a makeKuha {1, 2} db
+        makeArte inty[] a makeKuha {1} db
+        a makeKuha {1,2,3} db
 	makeSulat("Hello, world.") db
         makeSulat("LOOK AT THIS AMAZING ARITHMETIC: " + 1 + 1 - 3) db
 $

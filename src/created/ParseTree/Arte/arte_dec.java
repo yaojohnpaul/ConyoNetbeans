@@ -51,22 +51,29 @@ public abstract class arte_dec implements created.iNode
             {
                 temp = ((arte_assign.arteAssign) a).checkContext(sl);
             }
-            if(dt instanceof data_type.datatypePrimitive)
-            {
-                if(((data_type.datatypePrimitive) dt).checkContext(sl).equals(temp)){
-                    return temp;
-                }
-            }
-            else if(dt instanceof data_type.datatypeReference)
-            {
-                if(((data_type.datatypeReference) dt).checkContext(sl).equals(temp)){
-                    return temp;
-                }
-            }
             
-            ErrorReport.error("Datatype Mismatch");
-            return "";
-            
+            if(!temp.isEmpty())
+            {
+                if(dt instanceof data_type.datatypePrimitive)
+                {
+                    if(((data_type.datatypePrimitive) dt).checkContext(sl).equals(temp)){
+                        return temp;
+                    }
+                }
+                else if(dt instanceof data_type.datatypeReference)
+                {
+                    if(((data_type.datatypeReference) dt).checkContext(sl).equals(temp)){
+                        return temp;
+                    }
+                }
+
+                ErrorReport.error("Datatype Mismatch");
+                return "";
+            }
+            else
+            {
+                return temp;
+            }
             
         }
         

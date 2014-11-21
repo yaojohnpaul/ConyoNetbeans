@@ -55,23 +55,23 @@ public abstract class array_dt implements created.iNode
         {
             if(p instanceof primitive_dt.intType)
             {
-                return "inty";
+                return "inty[]";
             }
             else if(p instanceof primitive_dt.floatType)
             {
-                return "floaty";
+                return "floaty[]";
             }
             else if(p instanceof primitive_dt.stringType)
             {
-                return "stringy";
+                return "stringy[]";
             }
             else if(p instanceof primitive_dt.charType)
             {
-                return "chary";
+                return "chary[]";
             }
             else if(p instanceof primitive_dt.booleanType)
             {
-                return "booly";
+                return "booly[]";
             }
             
             return "";

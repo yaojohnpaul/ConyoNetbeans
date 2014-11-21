@@ -52,24 +52,28 @@ public abstract class arte_init_opt implements created.iNode
         {
             String temp1 = "";
             String temp2 = "";
+            String temp3 = "";
             if(o != null){
                 if(s instanceof sabi_sabi.SabiSabi)
                 {
                     temp1 = ((sabi_sabi.SabiSabi) s).checkContext(sl);
+                    temp3 = temp1;
+                    temp1 = temp1 + "[]";
                 }
             
                 if(o instanceof arte_init_opt.arteInitOpt)
                 {
                     temp2 = ((arte_init_opt.arteInitOpt) o).checkContext(sl);
                 }
+
                 if(temp1.equals(temp2)){
-                    return temp1;
+                    return temp3 + "[]";
                 }
                 return "";
             }
-            else if(o instanceof arte_init_opt.arteInitOpt)
+            else if(s instanceof sabi_sabi.SabiSabi)//if(o instanceof arte_init_opt.arteInitOpt)
             {
-                return ((arte_init_opt.arteInitOpt) o).checkContext(sl);
+                return ((sabi_sabi.SabiSabi) s).checkContext(sl) + "[]";
             }
             
             return "";
