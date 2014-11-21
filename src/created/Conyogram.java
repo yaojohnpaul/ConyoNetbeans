@@ -1,13 +1,8 @@
 package created;
 
 import created.Sym.*;
-import created.ParseTree.Array.*;
-import created.ParseTree.Arte.*;
-import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
-import created.ParseTree.SabiSabi.*;
-import created.ParseTree.Utos.*;
-import created.ParseTree.Yaya.*;
+import error.ErrorReport;
 
 public class Conyogram implements iNode
 {
@@ -137,7 +132,7 @@ public class Conyogram implements iNode
         {
             ((super_yaya.superYaya) s).evaluate(super_sym);
         }
-        
+
         OutGen.printResult();
     }
     
