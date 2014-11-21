@@ -50,17 +50,30 @@ public abstract class arte_init_opt implements created.iNode
         
         public String checkContext(SymList sl)
         {
-            if(s instanceof sabi_sabi.SabiSabi)
-            {
-                ((sabi_sabi.SabiSabi) s).checkContext(sl);
-            }
+            String temp1 = ""
+            String temp2 = ""
+            if(o != null){
+                if(s instanceof sabi_sabi.SabiSabi)
+                {
+                    temp1 = ((sabi_sabi.SabiSabi) s).checkContext(sl);
+                }
             
-            if(o instanceof arte_init_opt.arteInitOpt)
+                if(o instanceof arte_init_opt.arteInitOpt)
+                {
+                    temp2 = ((arte_init_opt.arteInitOpt) o).checkContext(sl);
+                }
+                if(temp1.equals(temp2)){
+                    return temp1;
+                }
+                return "";
+            }
+            else if(o instanceof arte_init_opt.arteInitOpt)
             {
-                ((arte_init_opt.arteInitOpt) o).checkContext(sl);
+                return ((arte_init_opt.arteInitOpt) o).checkContext(sl);
             }
             
             return "";
+            
         }
         
         public void preInterpret(SymList sl)

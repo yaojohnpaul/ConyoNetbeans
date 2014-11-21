@@ -113,6 +113,26 @@ public abstract class ss_a1 implements created.iNode
                                 return "";
                 }
             }
+            else if(arith1.equals("inty")){
+                switch(arith2)
+                {
+                    case "inty" : return "inty";
+                    case "floaty" : return "floaty";
+                    case "stringy" : return "string";
+                    default         : ErrorReport.error("Datatype Mismatch");
+                                return "";
+                }
+            }
+            else if(arith1.equals("floaty")){
+                switch(arith2)
+                {
+                    case "inty" : 
+                    case "floaty" : return "floaty";
+                    case "stringy" : return "string";
+                    default         : ErrorReport.error("Datatype Mismatch");
+                                return "";
+                }
+            }
             switch(arith2){
                 case "booly" : break;
                 case "floaty" : break;
@@ -155,9 +175,37 @@ public abstract class ss_a1 implements created.iNode
                 switch(((arithmetic_1.arithmetic1) ar).evaluate())
                 {
                     case "+":   if(o1 instanceof Integer) 
-                                    return (int)o1 + (int)o2;
-                                else if(o1 instanceof Float) 
-                                    return (float)o1 + (float)o2;
+                                {
+                                    if(o2 instanceof Integer)
+                                        return (int)o1 + (int)o2;
+                                    else if(o2 instanceof Float)
+                                        return (int)o1 + (float)o2;
+                                    else if(o2 instanceof String)
+                                        return (int)o1 + (String)o2;
+                                }
+                                else if(o1 instanceof Float)
+                                {   
+                                    if(o2 instanceof Float)
+                                        return (float)o1 + (float)o2;
+                                    else if(o2 instanceof Integer)
+                                        return (float)o1 + (int)o2;
+                                    else if(o2 instanceof String)
+                                        return (float)o1 + (String)o2;
+                                }
+                                else if(o1 instanceof Boolean)
+                                {
+                                    if(o2 instanceof Boolean)
+                                        return (boolean)o1 + (boolean)o2;
+                                    else if(o2 instanceof String)
+                                        return (boolean)o1 + (String)o2;
+                                }
+                                else if(o1 instanceof Character)
+                                {
+                                    if(o2 instanceof Character)
+                                        return (char)o1 + (char)o2;
+                                    else if(o2 instanceof String)
+                                        return (char)o1 + (String)o2;
+                                }
                                 else if(o1 instanceof String)
                                 {
                                     if(o2 instanceof Boolean) 
@@ -171,21 +219,20 @@ public abstract class ss_a1 implements created.iNode
                                     else if(o2 instanceof String)
                                         return (String)o1 + (String)o2;
                                 }
-                                else if(o2 instanceof String)
-                                {
-                                    if(o1 instanceof Boolean) 
-                                        return (boolean)o1 + (String)o2;
-                                    else if(o1 instanceof Integer) 
-                                        return (int)o1 + (String)o2;
-                                    else if(o1 instanceof Float) 
-                                        return (float)o1 + (String)o2;
-                                    else if(o1 instanceof Character) 
-                                        return (char)o1 + (String)o2;
-                                }
                      case "-":  if(o1 instanceof Integer) 
-                                    return (int)o1 - (int)o2;
+                                {   
+                                    if(o2 instanceof Integer)
+                                        return (int)o1 - (int)o2;
+                                    else if(o2 instanceof Float)
+                                        return (int)o1 - (float)o2;
+                                }
                                 else if(o1 instanceof Float) 
-                                    return (float)o1 - (float)o2;
+                                {   
+                                    if(o2 instanceof Float)
+                                        return (float)o1 - (float)o2;
+                                    else if(o2 instanceof Integer)
+                                        return (float)o1 - (int)o2;
+                                }
                 }
             }
             

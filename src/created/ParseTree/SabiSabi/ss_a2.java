@@ -87,7 +87,25 @@ public abstract class ss_a2 implements created.iNode
                 case "inty" : break;
                 default : ErrorReport.error("Datatype Not Allowed");
             }
-            if(unary.equals(a2))
+            if(unary.equals("inty")){
+                switch(a2)
+                {
+                    case "inty" : return "inty";
+                    case "floaty" : return "floaty";
+                    default         : ErrorReport.error("Datatype Mismatch");
+                                return "";
+                }
+            }
+            else if(unary.equals("floaty")){
+                switch(a2)
+                {
+                    case "inty" : 
+                    case "floaty" : return "floaty";
+                    default         : ErrorReport.error("Datatype Mismatch");
+                                return "";
+                }
+            }
+            else if(unary.equals(a2))
                 return unary;
                 
             ErrorReport.error("Datatype Mismatch");
@@ -123,9 +141,9 @@ public abstract class ss_a2 implements created.iNode
             {
                 switch(((arithmetic_2.arithmetic2) ar).evaluate())
                 {
-                    case "*" : return (double)o1 * (double)o2;
-                    case "/" : return (double)o1 / (double)o2;
-                    case "%" : return (double)o1 % (double)o2;
+                    case "*" : return (float)o1 * (float)o2;
+                    case "/" : return (float)o1 / (float)o2;
+                    case "%" : return (float)o1 % (float)o2;
                 }
             }
             

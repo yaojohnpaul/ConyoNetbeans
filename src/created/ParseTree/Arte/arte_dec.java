@@ -44,12 +44,21 @@ public abstract class arte_dec implements created.iNode
             }
         }
         
-        public void checkContext(SymList sl)
+        public String checkContext(SymList sl)
         {
+            String temp = "";
             if(a instanceof arte_assign.arteAssign)
             {
-                ((arte_assign.arteAssign) a).checkContext(sl);
+                temp = ((arte_assign.arteAssign) a).checkContext(sl);
             }
+            if(dt.checkContext(sl).equals(temp)){
+                return temp;
+            }
+            
+            ErrorReport.error("Datatype Mismatch");
+            return "";
+            
+            
         }
         
         public void preInterpret(SymList sl)
