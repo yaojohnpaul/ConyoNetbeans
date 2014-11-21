@@ -8,7 +8,7 @@ class MainConyo
 	public static ConyoLexer s = null;
         
         /*Which test case to use.*/
-        private static String test_file = "test1";
+        private static String test_file = "simple";
 
 	public static void main(String argv[]) 
         {

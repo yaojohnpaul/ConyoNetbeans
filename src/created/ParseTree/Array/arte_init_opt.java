@@ -50,8 +50,8 @@ public abstract class arte_init_opt implements created.iNode
         
         public String checkContext(SymList sl)
         {
-            String temp1 = ""
-            String temp2 = ""
+            String temp1 = "";
+            String temp2 = "";
             if(o != null){
                 if(s instanceof sabi_sabi.SabiSabi)
                 {
