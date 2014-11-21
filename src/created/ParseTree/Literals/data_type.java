@@ -80,10 +80,6 @@ public abstract class data_type implements created.iNode
             {
                 
             }
-            else if(r instanceof reference_dt.referenceValidName)
-            {
-                
-            }
         }
         
         public String checkContext(SymList st) 
@@ -92,10 +88,6 @@ public abstract class data_type implements created.iNode
             if(r instanceof reference_dt.referenceArray)
             {
                 return ((reference_dt.referenceArray) r).checkContext(st);
-            }
-            else if(r instanceof reference_dt.referenceValidName)
-            {
-                return ((reference_dt.referenceValidName) r).checkContext(st);
             }
             return "";
         }

@@ -196,10 +196,8 @@ primitive_dt ::= INTY:i {: RESULT = new primitive_dt.intType(i); :}
 			| STRINGY:s {: RESULT = new primitive_dt.stringType(s); :}
 			| CHARY:c {: RESULT = new primitive_dt.charType(c); :}
 			| BOOLY:b {: RESULT = new primitive_dt.booleanType(b); :};
-reference_dt ::= valid_name:vn {: RESULT = new reference_dt.referenceValidName(vn); :} 
-				| array_dt:a {: RESULT = new reference_dt.referenceArray(a); :};
-array_dt ::= primitive_dt:p brackets:b {: RESULT = new array_dt.arrayPrimitive(p, b); :}
-			| valid_name:vn brackets:b {: RESULT = new array_dt.arrayName(vn, b); :};
+reference_dt ::= array_dt:a {: RESULT = new reference_dt.referenceArray(a); :};
+array_dt ::= primitive_dt:p brackets:b {: RESULT = new array_dt.arrayPrimitive(p, b); :};
 			
 valid_name ::= IDENTIFIER:id {:RESULT = new valid_name.identifier(id);:};
 valid_var ::= valid_name:vn {: RESULT = new valid_var.validVar(vn); :}

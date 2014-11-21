@@ -10,35 +10,6 @@ import created.Sym.*;
 
 public abstract class reference_dt implements created.iNode
 {
-    public static class referenceValidName extends reference_dt
-    {
-        public valid_name vn;
-        
-        public referenceValidName(valid_name vn)
-        {
-            this.vn = vn;
-        }
-        
-        public String toString()
-        {
-            return vn.toString();
-        }
-        
-        public String checkContext(SymList sl)
-        {
-            if(vn instanceof valid_name.identifier)
-            {
-                return ((valid_name.identifier) vn).checkContext(sl);
-            }
-            return "";
-        }
-        
-        public void preInterpret(SymList sl)
-        {
-            
-        }
-    }
-    
     public static class referenceArray extends reference_dt
     {
         public array_dt array;

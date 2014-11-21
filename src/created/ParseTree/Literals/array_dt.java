@@ -101,49 +101,6 @@ public abstract class array_dt implements created.iNode
             }
         }
     }
-    
-    public static class arrayName extends array_dt
-    {
-        public brackets b;
-        public valid_name vn;
-        
-        public arrayName(valid_name p, brackets b)
-        {
-            this.b = b;
-            this.vn = vn;
-        }
-        
-        public String toString()
-        {
-            return vn.toString() + b.toString();
-        }
-        
-        public void setSymList(SymList sl)
-        {
-            if(vn instanceof valid_name.identifier)
-            {
-                ((valid_name.identifier) vn).setSymList(sl);
-            }
-        }
-        
-        public String checkContext(SymList sl)
-        {
-            if(vn instanceof valid_name.identifier)
-            {
-                return ((valid_name.identifier) vn).checkContext(sl);
-            }
-            
-            return "";
-        }
-        
-        public void preInterpret(SymList sl)
-        {
-            if(vn instanceof valid_name.identifier)
-            {
-                ((valid_name.identifier) vn).preInterpret(sl);
-            }
-        }
-    }
 }
 
 
