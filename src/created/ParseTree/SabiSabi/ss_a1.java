@@ -194,9 +194,7 @@ public abstract class ss_a1 implements created.iNode
                                 }
                                 else if(o1 instanceof Boolean)
                                 {
-                                    if(o2 instanceof Boolean)
-                                        return (boolean)o1 + (boolean)o2;
-                                    else if(o2 instanceof String)
+                                    if(o2 instanceof String)
                                         return (boolean)o1 + (String)o2;
                                 }
                                 else if(o1 instanceof Character)
