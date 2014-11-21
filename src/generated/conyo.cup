@@ -232,8 +232,8 @@ yaya_param ::= data_type:dt IDENTIFIER:id {: RESULT = new yaya_param.yayaParam(d
 array_init ::= LEFT_CURLY arte_init_list:l RIGHT_CURLY {: RESULT = new array_init.arrayInit(l); :};
 arte_init_list ::= arte_init_opt:o {: RESULT = new arte_init_list.arteInitList(o); :}
 				| {: RESULT = new arte_init_list.arteInitList(); :};
-arte_init_opt ::= arte_init:i COMMA arte_init_opt:o {: RESULT = new arte_init_opt.arteInitOpt(i, o); :}
-				| arte_init:i {: RESULT = new arte_init_opt.arteInitOpt(i); :};
+arte_init_opt ::= sabi_sabi:s COMMA arte_init_opt:o {: RESULT = new arte_init_opt.arteInitOpt(s, o); :}
+				| sabi_sabi:s {: RESULT = new arte_init_opt.arteInitOpt(s); :};
 				
 brackets ::= LEFT_BRACE RIGHT_BRACE {: RESULT = new brackets(); :};
 ref_brackets ::= LEFT_BRACE sabi_sabi:s RIGHT_BRACE {: RESULT = new ref_brackets.refBrackets(s); :};
