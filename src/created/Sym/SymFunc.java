@@ -13,13 +13,20 @@ public class SymFunc extends SymEntry
     private yaya_param_sec yps;
     private data_type dt;
     private String ret;
+    private utos_block ub;
     
-    public SymFunc(String name, yaya_param_sec yps, data_type dt, String ret)
+    public SymFunc(String name, yaya_param_sec yps, data_type dt, String ret, utos_block ub)
     {
         super(name);
         this.yps = yps;
         this.dt = dt;
         this.ret = ret;
+        this.ub = ub;
+    }
+    
+    public data_type dataType()
+    {
+        return dt;
     }
     
     public yaya_param_sec yayaParamSec()
@@ -33,6 +40,11 @@ public class SymFunc extends SymEntry
             return ret;
             
         return "";
+    }
+    
+    public utos_block ub()
+    {
+        return ub;
     }
     
     @Override

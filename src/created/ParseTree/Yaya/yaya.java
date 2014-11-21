@@ -35,6 +35,10 @@ public abstract class yaya implements created.iNode
             if(h instanceof yaya_header.yayaHeader)
             {
                 ((yaya_header.yayaHeader) h).setSymList(sl, this.sl);
+                //add utos block to SymFunc
+                String tName = ((yaya_header.yayaHeader) h).name;
+                SymFunc temp = (SymFunc) sl.getSymbol(tName);
+                sl.editSymbol(tName, new SymFunc(tName, temp.yayaParamSec(), temp.dataType(), temp.ret(), u));
             }
             
             if(u instanceof utos_block.utosBlock)

@@ -44,7 +44,7 @@ public abstract class yaya_header implements created.iNode
         
         public void setSymList(SymList sl, SymList local)
         {
-            Boolean avail = sl.addToList(name, new SymFunc(name, yps, dt, ret));
+            Boolean avail = sl.addToList(name, new SymFunc(name, yps, dt, ret, null));
             if(!avail)
             {
                 ErrorReport.error("Duplicate function!: " + name); 
