@@ -42,16 +42,17 @@ public abstract class yaya_header implements created.iNode
                 return name + ": Parameters - " + yps.toString() + ", Return - " + dt.toString() + " " + ret; 
         }
         
-        public void setSymList(SymList sl, SymList local)
+        public Boolean setSymList(SymList sl, SymList local)
         {
-            Boolean avail = sl.addToList(name, new SymFunc(name, yps, dt, ret, null));
-            if(!avail)
+            Boolean availFunc = sl.addToList(name, new SymFunc(name, yps, dt, ret, null));
+            if(!availFunc)
             {
                 ErrorReport.error("Duplicate function!: " + name); 
             }
             
             if(dt != null || ret != null)
             {
+                Boolean avail = false;
                 if(dt instanceof data_type.datatypePrimitive)
                 {
                     avail = local.addToList(ret, new SymVar(ret, dt, null));
@@ -72,11 +73,12 @@ public abstract class yaya_header implements created.iNode
                 }
             }
             
-            
             if(yps instanceof yaya_param_sec.yayaParamSec)
             {
                 ((yaya_param_sec.yayaParamSec) yps).setSymList(local);
             }
+            
+            return availFunc;
         }
         
         public void checkContext(SymList sl)

@@ -63,8 +63,8 @@ public class SymFunc extends SymEntry
     public String toString()
     {
         if(dt == null || ret == null)
-            return symName + "-" + yps.toString();
+            return symName + "-" + yps.toString() + ":\n" + ub.toString();
         else
-            return symName + "-" + yps.toString() + "-" + dt.toString() + "-" + ret;
+            return symName + "-" + yps.toString() + "-" + dt.toString() + "-" + ret + ":\n" + ub.toString();
     }
 }

@@ -8,7 +8,7 @@ class MainConyo
 	public static ConyoLexer s = null;
         
         /*Which test case to use.*/
-        private static String test_file = "simple";
+        private static String test_file = "test1";
 
 	public static void main(String argv[]) 
         {
@@ -30,6 +30,7 @@ class MainConyo
                 }
                 System.out.println(c.toString());
                 c.setSymList();
+                c.printSymList();
                 c.checkContext();
                 if(ErrorReport.semanticErrorsCount() == 0)
                 {

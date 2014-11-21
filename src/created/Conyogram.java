@@ -61,6 +61,16 @@ public class Conyogram implements iNode
     }
     
     /**
+     * Method for printing the general SymLists of Conyogram.
+     */
+    public void printSymList()
+    {
+        System.out.println("OMG SymList: \n" + OMG_sym.toString());
+        System.out.println("Yaya SymList: \n" + yaya_sym.toString());
+        //System.out.println("Super Yaya SymList: \n" + super_sym.toString());
+    }
+    
+    /**
      * Function to check for semantic errors in code.
      * Based on code by Klein and Rumpe, examples->interpreter
      */
