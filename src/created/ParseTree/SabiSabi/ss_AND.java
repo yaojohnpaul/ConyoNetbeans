@@ -29,14 +29,6 @@ public abstract class ss_AND implements created.iNode
         
         public void setSymList(SymList sl)
         {
-            if(a instanceof ss_AND.ssAND)
-            {
-                ((ss_AND.ssAND) a).setSymList(sl);
-            }
-            else if(a instanceof ss_AND.ssANDExpansion)
-            {
-                ((ss_AND.ssANDExpansion) a).setSymList(sl);
-            }
             if(e instanceof ss_equality.ssEquality)
             {
                 ((ss_equality.ssEquality) e).setSymList(sl);
@@ -45,7 +37,14 @@ public abstract class ss_AND implements created.iNode
             {
                 ((ss_equality.ssEqualityExpansion) e).setSymList(sl);
             }
-            
+            if(a instanceof ss_AND.ssAND)
+            {
+                ((ss_AND.ssAND) a).setSymList(sl);
+            }
+            else if(a instanceof ss_AND.ssANDExpansion)
+            {
+                ((ss_AND.ssANDExpansion) a).setSymList(sl);
+            }
         }
         
         public String checkContext(SymList sl) 
@@ -53,14 +52,6 @@ public abstract class ss_AND implements created.iNode
             //other context here
             String equal = "1";
             String and = "2";
-            if(a instanceof ss_AND.ssAND)
-            {
-                and = ((ss_AND.ssAND) a).checkContext(sl);
-            }
-            else if(a instanceof ss_AND.ssANDExpansion)
-            {
-                and = ((ss_AND.ssANDExpansion) a).checkContext(sl);
-            }
             if(e instanceof ss_equality.ssEquality)
             {
                 equal = ((ss_equality.ssEquality) e).checkContext(sl);
@@ -69,6 +60,15 @@ public abstract class ss_AND implements created.iNode
             {
                 equal = ((ss_equality.ssEqualityExpansion) e).checkContext(sl);
             }
+            if(a instanceof ss_AND.ssAND)
+            {
+                and = ((ss_AND.ssAND) a).checkContext(sl);
+            }
+            else if(a instanceof ss_AND.ssANDExpansion)
+            {
+                and = ((ss_AND.ssANDExpansion) a).checkContext(sl);
+            }
+            
             if(equal.equals(and))
                 return "booly";
                 
@@ -81,14 +81,6 @@ public abstract class ss_AND implements created.iNode
             Object o1 = null;
             Object o2 = null;
             
-            if(a instanceof ss_AND.ssAND)
-            {
-                o1 = ((ss_AND.ssAND) a).evaluate(sl);
-            }
-            else if(a instanceof ss_AND.ssANDExpansion)
-            {
-                o1 = ((ss_AND.ssANDExpansion) a).evaluate(sl);
-            }
             if(e instanceof ss_equality.ssEquality)
             {
                 o2 = ((ss_equality.ssEquality) e).evaluate(sl);
@@ -97,7 +89,14 @@ public abstract class ss_AND implements created.iNode
             {
                 o2 = ((ss_equality.ssEqualityExpansion) e).evaluate(sl);
             }
-            
+            if(a instanceof ss_AND.ssAND)
+            {
+                o1 = ((ss_AND.ssAND) a).evaluate(sl);
+            }
+            else if(a instanceof ss_AND.ssANDExpansion)
+            {
+                o1 = ((ss_AND.ssANDExpansion) a).evaluate(sl);
+            }
             return (Boolean)o1 && (Boolean)o2;
         }
     }
