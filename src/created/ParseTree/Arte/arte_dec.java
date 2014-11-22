@@ -51,6 +51,16 @@ public abstract class arte_dec implements created.iNode
             {
                 temp = ((arte_assign.arteAssign) a).checkContext(sl);
             }
+            if(temp.equals("not initialized")){
+                if(dt instanceof data_type.datatypePrimitive)
+                {
+                    return (data_type.datatypePrimitive) dt).checkContext(sl)
+                }
+                else if(dt instanceof data_type.datatypeReference)
+                {
+                    return (data_type.datatypeReference) dt).checkContext(sl)
+                }
+            }
             
             if(!temp.isEmpty())
             {
