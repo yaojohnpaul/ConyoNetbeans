@@ -53,7 +53,7 @@ public abstract class ss_unary_1 implements created.iNode
             if(unary == "booly")
                 return unary;
                 
-            ErrorReport.error("Datatype Mismatch");
+            ErrorReport.error("Cannot use " + unary + " datatype with NOT operator.");
             return "";
         } 
         

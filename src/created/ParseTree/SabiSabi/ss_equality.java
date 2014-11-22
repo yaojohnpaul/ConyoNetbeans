@@ -87,7 +87,7 @@ public abstract class ss_equality implements created.iNode
             else if(e instanceof ss_equality.ssEqualityExpansion)
             {
                 equal = ((ss_equality.ssEqualityExpansion) e).checkContext(sl);
-        }
+            }
             if(equal.equals("stringy"))
             {
                 switch(compare)
@@ -98,8 +98,12 @@ public abstract class ss_equality implements created.iNode
                     case "inty"     :
                     case "floaty"   :
                     case "chary"    : return "booly";
-                    default         : ErrorReport.error("Datatype Mismatch");
-                                        
+                    default         : 
+                        if(equal.isEmpty() || compare.isEmpty())
+                            ErrorReport.error("Datatype Mismatch in equality operator");
+                        else
+                            ErrorReport.error("Datatype Mismatch in equality operator: " + equal + " and " + compare);
+                        return "";              
                 }
             }
             else if(compare.equals("stringy"))
@@ -112,7 +116,11 @@ public abstract class ss_equality implements created.iNode
                     case "inty"     :
                     case "floaty"   :
                     case "chary"    : return "booly";
-                    default         : ErrorReport.error("Datatype Mismatch");
+                    default         : 
+                        if(equal.isEmpty() || compare.isEmpty())
+                            ErrorReport.error("Datatype Mismatch in equality operator");
+                        else
+                            ErrorReport.error("Datatype Mismatch in equality operator: " + equal + " and " + compare);
                                         return "";
                 }
             }
@@ -120,13 +128,20 @@ public abstract class ss_equality implements created.iNode
                 case "booly" : break;
                 case "floaty" : break;
                 case "inty" : break;
-                default : ErrorReport.error("Datatype Not Allowed");
+                default : 
+                    if(compare.isEmpty())
+                        ErrorReport.error("Datatype Not Allowed in Equality Operator");
+                    else
+                        ErrorReport.error("Datatype Not Allowed in Equality Operator: " + compare);
                             return "";
             }
             if(compare.equals(equal))
                 return "booly";
                 
-            ErrorReport.error("Datatype Mismatch");
+            if(equal.isEmpty() || compare.isEmpty())
+                ErrorReport.error("Datatype Mismatch in equality operator");
+            else
+                ErrorReport.error("Datatype Mismatch in equality operator: " + equal + " and " + compare);
             
             return "";
         } 

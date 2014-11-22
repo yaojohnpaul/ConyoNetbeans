@@ -72,7 +72,7 @@ public abstract class ss_AND implements created.iNode
             if(equal.equals(and))
                 return "booly";
                 
-            ErrorReport.error("Datatype Mismatch");
+            ErrorReport.error("Datatype Mismatch in AND operator. One or more non-boolean members.");
             return "";
         } 
         

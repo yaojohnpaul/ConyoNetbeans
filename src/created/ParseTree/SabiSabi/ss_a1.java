@@ -94,8 +94,12 @@ public abstract class ss_a1 implements created.iNode
                     case "inty"     :
                     case "floaty"   :
                     case "chary"    : return "stringy";
-                    default         : ErrorReport.error("Datatype Mismatch");
-                                        return "";
+                    default         : 
+                        if(arith2.isEmpty())
+                            ErrorReport.error("Datatype Mismatch with string concatenation.");
+                        else
+                            ErrorReport.error("Datatype Mismatch with string concatenation. Trying to concatenate " + arith2 + " with string.");         
+                        return "";
                                     
                 }
             }
@@ -109,8 +113,12 @@ public abstract class ss_a1 implements created.iNode
                 case "inty"     :
                 case "floaty"   :
                 case "chary"    : return "stringy";
-                default         : ErrorReport.error("Datatype Mismatch");
-                                return "";
+                default         :
+                    if(arith1.isEmpty())
+                        ErrorReport.error("Datatype Mismatch with string concatenation.");
+                    else
+                        ErrorReport.error("Datatype Mismatch with string concatenation. Trying to concatenate " + arith1 + " with string.");         
+                    return "";
                 }
             }
             else if(arith1.equals("inty")){
@@ -119,7 +127,11 @@ public abstract class ss_a1 implements created.iNode
                     case "inty" : return "inty";
                     case "floaty" : return "floaty";
                     case "stringy" : return "string";
-                    default         : ErrorReport.error("Datatype Mismatch");
+                    default         : 
+                        if(arith1.isEmpty() || arith2.isEmpty())
+                            ErrorReport.error("Datatype Mismatch in " + operator + " operator");
+                        else
+                            ErrorReport.error("Datatype Mismatch in " + operator + " operator: " + arith1 + " and " + arith2);
                                 return "";
                 }
             }
@@ -129,7 +141,11 @@ public abstract class ss_a1 implements created.iNode
                     case "inty" : 
                     case "floaty" : return "floaty";
                     case "stringy" : return "string";
-                    default         : ErrorReport.error("Datatype Mismatch");
+                    default         : 
+                        if(arith1.isEmpty() || arith2.isEmpty())
+                            ErrorReport.error("Datatype Mismatch in " + operator + " operator");
+                        else
+                            ErrorReport.error("Datatype Mismatch in " + operator + " operator: " + arith1 + " and " + arith2);
                                 return "";
                 }
             }
@@ -137,13 +153,20 @@ public abstract class ss_a1 implements created.iNode
                 case "booly" : break;
                 case "floaty" : break;
                 case "inty" : break;
-                default : ErrorReport.error("Datatype Not Allowed");
+                default : 
+                    if(arith2.isEmpty())
+                        ErrorReport.error("Datatype Not Allowed in " + operator + " operator");
+                    else
+                        ErrorReport.error("Datatype Not Allowed in " + operator + " operator: " + arith2);
                             return "";
             }
             if(arith2.equals(arith1))
                 return arith2;
                 
-            ErrorReport.error("Datatype Mismatch");
+            if(arith1.isEmpty() || arith2.isEmpty())
+                ErrorReport.error("Datatype Mismatch in " + operator + " operator");
+            else
+                ErrorReport.error("Datatype Mismatch in " + operator + " operator: " + arith1 + " and " + arith2);
             return "";
         } 
         

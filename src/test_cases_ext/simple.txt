@@ -10,6 +10,7 @@ superYaya
 $
         makeArte inty[] a makeKuha {1} db
         a makeKuha {1,2,3} db
+        makeArte inty j db
 	makeSulat("Hello, world.") db
         makeSulat("LOOK AT THIS AMAZING ARITHMETIC: " + 1 + 1 - 3) db
 $

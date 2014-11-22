@@ -70,7 +70,10 @@ public abstract class utos_makeKuha implements created.iNode
                 return var;
             }
             
-            ErrorReport.error("Datatype Mismatch");
+            if(var.isEmpty() || assign.isEmpty())
+                ErrorReport.error("Datatype Mismatch in " + vv.toString());
+            else
+                ErrorReport.error("Datatype Mismatch in " + vv.toString() + ": " + var + " and " + assign);
             return "";
         }
         

@@ -54,11 +54,11 @@ public abstract class arte_dec implements created.iNode
             if(temp.equals("not initialized")){
                 if(dt instanceof data_type.datatypePrimitive)
                 {
-                    return (data_type.datatypePrimitive) dt).checkContext(sl)
+                    return ((data_type.datatypePrimitive) dt).checkContext(sl);
                 }
                 else if(dt instanceof data_type.datatypeReference)
                 {
-                    return (data_type.datatypeReference) dt).checkContext(sl)
+                    return ((data_type.datatypeReference) dt).checkContext(sl);
                 }
             }
             
@@ -77,7 +77,10 @@ public abstract class arte_dec implements created.iNode
                     }
                 }
 
-                ErrorReport.error("Datatype Mismatch");
+                if(temp.isEmpty())
+                    ErrorReport.error("Datatype Mismatch in " + id);
+                else
+                    ErrorReport.error("Datatype Mismatch in " + id + ": " + dt.toString() + " and " + temp);
                 return "";
             }
             else

@@ -47,6 +47,67 @@ public abstract class OMG_dec implements created.iNode
             }
         }
         
+        public String checkContext(SymList sl)
+        {
+            String constant = "";
+            String literal = "";
+            
+            if(dt instanceof data_type.datatypePrimitive)
+            {
+                constant = ((data_type.datatypePrimitive) dt).checkContext(sl);
+            }
+            else if(dt instanceof data_type.datatypeReference)
+            {
+                constant = ((data_type.datatypeReference) dt).checkContext(sl);
+            }
+            
+            if(l instanceof literal.Inty)
+            {
+                literal = ((literal.Inty) l).checkContext(sl);
+            }
+            else if(l instanceof literal.Floaty)
+            {
+                literal = ((literal.Floaty) l).checkContext(sl);
+            }
+            else if(l instanceof literal.Stringy)
+            {
+                literal = ((literal.Stringy) l).checkContext(sl);
+            }
+            else if(l instanceof literal.Chary)
+            {
+                literal = ((literal.Floaty) l).checkContext(sl);
+            }
+            else if(l instanceof literal.Booly)
+            {
+                literal = ((literal.Floaty) l).checkContext(sl);
+            }
+            else if(l instanceof literal.Waley)
+            {
+                literal = ((literal.Waley) l).checkContext(sl);
+            }
+            
+            //check if equal
+            if(!literal.equals("waley"))
+            {
+                if(constant.equals(literal))
+                {
+                    return constant;
+                }
+                else
+                {
+                    if(constant.isEmpty() || literal.isEmpty())
+                        ErrorReport.error("Datatype Mismatch in " + id);
+                    else
+                        ErrorReport.error("Datatype Mismatch in " + id + ": " + constant + " and " + literal);
+                    return "";
+                }
+            }
+            else
+            {
+                return constant;
+            }
+        }
+        
         SymConst dec;
         
         public void preInterpret(SymList sl)

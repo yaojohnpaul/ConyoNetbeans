@@ -44,7 +44,7 @@ public abstract class arte_assign implements created.iNode
         public String checkContext(SymList sl)
         {
             if(i == null){
-                return "not initialized"
+                return "not initialized";
             }
             if(i instanceof arte_init.arrayInit)
             {

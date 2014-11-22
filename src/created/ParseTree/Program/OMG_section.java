@@ -40,6 +40,14 @@ public abstract class OMG_section implements created.iNode
             }
         }
         
+        public void checkContext(SymList sl)
+        {
+            if(o instanceof OMG_list.OMGList)
+            {
+                ((OMG_list.OMGList) o).checkContext(sl);
+            }
+        }
+        
         public void preInterpret(SymList sl)
         {
             if(o instanceof OMG_list.OMGList)

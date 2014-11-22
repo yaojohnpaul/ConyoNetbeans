@@ -71,6 +71,12 @@ public class Conyogram implements iNode
      */
     public void checkContext()
     {
+        //OMG
+        if(o instanceof OMG_section.OMGSection)
+        {
+            ((OMG_section.OMGSection) o).checkContext(OMG_sym);
+        }
+        
         //Yaya
         if(y instanceof yaya_section.yayaSection)
         {

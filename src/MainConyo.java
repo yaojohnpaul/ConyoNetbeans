@@ -30,7 +30,7 @@ class MainConyo
                 }
                 System.out.println(c.toString());
                 c.setSymList();
-                c.printSymList();
+                //c.printSymList();
                 c.checkContext();
                 if(ErrorReport.semanticErrorsCount() == 0)
                 {

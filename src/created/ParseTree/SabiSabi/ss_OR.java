@@ -72,7 +72,7 @@ public abstract class ss_OR implements created.iNode
             if(and.equals(or))
                 return "booly";
                 
-            ErrorReport.error("Datatype Mismatch");
+            ErrorReport.error("Datatype Mismatch in OR operator. One or more non-boolean members.");
             return "";
         } 
         
