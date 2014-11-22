@@ -30,6 +30,10 @@ public abstract class literal implements created.iNode
             return "inty";
         }
         
+        public int evaluate()
+        {
+            return Integer.parseInt(value);
+        }
     }
     
     public static class Floaty extends literal
@@ -49,6 +53,11 @@ public abstract class literal implements created.iNode
         { // for sabi sabi plng
             //other context here
             return "floaty";
+        }
+        
+        public float evaluate()
+        {
+            return Float.parseFloat(value);
         }
     }
     
@@ -70,6 +79,11 @@ public abstract class literal implements created.iNode
             //other context here
             return "stringy";
         }
+        
+        public String evaluate()
+        {
+            return value;
+        }
     }
     
     public static class Chary extends literal
@@ -89,6 +103,11 @@ public abstract class literal implements created.iNode
         { // for sabi sabi plng
             //other context here
             return "chary";
+        }
+        
+        public char evaluate()
+        {
+            return value.charAt(0);
         }
     }
     
@@ -110,6 +129,18 @@ public abstract class literal implements created.iNode
             //other context here
             return "booly";
         }
+        
+        public Boolean evaluate()
+        {
+            if(value.equals("yuhh"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
     
     public static class Waley extends literal
@@ -129,6 +160,11 @@ public abstract class literal implements created.iNode
         { // for sabi sabi plng
             //other context here
             return "waley";
+        }
+        
+        public Object evaluate()
+        {
+            return null;
         }
     }
 }

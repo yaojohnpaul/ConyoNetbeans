@@ -158,9 +158,9 @@ public abstract class ss_a2 implements created.iNode
             {
                 switch(((arithmetic_2.arithmetic2) ar).evaluate())
                 {
-                    case "*" : return (float)o1 * (float)o2;
-                    case "/" : return (float)o1 / (float)o2;
-                    case "%" : return (float)o1 % (float)o2;
+                    case "*" : return (double)o1 * (double)o2;
+                    case "/" : return (double)o1 / (double)o2;
+                    case "%" : return (double)o1 % (double)o2;
                 }
             }
             

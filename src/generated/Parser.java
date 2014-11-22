@@ -726,8 +726,6 @@ public class Parser extends java_cup.runtime.lr_parser {
 	{
 		if(sb.length() > 0)
 			System.out.println(sb);
-		else
-			System.out.println("DONE.");
 	}
 
 

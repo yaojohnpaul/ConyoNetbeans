@@ -28,7 +28,7 @@ class MainConyo
                 {
                     System.out.println(e);
                 }
-                System.out.println(c.toString());
+                //System.out.println(c.toString());
                 c.setSymList();
                 //c.printSymList();
                 c.checkContext();

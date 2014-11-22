@@ -49,8 +49,6 @@ parser code {:
 	{
 		if(sb.length() > 0)
 			System.out.println(sb);
-		else
-			System.out.println("DONE.");
 	}
 :};
 

@@ -40,6 +40,7 @@ public abstract class utos_makeKuha implements created.iNode
             
             if(a instanceof arte_assign.arteAssign)
             {
+                ((arte_assign.arteAssign) a).setSymList(vv.toString(), sl);
             }
         }
         

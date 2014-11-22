@@ -155,6 +155,11 @@ public abstract class utos_dec implements created.iNode
                 ((utos_dec_val.utosMakeBasa) uv).preInterpret(sl);
             }
         }
+        
+        public void evaluate(SymList sl)
+        {
+            
+        }
     }
     
     public static class utosDecNoDB extends utos_dec
@@ -250,6 +255,11 @@ public abstract class utos_dec implements created.iNode
                 ((utos_dec_nodb.utosMakeArte) un).preInterpret(sl);
             }
         }
+        
+        public void evaluate(SymList sl)
+        {
+            
+        }
     }
     
     public static class utosDecSabiSabi extends utos_dec
@@ -300,6 +310,11 @@ public abstract class utos_dec implements created.iNode
             {
                 ((utos_sabisabi.utosSabiSabiBack) us).preInterpret(sl);
             }
+        }
+        
+        public void evaluate(SymList sl)
+        {
+            
         }
     }
 }
