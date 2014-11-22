@@ -40,7 +40,7 @@ public abstract class yaya implements created.iNode
                 {
                     String tName = ((yaya_header.yayaHeader) h).name;
                     SymFunc temp = (SymFunc) sl.getSymbol(tName);
-                    sl.editSymbol(tName, new SymFunc(tName, temp.yayaParamSec(), temp.dataType(), temp.ret(), u));
+                    sl.editSymbol(tName, new SymFunc(tName, temp.yayaParamSec(), temp.dataType(), temp.ret(), u, temp.getArity()));
                 }
             }
             

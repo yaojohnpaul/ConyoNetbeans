@@ -75,7 +75,7 @@ public abstract class yaya_header implements created.iNode
             
             if(yps instanceof yaya_param_sec.yayaParamSec)
             {
-                ((yaya_param_sec.yayaParamSec) yps).setSymList(local);
+                ((yaya_param_sec.yayaParamSec) yps).setSymList(sl, name, local);
             }
             
             return availFunc;

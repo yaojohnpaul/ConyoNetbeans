@@ -1,5 +1,6 @@
 package created.ParseTree.Array;
 
+import java.util.*;
 import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
@@ -30,6 +31,38 @@ public abstract class arte_init_list implements created.iNode
                 return o.toString();
             else
                 return "";
+        }
+        
+        public int getCount()
+        {
+            if(o == null)
+            {
+                return 0;
+            }
+            else
+            {
+                if(o instanceof arte_init_opt.arteInitOpt)
+                {
+                    return ((arte_init_opt.arteInitOpt) o).getCount();
+                }
+                return 0;
+            }
+        }
+        
+        public ArrayList<sabi_sabi> getContents()
+        {
+            if(o == null)
+            {
+                return new ArrayList<>();
+            }
+            else
+            {
+                if(o instanceof arte_init_opt.arteInitOpt)
+                {
+                    return ((arte_init_opt.arteInitOpt) o).getContents();
+                }
+                return new ArrayList<>();
+            }
         }
         
         public void setSymList(SymList sl)

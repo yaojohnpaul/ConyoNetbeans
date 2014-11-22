@@ -14,6 +14,7 @@ public class SymFunc extends SymEntry
     private data_type dt;
     private String ret;
     private utos_block ub;
+    private int arity;
     
     public SymFunc(String name, yaya_param_sec yps, data_type dt, String ret, utos_block ub)
     {
@@ -22,6 +23,27 @@ public class SymFunc extends SymEntry
         this.dt = dt;
         this.ret = ret;
         this.ub = ub;
+        arity = 0;
+    }
+    
+    public SymFunc(String name, yaya_param_sec yps, data_type dt, String ret, utos_block ub, int arity)
+    {
+        super(name);
+        this.yps = yps;
+        this.dt = dt;
+        this.ret = ret;
+        this.ub = ub;
+        this.arity = arity;
+    }
+    
+    public int getArity()
+    {
+        return arity;
+    }
+    
+    public void incArity()
+    {
+        arity++;
     }
     
     public data_type dataType()

@@ -86,7 +86,18 @@ public abstract class sabi_sabi_end implements created.iNode
             }
             else if(u instanceof utos_dec_val.utosMakeTawag)
             {
-                return ((utos_dec_val.utosMakeTawag) u).checkContext(sl);
+                String fndt = "";
+                fndt = ((utos_dec_val.utosMakeTawag) u).checkContext(sl);
+                if(fndt.equals("poor"))
+                {
+                    ErrorReport.error("Void function used in expression.: " + 
+                    ((valid_name.identifier)((utos_makeTawag.makeTawag)((utos_dec_val.utosMakeTawag) u).ut).vn).toString());
+                    return "";
+                }
+                else
+                {
+                    return fndt;
+                }
             }
             return "";
         } 
