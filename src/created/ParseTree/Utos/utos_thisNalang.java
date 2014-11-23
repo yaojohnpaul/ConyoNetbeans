@@ -55,6 +55,15 @@ public abstract class utos_thisNalang implements created.iNode
                 ((utos_block.utosBlock) b).preInterpret(sl);
             }
         }
+        
+        public void evaluate(SymList sl)
+        {
+            if(b instanceof utos_block.utosBlock)
+            {
+                ((utos_block.utosBlock) b).evaluate(sl);
+            }
+        }
+        
     }
     
     public static class thisNalangKapag extends utos_thisNalang
@@ -99,9 +108,10 @@ public abstract class utos_thisNalang implements created.iNode
         
         public void checkContext(SymList sl)
         {
+            String a = "";
             if(s instanceof sabi_sabi.SabiSabi)
             {
-                ((sabi_sabi.SabiSabi) s).checkContext(sl);
+                a = ((sabi_sabi.SabiSabi) s).checkContext(sl);
             }
             
             if(b instanceof utos_block.utosBlock)
@@ -116,6 +126,11 @@ public abstract class utos_thisNalang implements created.iNode
             else if(t instanceof utos_thisNalang.thisNalangKapag)
             {
                 ((utos_thisNalang.thisNalangKapag) t).checkContext(sl);
+            }
+            
+            if(!a.equals("booly"))
+            {
+                ErrorReport.error("Condition for if else statement is not Boolean");
             }
         }
         
@@ -140,5 +155,36 @@ public abstract class utos_thisNalang implements created.iNode
                 ((utos_thisNalang.thisNalangKapag) t).preInterpret(sl);
             }
         }
+        
+        
+        public void evaluate(SymList sl)
+        {
+            boolean a = false;
+            if(s instanceof sabi_sabi.SabiSabi)
+            {
+                a = (boolean)((sabi_sabi.SabiSabi) s).evaluate(sl);
+            }
+            
+            if(a == true)
+            {
+                if(b instanceof utos_block.utosBlock)
+                {
+                    ((utos_block.utosBlock) b).evaluate(sl);
+                }
+            
+                if(t instanceof utos_thisNalang.thisNalang)
+                {
+                    ((utos_thisNalang.thisNalang) t).evaluate(sl);
+                }
+                else if(t instanceof utos_thisNalang.thisNalangKapag)
+                {
+                    ((utos_thisNalang.thisNalangKapag) t).evaluate(sl);
+                } 
+            }
+            
+            
+            
+        }
+        
     }
 }
