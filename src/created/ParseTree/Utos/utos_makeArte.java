@@ -5,7 +5,6 @@ import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
@@ -46,6 +45,14 @@ public abstract class utos_makeArte implements created.iNode
             if(a instanceof arte_dec.arteDec)
             {
                 ((arte_dec.arteDec) a).preInterpret(sl);
+            }
+        }
+        
+        public void evaluate(SymList sl)
+        {
+            if(a instanceof arte_dec.arteDec)
+            {
+                ((arte_dec.arteDec) a).evaluate(sl);
             }
         }
     }

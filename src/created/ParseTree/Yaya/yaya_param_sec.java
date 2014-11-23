@@ -1,11 +1,11 @@
 package created.ParseTree.Yaya;
 
+import java.util.*;
 import created.ParseTree.Array.*;
 import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.Sym.*;
 
@@ -33,12 +33,21 @@ public abstract class yaya_param_sec implements created.iNode
                 return "";
         }
         
-        public void setSymList(SymList sl)
+        public void setSymList(SymList sl, String name, SymList local)
         {
             if(ypl instanceof yaya_param_list.yayaParamList)
             {
-                ((yaya_param_list.yayaParamList) ypl).setSymList(sl);
+                ((yaya_param_list.yayaParamList) ypl).setSymList(sl, name, local);
             }
+        }
+        
+        public ArrayList<data_type> getContents()
+        {
+            if(ypl instanceof yaya_param_list.yayaParamList)
+            {
+                return ((yaya_param_list.yayaParamList) ypl).getContents();
+            }
+            return new ArrayList<>();
         }
         
         public void checkContext(SymList sl)

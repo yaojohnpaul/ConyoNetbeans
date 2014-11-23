@@ -4,7 +4,6 @@ import created.ParseTree.Array.*;
 import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
@@ -88,13 +87,20 @@ public abstract class ss_comparison implements created.iNode
                 case "booly" : break;
                 case "floaty" : break;
                 case "inty" : break;
-                default : ErrorReport.error("Datatype Not Allowed");
+                default : 
+                    if(arith.isEmpty())
+                        ErrorReport.error("Datatype Not Allowed with Comparison Operator");
+                    else
+                        ErrorReport.error("Datatype Not Allowed with Comparison Operator: " + arith);
                             return "";
             }
             if(arith.equals(compare))
                 return "booly";
                 
-            ErrorReport.error("Datatype Mismatch");
+            if(arith.isEmpty() || compare.isEmpty())
+                ErrorReport.error("Datatype Mismatch in comparison operator");
+            else
+                ErrorReport.error("Datatype Mismatch in comparison operator: " + arith + " and " + compare);
             return "";
         } 
         

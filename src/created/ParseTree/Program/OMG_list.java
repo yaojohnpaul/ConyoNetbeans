@@ -4,7 +4,6 @@ import created.ParseTree.Array.*;
 import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.SabiSabi.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
@@ -46,6 +45,19 @@ public abstract class OMG_list implements created.iNode
             if(l instanceof OMG_list.OMGList)
             {
                 ((OMG_list.OMGList) l).setSymList(sl);
+            }
+        }
+        
+        public void checkContext(SymList sl)
+        {
+            if(o instanceof OMG_dec.OMG)
+            {
+                ((OMG_dec.OMG) o).checkContext(sl);
+            }
+            
+            if(l instanceof OMG_list.OMGList)
+            {
+                ((OMG_list.OMGList) l).checkContext(sl);
             }
         }
         

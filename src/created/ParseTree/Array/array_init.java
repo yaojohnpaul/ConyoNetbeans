@@ -1,10 +1,10 @@
 package created.ParseTree.Array;
 
+import java.util.*;
 import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
@@ -49,6 +49,16 @@ public abstract class array_init implements created.iNode
             {
                 ((arte_init_list.arteInitList) l).preInterpret(sl);
             } 
+        }
+        
+        public ArrayList<Object> evaluate(SymList sl)
+        {
+            ArrayList<Object> alo = new ArrayList<>();
+            if(l instanceof arte_init_list.arteInitList)
+            {
+                alo = ((arte_init_list.arteInitList) l).evaluate(sl);
+            }
+            return alo;
         }
     }
 }

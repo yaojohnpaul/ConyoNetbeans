@@ -1,10 +1,10 @@
 package created.ParseTree.Arte;
 
+import java.util.*;
 import created.ParseTree.Array.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
@@ -49,45 +49,15 @@ public abstract class arte_init implements created.iNode
                 ((array_init.arrayInit) a).preInterpret(sl);
             }
         }
-    }
-    
-    public static class syInit extends arte_init
-    {
-        public sy_init sy; 
         
-        public syInit(sy_init sy)
+        public ArrayList<Object> evaluate(SymList sl)
         {
-            this.sy = sy;
-        }
-        
-        public String toString()
-        {
-            return sy.toString();
-        }
-        
-        public void setSymList(SymList sl)
-        {
-            if(sy instanceof sy_init.SubYayaInitialize)
+            ArrayList<Object> alo = new ArrayList<>();
+            if(a instanceof array_init.arrayInit)
             {
-                ((sy_init.SubYayaInitialize) sy).setSymList(sl);
+                alo = ((array_init.arrayInit) a).evaluate(sl);
             }
-        }
-        
-        public String checkContext(SymList sl)
-        {
-            if(sy instanceof sy_init.SubYayaInitialize)
-            {
-                return ((sy_init.SubYayaInitialize) sy).checkContext(sl);
-            }
-            return "";
-        }
-        
-        public void preInterpret(SymList sl)
-        {
-            if(sy instanceof sy_init.SubYayaInitialize)
-            {
-                ((sy_init.SubYayaInitialize) sy).preInterpret(sl);
-            }
+            return alo;
         }
     }
     
@@ -119,7 +89,7 @@ public abstract class arte_init implements created.iNode
             {
                 return ((sabi_sabi.SabiSabi) s).checkContext(sl);
             }
-            return ;
+            return "";
         }
         
         public void preInterpret(SymList sl)
@@ -127,6 +97,18 @@ public abstract class arte_init implements created.iNode
             if(s instanceof sabi_sabi.SabiSabi)
             {
                 ((sabi_sabi.SabiSabi) s).preInterpret(sl);
+            }
+        }
+        
+        public Object evaluate(SymList sl)
+        {
+            if(s instanceof sabi_sabi.SabiSabi)
+            {
+                return ((sabi_sabi.SabiSabi) s).evaluate(sl);
+            }
+            else
+            {
+                return null;
             }
         }
     }

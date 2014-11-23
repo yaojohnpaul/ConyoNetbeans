@@ -15,6 +15,9 @@ public class OutGen
     public static void printResult()
     {
         if(sb.length() > 0)
-			System.out.println(sb);
+        {
+            System.out.println("\nResult:");
+            System.out.println(sb);
+        }
     }
 }

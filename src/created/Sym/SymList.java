@@ -6,7 +6,6 @@ import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 
@@ -34,6 +33,15 @@ public class SymList
     public SymList(SymList anc)
     {
         m = new HashMap<String, SymEntry>();
+        this.anc = anc;
+    }
+    
+    /**
+     * Set a new ancestor for the SymList.
+     * @param anc New ancestor 
+     */
+    public void setAncestor(SymList anc)
+    {
         this.anc = anc;
     }
     

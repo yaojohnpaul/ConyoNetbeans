@@ -4,10 +4,10 @@ import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
+import error.*;
 
 public abstract class ref_brackets implements created.iNode 
 {
@@ -35,9 +35,14 @@ public abstract class ref_brackets implements created.iNode
         
         public void checkContext(SymList sl)
         {
+            String type = "";
             if(s instanceof sabi_sabi.SabiSabi)
             {
-                ((sabi_sabi.SabiSabi) s).checkContext(sl);
+                type = ((sabi_sabi.SabiSabi) s).checkContext(sl);
+                if(type != "inty")
+                {
+                    ErrorReport.error("Index used for array is not an integer.: " + ((sabi_sabi.SabiSabi) s).toString());
+                }
             }
         }
         

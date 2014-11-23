@@ -5,7 +5,6 @@ import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.Sym.*;
 import error.*;
@@ -43,19 +42,20 @@ public abstract class yaya_header implements created.iNode
                 return name + ": Parameters - " + yps.toString() + ", Return - " + dt.toString() + " " + ret; 
         }
         
-        public void setSymList(SymList sl, SymList local)
+        public Boolean setSymList(SymList sl, SymList local)
         {
-            Boolean avail = sl.addToList(name, new SymFunc(name, yps, dt, ret));
-            if(!avail)
+            Boolean availFunc = sl.addToList(name, new SymFunc(name, yps, dt, ret, null));
+            if(!availFunc)
             {
                 ErrorReport.error("Duplicate function!: " + name); 
             }
             
             if(dt != null || ret != null)
             {
+                Boolean avail = false;
                 if(dt instanceof data_type.datatypePrimitive)
                 {
-                    avail = local.addToList(ret, new SymVar(ret, dt, null));
+                    avail = local.addToList(ret, new SymVar(ret, dt));
                     if(!avail)
                     {
                         ErrorReport.error("Duplicate variable name!: " + ret);
@@ -64,7 +64,7 @@ public abstract class yaya_header implements created.iNode
                 }
                 else if(dt instanceof data_type.datatypeReference)
                 {
-                    avail = local.addToList(ret, new SymVar(ret, dt, null));
+                    avail = local.addToList(ret, new SymVar(ret, dt));
                     if(!avail)
                     {
                         ErrorReport.error("Duplicate variable name!: " + ret);
@@ -73,11 +73,12 @@ public abstract class yaya_header implements created.iNode
                 }
             }
             
-            
             if(yps instanceof yaya_param_sec.yayaParamSec)
             {
-                ((yaya_param_sec.yayaParamSec) yps).setSymList(local);
+                ((yaya_param_sec.yayaParamSec) yps).setSymList(sl, name, local);
             }
+            
+            return availFunc;
         }
         
         public void checkContext(SymList sl)

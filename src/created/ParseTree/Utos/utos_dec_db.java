@@ -5,7 +5,6 @@ import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
@@ -46,6 +45,14 @@ public abstract class utos_dec_db implements created.iNode
             if(uk instanceof utos_makeKuha.makeKuha)
             {
                 ((utos_makeKuha.makeKuha) uk).preInterpret(sl);
+            }
+        }
+        
+        public void evaluate(SymList sl)
+        {
+            if(uk instanceof utos_makeKuha.makeKuha)
+            {
+                ((utos_makeKuha.makeKuha) uk).evaluate(sl);
             }
         }
     }

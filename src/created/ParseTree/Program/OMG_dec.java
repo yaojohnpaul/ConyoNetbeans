@@ -4,7 +4,6 @@ import created.ParseTree.Array.*;
 import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.SabiSabi.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
@@ -16,13 +15,13 @@ public abstract class OMG_dec implements created.iNode
     {
         data_type dt; //Data type
         String id; //Constant name
-        sabi_sabi ss; //Expression, value of constant
+        literal l; //value of constant
         
-        public OMG(data_type dt, String id, sabi_sabi ss)
+        public OMG(data_type dt, String id, literal l)
         {
             this.dt = dt;
             this.id = id;
-            this.ss = ss;
+            this.l = l;
         }
     
         public String toString()
@@ -34,17 +33,78 @@ public abstract class OMG_dec implements created.iNode
          * Get the value of the constant.
          * @return Constant value.
          */
-        public sabi_sabi getValue()
+        public literal getValue()
         {
-            return ss;
+            return l;
         }
         
         public void setSymList(SymList sl)
         { 
-            Boolean avail = sl.addToList(id, new SymConst(id, ss, dt));
+            Boolean avail = sl.addToList(id, new SymConst(id, l, dt));
             if(!avail)
             {
                 ErrorReport.error("Duplicate constant!: " + id);
+            }
+        }
+        
+        public String checkContext(SymList sl)
+        {
+            String constant = "";
+            String literal = "";
+            
+            if(dt instanceof data_type.datatypePrimitive)
+            {
+                constant = ((data_type.datatypePrimitive) dt).checkContext(sl);
+            }
+            else if(dt instanceof data_type.datatypeReference)
+            {
+                constant = ((data_type.datatypeReference) dt).checkContext(sl);
+            }
+            
+            if(l instanceof literal.Inty)
+            {
+                literal = ((literal.Inty) l).checkContext(sl);
+            }
+            else if(l instanceof literal.Floaty)
+            {
+                literal = ((literal.Floaty) l).checkContext(sl);
+            }
+            else if(l instanceof literal.Stringy)
+            {
+                literal = ((literal.Stringy) l).checkContext(sl);
+            }
+            else if(l instanceof literal.Chary)
+            {
+                literal = ((literal.Floaty) l).checkContext(sl);
+            }
+            else if(l instanceof literal.Booly)
+            {
+                literal = ((literal.Floaty) l).checkContext(sl);
+            }
+            else if(l instanceof literal.Waley)
+            {
+                literal = ((literal.Waley) l).checkContext(sl);
+            }
+            
+            //check if equal
+            if(!literal.equals("waley"))
+            {
+                if(constant.equals(literal))
+                {
+                    return constant;
+                }
+                else
+                {
+                    if(constant.isEmpty() || literal.isEmpty())
+                        ErrorReport.error("Datatype Mismatch in " + id);
+                    else
+                        ErrorReport.error("Datatype Mismatch in " + id + ": " + constant + " and " + literal);
+                    return "";
+                }
+            }
+            else
+            {
+                return constant;
             }
         }
         

@@ -5,7 +5,6 @@ import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
@@ -117,18 +116,18 @@ public abstract class block_content implements created.iNode
             {
                 ((utos_dec.utosDecDB) u).evaluate(sl);
             }
-            // else if(u instanceof utos_dec.utosDecNoDB)
-            // {
-            //     ((utos_dec.utosDecNoDB) u).evaluate(sl);
-            // }
-            // else if(u instanceof utos_dec.utosDecSabiSabi)
-            // {
-            //     ((utos_dec.utosDecSabiSabi) u).evaluate(sl);
-            // }
-            // else if(u instanceof utos_dec.utosDecVal)
-            // {
-            //     ((utos_dec.utosDecVal) u).evaluate(sl);
-            // }
+            else if(u instanceof utos_dec.utosDecNoDB)
+            {
+                ((utos_dec.utosDecNoDB) u).evaluate(sl);
+            }
+            else if(u instanceof utos_dec.utosDecSabiSabi)
+            {
+                ((utos_dec.utosDecSabiSabi) u).evaluate(sl);
+            }
+            else if(u instanceof utos_dec.utosDecVal)
+            {
+                ((utos_dec.utosDecVal) u).evaluate(sl);
+            }
             
             if(b instanceof block_content.blockContent)
             {

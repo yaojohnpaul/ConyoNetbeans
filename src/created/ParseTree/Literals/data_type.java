@@ -4,7 +4,6 @@ import created.ParseTree.Array.*;
 import created.ParseTree.Arte.*;
 import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
@@ -81,10 +80,6 @@ public abstract class data_type implements created.iNode
             {
                 
             }
-            else if(r instanceof reference_dt.referenceValidName)
-            {
-                
-            }
         }
         
         public String checkContext(SymList st) 
@@ -93,10 +88,6 @@ public abstract class data_type implements created.iNode
             if(r instanceof reference_dt.referenceArray)
             {
                 return ((reference_dt.referenceArray) r).checkContext(st);
-            }
-            else if(r instanceof reference_dt.referenceValidName)
-            {
-                return ((reference_dt.referenceValidName) r).checkContext(st);
             }
             return "";
         }

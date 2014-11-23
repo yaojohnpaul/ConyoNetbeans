@@ -5,7 +5,6 @@ import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
@@ -48,6 +47,11 @@ public abstract class utos_dec_nodb implements created.iNode
                 ((utos_likeKapag.likeKapag) uk).preInterpret(sl);
             }
         }
+        
+        public void evaluate(SymList sl)
+        {
+        
+        }
     }
     
     public static class utosMakePalit extends utos_dec_nodb
@@ -86,6 +90,11 @@ public abstract class utos_dec_nodb implements created.iNode
             {
                 ((utos_makePalit.makePalit) up).preInterpret(sl);
             }
+        }
+        
+        public void evaluate(SymList sl)
+        {
+        
         }
     }
     
@@ -126,6 +135,11 @@ public abstract class utos_dec_nodb implements created.iNode
                 ((utos_likeHabang.likeHabang) uh).preInterpret(sl);
             }
         }
+        
+        public void evaluate(SymList sl)
+        {
+        
+        }
     }
     
     public static class utosMakeGawaHabang extends utos_dec_nodb
@@ -164,6 +178,11 @@ public abstract class utos_dec_nodb implements created.iNode
             {
                 ((utos_makeGawaHabang.makeGawaHabang) ugh).preInterpret(sl);
             }
+        }
+        
+        public void evaluate(SymList sl)
+        {
+        
         }
     }
     
@@ -204,6 +223,11 @@ public abstract class utos_dec_nodb implements created.iNode
                 ((utos_makeUlit.makeUlit) uu).preInterpret(sl);
             }
         }
+        
+        public void evaluate(SymList sl)
+        {
+        
+        }
     }
     
     public static class utosMakeArte extends utos_dec_nodb
@@ -241,6 +265,14 @@ public abstract class utos_dec_nodb implements created.iNode
             if(ua instanceof utos_makeArte.makeArte)
             {
                 ((utos_makeArte.makeArte) ua).preInterpret(sl);
+            }
+        }
+        
+        public void evaluate(SymList sl)
+        {
+            if(ua instanceof utos_makeArte.makeArte)
+            {
+                ((utos_makeArte.makeArte) ua).evaluate(sl);
             }
         }
     }

@@ -4,7 +4,6 @@ import created.ParseTree.Array.*;
 import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
@@ -50,7 +49,20 @@ public abstract class sabi_sabi_end implements created.iNode
                 return ((valid_var.validVarRB) v).checkContext(sl);
             }
             return "";
-        } 
+        }
+        
+        public Object evaluate(SymList sl)
+        {
+            if(v instanceof valid_var.validVar)
+            {
+                return ((valid_var.validVar) v).evaluate(sl);
+            }
+            else if(v instanceof valid_var.validVarRB)
+            {
+                return ((valid_var.validVarRB) v).evaluate(sl);
+            }
+            return null;
+        }
     }
     
     public static class ssEndUtos extends sabi_sabi_end
@@ -87,10 +99,26 @@ public abstract class sabi_sabi_end implements created.iNode
             }
             else if(u instanceof utos_dec_val.utosMakeTawag)
             {
-                return ((utos_dec_val.utosMakeTawag) u).checkContext(sl);
+                String fndt = "";
+                fndt = ((utos_dec_val.utosMakeTawag) u).checkContext(sl);
+                if(fndt.equals("poor"))
+                {
+                    ErrorReport.error("Void function used in expression.: " + 
+                    ((valid_name.identifier)((utos_makeTawag.makeTawag)((utos_dec_val.utosMakeTawag) u).ut).vn).toString());
+                    return "";
+                }
+                else
+                {
+                    return fndt;
+                }
             }
             return "";
         } 
+        
+        public Object evaluate(SymList sl)
+        {
+            return null;
+        }
     }
     
     public static class ssEndLiteral extends sabi_sabi_end

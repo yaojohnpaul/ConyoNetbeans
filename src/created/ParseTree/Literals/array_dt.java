@@ -4,7 +4,6 @@ import created.ParseTree.Array.*;
 import created.ParseTree.Arte.*;
 import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
@@ -56,23 +55,23 @@ public abstract class array_dt implements created.iNode
         {
             if(p instanceof primitive_dt.intType)
             {
-                return "inty";
+                return "inty[]";
             }
             else if(p instanceof primitive_dt.floatType)
             {
-                return "floaty";
+                return "floaty[]";
             }
             else if(p instanceof primitive_dt.stringType)
             {
-                return "stringy";
+                return "stringy[]";
             }
             else if(p instanceof primitive_dt.charType)
             {
-                return "chary";
+                return "chary[]";
             }
             else if(p instanceof primitive_dt.booleanType)
             {
-                return "booly";
+                return "booly[]";
             }
             
             return "";
@@ -99,48 +98,6 @@ public abstract class array_dt implements created.iNode
             else if(p instanceof primitive_dt.booleanType)
             {
                 
-            }
-        }
-    }
-    
-    public static class arrayName extends array_dt
-    {
-        public brackets b;
-        public valid_name vn;
-        
-        public arrayName(valid_name p, brackets b)
-        {
-            this.b = b;
-            this.vn = vn;
-        }
-        
-        public String toString()
-        {
-            return vn.toString() + b.toString();
-        }
-        
-        public void setSymList(SymList sl)
-        {
-            if(vn instanceof valid_name.validName)
-            {
-                ((valid_name.validName) vn).setSymList(sl);
-            }
-        }
-        
-        public String checkContext(SymList sl)
-        {
-            if(vn instanceof valid_name.validName)
-            {
-                return ((valid_name.validName) vn).checkContext(sl);
-            }
-            
-            return "";
-        }
-        
-        public void preInterpret(SymList sl)
-        {
-            if(vn instanceof valid_name.validName)
-            {
             }
         }
     }

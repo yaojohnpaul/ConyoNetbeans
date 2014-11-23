@@ -5,25 +5,24 @@ import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 
 public class SymConst extends SymEntry
 {
-    private sabi_sabi ss;
+    private literal l;
     private data_type dt;
     
-    public SymConst(String name, sabi_sabi ss, data_type dt)
+    public SymConst(String name, literal l, data_type dt)
     {
         super(name);
-        this.ss = ss;
+        this.l = l;
         this.dt = dt;
     }
     
-    public sabi_sabi sabiSabi()
+    public literal getLiteral()
     {
-        return ss;
+        return l;
     }
     
     public data_type dataType()
@@ -46,6 +45,6 @@ public class SymConst extends SymEntry
     @Override
     public String toString()
     {
-        return symName + "-" + ss.toString() + "-" + dt.toString();
+        return symName + "-" + l.toString() + "-" + dt.toString();
     }
 }

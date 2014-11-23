@@ -4,7 +4,6 @@ import created.ParseTree.Array.*;
 import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
@@ -73,7 +72,7 @@ public abstract class ss_OR implements created.iNode
             if(and.equals(or))
                 return "booly";
                 
-            ErrorReport.error("Datatype Mismatch");
+            ErrorReport.error("Datatype Mismatch in OR operator. One or more non-boolean members.");
             return "";
         } 
         

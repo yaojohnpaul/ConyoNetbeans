@@ -4,7 +4,6 @@ import created.ParseTree.Array.*;
 import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
@@ -95,7 +94,12 @@ public abstract class ss_a1 implements created.iNode
                     case "inty"     :
                     case "floaty"   :
                     case "chary"    : return "stringy";
-                    default         : ErrorReport.error("Datatype Mismatch");
+                    default         : 
+                        if(arith2.isEmpty())
+                            ErrorReport.error("Datatype Mismatch with string concatenation.");
+                        else
+                            ErrorReport.error("Datatype Mismatch with string concatenation. Trying to concatenate " + arith2 + " with string.");         
+                        return "";
                                     
                 }
             }
@@ -109,7 +113,39 @@ public abstract class ss_a1 implements created.iNode
                 case "inty"     :
                 case "floaty"   :
                 case "chary"    : return "stringy";
-                default         : ErrorReport.error("Datatype Mismatch");
+                default         :
+                    if(arith1.isEmpty())
+                        ErrorReport.error("Datatype Mismatch with string concatenation.");
+                    else
+                        ErrorReport.error("Datatype Mismatch with string concatenation. Trying to concatenate " + arith1 + " with string.");         
+                    return "";
+                }
+            }
+            else if(arith1.equals("inty")){
+                switch(arith2)
+                {
+                    case "inty" : return "inty";
+                    case "floaty" : return "floaty";
+                    case "stringy" : return "string";
+                    default         : 
+                        if(arith1.isEmpty() || arith2.isEmpty())
+                            ErrorReport.error("Datatype Mismatch in " + operator + " operator");
+                        else
+                            ErrorReport.error("Datatype Mismatch in " + operator + " operator: " + arith1 + " and " + arith2);
+                                return "";
+                }
+            }
+            else if(arith1.equals("floaty")){
+                switch(arith2)
+                {
+                    case "inty" : 
+                    case "floaty" : return "floaty";
+                    case "stringy" : return "string";
+                    default         : 
+                        if(arith1.isEmpty() || arith2.isEmpty())
+                            ErrorReport.error("Datatype Mismatch in " + operator + " operator");
+                        else
+                            ErrorReport.error("Datatype Mismatch in " + operator + " operator: " + arith1 + " and " + arith2);
                                 return "";
                 }
             }
@@ -117,13 +153,20 @@ public abstract class ss_a1 implements created.iNode
                 case "booly" : break;
                 case "floaty" : break;
                 case "inty" : break;
-                default : ErrorReport.error("Datatype Not Allowed");
+                default : 
+                    if(arith2.isEmpty())
+                        ErrorReport.error("Datatype Not Allowed in " + operator + " operator");
+                    else
+                        ErrorReport.error("Datatype Not Allowed in " + operator + " operator: " + arith2);
                             return "";
             }
             if(arith2.equals(arith1))
                 return arith2;
                 
-            ErrorReport.error("Datatype Mismatch");
+            if(arith1.isEmpty() || arith2.isEmpty())
+                ErrorReport.error("Datatype Mismatch in " + operator + " operator");
+            else
+                ErrorReport.error("Datatype Mismatch in " + operator + " operator: " + arith1 + " and " + arith2);
             return "";
         } 
         
@@ -155,9 +198,35 @@ public abstract class ss_a1 implements created.iNode
                 switch(((arithmetic_1.arithmetic1) ar).evaluate())
                 {
                     case "+":   if(o1 instanceof Integer) 
-                                    return (int)o1 + (int)o2;
-                                else if(o1 instanceof Float) 
-                                    return (float)o1 + (float)o2;
+                                {
+                                    if(o2 instanceof Integer)
+                                        return (int)o1 + (int)o2;
+                                    else if(o2 instanceof Float)
+                                        return (int)o1 + (float)o2;
+                                    else if(o2 instanceof String)
+                                        return (int)o1 + (String)o2;
+                                }
+                                else if(o1 instanceof Float)
+                                {   
+                                    if(o2 instanceof Float)
+                                        return (float)o1 + (float)o2;
+                                    else if(o2 instanceof Integer)
+                                        return (float)o1 + (int)o2;
+                                    else if(o2 instanceof String)
+                                        return (float)o1 + (String)o2;
+                                }
+                                else if(o1 instanceof Boolean)
+                                {
+                                    if(o2 instanceof String)
+                                        return (boolean)o1 + (String)o2;
+                                }
+                                else if(o1 instanceof Character)
+                                {
+                                    if(o2 instanceof Character)
+                                        return (char)o1 + (char)o2;
+                                    else if(o2 instanceof String)
+                                        return (char)o1 + (String)o2;
+                                }
                                 else if(o1 instanceof String)
                                 {
                                     if(o2 instanceof Boolean) 
@@ -171,21 +240,20 @@ public abstract class ss_a1 implements created.iNode
                                     else if(o2 instanceof String)
                                         return (String)o1 + (String)o2;
                                 }
-                                else if(o2 instanceof String)
-                                {
-                                    if(o1 instanceof Boolean) 
-                                        return (boolean)o1 + (String)o2;
-                                    else if(o1 instanceof Integer) 
-                                        return (int)o1 + (String)o2;
-                                    else if(o1 instanceof Float) 
-                                        return (float)o1 + (String)o2;
-                                    else if(o1 instanceof Character) 
-                                        return (char)o1 + (String)o2;
-                                }
                      case "-":  if(o1 instanceof Integer) 
-                                    return (int)o1 - (int)o2;
+                                {   
+                                    if(o2 instanceof Integer)
+                                        return (int)o1 - (int)o2;
+                                    else if(o2 instanceof Float)
+                                        return (int)o1 - (float)o2;
+                                }
                                 else if(o1 instanceof Float) 
-                                    return (float)o1 - (float)o2;
+                                {   
+                                    if(o2 instanceof Float)
+                                        return (float)o1 - (float)o2;
+                                    else if(o2 instanceof Integer)
+                                        return (float)o1 - (int)o2;
+                                }
                 }
             }
             

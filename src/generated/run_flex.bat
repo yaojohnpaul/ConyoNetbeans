@@ -1,1 +1,1 @@
-java jflex.Main conyo.cup
+java jflex.Main conyo.flex

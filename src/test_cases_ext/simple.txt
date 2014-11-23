@@ -1,0 +1,20 @@
+/* Comment */
+OMG floaty TEST makeKuha 1.2 db
+
+hireYaya test1 bayad (inty i, floaty j, stringy k) makeBalik poor
+$
+        makeSulat(i) db
+$
+
+superYaya
+$
+        makeArte inty[] a makeKuha {1, 2} db
+        a makeKuha {1,2,3} db
+        //makeTawag test1(24.1, 2.4, "asdf") db
+        makeArte inty j makeKuha 5 db
+        j makeKuha 7 db
+        makeArte inty k db
+        a[3] makeKuha j db
+	makeSulat(a) db
+        makeSulat("LOOK AT THIS AMAZING ARITHMETIC: " + 1 + a[2]) db
+$

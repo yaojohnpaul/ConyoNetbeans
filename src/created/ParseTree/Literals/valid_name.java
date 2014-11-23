@@ -4,7 +4,6 @@ import created.ParseTree.Array.*;
 import created.ParseTree.Arte.*;
 import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import error.*;
@@ -62,48 +61,23 @@ public abstract class valid_name implements created.iNode
         {
             
         }
+        
+        public Object evaluate(SymList sl)
+        {
+            SymVar sv = (SymVar) sl.getSymbol(id);
+            arte_init ai = sv.value();
+            if(ai instanceof arte_init.arrayInit)
+            {
+                return ((arte_init.arrayInit) ai).evaluate(sl);
+            }
+            else if(ai instanceof arte_init.sabiInit)
+            {
+                return ((arte_init.sabiInit) ai).evaluate(sl);
+            }
+            else
+                return null;
+        }
     }
-    
-    public static class validName extends valid_name
-    {
-        public valid_name vn;
-        public String id;
-        
-        public validName(valid_name vn, String identity)
-        {
-            this.vn = vn;
-            this.id = identity;
-        }
-        
-        public String toString()
-        {
-            return vn.toString() + ":" + id;
-        }
-        
-        public void setSymList(SymList sl){
-            
-        }
-        
-        public String checkContext(SymList sl)
-        {
-            // if(vn instanceof valid_name.validName)
-            // {
-            //     return ((valid_name.validName) vn).checkContext(sl);
-            // }
-            // else if(vn instanceof valid_name.identifier)
-            // {
-            //     return ((valid_name.identifier) vn).checkContext(sl);
-            // }
-            ErrorReport.error("Not yet implemented");
-            return "";
-        }
-          
-        public void preInterpret(SymList sl)
-        {
-            
-        } 
-    }
-    
 }
 
 // package created.ParseTree.Literals;

@@ -4,7 +4,6 @@ import created.ParseTree.Array.*;
 import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
-import created.ParseTree.SubYaya.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
@@ -59,6 +58,7 @@ public abstract class ss_a2 implements created.iNode
         { // for sabi sabi plng
             //other context here
             String unary = "";
+            String arith = "";
             String a2 = "";
             if(u instanceof ss_unary_1.ssU1)
             {
@@ -71,7 +71,7 @@ public abstract class ss_a2 implements created.iNode
             
             if(ar instanceof arithmetic_2.arithmetic2)
             {
-                ((arithmetic_2.arithmetic2) ar).checkContext(sl);
+                arith = ((arithmetic_2.arithmetic2) ar).checkContext(sl);
             }
             
             if(a instanceof ss_a2.ssA2)
@@ -86,13 +86,47 @@ public abstract class ss_a2 implements created.iNode
                 case "booly" : break;
                 case "floaty" : break;
                 case "inty" : break;
-                default : ErrorReport.error("Datatype Not Allowed");
+                default : 
+                    if(unary.isEmpty())
+                        ErrorReport.error("Datatype Not Allowed in " + arith + " operator");
+                    else
+                        ErrorReport.error("Datatype Not Allowed in " + arith + " operator: " + unary);
+                    return "";
             }
-            if(unary.equals(a2))
+            if(unary.equals("inty")){
+                switch(a2)
+                {
+                    case "inty" : return "inty";
+                    case "floaty" : return "floaty";
+                    default         : 
+                        if(unary.isEmpty() || a2.isEmpty())
+                            ErrorReport.error("Datatype Mismatch in " + arith + " operator");
+                        else
+                            ErrorReport.error("Datatype Mismatch in " + arith + " operator: " + unary + " and " + a2);
+                        return "";
+                }
+            }
+            else if(unary.equals("floaty")){
+                switch(a2)
+                {
+                    case "inty" : 
+                    case "floaty" : return "floaty";
+                    default         : 
+                        if(unary.isEmpty() || a2.isEmpty())
+                            ErrorReport.error("Datatype Mismatch in " + arith + " operator");
+                        else
+                            ErrorReport.error("Datatype Mismatch in " + arith + " operator: " + unary + " and " + a2);
+                                return "";
+                }
+            }
+            else if(unary.equals(a2))
                 return unary;
-                
-            ErrorReport.error("Datatype Mismatch");
-                return "";
+               
+            if(unary.isEmpty() || a2.isEmpty())
+                ErrorReport.error("Datatype Mismatch in " + arith + " operator");
+            else
+                ErrorReport.error("Datatype Mismatch in " + arith + " operator: " + unary + " and " + a2);
+            return "";
         } 
         
         
