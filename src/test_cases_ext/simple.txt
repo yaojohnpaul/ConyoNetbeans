@@ -1,5 +1,5 @@
 /* Comment */
-OMG floaty TEST makeKuha 1.2 db
+OMG floaty TEST makeKuha 300.2 db
 
 hireYaya test1 bayad (inty i, floaty j, stringy k) makeBalik poor
 $
@@ -10,20 +10,9 @@ superYaya
 $
         makeArte inty[] a makeKuha {1, 2} db
         a makeKuha {1,2,3} db
-        //makeTawag test1(24.1, 2.4, "asdf") db
-        makeArte inty j makeKuha 5 db
-        j makeKuha 5 db
-        likeKapag(j > 7)
-        $
-            makeSulat("here.") db
-        $
-        thisNalangKapag(j == 7)
-        $
-            makeSulat("over here.") db
-        $
-        thisNalang
-        $
-            makeSulat("nice one.") db
-        $
+        makeArte inty j makeKuha 7 db
+        makeArte floaty i db
+        i makeKuha TEST db
+        makeSulat(i) db
         makeSulat("LOOK AT THIS AMAZING ARITHMETIC: " + 1 + a[2]) db
 $

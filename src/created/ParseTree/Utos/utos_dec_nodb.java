@@ -97,7 +97,10 @@ public abstract class utos_dec_nodb implements created.iNode
         
         public void evaluate(SymList sl)
         {
-        
+            if(up instanceof utos_makePalit.makePalit)
+            {
+                ((utos_makePalit.makePalit) up).evaluate(sl);
+            }
         }
     }
     

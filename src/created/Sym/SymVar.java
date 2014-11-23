@@ -11,7 +11,7 @@ import created.ParseTree.Yaya.*;
 public class SymVar extends SymEntry
 {
     private data_type dt;
-    private arte_init value;
+    private Object value;
        
     public SymVar(String name, data_type dt)
     {
@@ -46,12 +46,12 @@ public class SymVar extends SymEntry
         return dt;
     }
     
-    public arte_init value()
+    public Object value()
     {
         return value;
     }
     
-    public void setValue(arte_init value)
+    public void setValue(Object value)
     {
         this.value = value;
     }

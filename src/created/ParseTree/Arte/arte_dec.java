@@ -103,7 +103,14 @@ public abstract class arte_dec implements created.iNode
             SymVar sv = (SymVar) sl.getSymbol(id);
             if(a instanceof arte_assign.arteAssign)
             {
-                sv.setValue(((arte_assign.arteAssign) a).i);
+                if(((arte_assign.arteAssign) a).i instanceof arte_init.arrayInit)
+                {
+                    sv.setValue(((arte_init.arrayInit)((arte_assign.arteAssign) a).i).evaluate(sl));
+                }
+                else if(((arte_assign.arteAssign) a).i instanceof arte_init.sabiInit)
+                {
+                    sv.setValue(((arte_init.sabiInit)((arte_assign.arteAssign) a).i).evaluate(sl));
+                }
             }
             sl.editSymbol(id, sv);
         }

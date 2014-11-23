@@ -131,13 +131,13 @@ public abstract class ss_comparison implements created.iNode
                 switch(((comparison.compare) co).checkContext(sl))
                 {
                     case "<" :  if (arith instanceof Float)
-                                    return (float)arith <= (float)compare;
-                                else if (arith instanceof Integer)
-                                    return (int)arith <= (int)compare;
-                    case "<=" : if (arith instanceof Float)
                                     return (float)arith < (float)compare;
                                 else if (arith instanceof Integer)
                                     return (int)arith < (int)compare;
+                    case "<=" : if (arith instanceof Float)
+                                    return (float)arith <= (float)compare;
+                                else if (arith instanceof Integer)
+                                    return (int)arith <= (int)compare;
                     case ">" :  if (arith instanceof Float)
                                     return (float)arith > (float)compare;
                                 else if (arith instanceof Integer)

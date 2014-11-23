@@ -172,7 +172,7 @@ public abstract class utos_makeUlit implements created.iNode
             }
         }
         
-        public void evaluate()
+        public void evaluate(SymList sl)
         {
             boolean flag = false;
             if(m1 instanceof utos_makeKuha.makeKuha)
@@ -196,7 +196,7 @@ public abstract class utos_makeUlit implements created.iNode
                     
                     if(m2 instanceof utos_makeKuha.makeKuha)
                     {
-                        ((utos_makeKuha.makeKuha) m2).e(sl);
+                        ((utos_makeKuha.makeKuha) m2).evaluate(sl);
                     }
                     
                     if(s1 instanceof sabi_sabi_for.SabiSabiFor)

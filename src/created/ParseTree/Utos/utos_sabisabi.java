@@ -7,6 +7,7 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
+import error.ErrorReport;
 
 public abstract class utos_sabisabi implements created.iNode 
 {
@@ -40,6 +41,7 @@ public abstract class utos_sabisabi implements created.iNode
         
         public void checkContext(SymList sl)
         {
+            SymVar sv = (SymVar) sl.getSymbol(vv.toString());
             if(vv instanceof valid_var.validVar)
             {
                 ((valid_var.validVar) vv).checkContext(sl);
@@ -47,6 +49,21 @@ public abstract class utos_sabisabi implements created.iNode
             else if(vv instanceof valid_var.validVarRB)
             {
                 ((valid_var.validVarRB) vv).checkContext(sl);
+            }
+            switch(sv.dataType().toString())
+            {
+                case "inty":
+                case "floaty": break;
+                default: 
+                    if(kind.equals("++"))
+                    {
+                        ErrorReport.error("Invalid datatype for increment operator");
+                    }
+                    else if(kind.equals("--"))
+                    {
+                        ErrorReport.error("Invalid datatype for decrement operator");
+                    }
+                    break;
             }
         }
         
@@ -62,11 +79,31 @@ public abstract class utos_sabisabi implements created.iNode
             }
         }
         
-        public void evaluate(){
-            /*switch(kind){
-                case "++" : ++vv.evaluate();
-                case "--" : --vv.evaluate();
-            }*/
+        public void evaluate(SymList sl){
+            SymVar sv = (SymVar) sl.getSymbol(vv.toString());
+            switch(kind){
+                case "++" :
+                    if(sv.value() instanceof Integer)
+                    {
+                        sv.setValue(((Integer) sv.value()) + 1);
+                    }
+                    else if(sv.value() instanceof Float)
+                    {
+                        sv.setValue(((Float) sv.value()) + 1);
+                    }
+                    break;
+                case "--" :
+                    if(sv.value() instanceof Integer)
+                    {
+                        sv.setValue(((Integer) sv.value()) - 1);
+                    }
+                    else if(sv.value() instanceof Float)
+                    {
+                        sv.setValue(((Float) sv.value()) - 1);
+                    }
+                    break;
+            }
+            sl.editSymbol(vv.toString(), sv);
         }
     }
     
@@ -100,6 +137,7 @@ public abstract class utos_sabisabi implements created.iNode
         
         public void checkContext(SymList sl)
         {
+            SymVar sv = (SymVar) sl.getSymbol(vv.toString());
             if(vv instanceof valid_var.validVar)
             {
                 ((valid_var.validVar) vv).checkContext(sl);
@@ -107,6 +145,21 @@ public abstract class utos_sabisabi implements created.iNode
             else if(vv instanceof valid_var.validVarRB)
             {
                 ((valid_var.validVarRB) vv).checkContext(sl);
+            }
+            switch(sv.dataType().toString())
+            {
+                case "inty":
+                case "floaty": break;
+                default: 
+                    if(kind.equals("++"))
+                    {
+                        ErrorReport.error("Invalid datatype for increment operator");
+                    }
+                    else if(kind.equals("--"))
+                    {
+                        ErrorReport.error("Invalid datatype for decrement operator");
+                    }
+                    break;
             }
         }
         
@@ -122,12 +175,32 @@ public abstract class utos_sabisabi implements created.iNode
             }
         }
         
-        public void evaluate()
+        public void evaluate(SymList sl)
         {
-            /*switch(kind){
-                case "++" : vv.evaluate()++;
-                case "--" : vv.evaluate()--;
-            }*/
+            SymVar sv = (SymVar) sl.getSymbol(vv.toString());
+            switch(kind){
+                case "++" :
+                    if(sv.value() instanceof Integer)
+                    {
+                        sv.setValue(((Integer) sv.value()) + 1);
+                    }
+                    else if(sv.value() instanceof Float)
+                    {
+                        sv.setValue(((Float) sv.value()) + 1);
+                    }
+                    break;
+                case "--" :
+                    if(sv.value() instanceof Integer)
+                    {
+                        sv.setValue(((Integer) sv.value()) - 1);
+                    }
+                    else if(sv.value() instanceof Float)
+                    {
+                        sv.setValue(((Float) sv.value()) - 1);
+                    }
+                    break;
+            }
+            sl.editSymbol(vv.toString(), sv);
         }
     }
     
