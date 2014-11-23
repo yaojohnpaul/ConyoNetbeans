@@ -5,13 +5,15 @@
         <group>
             <file>file:/D:/Github/ConyoNetbeans/src/created/ParseTree/Array/arte_init_opt.java</file>
             <file>file:/D:/Github/ConyoNetbeans/src/created/ParseTree/Array/arte_init_list.java</file>
-            <file>file:/D:/Github/ConyoNetbeans/src/created/ParseTree/Yaya/yaya_header.java</file>
+            <file>file:/D:/Github/ConyoNetbeans/src/created/ParseTree/Utos/utos_makeKuha.java</file>
             <file>file:/D:/Github/ConyoNetbeans/src/created/Conyogram.java</file>
-            <file>file:/D:/Github/ConyoNetbeans/src/created/ParseTree/Utos/utos_makeTawag.java</file>
-            <file>file:/D:/Github/ConyoNetbeans/src/created/ParseTree/Yaya/yaya_param_sec.java</file>
+            <file>file:/D:/Github/ConyoNetbeans/src/created/ParseTree/Array/array_init.java</file>
             <file>file:/D:/Github/ConyoNetbeans/src/test_cases_ext/simple.txt</file>
-            <file>file:/D:/Github/ConyoNetbeans/src/created/ParseTree/Utos/utos_dec_val.java</file>
-            <file>file:/D:/Github/ConyoNetbeans/src/created/ParseTree/Yaya/yaya.java</file>
+            <file>file:/D:/Github/ConyoNetbeans/src/created/Sym/SymVar.java</file>
+            <file>file:/D:/Github/ConyoNetbeans/src/created/ParseTree/Arte/arte_assign.java</file>
+            <file>file:/D:/Github/ConyoNetbeans/src/created/ParseTree/Array/ref_brackets.java</file>
+            <file>file:/D:/Github/ConyoNetbeans/src/created/ParseTree/Literals/valid_var.java</file>
+            <file>file:/D:/Github/ConyoNetbeans/src/created/ParseTree/Arte/arte_init.java</file>
         </group>
     </open-files>
 </project-private>
