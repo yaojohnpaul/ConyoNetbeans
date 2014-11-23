@@ -7,6 +7,7 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
+import error.*;
 
 public abstract class utos_thisNalang implements created.iNode  
 {
@@ -171,7 +172,9 @@ public abstract class utos_thisNalang implements created.iNode
                 {
                     ((utos_block.utosBlock) b).evaluate(sl);
                 }
-            
+            }
+            else
+            {
                 if(t instanceof utos_thisNalang.thisNalang)
                 {
                     ((utos_thisNalang.thisNalang) t).evaluate(sl);
@@ -181,7 +184,6 @@ public abstract class utos_thisNalang implements created.iNode
                     ((utos_thisNalang.thisNalangKapag) t).evaluate(sl);
                 } 
             }
-            
             
             
         }
