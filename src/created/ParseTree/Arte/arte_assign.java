@@ -34,11 +34,15 @@ public abstract class arte_assign implements created.iNode
         
         public void setSymList(String id, SymList sl)
         {
-            if(i != null)
+            //commented out because arte_init should only be assigned during
+            //evaluation since values can change for a variable unlike
+            //constants wherein the value does not change thus allowing 
+            //the setting of values during the setSymList stage
+            /*if(i != null)
             {
                 SymVar temp = (SymVar) sl.getSymbol(id);
                 sl.editSymbol(id, new SymVar(id, temp.dataType(), i));
-            }
+            }*/
         }
         
         public String checkContext(SymList sl)

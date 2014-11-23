@@ -49,7 +49,20 @@ public abstract class sabi_sabi_end implements created.iNode
                 return ((valid_var.validVarRB) v).checkContext(sl);
             }
             return "";
-        } 
+        }
+        
+        public Object evaluate(SymList sl)
+        {
+            if(v instanceof valid_var.validVar)
+            {
+                return ((valid_var.validVar) v).evaluate(sl);
+            }
+            else if(v instanceof valid_var.validVarRB)
+            {
+                return ((valid_var.validVarRB) v).evaluate(sl);
+            }
+            return null;
+        }
     }
     
     public static class ssEndUtos extends sabi_sabi_end
@@ -101,6 +114,11 @@ public abstract class sabi_sabi_end implements created.iNode
             }
             return "";
         } 
+        
+        public Object evaluate(SymList sl)
+        {
+            return null;
+        }
     }
     
     public static class ssEndLiteral extends sabi_sabi_end

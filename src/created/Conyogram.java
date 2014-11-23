@@ -122,16 +122,16 @@ public class Conyogram implements iNode
     public void evaluate()
     {
         //OMG
-        if(o instanceof OMG_section.OMGSection)
+        /*if(o instanceof OMG_section.OMGSection)
         {
             ((OMG_section.OMGSection) o).evaluate(OMG_sym);
-        }
+        }*/
         
         //Yaya
-        if(y instanceof yaya_section.yayaSection)
+        /*if(y instanceof yaya_section.yayaSection)
         {
             ((yaya_section.yayaSection) y).evaluate(yaya_sym);
-        }
+        }*/
         
         //Super Yaya
         if(s instanceof super_yaya.superYaya)

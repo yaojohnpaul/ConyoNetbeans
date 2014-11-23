@@ -31,7 +31,7 @@ public abstract class arte_dec implements created.iNode
         
         public void setSymList(SymList sl)
         {
-            Boolean avail = sl.addToList(id, new SymVar(id, dt, null));
+            Boolean avail = sl.addToList(id, new SymVar(id, dt));
  
             if(!avail)
             {
@@ -96,6 +96,16 @@ public abstract class arte_dec implements created.iNode
             {
                 ((arte_assign.arteAssign) a).preInterpret(sl);
             }
+        }
+        
+        public void evaluate(SymList sl)
+        {
+            SymVar sv = (SymVar) sl.getSymbol(id);
+            if(a instanceof arte_assign.arteAssign)
+            {
+                sv.setValue(((arte_assign.arteAssign) a).i);
+            }
+            sl.editSymbol(id, sv);
         }
     }
 }

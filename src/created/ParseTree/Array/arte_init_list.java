@@ -90,5 +90,15 @@ public abstract class arte_init_list implements created.iNode
                 ((arte_init_opt.arteInitOpt) o).preInterpret(sl);
             }
         }
+        
+        public ArrayList<Object> evaluate(SymList sl)
+        {
+            ArrayList<Object> alo = new ArrayList<>();
+            if(o instanceof arte_init_opt.arteInitOpt)
+            {
+                alo = ((arte_init_opt.arteInitOpt) o).evaluate(sl);
+            }
+            return alo;
+        }
     }
 }

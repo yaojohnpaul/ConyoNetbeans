@@ -52,6 +52,7 @@ public abstract class yaya implements created.iNode
         
         public void checkContext(SymList sl)
         {
+            this.sl.setAncestor(sl);
             if(h instanceof yaya_header.yayaHeader)
             {
                 ((yaya_header.yayaHeader) h).checkContext(this.sl);
@@ -65,27 +66,29 @@ public abstract class yaya implements created.iNode
         
         public void preInterpret(SymList sl)
         {
+            this.sl.setAncestor(sl);
             if(h instanceof yaya_header.yayaHeader)
             {
-                ((yaya_header.yayaHeader) h).preInterpret(sl);
+                ((yaya_header.yayaHeader) h).preInterpret(this.sl);
             }
             
             if(u instanceof utos_block.utosBlock)
             {
-                ((utos_block.utosBlock) u).preInterpret(sl);
+                ((utos_block.utosBlock) u).preInterpret(this.sl);
             }
         }
         
         public void evaluate(SymList sl)
         {
+            this.sl.setAncestor(sl);
             if(h instanceof yaya_header.yayaHeader)
             {
-                ((yaya_header.yayaHeader) h).evaluate(sl);
+                ((yaya_header.yayaHeader) h).evaluate(this.sl);
             }
             
             if(u instanceof utos_block.utosBlock)
             {
-                ((utos_block.utosBlock) u).evaluate(sl);
+                ((utos_block.utosBlock) u).evaluate(this.sl);
             }
         }
     }

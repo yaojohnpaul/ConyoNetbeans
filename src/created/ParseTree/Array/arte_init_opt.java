@@ -65,6 +65,21 @@ public abstract class arte_init_opt implements created.iNode
             }
         }
         
+        public void setSabi(int index, sabi_sabi s)
+        {
+            if(index == 0)
+            {
+                this.s = s;
+            }
+            else
+            {
+                if(o instanceof arte_init_opt.arteInitOpt)
+                {
+                    ((arte_init_opt.arteInitOpt) o).setSabi(index-1, s);
+                }
+            }
+        }
+        
         public void setSymList(SymList sl)
         {
             if(s instanceof sabi_sabi.SabiSabi)
@@ -121,6 +136,23 @@ public abstract class arte_init_opt implements created.iNode
             {
                 ((arte_init_opt.arteInitOpt) o).preInterpret(sl);
             }
+        }
+        
+        public ArrayList<Object> evaluate(SymList sl)
+        {
+            ArrayList<Object> alo = new ArrayList<>();
+            
+            if(s instanceof sabi_sabi.SabiSabi)
+            {
+                alo.add(((sabi_sabi.SabiSabi) s).evaluate(sl));
+            }
+            
+            if(o instanceof arte_init_opt.arteInitOpt)
+            {
+                alo.addAll(((arte_init_opt.arteInitOpt) o).evaluate(sl));
+            }
+            
+            return alo;
         }
     }
 }

@@ -115,15 +115,15 @@ public abstract class ss_paren implements created.iNode
         
         public Object evaluate(SymList sl)
         {
-            // if(e instanceof sabi_sabi_end.ssEndUtos)
-            // {
-            //     return ((sabi_sabi_end.ssEndUtos) e).evaluate(sl);
-            // }
-            // else if(e instanceof sabi_sabi_end.ssEndValidVar)
-            // {
-            //     return ((sabi_sabi_end.ssEndValidVar) e).evaluate(sl);
-            // }
-            // else 
+            if(e instanceof sabi_sabi_end.ssEndUtos)
+            {
+                return ((sabi_sabi_end.ssEndUtos) e).evaluate(sl);
+            }
+            else if(e instanceof sabi_sabi_end.ssEndValidVar)
+            {
+                return ((sabi_sabi_end.ssEndValidVar) e).evaluate(sl);
+            }
+            else 
             if(e instanceof sabi_sabi_end.ssEndLiteral)
             {
                 return ((sabi_sabi_end.ssEndLiteral) e).evaluate(sl);

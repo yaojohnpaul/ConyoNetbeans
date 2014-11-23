@@ -37,6 +37,15 @@ public class SymList
     }
     
     /**
+     * Set a new ancestor for the SymList.
+     * @param anc New ancestor 
+     */
+    public void setAncestor(SymList anc)
+    {
+        this.anc = anc;
+    }
+    
+    /**
      * Add a new symbol to the list.
      * @param s Name of symbol.
      * @param se Symbol value.

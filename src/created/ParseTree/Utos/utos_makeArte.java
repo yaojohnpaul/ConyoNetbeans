@@ -47,5 +47,13 @@ public abstract class utos_makeArte implements created.iNode
                 ((arte_dec.arteDec) a).preInterpret(sl);
             }
         }
+        
+        public void evaluate(SymList sl)
+        {
+            if(a instanceof arte_dec.arteDec)
+            {
+                ((arte_dec.arteDec) a).evaluate(sl);
+            }
+        }
     }
 }
