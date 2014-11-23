@@ -336,7 +336,14 @@ public abstract class utos_dec implements created.iNode
         
         public void evaluate(SymList sl)
         {
-            
+            if(us instanceof utos_sabisabi.utosSabiSabiFront)
+            {
+                ((utos_sabisabi.utosSabiSabiFront) us).evaluate(sl);
+            }
+            else if(us instanceof utos_sabisabi.utosSabiSabiBack)
+            {
+                ((utos_sabisabi.utosSabiSabiBack) us).evaluate(sl);
+            }
         }
     }
 }

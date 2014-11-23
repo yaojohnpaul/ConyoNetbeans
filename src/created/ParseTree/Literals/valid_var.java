@@ -129,10 +129,9 @@ public abstract class valid_var implements created.iNode
                 if(rb instanceof ref_brackets.refBrackets)
                 {
                     index = (int)((sabi_sabi.SabiSabi)((ref_brackets.refBrackets) rb).s).evaluate(sl);
-                    arte_init ai = sv.value();
-                    if(ai instanceof arte_init.arrayInit)
+                    if(sv.value() instanceof ArrayList)
                     {
-                        ArrayList<Object> ao = ((arte_init.arrayInit) ai).evaluate(sl);
+                        ArrayList<Object> ao = (ArrayList) sv.value();
                         return ao.get(index);
                     }
                 }

@@ -7,6 +7,7 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
+import error.*;
 
 public abstract class utos_likeHabang implements created.iNode  
 {
@@ -50,9 +51,14 @@ public abstract class utos_likeHabang implements created.iNode
         
         public void checkContext(SymList sl)
         {
+            String type = "";
             if(s instanceof sabi_sabi.SabiSabi)
             {
-                ((sabi_sabi.SabiSabi) s).checkContext(sl);
+                type = ((sabi_sabi.SabiSabi) s).checkContext(sl);
+                if(!type.equals("booly"))
+                {
+                    ErrorReport.error("Condition for while statement is not Boolean");
+                }
             }
             
             if(u instanceof utos_block.utosBlock)
@@ -71,6 +77,28 @@ public abstract class utos_likeHabang implements created.iNode
             if(u instanceof utos_block.utosBlock)
             {
                 ((utos_block.utosBlock) u).preInterpret(sl);
+            }
+        }
+        
+        public void evaluate(SymList sl)
+        {
+            boolean a = false;
+            if(s instanceof sabi_sabi.SabiSabi)
+            {
+                a = (boolean)((sabi_sabi.SabiSabi) s).evaluate(sl);
+            }
+            
+            while(a)
+            {
+                if(u instanceof utos_block.utosBlock)
+                {
+                    ((utos_block.utosBlock) u).evaluate(sl);
+                }
+                
+                if(s instanceof sabi_sabi.SabiSabi)
+                {
+                    a = (boolean)((sabi_sabi.SabiSabi) s).evaluate(sl);
+                }
             }
         }
     }

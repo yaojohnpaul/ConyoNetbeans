@@ -1,5 +1,6 @@
 package created.ParseTree.Utos;
 
+import java.util.*;
 import created.ParseTree.Array.*;
 import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
@@ -112,7 +113,7 @@ public abstract class utos_makeKuha implements created.iNode
             if(a instanceof arte_assign.arteAssign)
             {
                 arte_assign.arteAssign a1 = (arte_assign.arteAssign) a;
-                if(sv.value() instanceof arte_init.arrayInit && vv instanceof valid_var.validVarRB)
+                if(sv.value() instanceof ArrayList && vv instanceof valid_var.validVarRB)
                 {
                     arte_init.sabiInit a2 = null;
                     sabi_sabi.SabiSabi a3 = null;
@@ -125,36 +126,20 @@ public abstract class utos_makeKuha implements created.iNode
                         }
                     }
                     
-                    arte_init.arrayInit b1 = (arte_init.arrayInit) sv.value();
-                    array_init.arrayInit b2 = null;
-                    arte_init_list.arteInitList b3 = null;
-                    arte_init_opt.arteInitOpt b4 = null;
-                    if(b1.a instanceof array_init.arrayInit)
-                    {
-                        b2 = (array_init.arrayInit) b1.a;
-                        if(b2.l instanceof arte_init_list.arteInitList)
-                        {
-                            b3 = (arte_init_list.arteInitList) b2.l;
-                            if(b3.o instanceof arte_init_opt.arteInitOpt)
-                            {
-                                b4 = (arte_init_opt.arteInitOpt) b3.o;
-                            }
-                        }
-                    }
-                    
-                    if(b4 != null)
-                    {
-                        b4.setSabi(index, a3);
-                        b3.o = b4;
-                        b2.l = b3;
-                        b1.a = b2;
-                        sv.setValue(b1);
-                    } 
+                    ArrayList<Object> ao = (ArrayList) sv.value();
+                    ao.set(index, a3.evaluate(sl));
+                    sv.setValue(ao);
                 }
                 else
                 {
-                    sv.setValue(a1.i);
-                    
+                    if(a1.i instanceof arte_init.arrayInit)
+                    {
+                        sv.setValue(((arte_init.arrayInit) a1.i).evaluate(sl));
+                    }
+                    else if(a1.i instanceof arte_init.sabiInit)
+                    {
+                        sv.setValue(((arte_init.sabiInit) a1.i).evaluate(sl));
+                    }
                 }
             }
             sl.editSymbol(vv.toString(), sv);

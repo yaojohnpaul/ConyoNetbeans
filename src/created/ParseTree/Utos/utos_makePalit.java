@@ -76,5 +76,10 @@ public abstract class utos_makePalit implements created.iNode
                 ((makePalit_MRW.MDR) m).preInterpret(sl);
             }
         }
+        
+        public void evaluate(SymList sl)
+        {
+            
+        }
     }
 }

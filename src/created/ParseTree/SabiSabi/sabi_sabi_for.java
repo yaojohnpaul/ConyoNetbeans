@@ -46,6 +46,20 @@ public abstract class sabi_sabi_for implements created.iNode
             return "";
         }
         
+        public Boolean evaluate(SymList sl)
+        {
+            Object o = false;
+            Boolean check = false;
+            if(s instanceof sabi_sabi.SabiSabi)
+            {
+                o = ((sabi_sabi.SabiSabi) s).evaluate(sl);
+                if(o instanceof Boolean)
+                {
+                    check = (Boolean) o;
+                }
+            }
+            return check;
+        }
     }
 }
 
