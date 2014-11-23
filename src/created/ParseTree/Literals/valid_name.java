@@ -61,6 +61,22 @@ public abstract class valid_name implements created.iNode
         {
             
         }
+        
+        public Object evaluate(SymList sl)
+        {
+            SymVar sv = (SymVar) sl.getSymbol(id);
+            arte_init ai = sv.value();
+            if(ai instanceof arte_init.arrayInit)
+            {
+                return ((arte_init.arrayInit) ai).evaluate(sl);
+            }
+            else if(ai instanceof arte_init.sabiInit)
+            {
+                return ((arte_init.sabiInit) ai).evaluate(sl);
+            }
+            else
+                return null;
+        }
     }
 }
 

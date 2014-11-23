@@ -55,7 +55,7 @@ public abstract class yaya_header implements created.iNode
                 Boolean avail = false;
                 if(dt instanceof data_type.datatypePrimitive)
                 {
-                    avail = local.addToList(ret, new SymVar(ret, dt, null));
+                    avail = local.addToList(ret, new SymVar(ret, dt));
                     if(!avail)
                     {
                         ErrorReport.error("Duplicate variable name!: " + ret);
@@ -64,7 +64,7 @@ public abstract class yaya_header implements created.iNode
                 }
                 else if(dt instanceof data_type.datatypeReference)
                 {
-                    avail = local.addToList(ret, new SymVar(ret, dt, null));
+                    avail = local.addToList(ret, new SymVar(ret, dt));
                     if(!avail)
                     {
                         ErrorReport.error("Duplicate variable name!: " + ret);
@@ -75,7 +75,7 @@ public abstract class yaya_header implements created.iNode
             
             if(yps instanceof yaya_param_sec.yayaParamSec)
             {
-                ((yaya_param_sec.yayaParamSec) yps).setSymList(local);
+                ((yaya_param_sec.yayaParamSec) yps).setSymList(sl, name, local);
             }
             
             return availFunc;

@@ -37,6 +37,7 @@ public abstract class super_yaya implements created.iNode
         
         public void checkContext(SymList sl)
         {
+            this.sl.setAncestor(sl);
             if(u instanceof utos_block.utosBlock)
             {
                 ((utos_block.utosBlock) u).checkContext(this.sl);
@@ -54,17 +55,19 @@ public abstract class super_yaya implements created.iNode
         
         public void preInterpret(SymList sl)
         {
+            this.sl.setAncestor(sl);
             if(u instanceof utos_block.utosBlock)
             {
-                ((utos_block.utosBlock) u).preInterpret(sl);
+                ((utos_block.utosBlock) u).preInterpret(this.sl);
             }
         }
         
         public void evaluate(SymList sl)
         {
+            this.sl.setAncestor(sl);
             if(u instanceof utos_block.utosBlock)
             {
-                ((utos_block.utosBlock) u).evaluate(sl);
+                ((utos_block.utosBlock) u).evaluate(this.sl);
             }
         }
     }

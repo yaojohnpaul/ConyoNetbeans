@@ -47,6 +47,14 @@ public abstract class utos_dec_db implements created.iNode
                 ((utos_makeKuha.makeKuha) uk).preInterpret(sl);
             }
         }
+        
+        public void evaluate(SymList sl)
+        {
+            if(uk instanceof utos_makeKuha.makeKuha)
+            {
+                ((utos_makeKuha.makeKuha) uk).evaluate(sl);
+            }
+        }
     }
     
     public static class utosMakeSulat extends utos_dec_db

@@ -13,11 +13,11 @@ public class SymVar extends SymEntry
     private data_type dt;
     private arte_init value;
        
-    public SymVar(String name, data_type dt, arte_init value)
+    public SymVar(String name, data_type dt)
     {
         super(name);
         this.dt = dt;
-        this.value = value;
+        this.value = null;
     }
     
     @Override
@@ -35,7 +35,10 @@ public class SymVar extends SymEntry
     @Override
     public String toString()
     {
-        return symName + "-" + value + "-" + dt.toString();
+        if(value == null)
+            return dt.toString() + " " + symName;
+        else
+            return symName + "-" + value + "-" + dt.toString();
     }
     
     public data_type dataType()
@@ -46,5 +49,10 @@ public class SymVar extends SymEntry
     public arte_init value()
     {
         return value;
+    }
+    
+    public void setValue(arte_init value)
+    {
+        this.value = value;
     }
 }

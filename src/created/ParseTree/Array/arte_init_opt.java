@@ -1,5 +1,6 @@
 package created.ParseTree.Array;
 
+import java.util.*;
 import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
@@ -33,6 +34,50 @@ public abstract class arte_init_opt implements created.iNode
                 return s.toString() + ", " + o.toString();
             else
                 return s.toString();
+        }
+        
+        public int getCount()
+        {
+            if(o instanceof arte_init_opt.arteInitOpt)
+            {
+                return 1 + ((arte_init_opt.arteInitOpt) o).getCount();
+            }
+            else
+            {
+                return 1;
+            }
+        }
+        
+        public ArrayList<sabi_sabi> getContents()
+        {
+            ArrayList<sabi_sabi> local = new ArrayList<>();
+            
+            if(o instanceof arte_init_opt.arteInitOpt)
+            {
+                local.addAll(((arte_init_opt.arteInitOpt) o).getContents());
+                local.add(s);
+                return local;
+            }
+            else
+            {
+                local.add(s);
+                return local;
+            }
+        }
+        
+        public void setSabi(int index, sabi_sabi s)
+        {
+            if(index == 0)
+            {
+                this.s = s;
+            }
+            else
+            {
+                if(o instanceof arte_init_opt.arteInitOpt)
+                {
+                    ((arte_init_opt.arteInitOpt) o).setSabi(index-1, s);
+                }
+            }
         }
         
         public void setSymList(SymList sl)
@@ -91,6 +136,23 @@ public abstract class arte_init_opt implements created.iNode
             {
                 ((arte_init_opt.arteInitOpt) o).preInterpret(sl);
             }
+        }
+        
+        public ArrayList<Object> evaluate(SymList sl)
+        {
+            ArrayList<Object> alo = new ArrayList<>();
+            
+            if(s instanceof sabi_sabi.SabiSabi)
+            {
+                alo.add(((sabi_sabi.SabiSabi) s).evaluate(sl));
+            }
+            
+            if(o instanceof arte_init_opt.arteInitOpt)
+            {
+                alo.addAll(((arte_init_opt.arteInitOpt) o).evaluate(sl));
+            }
+            
+            return alo;
         }
     }
 }

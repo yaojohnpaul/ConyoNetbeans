@@ -25,12 +25,6 @@ public abstract class sabi_sabi implements created.iNode
             return o.toString();
         }
         
-        //To be edited, return type also if needed
-        public String evaluate()
-        {
-            return this.toString();
-        }
-        
         public void setSymList(SymList sl)
         {
             if(o instanceof ss_OR.ssOR)

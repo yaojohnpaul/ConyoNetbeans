@@ -1,5 +1,6 @@
 package created.ParseTree.Arte;
 
+import java.util.*;
 import created.ParseTree.Array.*;
 import created.ParseTree.Literals.*;
 import created.ParseTree.Program.*;
@@ -48,6 +49,16 @@ public abstract class arte_init implements created.iNode
                 ((array_init.arrayInit) a).preInterpret(sl);
             }
         }
+        
+        public ArrayList<Object> evaluate(SymList sl)
+        {
+            ArrayList<Object> alo = new ArrayList<>();
+            if(a instanceof array_init.arrayInit)
+            {
+                alo = ((array_init.arrayInit) a).evaluate(sl);
+            }
+            return alo;
+        }
     }
     
     public static class sabiInit extends arte_init
@@ -86,6 +97,18 @@ public abstract class arte_init implements created.iNode
             if(s instanceof sabi_sabi.SabiSabi)
             {
                 ((sabi_sabi.SabiSabi) s).preInterpret(sl);
+            }
+        }
+        
+        public Object evaluate(SymList sl)
+        {
+            if(s instanceof sabi_sabi.SabiSabi)
+            {
+                return ((sabi_sabi.SabiSabi) s).evaluate(sl);
+            }
+            else
+            {
+                return null;
             }
         }
     }
