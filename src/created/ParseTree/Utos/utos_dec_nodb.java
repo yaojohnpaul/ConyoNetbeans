@@ -141,7 +141,10 @@ public abstract class utos_dec_nodb implements created.iNode
         
         public void evaluate(SymList sl)
         {
-        
+            if(uh instanceof utos_likeHabang.likeHabang)
+            {
+                ((utos_likeHabang.likeHabang) uh).evaluate(sl);
+            }
         }
     }
     
@@ -185,7 +188,10 @@ public abstract class utos_dec_nodb implements created.iNode
         
         public void evaluate(SymList sl)
         {
-        
+            if(ugh instanceof utos_makeGawaHabang.makeGawaHabang)
+            {
+                ((utos_makeGawaHabang.makeGawaHabang) ugh).evaluate(sl);
+            }
         }
     }
     
@@ -229,7 +235,10 @@ public abstract class utos_dec_nodb implements created.iNode
         
         public void evaluate(SymList sl)
         {
-        
+            if(uu instanceof utos_makeUlit.makeUlit)
+            {
+                ((utos_makeUlit.makeUlit) uu).evaluate(sl);
+            }
         }
     }
     

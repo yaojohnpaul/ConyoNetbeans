@@ -73,5 +73,22 @@ public abstract class utos_likeHabang implements created.iNode
                 ((utos_block.utosBlock) u).preInterpret(sl);
             }
         }
+        
+        public void evaluate(SymList sl)
+        {
+            boolean a = false;
+            if(s instanceof sabi_sabi.SabiSabi)
+            {
+                a = (boolean)((sabi_sabi.SabiSabi) s).evaluate(sl);
+            }
+            
+            while(a)
+            {
+                if(u instanceof utos_block.utosBlock)
+                {
+                    ((utos_block.utosBlock) u).preInterpret(sl);
+                }
+            }
+        }
     }
 }

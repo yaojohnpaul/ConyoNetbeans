@@ -171,5 +171,92 @@ public abstract class utos_makeUlit implements created.iNode
                 ((utos_block.utosBlock) u).preInterpret(sl);
             }
         }
+        
+        public void evaluate()
+        {
+            boolean flag = false;
+            if(m1 instanceof utos_makeKuha.makeKuha)
+            {
+                ((utos_makeKuha.makeKuha) m1).evaluate(sl);
+            }
+            if(s1 instanceof sabi_sabi_for.SabiSabiFor)
+            {
+                flag = ((sabi_sabi_for.SabiSabiFor) s1).evaluate(sl);
+            }
+            
+            if(s2 == null && m3 == null) // case 1
+            {
+                //for(m1;s1;m2)
+                while(flag)
+                {
+                    if(u instanceof utos_block.utosBlock)
+                    {
+                        ((utos_block.utosBlock) u).evaluate(sl);
+                    }
+                    
+                    if(m2 instanceof utos_makeKuha.makeKuha)
+                    {
+                        ((utos_makeKuha.makeKuha) m2).e(sl);
+                    }
+                    
+                    if(s1 instanceof sabi_sabi_for.SabiSabiFor)
+                    {
+                        flag = ((sabi_sabi_for.SabiSabiFor) s1).evaluate(sl);
+                    }
+                    
+                }
+            }
+            else if(m2 == null && m3 == null) // case 2
+            {
+                //for(m1;s1;s2)
+                while(flag)
+                {
+                    if(u instanceof utos_block.utosBlock)
+                    {
+                        ((utos_block.utosBlock) u).evaluate(sl);
+                    }
+                    
+                    if(s2 instanceof sabi_sabi_for.SabiSabiFor)
+                    {
+                        ((sabi_sabi_for.SabiSabiFor) s2).evaluate(sl);
+                    }
+                    
+                    if(s1 instanceof sabi_sabi_for.SabiSabiFor)
+                    {
+                        flag = ((sabi_sabi_for.SabiSabiFor) s1).evaluate(sl);
+                    }
+                }
+            }
+            else if(m2 == null && s2 == null) // case 3
+            {
+                //for(m1;s1;m3)
+                while(flag)
+                {
+                    if(u instanceof utos_block.utosBlock)
+                    {
+                        ((utos_block.utosBlock) u).evaluate(sl);
+                    }
+                    
+                    if(m3 instanceof utos_sabisabi.utosSabiSabiFront)
+                    {
+                        ((utos_sabisabi.utosSabiSabiFront) m3).evaluate(sl);
+                    }
+                    else if(m3 instanceof utos_sabisabi.utosSabiSabiBack)
+                    {
+                        ((utos_sabisabi.utosSabiSabiBack) m3).evaluate(sl);
+                    }
+                    
+                    if(s1 instanceof sabi_sabi_for.SabiSabiFor)
+                    {
+                        flag = ((sabi_sabi_for.SabiSabiFor) s1).evaluate(sl);
+                    }
+                }
+            }
+        }
     }
 }
+/*
+utos_makeUlit ::= MAKE_ULIT LEFT_PAREN utos_makeKuha:m1 DB sabi_sabi_for:s1 utos_makeKuha:m2 RIGHT_PAREN utos_block:u {: RESULT = new utos_makeUlit.makeUlit(m1, s1, m2, u); :}
+				| MAKE_ULIT LEFT_PAREN utos_makeKuha:m1 DB sabi_sabi_for:s1 utos_sabisabi:m2 RIGHT_PAREN utos_block:u {: RESULT = new utos_makeUlit.makeUlit(m1, s1, m2, u); :}
+				| MAKE_ULIT LEFT_PAREN utos_makeKuha:m1 DB sabi_sabi_for:s1 sabi_sabi_for:s2 RIGHT_PAREN utos_block:u {: RESULT = new utos_makeUlit.makeUlit(m1, s1, s2, u); :};
+*/
