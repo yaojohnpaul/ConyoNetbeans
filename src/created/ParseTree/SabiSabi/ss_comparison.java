@@ -94,7 +94,7 @@ public abstract class ss_comparison implements created.iNode
                         ErrorReport.error("Datatype Not Allowed with Comparison Operator: " + arith);
                             return "";
             }
-            if(arith.equals(compare))
+            if(arith.equals(compare) || arith.equals("floaty") && compare.equals("inty") || arith.equals("inty") && compare.equals("floaty"))
                 return "booly";
                 
             if(arith.isEmpty() || compare.isEmpty())
@@ -131,21 +131,61 @@ public abstract class ss_comparison implements created.iNode
                 switch(((comparison.compare) co).checkContext(sl))
                 {
                     case "<" :  if (arith instanceof Float)
-                                    return (float)arith < (float)compare;
+                                {
+                                    if(compare instanceof Float)
+                                        return (float)arith < (float)compare;
+                                    else if(compare instanceof Integer)
+                                        return (float)arith < (int)compare;
+                                }
                                 else if (arith instanceof Integer)
-                                    return (int)arith < (int)compare;
+                                {
+                                    if(compare instanceof Float)
+                                        return (int)arith < (float)compare;
+                                    else if(compare instanceof Integer)
+                                        return (int)arith < (int)compare;
+                                }
                     case "<=" : if (arith instanceof Float)
-                                    return (float)arith <= (float)compare;
+                                {
+                                    if(compare instanceof Float)
+                                        return (float)arith <= (float)compare;
+                                    else if(compare instanceof Integer)
+                                        return (float)arith <= (int)compare;
+                                }
                                 else if (arith instanceof Integer)
-                                    return (int)arith <= (int)compare;
+                                {
+                                    if(compare instanceof Float)
+                                        return (int)arith <= (float)compare;
+                                    else if(compare instanceof Integer)
+                                        return (int)arith <= (int)compare;
+                                }
                     case ">" :  if (arith instanceof Float)
-                                    return (float)arith > (float)compare;
+                                {
+                                    if(compare instanceof Float)
+                                        return (float)arith > (float)compare;
+                                    else if(compare instanceof Integer)
+                                        return (float)arith > (int)compare;
+                                }
                                 else if (arith instanceof Integer)
-                                    return (int)arith > (int)compare;
+                                {
+                                    if(compare instanceof Float)
+                                        return (int)arith > (float)compare;
+                                    else if(compare instanceof Integer)
+                                        return (int)arith > (int)compare;
+                                }
                     case ">=" : if (arith instanceof Float)
-                                    return (float)arith >= (float)compare;
+                                {
+                                    if(compare instanceof Float)
+                                        return (float)arith >= (float)compare;
+                                    else if(compare instanceof Integer)
+                                        return (float)arith >= (int)compare;
+                                }
                                 else if (arith instanceof Integer)
-                                    return (int)arith >= (int)compare;
+                                {
+                                    if(compare instanceof Float)
+                                        return (int)arith >= (float)compare;
+                                    else if(compare instanceof Integer)
+                                        return (int)arith >= (int)compare;
+                                }
                     default   : return null;
                 }
             }

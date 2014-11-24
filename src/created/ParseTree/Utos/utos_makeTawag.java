@@ -68,7 +68,7 @@ public abstract class utos_makeTawag implements created.iNode
                     if(sfn.getArity() != passedCount)
                     {
                         ErrorReport.error("Passed parameter count (" + passedCount +
-                                ") does not much function \"" + vn.toString() + "\" declaration parameter count (" +
+                                ") does not match function \"" + vn.toString() + "\" declaration parameter count (" +
                                 sfn.getArity() + ")");
                     }
                     else
@@ -88,9 +88,9 @@ public abstract class utos_makeTawag implements created.iNode
                                     else
                                     {
                                         if(((sabi_sabi.SabiSabi) alss.get(i)).checkContext(sl).isEmpty() || ((data_type.datatypePrimitive) aldt.get(i)).toString().isEmpty())
-                                            ErrorReport.error("Datatype of passed parameters does not much declared function " + vn.toString() + "'s parameters");
+                                            ErrorReport.error("Datatype of passed parameters does not match declared function " + vn.toString() + "'s parameters");
                                         else
-                                            ErrorReport.error("Datatype of passed parameters does not much declared function " + vn.toString() + "'s parameters: " + 
+                                            ErrorReport.error("Datatype of passed parameters does not match declared function " + vn.toString() + "'s parameters: " + 
                                                     ((sabi_sabi.SabiSabi) alss.get(i)).checkContext(sl) + " and " + ((data_type.datatypePrimitive) aldt.get(i)).toString());
                                     }
                                 }
@@ -103,9 +103,9 @@ public abstract class utos_makeTawag implements created.iNode
                                     else
                                     {
                                         if(((sabi_sabi.SabiSabi) alss.get(i)).checkContext(sl).isEmpty() || ((data_type.datatypeReference) aldt.get(i)).toString().isEmpty())
-                                            ErrorReport.error("Datatype of passed parameters does not much declared function " + vn.toString() + "'s parameters");
+                                            ErrorReport.error("Datatype of passed parameters does not match declared function " + vn.toString() + "'s parameters");
                                         else
-                                            ErrorReport.error("Datatype of passed parameters does not much declared function " + vn.toString() + "'s parameters: " + 
+                                            ErrorReport.error("Datatype of passed parameters does not match declared function " + vn.toString() + "'s parameters: " + 
                                                     ((sabi_sabi.SabiSabi) alss.get(i)).checkContext(sl) + " and " + ((data_type.datatypeReference) aldt.get(i)).toString());
                                     }
                                 }

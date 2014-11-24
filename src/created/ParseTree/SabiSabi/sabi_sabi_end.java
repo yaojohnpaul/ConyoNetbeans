@@ -195,7 +195,7 @@ public abstract class sabi_sabi_end implements created.iNode
             }
             else if(l instanceof literal.Floaty)
             {
-                return Double.valueOf(((literal.Floaty) l).value);
+                return Float.valueOf(((literal.Floaty) l).value);
             }
             else if(l instanceof literal.Inty)
             {
