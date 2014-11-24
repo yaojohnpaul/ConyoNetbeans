@@ -22,7 +22,19 @@ $
     $
 $
 
+hireYaya recursion bayad (inty a) makeBalik inty i
+$
+    likeKapag(a == 0)
+    $
+        i makeKuha 0 db
+    $
+    thisNalang
+    $
+        i makeKuha a + makeTawag recursion(a-1) db
+    $
+$
+
 superYaya
 $
-        makeSulat("everything's good") db
+        makeSulat(makeTawag recursion(10)) db
 $
