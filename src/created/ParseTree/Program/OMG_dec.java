@@ -9,16 +9,22 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.*;
 
-public abstract class OMG_dec implements created.iNode 
+public abstract class OMG_dec extends created.iNode 
 {
+    public OMG_dec(int ln)
+    {
+        super(ln);
+    }
+    
     public static class OMG extends OMG_dec
     {
         data_type dt; //Data type
         String id; //Constant name
         literal l; //value of constant
         
-        public OMG(data_type dt, String id, literal l)
+        public OMG(int ln, data_type dt, String id, literal l)
         {
+            super(ln);
             this.dt = dt;
             this.id = id;
             this.l = l;
@@ -43,7 +49,7 @@ public abstract class OMG_dec implements created.iNode
             Boolean avail = sl.addToList(id, new SymConst(id, l, dt));
             if(!avail)
             {
-                ErrorReport.error("Duplicate constant!: " + id);
+                ErrorReport.error(ln(), "Duplicate constant!: " + id);
             }
         }
         
@@ -96,9 +102,9 @@ public abstract class OMG_dec implements created.iNode
                 else
                 {
                     if(constant.isEmpty() || literal.isEmpty())
-                        ErrorReport.error("Datatype Mismatch in " + id);
+                        ErrorReport.error(ln(), "Datatype Mismatch in " + id);
                     else
-                        ErrorReport.error("Datatype Mismatch in " + id + ": " + constant + " and " + literal);
+                        ErrorReport.error(ln(), "Datatype Mismatch in " + id + ": " + constant + " and " + literal);
                     return "";
                 }
             }

@@ -9,14 +9,20 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.*;
 
-public abstract class equality implements created.iNode
+public abstract class equality extends created.iNode
 {
+    public equality(int ln)
+    {
+        super(ln);
+    }
+    
     public static class equal extends equality
     {
         public String kind; // will contain either != or == 
         
-        public equal(String type)
+        public equal(int ln, String type)
         {
+            super(ln);
             kind = type;
         }
         

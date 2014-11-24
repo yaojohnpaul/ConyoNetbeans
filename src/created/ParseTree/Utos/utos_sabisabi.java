@@ -9,15 +9,21 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.ErrorReport;
 
-public abstract class utos_sabisabi implements created.iNode 
+public abstract class utos_sabisabi extends created.iNode 
 {
+    public utos_sabisabi(int ln)
+    {
+        super(ln);
+    }
+    
     public static class utosSabiSabiFront extends utos_sabisabi
     {
         public valid_var vv;
         public String kind;
         
-        public utosSabiSabiFront(valid_var vv, String s)
+        public utosSabiSabiFront(int ln, valid_var vv, String s)
         {
+            super(ln);
             this.vv = vv;
             kind = s;
         }
@@ -57,11 +63,11 @@ public abstract class utos_sabisabi implements created.iNode
                 default: 
                     if(kind.equals("++"))
                     {
-                        ErrorReport.error("Invalid datatype for increment operator");
+                        ErrorReport.error(ln(), "Invalid datatype for increment operator");
                     }
                     else if(kind.equals("--"))
                     {
-                        ErrorReport.error("Invalid datatype for decrement operator");
+                        ErrorReport.error(ln(), "Invalid datatype for decrement operator");
                     }
                     break;
             }
@@ -112,8 +118,9 @@ public abstract class utos_sabisabi implements created.iNode
         public valid_var vv;
         public String kind;
         
-        public utosSabiSabiBack(valid_var vv, String s)
+        public utosSabiSabiBack(int ln, valid_var vv, String s)
         {
+            super(ln);
             this.vv = vv;
             kind = s;
         }
@@ -153,11 +160,11 @@ public abstract class utos_sabisabi implements created.iNode
                 default: 
                     if(kind.equals("++"))
                     {
-                        ErrorReport.error("Invalid datatype for increment operator");
+                        ErrorReport.error(ln(), "Invalid datatype for increment operator");
                     }
                     else if(kind.equals("--"))
                     {
-                        ErrorReport.error("Invalid datatype for decrement operator");
+                        ErrorReport.error(ln(), "Invalid datatype for decrement operator");
                     }
                     break;
             }

@@ -8,19 +8,26 @@ import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
-public abstract class yaya_section implements created.iNode 
+public abstract class yaya_section extends created.iNode 
 {
+    public yaya_section(int ln)
+    {
+        super(ln);
+    }
+    
     public static class yayaSection extends yaya_section
     {
         public yaya_list l;
         
-        public yayaSection()
+        public yayaSection(int ln)
         {
+            super(ln);
             this.l = null;
         }
         
-        public yayaSection(yaya_list l)
+        public yayaSection(int ln, yaya_list l)
         {
+            super(ln);
             this.l = l;
         }
         

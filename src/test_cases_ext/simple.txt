@@ -43,5 +43,8 @@ superYaya
 $
         makeArte inty[] a makeKuha {1,2,3} db
         makeArte inty i makeKuha 2 db
+        makeArte db
+        makeArte inty i makeKuha 1.2 db
+        
         makeTawag test2(-1) db
 $

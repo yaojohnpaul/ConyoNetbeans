@@ -8,8 +8,13 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
-public abstract class utos_makeUlit implements created.iNode  
+public abstract class utos_makeUlit extends created.iNode  
 {
+    public utos_makeUlit(int ln)
+    {
+        super(ln);
+    }
+    
     public static class makeUlit extends utos_makeUlit
     {
         public utos_makeKuha m1; 
@@ -19,8 +24,9 @@ public abstract class utos_makeUlit implements created.iNode
         public utos_sabisabi m3;
         public utos_block u;
         
-        public makeUlit(utos_makeKuha m1, sabi_sabi_for s1, utos_makeKuha m2, utos_block u)
+        public makeUlit(int ln, utos_makeKuha m1, sabi_sabi_for s1, utos_makeKuha m2, utos_block u)
         {
+            super(ln);
             this.m1 = m1;
             this.m2 = m2;
             this.s1 = s1;
@@ -29,8 +35,9 @@ public abstract class utos_makeUlit implements created.iNode
             this.u = u;
         }
         
-        public makeUlit(utos_makeKuha m1, sabi_sabi_for s1, sabi_sabi_for s2, utos_block u)
+        public makeUlit(int ln, utos_makeKuha m1, sabi_sabi_for s1, sabi_sabi_for s2, utos_block u)
         {
+            super(ln);
             this.m1 = m1;
             this.m2 = null;
             this.s1 = s1;
@@ -39,8 +46,9 @@ public abstract class utos_makeUlit implements created.iNode
             this.u = u;
         }
         
-        public makeUlit(utos_makeKuha m1, sabi_sabi_for s1, utos_sabisabi m3, utos_block u)
+        public makeUlit(int ln, utos_makeKuha m1, sabi_sabi_for s1, utos_sabisabi m3, utos_block u)
         {
+            super(ln);
             this.m1 = m1;
             this.m2 = null;
             this.s1 = s1;

@@ -152,186 +152,185 @@ start with conyogram;
 
 conyogram ::= OMG_section:o yaya_section:y super_yaya:p 
 				{: 
-					RESULT = new Conyogram(o, y, p);
+					RESULT = new Conyogram(oleft, o, y, p);
 					printText(); 
 				:};
 
 /*Program Breakdown*/
 
-OMG_section ::= OMG_list:o {: RESULT = new OMG_section.OMGSection(o); :}
-			| {: RESULT = new OMG_section.OMGSection(); :};
-OMG_list ::= OMG_dec:o {: RESULT = new OMG_list.OMGList(o); :}
-			| OMG_dec:o OMG_list:l {: RESULT = new OMG_list.OMGList(o, l); :};
-OMG_dec ::= OMG data_type:dt IDENTIFIER:id MAKE_KUHA literal:l DB {: RESULT = new OMG_dec.OMG(dt, id, l); :}
+OMG_section ::= OMG_list:o {: RESULT = new OMG_section.OMGSection(oleft, o); :}
+			| {: RESULT = new OMG_section.OMGSection(-1); :};
+OMG_list ::= OMG_dec:o {: RESULT = new OMG_list.OMGList(oleft, o); :}
+			| OMG_dec:o OMG_list:l {: RESULT = new OMG_list.OMGList(oleft, o, l); :};
+OMG_dec ::= OMG data_type:dt IDENTIFIER:id MAKE_KUHA literal:l DB {: RESULT = new OMG_dec.OMG(dtleft, dt, id, l); :}
 			| OMG error DB {: RESULT = null; addText(" in Constant Declaration"); :}
 			| error DB {: RESULT = null; addText(" before main and function declarations"); :}
 ;
 
-yaya_section ::= yaya_list:l {: RESULT = new yaya_section.yayaSection(l); :}
-			| {: RESULT = new yaya_section.yayaSection(); :};
-yaya_list ::= yaya:y {: RESULT = new yaya_list.yayaList(y); :}
-			| yaya:y yaya_list:l {: RESULT = new yaya_list.yayaList(y, l); :};
+yaya_section ::= yaya_list:l {: RESULT = new yaya_section.yayaSection(lleft, l); :}
+			| {: RESULT = new yaya_section.yayaSection(-1); :};
+yaya_list ::= yaya:y {: RESULT = new yaya_list.yayaList(yleft, y); :}
+			| yaya:y yaya_list:l {: RESULT = new yaya_list.yayaList(yleft, y, l); :};
 				
-super_yaya ::= SUPER_YAYA utos_block:u {: RESULT = new super_yaya.superYaya(u); :};
+super_yaya ::= SUPER_YAYA utos_block:u {: RESULT = new super_yaya.superYaya(uleft, u); :};
 
 /*Literals, Data Types, Names*/
 
-/*All literals implements iLiteral interface*/
-literal ::= INT_LITERAL:i {: RESULT = new literal.Inty(i); :}
-			| FLOAT_LITERAL:f {: RESULT = new literal.Floaty(f); :}
-			| STRING_LITERAL:s {: RESULT = new literal.Stringy(s); :}
-			| CHAR_LITERAL:c {: RESULT = new literal.Chary(c); :}
-			| BOOL_LITERAL:b {: RESULT = new literal.Booly(b); :}
-			| WALEY:w {: RESULT = new literal.Waley(w); :}; 
+/*All literals extends iLiteral interface*/
+literal ::= INT_LITERAL:i {: RESULT = new literal.Inty(ileft, i); :}
+			| FLOAT_LITERAL:f {: RESULT = new literal.Floaty(fleft, f); :}
+			| STRING_LITERAL:s {: RESULT = new literal.Stringy(sleft, s); :}
+			| CHAR_LITERAL:c {: RESULT = new literal.Chary(cleft, c); :}
+			| BOOL_LITERAL:b {: RESULT = new literal.Booly(bleft, b); :}
+			| WALEY:w {: RESULT = new literal.Waley(wleft, w); :}; 
 
-data_type ::= primitive_dt:p {: RESULT = new data_type.datatypePrimitive(p); :}
-			| reference_dt:r {: RESULT = new data_type.datatypeReference(r); :};
-primitive_dt ::= INTY:i {: RESULT = new primitive_dt.intType(i); :}
-			| FLOATY:f {: RESULT = new primitive_dt.floatType(f); :}
-			| STRINGY:s {: RESULT = new primitive_dt.stringType(s); :}
-			| CHARY:c {: RESULT = new primitive_dt.charType(c); :}
-			| BOOLY:b {: RESULT = new primitive_dt.booleanType(b); :};
-reference_dt ::= array_dt:a {: RESULT = new reference_dt.referenceArray(a); :};
-array_dt ::= primitive_dt:p brackets:b {: RESULT = new array_dt.arrayPrimitive(p, b); :};
+data_type ::= primitive_dt:p {: RESULT = new data_type.datatypePrimitive(pleft, p); :}
+			| reference_dt:r {: RESULT = new data_type.datatypeReference(rleft, r); :};
+primitive_dt ::= INTY:i {: RESULT = new primitive_dt.intType(ileft, i); :}
+			| FLOATY:f {: RESULT = new primitive_dt.floatType(fleft, f); :}
+			| STRINGY:s {: RESULT = new primitive_dt.stringType(sleft, s); :}
+			| CHARY:c {: RESULT = new primitive_dt.charType(cleft, c); :}
+			| BOOLY:b {: RESULT = new primitive_dt.booleanType(bleft, b); :};
+reference_dt ::= array_dt:a {: RESULT = new reference_dt.referenceArray(aleft, a); :};
+array_dt ::= primitive_dt:p brackets:b {: RESULT = new array_dt.arrayPrimitive(pleft, p, b); :};
 			
-valid_name ::= IDENTIFIER:id {:RESULT = new valid_name.identifier(id);:};
-valid_var ::= valid_name:vn {: RESULT = new valid_var.validVar(vn); :}
-			| valid_name:vn ref_brackets:rb {: RESULT = new valid_var.validVarRB(vn, rb); :};
+valid_name ::= IDENTIFIER:id {:RESULT = new valid_name.identifier(idleft, id);:};
+valid_var ::= valid_name:vn {: RESULT = new valid_var.validVar(vnleft, vn); :}
+			| valid_name:vn ref_brackets:rb {: RESULT = new valid_var.validVarRB(vnleft, vn, rb); :};
 
 /*Variable Declaration Productions*/
 
-arte_dec ::= MAKE_ARTE data_type:dt IDENTIFIER:id arte_assign:a DB {: RESULT = new arte_dec.arteDec(dt, id, a); :}
+arte_dec ::= MAKE_ARTE data_type:dt IDENTIFIER:id arte_assign:a DB {: RESULT = new arte_dec.arteDec(dtleft, dt, id, a); :}
 			| MAKE_ARTE error DB {: RESULT = null; addText(" in Variable Declaration"); :};
-arte_assign ::= MAKE_KUHA arte_init:i {: RESULT = new arte_assign.arteAssign(i); :}
-			| {: RESULT = new arte_assign.arteAssign(); :}; 
-arte_init ::= array_init:a {: RESULT = new arte_init.arrayInit(a); :}
-			| sabi_sabi:s {: RESULT = new arte_init.sabiInit(s); :};
+arte_assign ::= MAKE_KUHA arte_init:i {: RESULT = new arte_assign.arteAssign(ileft, i); :}
+			| {: RESULT = new arte_assign.arteAssign(-1); :}; 
+arte_init ::= array_init:a {: RESULT = new arte_init.arrayInit(aleft, a); :}
+			| sabi_sabi:s {: RESULT = new arte_init.sabiInit(sleft, s); :};
 
 /*Function Declaration Productions*/
 
-yaya ::= yaya_header:h utos_block:u {: RESULT = new yaya.addYaya(h, u); :};
+yaya ::= yaya_header:h utos_block:u {: RESULT = new yaya.addYaya(hleft, h, u); :};
 
 yaya_header ::= HIRE_YAYA IDENTIFIER:id BAYAD LEFT_PAREN yaya_param_sec:yps RIGHT_PAREN MAKE_BALIK data_type:dt IDENTIFIER:r
-				{: RESULT = new yaya_header.yayaHeader(id, yps, dt, r); :}
+				{: RESULT = new yaya_header.yayaHeader(idleft, id, yps, dt, r); :}
 			| HIRE_YAYA IDENTIFIER:id BAYAD LEFT_PAREN yaya_param_sec:yps RIGHT_PAREN MAKE_BALIK POOR
-				{: RESULT = new yaya_header.yayaHeader(id, yps); :};
+				{: RESULT = new yaya_header.yayaHeader(idleft, id, yps); :};
 
-yaya_param_sec ::= yaya_param_list:ypl {: RESULT = new yaya_param_sec.yayaParamSec(ypl); :}
-				| {: RESULT = new yaya_param_sec.yayaParamSec(); :};
-yaya_param_list ::= yaya_param:yp COMMA yaya_param_list:ypl {: RESULT = new yaya_param_list.yayaParamList(yp, ypl); :}
-				| yaya_param:yp {: RESULT = new yaya_param_list.yayaParamList(yp); :};
-yaya_param ::= data_type:dt IDENTIFIER:id {: RESULT = new yaya_param.yayaParam(dt, id); :};
+yaya_param_sec ::= yaya_param_list:ypl {: RESULT = new yaya_param_sec.yayaParamSec(yplleft, ypl); :}
+				| {: RESULT = new yaya_param_sec.yayaParamSec(-1); :};
+yaya_param_list ::= yaya_param:yp COMMA yaya_param_list:ypl {: RESULT = new yaya_param_list.yayaParamList(ypleft, yp, ypl); :}
+				| yaya_param:yp {: RESULT = new yaya_param_list.yayaParamList(ypleft, yp); :};
+yaya_param ::= data_type:dt IDENTIFIER:id {: RESULT = new yaya_param.yayaParam(dtleft, dt, id); :};
 
 /*Array Productions*/
 
-array_init ::= LEFT_CURLY arte_init_list:l RIGHT_CURLY {: RESULT = new array_init.arrayInit(l); :};
-arte_init_list ::= arte_init_opt:o {: RESULT = new arte_init_list.arteInitList(o); :}
-				| {: RESULT = new arte_init_list.arteInitList(); :};
-arte_init_opt ::= sabi_sabi:s COMMA arte_init_opt:o {: RESULT = new arte_init_opt.arteInitOpt(s, o); :}
-				| sabi_sabi:s {: RESULT = new arte_init_opt.arteInitOpt(s); :};
+array_init ::= LEFT_CURLY arte_init_list:l RIGHT_CURLY {: RESULT = new array_init.arrayInit(lleft, l); :};
+arte_init_list ::= arte_init_opt:o {: RESULT = new arte_init_list.arteInitList(oleft, o); :}
+				| {: RESULT = new arte_init_list.arteInitList(-1); :};
+arte_init_opt ::= sabi_sabi:s COMMA arte_init_opt:o {: RESULT = new arte_init_opt.arteInitOpt(sleft, s, o); :}
+				| sabi_sabi:s {: RESULT = new arte_init_opt.arteInitOpt(sleft, s); :};
 				
-brackets ::= LEFT_BRACE RIGHT_BRACE {: RESULT = new brackets(); :};
-ref_brackets ::= LEFT_BRACE sabi_sabi:s RIGHT_BRACE {: RESULT = new ref_brackets.refBrackets(s); :};
+brackets ::= LEFT_BRACE:l RIGHT_BRACE {: RESULT = new brackets(lleft); :};
+ref_brackets ::= LEFT_BRACE sabi_sabi:s RIGHT_BRACE {: RESULT = new ref_brackets.refBrackets(sleft, s); :};
 
 /*Program Code Productions*/
 
-utos_block ::= DOLLAR_SIGN utos_block_opt:opt DOLLAR_SIGN {: RESULT = new utos_block.utosBlock(opt); :}
+utos_block ::= DOLLAR_SIGN utos_block_opt:opt DOLLAR_SIGN {: RESULT = new utos_block.utosBlock(optleft, opt); :}
 				| error {: RESULT = null; addText(" in code block"); :};
-utos_block_opt ::= block_content:b {: RESULT = new utos_block_opt.utosBlockOpt(b); :}
-			| {: RESULT = new utos_block_opt.utosBlockOpt(); :};
-block_content ::= utos_dec:u block_content:b {: RESULT = new block_content.blockContent(u, b); :}
-				| utos_dec:u {: RESULT = new block_content.blockContent(u); :};
-utos_dec ::= utos_dec_db:d {: RESULT = new utos_dec.utosDecDB(d); :}
-			| utos_dec_val:v DB {: RESULT = new utos_dec.utosDecVal(v); :}
-			| utos_dec_nodb:n {: RESULT = new utos_dec.utosDecNoDB(n); :}
-			| utos_sabisabi:us DB {: RESULT = new utos_dec.utosDecSabiSabi(us); :}
+utos_block_opt ::= block_content:b {: RESULT = new utos_block_opt.utosBlockOpt(bleft, b); :}
+			| {: RESULT = new utos_block_opt.utosBlockOpt(-1); :};
+block_content ::= utos_dec:u block_content:b {: RESULT = new block_content.blockContent(uleft, u, b); :}
+				| utos_dec:u {: RESULT = new block_content.blockContent(uleft, u); :};
+utos_dec ::= utos_dec_db:d {: RESULT = new utos_dec.utosDecDB(dleft, d); :}
+			| utos_dec_val:v DB {: RESULT = new utos_dec.utosDecVal(vleft, v); :}
+			| utos_dec_nodb:n {: RESULT = new utos_dec.utosDecNoDB(nleft, n); :}
+			| utos_sabisabi:us DB {: RESULT = new utos_dec.utosDecSabiSabi(usleft, us); :}
 			| error {: RESULT = null; addText(""); :};
-utos_dec_nodb ::= utos_likeKapag:uk {: RESULT = new utos_dec_nodb.utosLikeKapag(uk); :}
-			| utos_makePalit:up {: RESULT = new utos_dec_nodb.utosMakePalit(up); :}
-			| utos_likeHabang:uh {: RESULT = new utos_dec_nodb.utosLikeHabang(uh); :}
-			| utos_makeGawaHabang:ugh {: RESULT = new utos_dec_nodb.utosMakeGawaHabang(ugh); :}
-			| utos_makeUlit:uu {: RESULT = new utos_dec_nodb.utosMakeUlit(uu); :}
-			| utos_makeArte:ua {: RESULT = new utos_dec_nodb.utosMakeArte(ua); :}
+utos_dec_nodb ::= utos_likeKapag:uk {: RESULT = new utos_dec_nodb.utosLikeKapag(ukleft, uk); :}
+			| utos_makePalit:up {: RESULT = new utos_dec_nodb.utosMakePalit(upleft, up); :}
+			| utos_likeHabang:uh {: RESULT = new utos_dec_nodb.utosLikeHabang(uhleft, uh); :}
+			| utos_makeGawaHabang:ugh {: RESULT = new utos_dec_nodb.utosMakeGawaHabang(ughleft, ugh); :}
+			| utos_makeUlit:uu {: RESULT = new utos_dec_nodb.utosMakeUlit(uuleft, uu); :}
+			| utos_makeArte:ua {: RESULT = new utos_dec_nodb.utosMakeArte(ualeft, ua); :}
 			| LIKE_KAPAG error {: RESULT = null; addText(" in IF statement"); :}
 			| MAKE_PALIT error DB {: RESULT = null; addText(" in SWITCH statement"); :}
 			| LIKE_HABANG error DB {: RESULT = null; addText(" in WHILE LOOP"); :}
 			| MAKE_GAWA error DB {: RESULT = null; addText(" in DO WHILE LOOP"); :}
 			| MAKE_ULIT error DB {: RESULT = null; addText(" in FOR LOOP"); :};
-utos_dec_db ::= utos_makeKuha:uk DB {: RESULT = new utos_dec_db.utosMakeKuha(uk); :}
-			| utos_makeSulat:usu DB {: RESULT = new utos_dec_db.utosMakeSulat(usu); :}
-			| BREAKUP DB {: RESULT = new utos_dec_db.breakup(); :}
-			| MAKEUP DB {: RESULT = new utos_dec_db.makeup(); :}
+utos_dec_db ::= utos_makeKuha:uk DB {: RESULT = new utos_dec_db.utosMakeKuha(ukleft, uk); :}
+			| utos_makeSulat:usu DB {: RESULT = new utos_dec_db.utosMakeSulat(usuleft, usu); :}
+			| BREAKUP:b DB {: RESULT = new utos_dec_db.breakup(bleft); :}
+			| MAKEUP:m DB {: RESULT = new utos_dec_db.makeup(mleft); :}
 			| MAKE_SULAT error DB {: RESULT = null; addText(" in OUTPUT function"); :};
-utos_dec_val ::= utos_makeTawag:ut {: RESULT = new utos_dec_val.utosMakeTawag(ut); :}
-			| utos_makeBasa:ub {: RESULT = new utos_dec_val.utosMakeBasa(ub); :}
+utos_dec_val ::= utos_makeTawag:ut {: RESULT = new utos_dec_val.utosMakeTawag(utleft, ut); :}
+			| utos_makeBasa:ub {: RESULT = new utos_dec_val.utosMakeBasa(ubleft, ub); :}
 			| MAKE_TAWAG error {: RESULT = null; addText(" in FUNCTION CALL"); :}
 			| MAKE_BASA error {: RESULT = null; addText(" in SCAN function"); :};
-utos_sabisabi ::= POS_INC valid_var:vv  {: RESULT = new utos_sabisabi.utosSabiSabiFront(vv,"++"); :}
-			| NEG_INC valid_var:vv  {: RESULT = new utos_sabisabi.utosSabiSabiFront(vv,"--"); :}
-			| valid_var:vv POS_INC  {: RESULT = new utos_sabisabi.utosSabiSabiBack(vv,"++"); :}
-			| valid_var:vv NEG_INC  {: RESULT = new utos_sabisabi.utosSabiSabiBack(vv,"--"); :};
-utos_makeKuha ::= valid_var:vv arte_assign:a {: RESULT = new utos_makeKuha.makeKuha(vv, a); :};
-utos_makeTawag ::= MAKE_TAWAG valid_name:vn LEFT_PAREN arte_init_list:l RIGHT_PAREN {: RESULT = new utos_makeTawag.makeTawag(vn, l); :};
-utos_makeSulat ::= MAKE_SULAT LEFT_PAREN sabi_sabi:s RIGHT_PAREN {: RESULT = new utos_makeSulat.makeSulat(s); :};
-utos_makeBasa ::= MAKE_BASA LEFT_PAREN data_type:d RIGHT_PAREN {: RESULT = new utos_makeBasa.makeBasa(d); :};
-utos_likeKapag ::= LIKE_KAPAG LEFT_PAREN sabi_sabi:s RIGHT_PAREN utos_block:b utos_thisNalang:t {: RESULT = new utos_likeKapag.likeKapag(s, b, t); :};
-utos_thisNalang ::= THIS_NALANG utos_block:b {: RESULT = new utos_thisNalang.thisNalang(b); :}
-				| THIS_NALANG_KAPAG LEFT_PAREN sabi_sabi:s RIGHT_PAREN utos_block:b utos_thisNalang:t {: RESULT = new utos_thisNalang.thisNalangKapag(s, b, t); :}
-				| {: RESULT = new utos_thisNalang.thisNalang(); :}
+utos_sabisabi ::= POS_INC valid_var:vv  {: RESULT = new utos_sabisabi.utosSabiSabiFront(vvleft, vv,"++"); :}
+			| NEG_INC valid_var:vv  {: RESULT = new utos_sabisabi.utosSabiSabiFront(vvleft, vv,"--"); :}
+			| valid_var:vv POS_INC  {: RESULT = new utos_sabisabi.utosSabiSabiBack(vvleft, vv,"++"); :}
+			| valid_var:vv NEG_INC  {: RESULT = new utos_sabisabi.utosSabiSabiBack(vvleft, vv,"--"); :};
+utos_makeKuha ::= valid_var:vv arte_assign:a {: RESULT = new utos_makeKuha.makeKuha(vvleft, vv, a); :};
+utos_makeTawag ::= MAKE_TAWAG valid_name:vn LEFT_PAREN arte_init_list:l RIGHT_PAREN {: RESULT = new utos_makeTawag.makeTawag(vnleft, vn, l); :};
+utos_makeSulat ::= MAKE_SULAT LEFT_PAREN sabi_sabi:s RIGHT_PAREN {: RESULT = new utos_makeSulat.makeSulat(sleft, s); :};
+utos_makeBasa ::= MAKE_BASA LEFT_PAREN data_type:d RIGHT_PAREN {: RESULT = new utos_makeBasa.makeBasa(dleft, d); :};
+utos_likeKapag ::= LIKE_KAPAG LEFT_PAREN sabi_sabi:s RIGHT_PAREN utos_block:b utos_thisNalang:t {: RESULT = new utos_likeKapag.likeKapag(sleft, s, b, t); :};
+utos_thisNalang ::= THIS_NALANG utos_block:b {: RESULT = new utos_thisNalang.thisNalang(bleft, b); :}
+				| THIS_NALANG_KAPAG LEFT_PAREN sabi_sabi:s RIGHT_PAREN utos_block:b utos_thisNalang:t {: RESULT = new utos_thisNalang.thisNalangKapag(sleft, s, b, t); :}
+				| {: RESULT = new utos_thisNalang.thisNalang(-1); :}
 				| THIS_NALANG error DB {: RESULT = null; addText(" in ELSE statement"); :}
 				| THIS_NALANG_KAPAG error DB {: RESULT = null; addText(" in ELSE IF statement"); :};
-utos_makePalit ::= MAKE_PALIT LEFT_PAREN sabi_sabi:s RIGHT_PAREN DOLLAR_SIGN makePalit_MRW:m DOLLAR_SIGN {: RESULT = new utos_makePalit.makePalit(s, m); :};
-makePalit_MRW ::= MRW sabi_sabi:s COLON utos_block_opt:o makePalit_MRW:m {: RESULT = new makePalit_MRW.MRW(s, o, m); :}
+utos_makePalit ::= MAKE_PALIT LEFT_PAREN sabi_sabi:s RIGHT_PAREN DOLLAR_SIGN makePalit_MRW:m DOLLAR_SIGN {: RESULT = new utos_makePalit.makePalit(sleft, s, m); :};
+makePalit_MRW ::= MRW sabi_sabi:s COLON utos_block_opt:o makePalit_MRW:m {: RESULT = new makePalit_MRW.MRW(sleft, s, o, m); :}
 				| MRW error DB {: RESULT = null; addText(" in one of the cases of a SWITCH statement"); :}
-				| MDR COLON utos_block_opt:o {: RESULT = new makePalit_MRW.MDR(o); :}
+				| MDR COLON utos_block_opt:o {: RESULT = new makePalit_MRW.MDR(oleft, o); :}
 				| MDR error DB {: RESULT = null; addText(" in the last case of a SWITCH statement"); :}
-				| {: RESULT = new makePalit_MRW.MRW(); :};
-utos_likeHabang ::= LIKE_HABANG LEFT_PAREN sabi_sabi:s RIGHT_PAREN utos_block:u {: RESULT = new utos_likeHabang.likeHabang(s, u); :}
-				| LIKE_HABANG LEFT_PAREN sabi_sabi:s RIGHT_PAREN DB {: RESULT = new utos_likeHabang.likeHabang(s); :};
-utos_makeGawaHabang ::= MAKE_GAWA utos_block:u LIKE_HABANG LEFT_PAREN sabi_sabi:s RIGHT_PAREN DB {: RESULT = new utos_makeGawaHabang.makeGawaHabang(u, s); :};
-utos_makeUlit ::= MAKE_ULIT LEFT_PAREN utos_makeKuha:m1 DB sabi_sabi_for:s1 utos_makeKuha:m2 RIGHT_PAREN utos_block:u {: RESULT = new utos_makeUlit.makeUlit(m1, s1, m2, u); :}
-				| MAKE_ULIT LEFT_PAREN utos_makeKuha:m1 DB sabi_sabi_for:s1 utos_sabisabi:m2 RIGHT_PAREN utos_block:u {: RESULT = new utos_makeUlit.makeUlit(m1, s1, m2, u); :}
-				| MAKE_ULIT LEFT_PAREN utos_makeKuha:m1 DB sabi_sabi_for:s1 sabi_sabi_for:s2 RIGHT_PAREN utos_block:u {: RESULT = new utos_makeUlit.makeUlit(m1, s1, s2, u); :};
-utos_makeArte ::= arte_dec:a {: RESULT = new utos_makeArte.makeArte(a); :};
+				| {: RESULT = new makePalit_MRW.MRW(-1); :};
+utos_likeHabang ::= LIKE_HABANG LEFT_PAREN sabi_sabi:s RIGHT_PAREN utos_block:u {: RESULT = new utos_likeHabang.likeHabang(sleft, s, u); :}
+				| LIKE_HABANG LEFT_PAREN sabi_sabi:s RIGHT_PAREN DB {: RESULT = new utos_likeHabang.likeHabang(sleft, s); :};
+utos_makeGawaHabang ::= MAKE_GAWA utos_block:u LIKE_HABANG LEFT_PAREN sabi_sabi:s RIGHT_PAREN DB {: RESULT = new utos_makeGawaHabang.makeGawaHabang(uleft, u, s); :};
+utos_makeUlit ::= MAKE_ULIT LEFT_PAREN utos_makeKuha:m1 DB sabi_sabi_for:s1 utos_makeKuha:m2 RIGHT_PAREN utos_block:u {: RESULT = new utos_makeUlit.makeUlit(m1left, m1, s1, m2, u); :}
+				| MAKE_ULIT LEFT_PAREN utos_makeKuha:m1 DB sabi_sabi_for:s1 utos_sabisabi:m2 RIGHT_PAREN utos_block:u {: RESULT = new utos_makeUlit.makeUlit(m1left, m1, s1, m2, u); :};
+utos_makeArte ::= arte_dec:a {: RESULT = new utos_makeArte.makeArte(aleft, a); :};
 
 /*Expression Productions*/
 
-sabi_sabi_end ::= valid_var:v {: RESULT = new sabi_sabi_end.ssEndValidVar(v); :}
-				| utos_dec_val:u {: RESULT = new sabi_sabi_end.ssEndUtos(u); :}
-				| literal:l {: RESULT = new sabi_sabi_end.ssEndLiteral(l); :};
+sabi_sabi_end ::= valid_var:v {: RESULT = new sabi_sabi_end.ssEndValidVar(vleft, v); :}
+				| utos_dec_val:u {: RESULT = new sabi_sabi_end.ssEndUtos(uleft, u); :}
+				| literal:l {: RESULT = new sabi_sabi_end.ssEndLiteral(lleft, l); :};
 
-sabi_sabi_for ::= sabi_sabi:s DB {: RESULT = new sabi_sabi_for.SabiSabiFor(s); :};	
-sabi_sabi ::= ss_OR:o {: RESULT = new sabi_sabi.SabiSabi(o); :};
-ss_OR ::= ss_AND:a OR ss_OR:o {: RESULT = new ss_OR.ssORExpansion(a, o); :}
-		| ss_AND:a {: RESULT = new ss_OR.ssOR(a); :};
-ss_AND ::= ss_equality:e AND ss_AND:a {: RESULT = new ss_AND.ssANDExpansion(e, a); :}
-		| ss_equality:e {: RESULT = new ss_AND.ssAND(e); :};
-ss_equality ::= ss_comparison:c equality:eq ss_equality:e {: RESULT = new ss_equality.ssEqualityExpansion(c, eq, e); :}
-			| ss_comparison:c {: RESULT = new ss_equality.ssEquality(c); :};
-ss_comparison ::= ss_a1:a comparison:co ss_comparison:c {: RESULT = new ss_comparison.ssComparisonExpansion(a, co, c); :}
-			|	ss_a1:a {: RESULT = new ss_comparison.ssComparison(a); :};
-ss_a1 ::= ss_a2:a2 arithmetic_1:ar ss_a1:a1 {: RESULT = new ss_a1.ssA1Expansion(a2, ar, a1); :}
-		| ss_a2:a2 {: RESULT = new ss_a1.ssA1(a2); :};
-ss_a2 ::= ss_unary_1:u arithmetic_2:ar ss_a2:a {: RESULT = new ss_a2.ssA2Expansion(u, ar, a); :}
-		| ss_unary_1:u {: RESULT = new ss_a2.ssA2(u); :};
-ss_unary_1 ::= NOT ss_unary_1:u {: RESULT = new ss_unary_1.ssU1Not(u); :}
-                        | MINUS ss_paren:p {: RESULT = new ss_unary_1.ssU1Neg(p); :}
-			| ss_paren:p {: RESULT = new ss_unary_1.ssU1(p); :};
-ss_paren ::= LEFT_PAREN ss_OR:a RIGHT_PAREN {: RESULT = new ss_paren.ssParen(a); :}
-			| sabi_sabi_end:e {: RESULT = new ss_paren.ssParenEnd(e); :};
+sabi_sabi_for ::= sabi_sabi:s DB {: RESULT = new sabi_sabi_for.SabiSabiFor(sleft, s); :};	
+sabi_sabi ::= ss_OR:o {: RESULT = new sabi_sabi.SabiSabi(oleft, o); :};
+ss_OR ::= ss_AND:a OR ss_OR:o {: RESULT = new ss_OR.ssORExpansion(aleft, a, o); :}
+		| ss_AND:a {: RESULT = new ss_OR.ssOR(aleft, a); :};
+ss_AND ::= ss_equality:e AND ss_AND:a {: RESULT = new ss_AND.ssANDExpansion(eleft, e, a); :}
+		| ss_equality:e {: RESULT = new ss_AND.ssAND(eleft, e); :};
+ss_equality ::= ss_comparison:c equality:eq ss_equality:e {: RESULT = new ss_equality.ssEqualityExpansion(cleft, c, eq, e); :}
+			| ss_comparison:c {: RESULT = new ss_equality.ssEquality(cleft, c); :};
+ss_comparison ::= ss_a1:a comparison:co ss_comparison:c {: RESULT = new ss_comparison.ssComparisonExpansion(aleft, a, co, c); :}
+			|	ss_a1:a {: RESULT = new ss_comparison.ssComparison(aleft, a); :};
+ss_a1 ::= ss_a2:a2 arithmetic_1:ar ss_a1:a1 {: RESULT = new ss_a1.ssA1Expansion(a2left, a2, ar, a1); :}
+		| ss_a2:a2 {: RESULT = new ss_a1.ssA1(a2left, a2); :};
+ss_a2 ::= ss_unary_1:u arithmetic_2:ar ss_a2:a {: RESULT = new ss_a2.ssA2Expansion(uleft, u, ar, a); :}
+		| ss_unary_1:u {: RESULT = new ss_a2.ssA2(uleft, u); :};
+ss_unary_1 ::= NOT ss_unary_1:u {: RESULT = new ss_unary_1.ssU1Not(uleft, u); :}
+                        | MINUS ss_paren:p {: RESULT = new ss_unary_1.ssU1Neg(pleft, p); :}
+			| ss_paren:p {: RESULT = new ss_unary_1.ssU1(pleft, p); :};
+ss_paren ::= LEFT_PAREN ss_OR:a RIGHT_PAREN {: RESULT = new ss_paren.ssParen(aleft, a); :}
+			| sabi_sabi_end:e {: RESULT = new ss_paren.ssParenEnd(eleft, e); :};
 			
-equality ::= EQUAL_EQUAL {: RESULT = new equality.equal("=="); :}
-			| NOT_EQUAL {: RESULT = new equality.equal("<>"); :};
+equality ::= EQUAL_EQUAL:e {: RESULT = new equality.equal(eleft, "=="); :}
+			| NOT_EQUAL:n {: RESULT = new equality.equal(nleft, "<>"); :};
 
-comparison ::= GT_EQUAL {: RESULT = new comparison.compare(">="); :}
-			| LT_EQUAL {: RESULT = new comparison.compare("<="); :}
-			| GREATER_THAN {: RESULT = new comparison.compare(">"); :}
-			| LESS_THAN {: RESULT = new comparison.compare("<"); :};
+comparison ::= GT_EQUAL:g {: RESULT = new comparison.compare(gleft, ">="); :}
+			| LT_EQUAL:l {: RESULT = new comparison.compare(lleft, "<="); :}
+			| GREATER_THAN:g {: RESULT = new comparison.compare(gleft, ">"); :}
+			| LESS_THAN:l {: RESULT = new comparison.compare(lleft, "<"); :};
 			
-arithmetic_1 ::= PLUS {: RESULT = new arithmetic_1.arithmetic1("+"); :}
-			| MINUS {: RESULT = new arithmetic_1.arithmetic1("-"); :};
+arithmetic_1 ::= PLUS:p {: RESULT = new arithmetic_1.arithmetic1(pleft, "+"); :}
+			| MINUS:m {: RESULT = new arithmetic_1.arithmetic1(mleft, "-"); :};
 
-arithmetic_2 ::= TIMES {: RESULT = new arithmetic_2.arithmetic2("*"); :}
-			| DIVIDE {: RESULT = new arithmetic_2.arithmetic2("/"); :}
-			| MODULO {: RESULT = new arithmetic_2.arithmetic2("%"); :};
+arithmetic_2 ::= TIMES:t {: RESULT = new arithmetic_2.arithmetic2(tleft, "*"); :}
+			| DIVIDE:d {: RESULT = new arithmetic_2.arithmetic2(dleft, "/"); :}
+			| MODULO:m {: RESULT = new arithmetic_2.arithmetic2(mleft, "%"); :};
 

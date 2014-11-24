@@ -10,15 +10,21 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.*;
 
-public abstract class utos_makeKuha implements created.iNode  
+public abstract class utos_makeKuha extends created.iNode  
 {
+    public utos_makeKuha(int ln)
+    {
+        super(ln);
+    }
+    
     public static class makeKuha extends utos_makeKuha
     {
         public valid_var vv; 
         public arte_assign a;
         
-        public makeKuha(valid_var vv, arte_assign a)
+        public makeKuha(int ln, valid_var vv, arte_assign a)
         {
+            super(ln);
             this.vv = vv;
             this.a = a;
         }
@@ -51,11 +57,11 @@ public abstract class utos_makeKuha implements created.iNode
             //check if variable
             if(sl.getSymbol(vv.toString()) instanceof SymConst)
             {
-                ErrorReport.error("Trying to assign value to a constant: " + vv.toString());
+                ErrorReport.error(ln(), "Trying to assign value to a constant: " + vv.toString());
             }
             else if(sl.getSymbol(vv.toString()) instanceof SymFunc)
             {
-                ErrorReport.error("Trying to assign value to a function: " + vv.toString());
+                ErrorReport.error(ln(), "Trying to assign value to a function: " + vv.toString());
             }
             
             String var = "";
@@ -83,9 +89,9 @@ public abstract class utos_makeKuha implements created.iNode
             }
             
             if(var.isEmpty() || assign.isEmpty())
-                ErrorReport.error("Datatype Mismatch in " + vv.toString());
+                ErrorReport.error(ln(), "Datatype Mismatch in " + vv.toString());
             else
-                ErrorReport.error("Datatype Mismatch in " + vv.toString() + ": " + var + " and " + assign);
+                ErrorReport.error(ln(), "Datatype Mismatch in " + vv.toString() + ": " + var + " and " + assign);
             return "";
         }
         

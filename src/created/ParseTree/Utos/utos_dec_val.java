@@ -8,14 +8,20 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
-public abstract class utos_dec_val implements created.iNode  
+public abstract class utos_dec_val extends created.iNode  
 {
+    public utos_dec_val(int ln)
+    {
+        super(ln);
+    }
+    
     public static class utosMakeTawag extends utos_dec_val
     {
         public utos_makeTawag ut; 
         
-        public utosMakeTawag(utos_makeTawag ut)
+        public utosMakeTawag(int ln, utos_makeTawag ut)
         {
+            super(ln);
             this.ut = ut;
         }
         
@@ -65,8 +71,9 @@ public abstract class utos_dec_val implements created.iNode
     {
         public utos_makeBasa ub; 
         
-        public utosMakeBasa(utos_makeBasa ub)
+        public utosMakeBasa(int ln, utos_makeBasa ub)
         {
+            super(ln);
             this.ub = ub;
         }
         

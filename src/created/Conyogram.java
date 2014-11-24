@@ -4,7 +4,7 @@ import created.Sym.*;
 import created.ParseTree.Program.*;
 import error.ErrorReport;
 
-public class Conyogram implements iNode
+public class Conyogram extends iNode
 {
     private OMG_section o;
     private yaya_section y;
@@ -13,8 +13,9 @@ public class Conyogram implements iNode
     /**
      * Constructor
      */
-    public Conyogram(OMG_section o, yaya_section y, super_yaya s)
+    public Conyogram(int ln, OMG_section o, yaya_section y, super_yaya s)
     {
+        super(ln);
         this.o = o;
         this.y = y;
         this.s = s;

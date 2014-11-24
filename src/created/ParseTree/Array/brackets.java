@@ -8,10 +8,11 @@ import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
-public class brackets implements created.iNode 
+public class brackets extends created.iNode 
 {
-    public brackets()
+    public brackets(int ln)
     {
+        super(ln);
     }
     
     public String toString()

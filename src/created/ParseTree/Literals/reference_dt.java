@@ -8,14 +8,20 @@ import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
-public abstract class reference_dt implements created.iNode
+public abstract class reference_dt extends created.iNode
 {
+    public reference_dt(int ln)
+    {
+        super(ln);
+    }
+    
     public static class referenceArray extends reference_dt
     {
         public array_dt array;
         
-        public referenceArray(array_dt array)
+        public referenceArray(int ln, array_dt array)
         {
+            super(ln);
             this.array = array;
         }
         

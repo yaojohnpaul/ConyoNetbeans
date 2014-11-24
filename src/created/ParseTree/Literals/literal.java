@@ -8,15 +8,20 @@ import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
-public abstract class literal implements created.iNode
+public abstract class literal extends created.iNode
 {
+    public literal(int ln)
+    {
+        super(ln);
+    }
     
     public static class Inty extends literal
     {
         public String value;
         
-        public Inty(String value)
+        public Inty(int ln, String value)
         {
+            super(ln);
             this.value = value;
         }
         
@@ -40,8 +45,9 @@ public abstract class literal implements created.iNode
     {
         public String value;
         
-        public Floaty(String value)
+        public Floaty(int ln, String value)
         {
+            super(ln);
             this.value = value;
         }
         
@@ -65,8 +71,9 @@ public abstract class literal implements created.iNode
     {
         public String value;
         
-        public Stringy(String value)
+        public Stringy(int ln,String value)
         {
+            super(ln);
             this.value = value;
         }
         
@@ -90,8 +97,9 @@ public abstract class literal implements created.iNode
     {
         public String value;
         
-        public Chary(String value)
+        public Chary(int ln, String value)
         {
+            super(ln);
             this.value = value;
         }
         
@@ -115,8 +123,9 @@ public abstract class literal implements created.iNode
     {
         public String value;
         
-        public Booly(String value)
+        public Booly(int ln, String value)
         {
+            super(ln);
             this.value = value;
         }
         
@@ -147,8 +156,9 @@ public abstract class literal implements created.iNode
     {
         public String value;
         
-        public Waley(String value)
+        public Waley(int ln, String value)
         {
+            super(ln);
             this.value = value;
         }
         

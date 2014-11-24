@@ -8,14 +8,20 @@ import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
-public abstract class data_type implements created.iNode
+public abstract class data_type extends created.iNode
 {
+    public data_type(int ln)
+    {
+        super(ln);
+    }
+    
     public static class datatypePrimitive extends data_type
     {
         public primitive_dt p;
         
-        public datatypePrimitive(primitive_dt p)
+        public datatypePrimitive(int ln, primitive_dt p)
         {
+            super(ln);
             this.p = p;
         }
         
@@ -64,8 +70,9 @@ public abstract class data_type implements created.iNode
     {
         public reference_dt r;
         
-        public datatypeReference(reference_dt r)
+        public datatypeReference(int ln, reference_dt r)
         {
+            super(ln);
             this.r = r;
         }
         

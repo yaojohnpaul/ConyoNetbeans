@@ -9,14 +9,20 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.*;
 
-public abstract class ref_brackets implements created.iNode 
+public abstract class ref_brackets extends created.iNode 
 {
+    public ref_brackets(int ln)
+    {
+        super(ln);
+    }
+    
     public static class refBrackets extends ref_brackets
     {
         public sabi_sabi s; 
         
-        public refBrackets(sabi_sabi s)
+        public refBrackets(int ln, sabi_sabi s)
         {
+            super(ln);
             this.s = s;
         }
         
@@ -42,7 +48,7 @@ public abstract class ref_brackets implements created.iNode
                 System.out.println(type);
                 if(!type.equals("inty"))
                 {
-                    ErrorReport.error("Index used for array is not an integer.: " + ((sabi_sabi.SabiSabi) s).toString());
+                    ErrorReport.error(ln(), "Index used for array is not an integer.: " + ((sabi_sabi.SabiSabi) s).toString());
                 }
             }
         }

@@ -11,15 +11,21 @@ import created.Sym.*;
 import created.SymManager;
 import error.*;
 
-public abstract class utos_makeTawag implements created.iNode  
+public abstract class utos_makeTawag extends created.iNode  
 {
+    public utos_makeTawag(int ln)
+    {
+        super(ln);
+    }
+    
     public static class makeTawag extends utos_makeTawag
     {
         public valid_name vn; 
         public arte_init_list l;
         
-        public makeTawag(valid_name vn, arte_init_list l)
+        public makeTawag(int ln, valid_name vn, arte_init_list l)
         {
+            super(ln);
             this.vn = vn;
             this.l = l;
         }
@@ -55,13 +61,13 @@ public abstract class utos_makeTawag implements created.iNode
                 
                 if(ste == null)
                 {
-                    ErrorReport.error("Symbol not defined: " + ((valid_name.identifier) vn).toString());
+                    ErrorReport.error(ln(), "Symbol not defined: " + ((valid_name.identifier) vn).toString());
                     return "";
                 }
                 
                 if(ste.symType() != 103)
                 {
-                    ErrorReport.error("Not a function used as a function!: " + ((valid_name.identifier) vn).toString());
+                    ErrorReport.error(ln(), "Not a function used as a function!: " + ((valid_name.identifier) vn).toString());
                     return "";
                 }
                 else
@@ -74,7 +80,7 @@ public abstract class utos_makeTawag implements created.iNode
                     } 
                     if(sfn.getArity() != passedCount)
                     {
-                        ErrorReport.error("Passed parameter count (" + passedCount +
+                        ErrorReport.error(ln(), "Passed parameter count (" + passedCount +
                                 ") does not match function \"" + vn.toString() + "\" declaration parameter count (" +
                                 sfn.getArity() + ")");
                     }
@@ -95,9 +101,9 @@ public abstract class utos_makeTawag implements created.iNode
                                     else
                                     {
                                         if(((sabi_sabi.SabiSabi) alss.get(i)).checkContext(sl).isEmpty() || ((data_type.datatypePrimitive) aldt.get(i)).toString().isEmpty())
-                                            ErrorReport.error("Datatype of passed parameters does not match declared function " + vn.toString() + "'s parameters");
+                                            ErrorReport.error(ln(), "Datatype of passed parameters does not match declared function " + vn.toString() + "'s parameters");
                                         else
-                                            ErrorReport.error("Datatype of passed parameters does not match declared function " + vn.toString() + "'s parameters: " + 
+                                            ErrorReport.error(ln(), "Datatype of passed parameters does not match declared function " + vn.toString() + "'s parameters: " + 
                                                     ((sabi_sabi.SabiSabi) alss.get(i)).checkContext(sl) + " and " + ((data_type.datatypePrimitive) aldt.get(i)).toString());
                                     }
                                 }
@@ -110,9 +116,9 @@ public abstract class utos_makeTawag implements created.iNode
                                     else
                                     {
                                         if(((sabi_sabi.SabiSabi) alss.get(i)).checkContext(sl).isEmpty() || ((data_type.datatypeReference) aldt.get(i)).toString().isEmpty())
-                                            ErrorReport.error("Datatype of passed parameters does not match declared function " + vn.toString() + "'s parameters");
+                                            ErrorReport.error(ln(), "Datatype of passed parameters does not match declared function " + vn.toString() + "'s parameters");
                                         else
-                                            ErrorReport.error("Datatype of passed parameters does not match declared function " + vn.toString() + "'s parameters: " + 
+                                            ErrorReport.error(ln(), "Datatype of passed parameters does not match declared function " + vn.toString() + "'s parameters: " + 
                                                     ((sabi_sabi.SabiSabi) alss.get(i)).checkContext(sl) + " and " + ((data_type.datatypeReference) aldt.get(i)).toString());
                                     }
                                 }

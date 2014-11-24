@@ -8,14 +8,20 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
-public abstract class utos_dec_nodb implements created.iNode  
+public abstract class utos_dec_nodb extends created.iNode  
 {
+    public utos_dec_nodb(int ln)
+    {
+        super(ln);
+    }
+    
     public static class utosLikeKapag extends utos_dec_nodb
     {
         public utos_likeKapag uk; 
         
-        public utosLikeKapag(utos_likeKapag uk)
+        public utosLikeKapag(int ln, utos_likeKapag uk)
         {
+            super(ln);
             this.uk = uk;
         }
         
@@ -61,8 +67,9 @@ public abstract class utos_dec_nodb implements created.iNode
     {
         public utos_makePalit up; 
         
-        public utosMakePalit(utos_makePalit up)
+        public utosMakePalit(int ln, utos_makePalit up)
         {
+            super(ln);
             this.up = up;
         }
         
@@ -108,8 +115,9 @@ public abstract class utos_dec_nodb implements created.iNode
     {
         public utos_likeHabang uh; 
         
-        public utosLikeHabang(utos_likeHabang uh)
+        public utosLikeHabang(int ln, utos_likeHabang uh)
         {
+            super(ln);
             this.uh = uh;
         }
         
@@ -155,8 +163,9 @@ public abstract class utos_dec_nodb implements created.iNode
     {
         public utos_makeGawaHabang ugh; 
         
-        public utosMakeGawaHabang(utos_makeGawaHabang ugh)
+        public utosMakeGawaHabang(int ln, utos_makeGawaHabang ugh)
         {
+            super(ln);
             this.ugh = ugh;
         }
         
@@ -202,8 +211,9 @@ public abstract class utos_dec_nodb implements created.iNode
     {
         public utos_makeUlit uu; 
         
-        public utosMakeUlit(utos_makeUlit uu)
+        public utosMakeUlit(int ln, utos_makeUlit uu)
         {
+            super(ln);
             this.uu = uu;
         }
         
@@ -249,8 +259,9 @@ public abstract class utos_dec_nodb implements created.iNode
     {
         public utos_makeArte ua; 
         
-        public utosMakeArte(utos_makeArte ua)
+        public utosMakeArte(int ln, utos_makeArte ua)
         {
+            super(ln);
             this.ua = ua;
         }
         

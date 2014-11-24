@@ -8,16 +8,21 @@ import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
-public abstract class array_dt implements created.iNode
+public abstract class array_dt extends created.iNode
 {
+    public array_dt(int ln)
+    {
+        super(ln);
+    }
     
     public static class arrayPrimitive extends array_dt
     {
         public brackets b;
         public primitive_dt p;
         
-        public arrayPrimitive(primitive_dt p, brackets b)
+        public arrayPrimitive(int ln, primitive_dt p, brackets b)
         {
+            super(ln);
             this.b = b;
             this.p = p;
         }

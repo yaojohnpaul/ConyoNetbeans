@@ -9,15 +9,21 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.*;
 
-public abstract class utos_makeGawaHabang implements created.iNode  
+public abstract class utos_makeGawaHabang extends created.iNode  
 {
+    public utos_makeGawaHabang(int ln)
+    {
+        super(ln);
+    }
+    
     public static class makeGawaHabang extends utos_makeGawaHabang
     {
         public utos_block u; 
         public sabi_sabi s;
         
-        public makeGawaHabang(utos_block u, sabi_sabi s)
+        public makeGawaHabang(int ln, utos_block u, sabi_sabi s)
         {
+            super(ln);
             this.u = u;
             this.s = s;
         }
@@ -48,7 +54,7 @@ public abstract class utos_makeGawaHabang implements created.iNode
                 type = ((sabi_sabi.SabiSabi) s).checkContext(sl);
                 if(!type.equals("booly"))
                 {
-                    ErrorReport.error("Condition for do-while statement is not Boolean");
+                    ErrorReport.error(ln(), "Condition for do-while statement is not Boolean");
                 }
             }
             
