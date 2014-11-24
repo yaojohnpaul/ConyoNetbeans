@@ -24,7 +24,5 @@ $
 
 superYaya
 $
-        makeSulat("Input any integer: ") db
-        makeArte inty i makeKuha makeBasa(inty) db
-        makeTawag test2(i) db
+        makeSulat("everything's good") db
 $

@@ -131,7 +131,7 @@ public abstract class ss_a2 implements created.iNode
         
         
         
-        public double evaluate(SymList sl)
+        public Object evaluate(SymList sl)
         {
             Object o1 = null;
             Object o2 = null;
@@ -184,7 +184,12 @@ public abstract class ss_a2 implements created.iNode
                                     if(o2 instanceof Float)
                                         return (int)o1 / (float)o2;
                                     else if(o2 instanceof Integer)
-                                        return (int)o1 / (int)o2;
+                                    {
+                                        if(((int) o1 % (int) o2) == 0)
+                                            return (int) o1 / (int) o2;
+                                        else
+                                            return Float.intBitsToFloat((int)o1) / Float.intBitsToFloat((int)o2);
+                                    }
                                 }
                     case "%" : if (o1 instanceof Float)
                                 {
@@ -203,7 +208,7 @@ public abstract class ss_a2 implements created.iNode
                 }
             }
             
-            return 0.0;
+            return (float) 0.0;
         }
         
     }
