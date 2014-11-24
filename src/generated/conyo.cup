@@ -318,6 +318,7 @@ ss_a1 ::= ss_a2:a2 arithmetic_1:ar ss_a1:a1 {: RESULT = new ss_a1.ssA1Expansion(
 ss_a2 ::= ss_unary_1:u arithmetic_2:ar ss_a2:a {: RESULT = new ss_a2.ssA2Expansion(u, ar, a); :}
 		| ss_unary_1:u {: RESULT = new ss_a2.ssA2(u); :};
 ss_unary_1 ::= NOT ss_unary_1:u {: RESULT = new ss_unary_1.ssU1Not(u); :}
+                        | MINUS ss_paren:p {: RESULT = new ss_unary_1.ssU1Neg(p); :}
 			| ss_paren:p {: RESULT = new ss_unary_1.ssU1(p); :};
 ss_paren ::= LEFT_PAREN ss_OR:a RIGHT_PAREN {: RESULT = new ss_paren.ssParen(a); :}
 			| sabi_sabi_end:e {: RESULT = new ss_paren.ssParenEnd(e); :};

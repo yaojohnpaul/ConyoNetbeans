@@ -88,7 +88,7 @@ public abstract class valid_var implements created.iNode
         }
         
         public String checkContext(SymList sl)
-        {
+        {    
             if(rb instanceof ref_brackets.refBrackets)
             {
                 ((ref_brackets.refBrackets) rb).checkContext(sl);

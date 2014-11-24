@@ -39,7 +39,8 @@ public abstract class ref_brackets implements created.iNode
             if(s instanceof sabi_sabi.SabiSabi)
             {
                 type = ((sabi_sabi.SabiSabi) s).checkContext(sl);
-                if(type != "inty")
+                System.out.println(type);
+                if(!type.equals("inty"))
                 {
                     ErrorReport.error("Index used for array is not an integer.: " + ((sabi_sabi.SabiSabi) s).toString());
                 }

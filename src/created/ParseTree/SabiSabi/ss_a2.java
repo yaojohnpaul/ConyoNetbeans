@@ -38,6 +38,10 @@ public abstract class ss_a2 implements created.iNode
             {
                 ((ss_unary_1.ssU1Not) u).setSymList(sl);
             }
+            else if(u instanceof ss_unary_1.ssU1Neg)
+            {
+                ((ss_unary_1.ssU1Neg) u).setSymList(sl);
+            }
             
             if(ar instanceof arithmetic_2.arithmetic2)
             {
@@ -67,6 +71,10 @@ public abstract class ss_a2 implements created.iNode
             else if(u instanceof ss_unary_1.ssU1Not)
             {
                 unary = ((ss_unary_1.ssU1Not) u).checkContext(sl);
+            }
+            else if(u instanceof ss_unary_1.ssU1Neg)
+            {
+                unary = ((ss_unary_1.ssU1Neg) u).checkContext(sl);
             }
             
             if(ar instanceof arithmetic_2.arithmetic2)
@@ -143,6 +151,10 @@ public abstract class ss_a2 implements created.iNode
             else if(u instanceof ss_unary_1.ssU1Not)
             {
                 o1 = ((ss_unary_1.ssU1Not) u).evaluate(sl);
+            }
+            else if(u instanceof ss_unary_1.ssU1Neg)
+            {
+                o1 = ((ss_unary_1.ssU1Neg) u).evaluate(sl);
             }
             
             if(a instanceof ss_a2.ssA2)
@@ -237,6 +249,10 @@ public abstract class ss_a2 implements created.iNode
             {
                 ((ss_unary_1.ssU1Not) u).setSymList(sl);
             }
+            else if(u instanceof ss_unary_1.ssU1Neg)
+            {
+                ((ss_unary_1.ssU1Neg) u).setSymList(sl);
+            }
         }
         
         public String checkContext(SymList sl) 
@@ -248,6 +264,10 @@ public abstract class ss_a2 implements created.iNode
             else if(u instanceof ss_unary_1.ssU1Not)
             {
                 return ((ss_unary_1.ssU1Not) u).checkContext(sl);
+            }
+            else if(u instanceof ss_unary_1.ssU1Neg)
+            {
+                return ((ss_unary_1.ssU1Neg) u).checkContext(sl);
             }
             return "";
         } 
@@ -261,6 +281,10 @@ public abstract class ss_a2 implements created.iNode
             else if(u instanceof ss_unary_1.ssU1Not)
             {
                 return ((ss_unary_1.ssU1Not) u).evaluate(sl);
+            }
+            else if(u instanceof ss_unary_1.ssU1Neg)
+            {
+                return ((ss_unary_1.ssU1Neg) u).evaluate(sl);
             }
             
             return null;

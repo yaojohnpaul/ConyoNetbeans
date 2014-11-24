@@ -34,8 +34,14 @@ $
     $
 $
 
+hireYaya test4 bayad() makeBalik inty i
+$
+    i makeKuha 5 db
+$
+
 superYaya
 $
         makeArte inty[] a makeKuha {1,2,3} db
-        makeSulat(makeTawag factorial(a[2])) db
+        makeArte inty i makeKuha 2 db
+        makeTawag test2(-1) db
 $
