@@ -117,6 +117,14 @@ public abstract class sabi_sabi_end implements created.iNode
         
         public Object evaluate(SymList sl)
         {
+            if(u instanceof utos_dec_val.utosMakeBasa)
+            {
+                return ((utos_dec_val.utosMakeBasa) u).evaluate(sl);
+            }
+            else if(u instanceof utos_dec_val.utosMakeTawag)
+            {
+                return ((utos_dec_val.utosMakeTawag) u).evaluate(sl);
+            }
             return null;
         }
     }
@@ -195,7 +203,7 @@ public abstract class sabi_sabi_end implements created.iNode
             }
             else if(l instanceof literal.Floaty)
             {
-                return Double.valueOf(((literal.Floaty) l).value);
+                return Float.valueOf(((literal.Floaty) l).value);
             }
             else if(l instanceof literal.Inty)
             {

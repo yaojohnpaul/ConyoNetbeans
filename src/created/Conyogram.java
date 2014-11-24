@@ -20,38 +20,34 @@ public class Conyogram implements iNode
         this.s = s;
     }
     
-    private SymList OMG_sym;
-    private SymList yaya_sym;
-    private SymList super_sym;
-    
     /**
      * Function for setting up symbol lists.
      * Based on code by Klein and Rumpe, examples->interpreter
      */
     public void setSymList()
     {
-        OMG_sym = new SymList();
+        SymManager.initSym(SymManager.OMG_ID, new SymList());
         
         //OMG
         if(o instanceof OMG_section.OMGSection)
         {
-            ((OMG_section.OMGSection) o).setSymList(OMG_sym);
+            ((OMG_section.OMGSection) o).setSymList(SymManager.getSym(SymManager.OMG_ID));
         }
         
-        yaya_sym = new SymList(OMG_sym);
+        SymManager.initSym(SymManager.YAYA_ID, new SymList(SymManager.getSym(SymManager.OMG_ID)));
         
         //Yaya
         if(y instanceof yaya_section.yayaSection)
         {
-            ((yaya_section.yayaSection) y).setSymList(yaya_sym);
+            ((yaya_section.yayaSection) y).setSymList(SymManager.getSym(SymManager.YAYA_ID));
         }
         
-        super_sym = new SymList(yaya_sym);
+        SymManager.initSym(SymManager.SUPER_ID, new SymList(SymManager.getSym(SymManager.YAYA_ID)));
         
         //Super Yaya
         if(s instanceof super_yaya.superYaya)
         {
-            ((super_yaya.superYaya) s).setSymList(super_sym);
+            ((super_yaya.superYaya) s).setSymList(SymManager.getSym(SymManager.SUPER_ID));
         }
     }
     
@@ -60,8 +56,8 @@ public class Conyogram implements iNode
      */
     public void printSymList()
     {
-        System.out.println("OMG SymList: \n" + OMG_sym.toString());
-        System.out.println("Yaya SymList: \n" + yaya_sym.toString());
+        System.out.println("OMG SymList: \n" + SymManager.getSym(SymManager.OMG_ID).toString());
+        System.out.println("Yaya SymList: \n" + SymManager.getSym(SymManager.YAYA_ID).toString());
         //System.out.println("Super Yaya SymList: \n" + super_sym.toString());
     }
     
@@ -74,19 +70,19 @@ public class Conyogram implements iNode
         //OMG
         if(o instanceof OMG_section.OMGSection)
         {
-            ((OMG_section.OMGSection) o).checkContext(OMG_sym);
+            ((OMG_section.OMGSection) o).checkContext(SymManager.getSym(SymManager.OMG_ID));
         }
         
         //Yaya
         if(y instanceof yaya_section.yayaSection)
         {
-            ((yaya_section.yayaSection) y).checkContext(yaya_sym);
+            ((yaya_section.yayaSection) y).checkContext(SymManager.getSym(SymManager.YAYA_ID));
         }
         
         //Super Yaya
         if(s instanceof super_yaya.superYaya)
         {
-            ((super_yaya.superYaya) s).checkContext(super_sym);
+            ((super_yaya.superYaya) s).checkContext(SymManager.getSym(SymManager.SUPER_ID));
         }
     }
     
@@ -99,19 +95,19 @@ public class Conyogram implements iNode
         //OMG
         if(o instanceof OMG_section.OMGSection)
         {
-            ((OMG_section.OMGSection) o).preInterpret(OMG_sym);
+            ((OMG_section.OMGSection) o).preInterpret(SymManager.getSym(SymManager.OMG_ID));
         }
         
         //Yaya
         if(y instanceof yaya_section.yayaSection)
         {
-            ((yaya_section.yayaSection) y).preInterpret(yaya_sym);
+            ((yaya_section.yayaSection) y).preInterpret(SymManager.getSym(SymManager.YAYA_ID));
         }
         
         //Super Yaya
         if(s instanceof super_yaya.superYaya)
         {
-            ((super_yaya.superYaya) s).preInterpret(super_sym);
+            ((super_yaya.superYaya) s).preInterpret(SymManager.getSym(SymManager.SUPER_ID));
         }
     }
     
@@ -136,10 +132,8 @@ public class Conyogram implements iNode
         //Super Yaya
         if(s instanceof super_yaya.superYaya)
         {
-            ((super_yaya.superYaya) s).evaluate(super_sym);
+            ((super_yaya.superYaya) s).evaluate(SymManager.getSym(SymManager.SUPER_ID));
         }
-
-        OutGen.printResult();
     }
     
     /**

@@ -48,6 +48,16 @@ public abstract class utos_makeKuha implements created.iNode
         public String checkContext(SymList sl) 
         { // for sabi sabi plng
             //other context here
+            //check if variable
+            if(sl.getSymbol(vv.toString()) instanceof SymConst)
+            {
+                ErrorReport.error("Trying to assign value to a constant: " + vv.toString());
+            }
+            else if(sl.getSymbol(vv.toString()) instanceof SymFunc)
+            {
+                ErrorReport.error("Trying to assign value to a function: " + vv.toString());
+            }
+            
             String var = "";
             String assign = "";
             
@@ -109,6 +119,7 @@ public abstract class utos_makeKuha implements created.iNode
                     index = (int)((sabi_sabi.SabiSabi)((ref_brackets.refBrackets)((valid_var.validVarRB) vv).rb).s).evaluate(sl);
                 }
             }
+
             SymVar sv = (SymVar) sl.getSymbol(validVar);
             if(a instanceof arte_assign.arteAssign)
             {
@@ -125,7 +136,7 @@ public abstract class utos_makeKuha implements created.iNode
                             a3 = (sabi_sabi.SabiSabi) a2.s;
                         }
                     }
-                    
+
                     ArrayList<Object> ao = (ArrayList) sv.value();
                     ao.set(index, a3.evaluate(sl));
                     sv.setValue(ao);

@@ -157,7 +157,14 @@ public abstract class utos_dec implements created.iNode
         
         public void evaluate(SymList sl)
         {
-            
+            if(uv instanceof utos_dec_val.utosMakeTawag)
+            {
+                ((utos_dec_val.utosMakeTawag) uv).evaluate(sl);
+            }
+            else if(uv instanceof utos_dec_val.utosMakeBasa)
+            {
+                ((utos_dec_val.utosMakeBasa) uv).evaluate(sl);
+            }
         }
     }
     

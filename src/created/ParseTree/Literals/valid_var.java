@@ -8,6 +8,7 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
+import error.ErrorReport;
 
 public abstract class valid_var implements created.iNode
 {
@@ -87,7 +88,7 @@ public abstract class valid_var implements created.iNode
         }
         
         public String checkContext(SymList sl)
-        {
+        {    
             if(rb instanceof ref_brackets.refBrackets)
             {
                 ((ref_brackets.refBrackets) rb).checkContext(sl);
@@ -132,7 +133,20 @@ public abstract class valid_var implements created.iNode
                     if(sv.value() instanceof ArrayList)
                     {
                         ArrayList<Object> ao = (ArrayList) sv.value();
-                        return ao.get(index);
+                        if(index >= ao.size())
+                        {
+                            ErrorReport.error("Array index (" + index + ") out of bounds for array: " + ((valid_name.identifier) vn).toString()
+                                                + ". Getting " + ((valid_name.identifier) vn).toString() + "[" + (ao.size()-1) + "] instead.");
+                            return ao.get(ao.size()-1);
+                        }
+                        else if(index < 0)
+                        {
+                            ErrorReport.error("Array index (" + index + ") out of bounds for array: " + ((valid_name.identifier) vn).toString()
+                                                + ". Getting " + ((valid_name.identifier) vn).toString() + "[" + 0 + "] instead.");
+                            return ao.get(0);
+                        }
+                        else
+                            return ao.get(index);
                     }
                 }
             }

@@ -103,6 +103,56 @@ public abstract class makePalit_MRW implements created.iNode
                 ((makePalit_MRW.MDR) m).preInterpret(sl);
             }
         }
+        
+        public void evaluate(SymList sl, Object match, boolean previousFlag)
+        {
+            Object toBeMatched = null;
+            boolean flag = previousFlag;
+            if(flag == false)
+            {
+                if(s instanceof sabi_sabi.SabiSabi)
+                {
+                    toBeMatched = ((sabi_sabi.SabiSabi) s).evaluate(sl);
+                }
+                
+                flag = match.equals(toBeMatched);
+                
+                
+                if(flag == true)
+                {
+                    if(u instanceof utos_block_opt.utosBlockOpt)
+                    {
+                        ((utos_block_opt.utosBlockOpt) u).evaluate(sl);
+                    }
+                    
+                }
+                
+                if(m instanceof makePalit_MRW.MRW)
+                {
+                    ((makePalit_MRW.MRW) m).evaluate(sl, match,flag);
+                }
+                else if(m instanceof makePalit_MRW.MDR)
+                {
+                    ((makePalit_MRW.MDR) m).evaluate(sl);
+                }
+                
+            }
+            else if(flag == true)
+            {
+                if(u instanceof utos_block_opt.utosBlockOpt)
+                {
+                        ((utos_block_opt.utosBlockOpt) u).evaluate(sl);
+                }
+                if(m instanceof makePalit_MRW.MRW)
+                {
+                        ((makePalit_MRW.MRW) m).evaluate(sl, match, flag);
+                }
+                else if(m instanceof makePalit_MRW.MDR)
+                {
+                        ((makePalit_MRW.MDR) m).evaluate(sl);
+                }
+            }
+        }
     }
     
     public static class MDR extends makePalit_MRW
@@ -140,6 +190,14 @@ public abstract class makePalit_MRW implements created.iNode
             if(o instanceof utos_block_opt.utosBlockOpt)
             {
                 ((utos_block_opt.utosBlockOpt) o).preInterpret(sl);
+            }
+        }
+        
+        public void evaluate(SymList sl)
+        {
+            if(o instanceof utos_block_opt.utosBlockOpt)
+            {
+                ((utos_block_opt.utosBlockOpt) o).evaluate(sl);
             }
         }
     }

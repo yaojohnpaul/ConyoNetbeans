@@ -38,6 +38,10 @@ public abstract class ss_a2 implements created.iNode
             {
                 ((ss_unary_1.ssU1Not) u).setSymList(sl);
             }
+            else if(u instanceof ss_unary_1.ssU1Neg)
+            {
+                ((ss_unary_1.ssU1Neg) u).setSymList(sl);
+            }
             
             if(ar instanceof arithmetic_2.arithmetic2)
             {
@@ -67,6 +71,10 @@ public abstract class ss_a2 implements created.iNode
             else if(u instanceof ss_unary_1.ssU1Not)
             {
                 unary = ((ss_unary_1.ssU1Not) u).checkContext(sl);
+            }
+            else if(u instanceof ss_unary_1.ssU1Neg)
+            {
+                unary = ((ss_unary_1.ssU1Neg) u).checkContext(sl);
             }
             
             if(ar instanceof arithmetic_2.arithmetic2)
@@ -131,7 +139,7 @@ public abstract class ss_a2 implements created.iNode
         
         
         
-        public double evaluate(SymList sl)
+        public Object evaluate(SymList sl)
         {
             Object o1 = null;
             Object o2 = null;
@@ -143,6 +151,10 @@ public abstract class ss_a2 implements created.iNode
             else if(u instanceof ss_unary_1.ssU1Not)
             {
                 o1 = ((ss_unary_1.ssU1Not) u).evaluate(sl);
+            }
+            else if(u instanceof ss_unary_1.ssU1Neg)
+            {
+                o1 = ((ss_unary_1.ssU1Neg) u).evaluate(sl);
             }
             
             if(a instanceof ss_a2.ssA2)
@@ -158,13 +170,57 @@ public abstract class ss_a2 implements created.iNode
             {
                 switch(((arithmetic_2.arithmetic2) ar).evaluate())
                 {
-                    case "*" : return (double)o1 * (double)o2;
-                    case "/" : return (double)o1 / (double)o2;
-                    case "%" : return (double)o1 % (double)o2;
+                    case "*" : if (o1 instanceof Float)
+                                {
+                                    if(o2 instanceof Float)
+                                        return (float)o1 * (float)o2;
+                                    else if(o2 instanceof Integer)
+                                        return (float)o1 * (int)o2;
+                                }
+                                else if (o1 instanceof Integer)
+                                {
+                                    if(o2 instanceof Float)
+                                        return (int)o1 * (float)o2;
+                                    else if(o2 instanceof Integer)
+                                        return (int)o1 * (int)o2;
+                                }
+                    case "/" : if (o1 instanceof Float)
+                                {
+                                    if(o2 instanceof Float)
+                                        return (float)o1 / (float)o2;
+                                    else if(o2 instanceof Integer)
+                                        return (float)o1 / (int)o2;
+                                }
+                                else if (o1 instanceof Integer)
+                                {
+                                    if(o2 instanceof Float)
+                                        return (int)o1 / (float)o2;
+                                    else if(o2 instanceof Integer)
+                                    {
+                                        if(((int) o1 % (int) o2) == 0)
+                                            return (int) o1 / (int) o2;
+                                        else
+                                            return Float.intBitsToFloat((int)o1) / Float.intBitsToFloat((int)o2);
+                                    }
+                                }
+                    case "%" : if (o1 instanceof Float)
+                                {
+                                    if(o2 instanceof Float)
+                                        return (float)o1 % (float)o2;
+                                    else if(o2 instanceof Integer)
+                                        return (float)o1 % (int)o2;
+                                }
+                                else if (o1 instanceof Integer)
+                                {
+                                    if(o2 instanceof Float)
+                                        return (int)o1 % (float)o2;
+                                    else if(o2 instanceof Integer)
+                                        return (int)o1 % (int)o2;
+                                }
                 }
             }
             
-            return 0.0;
+            return (float) 0.0;
         }
         
     }
@@ -193,6 +249,10 @@ public abstract class ss_a2 implements created.iNode
             {
                 ((ss_unary_1.ssU1Not) u).setSymList(sl);
             }
+            else if(u instanceof ss_unary_1.ssU1Neg)
+            {
+                ((ss_unary_1.ssU1Neg) u).setSymList(sl);
+            }
         }
         
         public String checkContext(SymList sl) 
@@ -204,6 +264,10 @@ public abstract class ss_a2 implements created.iNode
             else if(u instanceof ss_unary_1.ssU1Not)
             {
                 return ((ss_unary_1.ssU1Not) u).checkContext(sl);
+            }
+            else if(u instanceof ss_unary_1.ssU1Neg)
+            {
+                return ((ss_unary_1.ssU1Neg) u).checkContext(sl);
             }
             return "";
         } 
@@ -217,6 +281,10 @@ public abstract class ss_a2 implements created.iNode
             else if(u instanceof ss_unary_1.ssU1Not)
             {
                 return ((ss_unary_1.ssU1Not) u).evaluate(sl);
+            }
+            else if(u instanceof ss_unary_1.ssU1Neg)
+            {
+                return ((ss_unary_1.ssU1Neg) u).evaluate(sl);
             }
             
             return null;

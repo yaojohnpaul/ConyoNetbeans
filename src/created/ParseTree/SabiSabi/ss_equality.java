@@ -30,8 +30,8 @@ public abstract class ss_equality implements created.iNode
         
         // public boolean evaluate(){
         //     switch(eq.evaluate()){
-        //         case "!=" : return c.evaluate() != e.evaluate();
-        //         case "==" : return c.evaluate() == e.evaluate();
+        //         case "!=" : return !c.evaluate().equals(e.evaluate()); // maybe <>
+        //         case "==" : return c.evaluate().equals(e.evaluate());
         //     }
         // }
         
@@ -173,8 +173,16 @@ public abstract class ss_equality implements created.iNode
             {
                 switch(((equality.equal) eq).evaluate())
                 {
-                    case "==":  return o1 == o2; 
-                    case "<>":  return o1 != o2;
+                    case "==":  
+                        if(o1 instanceof String && o2 instanceof String)
+                            return ((String)o1).equals(((String)o2));
+                        else
+                            return o1 == o2; 
+                    case "<>":  
+                        if(o1 instanceof String && o2 instanceof String)
+                            return !((String)o1).equals(((String)o2));
+                        else
+                            return o1 != o2; 
                 }
             }
             

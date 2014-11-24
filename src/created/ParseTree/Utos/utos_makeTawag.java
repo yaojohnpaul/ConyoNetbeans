@@ -8,6 +8,7 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
+import created.SymManager;
 import error.*;
 
 public abstract class utos_makeTawag implements created.iNode  
@@ -51,7 +52,13 @@ public abstract class utos_makeTawag implements created.iNode
                 ret = ((valid_name.identifier) vn).checkContext(sl);
 
                 SymEntry ste = sl.getSymbol (((valid_name.identifier) vn).toString()); 
-            
+                
+                if(ste == null)
+                {
+                    ErrorReport.error("Symbol not defined: " + ((valid_name.identifier) vn).toString());
+                    return "";
+                }
+                
                 if(ste.symType() != 103)
                 {
                     ErrorReport.error("Not a function used as a function!: " + ((valid_name.identifier) vn).toString());
@@ -68,7 +75,7 @@ public abstract class utos_makeTawag implements created.iNode
                     if(sfn.getArity() != passedCount)
                     {
                         ErrorReport.error("Passed parameter count (" + passedCount +
-                                ") does not much function \"" + vn.toString() + "\" declaration parameter count (" +
+                                ") does not match function \"" + vn.toString() + "\" declaration parameter count (" +
                                 sfn.getArity() + ")");
                     }
                     else
@@ -88,9 +95,9 @@ public abstract class utos_makeTawag implements created.iNode
                                     else
                                     {
                                         if(((sabi_sabi.SabiSabi) alss.get(i)).checkContext(sl).isEmpty() || ((data_type.datatypePrimitive) aldt.get(i)).toString().isEmpty())
-                                            ErrorReport.error("Datatype of passed parameters does not much declared function " + vn.toString() + "'s parameters");
+                                            ErrorReport.error("Datatype of passed parameters does not match declared function " + vn.toString() + "'s parameters");
                                         else
-                                            ErrorReport.error("Datatype of passed parameters does not much declared function " + vn.toString() + "'s parameters: " + 
+                                            ErrorReport.error("Datatype of passed parameters does not match declared function " + vn.toString() + "'s parameters: " + 
                                                     ((sabi_sabi.SabiSabi) alss.get(i)).checkContext(sl) + " and " + ((data_type.datatypePrimitive) aldt.get(i)).toString());
                                     }
                                 }
@@ -103,9 +110,9 @@ public abstract class utos_makeTawag implements created.iNode
                                     else
                                     {
                                         if(((sabi_sabi.SabiSabi) alss.get(i)).checkContext(sl).isEmpty() || ((data_type.datatypeReference) aldt.get(i)).toString().isEmpty())
-                                            ErrorReport.error("Datatype of passed parameters does not much declared function " + vn.toString() + "'s parameters");
+                                            ErrorReport.error("Datatype of passed parameters does not match declared function " + vn.toString() + "'s parameters");
                                         else
-                                            ErrorReport.error("Datatype of passed parameters does not much declared function " + vn.toString() + "'s parameters: " + 
+                                            ErrorReport.error("Datatype of passed parameters does not match declared function " + vn.toString() + "'s parameters: " + 
                                                     ((sabi_sabi.SabiSabi) alss.get(i)).checkContext(sl) + " and " + ((data_type.datatypeReference) aldt.get(i)).toString());
                                     }
                                 }
@@ -137,6 +144,37 @@ public abstract class utos_makeTawag implements created.iNode
             {
                 ((arte_init_list.arteInitList) l).preInterpret(sl);
             } 
+        }
+        
+        public Object evaluate(SymList sl)
+        {
+            SymFunc sf = (SymFunc) sl.getSymbol(vn.toString()); //Function Symbol
+            yaya.addYaya yy = (yaya.addYaya) sf.getYaya(); //Function class
+            yaya_param_sec.yayaParamSec yps = (yaya_param_sec.yayaParamSec) sf.yayaParamSec(); //Function parameters
+            ArrayList<String> paramNames = yps.getNames(); //Function parameters
+            ArrayList<data_type> paramDT = yps.getContents();
+            ArrayList<sabi_sabi> alss = ((arte_init_list.arteInitList) l).getContents(); //Call parameters
+            SymList local = yy.getLocalSymList(); //Local function symlist
+            SymVar sv = null; //temporary variable for symvar
+            for(int i = 0; i < paramNames.size(); i++)
+            {
+                sv = (SymVar) local.getSymbol(paramNames.get(i));
+                /*if(paramDT.get(i) instanceof data_type.datatypePrimitive)
+                {
+                    data_type.datatypePrimitive dtp = (data_type.datatypePrimitive) paramDT.get(i);
+                    if(dtp.toString().equals("inty"))
+                    {
+                    }
+                }
+                else if(paramDT.get(i) instanceof data_type.datatypeReference)
+                {
+                    data_type.datatypeReference dtr = (data_type.datatypeReference) paramDT.get(i);
+                }*/
+                sv.setValue(((sabi_sabi.SabiSabi)alss.get(i)).evaluate(sl));
+                local.editSymbol(paramNames.get(i), sv);
+            }
+            yy.setLocalSymList(local);
+            return yy.evaluate(SymManager.getSym(SymManager.SUPER_ID));
         }
     }
 }

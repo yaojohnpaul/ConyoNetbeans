@@ -6,13 +6,42 @@ $
         makeSulat(i) db
 $
 
+hireYaya test2 bayad (inty a) makeBalik poor
+$
+    likeKapag(a < 0)
+    $
+        makeSulat("Negative number!") db
+    $
+    thisNalangKapag(a == 0)
+    $
+        makeSulat("Zero!") db
+    $
+    thisNalang
+    $
+        makeSulat("Positive number!") db
+    $
+$
+
+hireYaya factorial bayad (inty a) makeBalik inty i
+$
+    likeKapag(a == 0)
+    $
+        i makeKuha 1 db
+    $
+    thisNalang
+    $
+        i makeKuha a * makeTawag factorial(a-1) db
+    $
+$
+
+hireYaya test4 bayad() makeBalik inty i
+$
+    i makeKuha 5 db
+$
+
 superYaya
 $
-        makeArte inty[] a makeKuha {1, 2} db
-        a makeKuha {1,2,3} db
-        makeArte inty j makeKuha 7 db
-        makeArte floaty i db
-        i makeKuha TEST db
-        makeSulat(i) db
-        makeSulat("LOOK AT THIS AMAZING ARITHMETIC: " + 1 + a[2]) db
+        makeArte inty[] a makeKuha {1,2,3} db
+        makeArte inty i makeKuha 2 db
+        makeTawag test2(-1) db
 $
