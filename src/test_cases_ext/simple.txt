@@ -36,8 +36,6 @@ $
 
 superYaya
 $
-        makeArte inty i db
-        makeSulat("Input number to be factorial: ") db
-        i makeKuha makeBasa(inty) db
-        makeSulat("Reault: " + makeTawag factorial(i)) db
+        makeArte inty[] a makeKuha {1,2,3} db
+        makeSulat(makeTawag factorial(a[2])) db
 $
