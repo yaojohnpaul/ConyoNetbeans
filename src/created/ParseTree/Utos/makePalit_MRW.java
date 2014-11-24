@@ -104,42 +104,61 @@ public abstract class makePalit_MRW implements created.iNode
             }
         }
         
-        public void evaluate(SymList sl, Object match)
+        public void evaluate(SymList sl, Object match, boolean previousFlag)
         {
             Object toBeMatched = null;
-            boolean flag = false;
-            if(s instanceof sabi_sabi.SabiSabi)
-            {
-                toBeMatched = ((sabi_sabi.SabiSabi) s).evaluate(sl);
-            }
+            boolean flag = previousFlag;
             
-            
-            if (match instanceof String)
+            if(flag == false)
             {
-                if(toBeMatched instanceof String)
-                    flag = ((String)match).equals((String)toBeMatched);
-            }
-            else
-            {
-                flag = match == toBeMatched;
-            }
-            
-            if(flag == true)
-            {
-                if(u instanceof utos_block_opt.utosBlockOpt)
+                if(s instanceof sabi_sabi.SabiSabi)
                 {
-                    ((utos_block_opt.utosBlockOpt) u).evaluate(sl);
+                    toBeMatched = ((sabi_sabi.SabiSabi) s).evaluate(sl);
                 }
-            }
-            else
-            {
+                
+                
+                if (match instanceof String)
+                {
+                    if(toBeMatched instanceof String)
+                        flag = ((String)match).equals((String)toBeMatched);
+                }
+                else
+                {
+                    flag = match == toBeMatched;
+                }
+                
+                if(flag == true)
+                {
+                    if(u instanceof utos_block_opt.utosBlockOpt)
+                    {
+                        ((utos_block_opt.utosBlockOpt) u).evaluate(sl);
+                    }
+                    
+                }
+                
                 if(m instanceof makePalit_MRW.MRW)
                 {
-                    ((makePalit_MRW.MRW) m).evaluate(sl, match);
+                    ((makePalit_MRW.MRW) m).evaluate(sl, match,flag);
                 }
                 else if(m instanceof makePalit_MRW.MDR)
                 {
                     ((makePalit_MRW.MDR) m).evaluate(sl);
+                }
+                
+            }
+            else if(flag == true)
+            {
+                if(u instanceof utos_block_opt.utosBlockOpt)
+                {
+                        ((utos_block_opt.utosBlockOpt) u).evaluate(sl);
+                }
+                if(m instanceof makePalit_MRW.MRW)
+                {
+                        ((makePalit_MRW.MRW) m).evaluate(sl, match, flag);
+                }
+                else if(m instanceof makePalit_MRW.MDR)
+                {
+                        ((makePalit_MRW.MDR) m).evaluate(sl);
                 }
             }
         }

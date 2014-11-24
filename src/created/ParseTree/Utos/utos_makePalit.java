@@ -87,7 +87,7 @@ public abstract class utos_makePalit implements created.iNode
             
             if(m instanceof makePalit_MRW.MRW)
             {
-                ((makePalit_MRW.MRW) m).evaluate(sl, match);
+                ((makePalit_MRW.MRW) m).evaluate(sl, match, false);
             }
             else if(m instanceof makePalit_MRW.MDR)
             {
