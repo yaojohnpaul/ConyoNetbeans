@@ -52,7 +52,13 @@ public abstract class utos_makeTawag implements created.iNode
                 ret = ((valid_name.identifier) vn).checkContext(sl);
 
                 SymEntry ste = sl.getSymbol (((valid_name.identifier) vn).toString()); 
-            
+                
+                if(ste == null)
+                {
+                    ErrorReport.error("Symbol not defined: " + ((valid_name.identifier) vn).toString());
+                    return "";
+                }
+                
                 if(ste.symType() != 103)
                 {
                     ErrorReport.error("Not a function used as a function!: " + ((valid_name.identifier) vn).toString());

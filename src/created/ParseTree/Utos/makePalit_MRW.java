@@ -108,7 +108,6 @@ public abstract class makePalit_MRW implements created.iNode
         {
             Object toBeMatched = null;
             boolean flag = previousFlag;
-            
             if(flag == false)
             {
                 if(s instanceof sabi_sabi.SabiSabi)
@@ -116,16 +115,8 @@ public abstract class makePalit_MRW implements created.iNode
                     toBeMatched = ((sabi_sabi.SabiSabi) s).evaluate(sl);
                 }
                 
+                flag = match.equals(toBeMatched);
                 
-                if (match instanceof String)
-                {
-                    if(toBeMatched instanceof String)
-                        flag = ((String)match).equals((String)toBeMatched);
-                }
-                else
-                {
-                    flag = match == toBeMatched;
-                }
                 
                 if(flag == true)
                 {

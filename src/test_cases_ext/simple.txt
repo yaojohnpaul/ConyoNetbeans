@@ -22,19 +22,22 @@ $
     $
 $
 
-hireYaya recursion bayad (inty a) makeBalik inty i
+hireYaya factorial bayad (inty a) makeBalik inty i
 $
     likeKapag(a == 0)
     $
-        i makeKuha 0 db
+        i makeKuha 1 db
     $
     thisNalang
     $
-        i makeKuha a + makeTawag recursion(a-1) db
+        i makeKuha a * makeTawag factorial(a-1) db
     $
 $
 
 superYaya
 $
-        makeSulat(makeTawag recursion(10)) db
+        makeArte inty i db
+        makeSulat("Input number to be factorial: ") db
+        i makeKuha makeBasa(inty) db
+        makeSulat("Reault: " + makeTawag factorial(i)) db
 $

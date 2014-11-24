@@ -30,8 +30,8 @@ public abstract class ss_equality implements created.iNode
         
         // public boolean evaluate(){
         //     switch(eq.evaluate()){
-        //         case "!=" : return c.evaluate() != e.evaluate();
-        //         case "==" : return c.evaluate() == e.evaluate();
+        //         case "!=" : return !c.evaluate().equals(e.evaluate()); // maybe <>
+        //         case "==" : return c.evaluate().equals(e.evaluate());
         //     }
         // }
         
