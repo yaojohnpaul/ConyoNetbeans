@@ -110,14 +110,14 @@ public abstract class makePalit_MRW implements created.iNode
             boolean flag = false;
             if(s instanceof sabi_sabi.SabiSabi)
             {
-                toBeMatched = ((sabi_sabi.SabiSabi) s).preInterpret(sl);
+                toBeMatched = ((sabi_sabi.SabiSabi) s).evaluate(sl);
             }
             
             
             if (match instanceof String)
             {
                 if(toBeMatched instanceof String)
-                    flag = (String)match.equals((String)toBeMatched);
+                    flag = ((String)match).equals((String)toBeMatched);
             }
             else
             {

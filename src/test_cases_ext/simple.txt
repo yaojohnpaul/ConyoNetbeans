@@ -10,9 +10,9 @@ superYaya
 $
         makeArte inty[] a makeKuha {1, 2} db
         a makeKuha {1,2,3} db
-        makeArte inty j makeKuha 7 db
+        makeArte inty j makeKuha 11 db
         makeArte floaty i db
         i makeKuha TEST db
-        makeSulat(i) db
+        makeSulat(100 * 5 + 1) db
         makeSulat("LOOK AT THIS AMAZING ARITHMETIC: " + 1 + a[2]) db
 $

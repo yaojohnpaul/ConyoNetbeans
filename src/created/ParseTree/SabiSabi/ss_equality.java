@@ -175,12 +175,12 @@ public abstract class ss_equality implements created.iNode
                 {
                     case "==":  
                         if(o1 instanceof String && o2 instanceof String)
-                            return ((String)o1).equals(((String)o2))
+                            return ((String)o1).equals(((String)o2));
                         else
                             return o1 == o2; 
                     case "<>":  
                         if(o1 instanceof String && o2 instanceof String)
-                            return !((String)o1).equals(((String)o2))
+                            return !((String)o1).equals(((String)o2));
                         else
                             return o1 != o2; 
                 }
