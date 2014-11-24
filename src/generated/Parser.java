@@ -704,7 +704,7 @@ public class Parser extends java_cup.runtime.lr_parser {
 	
 	/*Error reporting*/
 	public void report_error(String message, Object info) {
-		sb.append("ERROR! ");
+		sb.append("Error: ");
 		
 		/*Code borrowed from ycalc.cup*/
         if (info instanceof java_cup.runtime.Symbol) 
@@ -714,10 +714,7 @@ public class Parser extends java_cup.runtime.lr_parser {
 			/*Line number*/
             if (s.left >= 0) 
 			{                
-                sb.append("Line: " +(s.left+1));   
-				/*Column number*/
-                if (s.right >= 0)                    
-                    sb.append(", Column: " +(s.right+1));
+                sb.append("Line " +(s.left+1));   
             }
         }
 		 
