@@ -10,14 +10,20 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.ErrorReport;
 
-public abstract class valid_var implements created.iNode
+public abstract class valid_var extends created.iNode
 {
+    public valid_var(int ln)
+    {
+        super(ln);
+    }
+    
     public static class validVar extends valid_var
     {
         public valid_name vn;
         
-        public validVar(valid_name vn)
+        public validVar(int ln, valid_name vn)
         { 
+            super(ln);
             this.vn = vn;
         }
         
@@ -63,8 +69,9 @@ public abstract class valid_var implements created.iNode
         public valid_name vn;
         public ref_brackets rb;
         
-        public validVarRB(valid_name vn, ref_brackets rb)
+        public validVarRB(int ln, valid_name vn, ref_brackets rb)
         { 
+            super(ln);
             this.vn = vn;
             this.rb = rb;
         }
@@ -135,13 +142,13 @@ public abstract class valid_var implements created.iNode
                         ArrayList<Object> ao = (ArrayList) sv.value();
                         if(index >= ao.size())
                         {
-                            ErrorReport.error("Array index (" + index + ") out of bounds for array: " + ((valid_name.identifier) vn).toString()
+                            ErrorReport.error(ln(), "Array index (" + index + ") out of bounds for array: " + ((valid_name.identifier) vn).toString()
                                                 + ". Getting " + ((valid_name.identifier) vn).toString() + "[" + (ao.size()-1) + "] instead.");
                             return ao.get(ao.size()-1);
                         }
                         else if(index < 0)
                         {
-                            ErrorReport.error("Array index (" + index + ") out of bounds for array: " + ((valid_name.identifier) vn).toString()
+                            ErrorReport.error(ln(), "Array index (" + index + ") out of bounds for array: " + ((valid_name.identifier) vn).toString()
                                                 + ". Getting " + ((valid_name.identifier) vn).toString() + "[" + 0 + "] instead.");
                             return ao.get(0);
                         }

@@ -197,7 +197,7 @@ super_yaya ::= SUPER_YAYA utos_block:u {: RESULT = new SuperYaya(u); :};
 
 /*Literals, Data Types, Names*/
 
-/*All literals implements iLiteral interface*/
+/*All literals extends iLiteral interface*/
 literal ::= INT_LITERAL:i {: RESULT = new Inty(i); :}
 			| FLOAT_LITERAL:f {: RESULT = new Floaty(f); :}
 			| STRING_LITERAL:s {: RESULT = new Stringy(s); :}

@@ -8,14 +8,20 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
-public abstract class utos_makeArte implements created.iNode  
+public abstract class utos_makeArte extends created.iNode  
 {
+    public utos_makeArte(int ln)
+    {
+        super(ln);
+    }
+    
     public static class makeArte extends utos_makeArte
     {
         public arte_dec a; 
         
-        public makeArte(arte_dec a)
+        public makeArte(int ln, arte_dec a)
         {
+            super(ln);
             this.a = a;
         }
         

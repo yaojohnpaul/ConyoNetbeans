@@ -8,21 +8,28 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
-public abstract class block_content implements created.iNode  
+public abstract class block_content extends created.iNode  
 {
+    public block_content(int ln)
+    {
+        super(ln);
+    }
+    
     public static class blockContent extends block_content
     {
         public utos_dec u;
         public block_content b;
         
-        public blockContent(utos_dec u, block_content b)
+        public blockContent(int ln, utos_dec u, block_content b)
         {
+            super(ln);
             this.u = u;
             this.b = b;
         }
         
-        public blockContent(utos_dec u)
+        public blockContent(int ln, utos_dec u)
         {
+            super(ln);
             this.u = u;
             this.b = null;
         }

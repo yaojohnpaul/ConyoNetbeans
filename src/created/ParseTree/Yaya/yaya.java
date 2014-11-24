@@ -8,15 +8,21 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Utos.*;
 import created.Sym.*;
 
-public abstract class yaya implements created.iNode  
+public abstract class yaya extends created.iNode  
 {
+    public yaya(int ln)
+    {
+        super(ln);
+    }
+    
     public static class addYaya extends yaya
     {
         public yaya_header h;
         public utos_block u;
         
-        public addYaya(yaya_header h, utos_block u)
+        public addYaya(int ln, yaya_header h, utos_block u)
         {
+            super(ln);
             this.h = h;
             this.u = u;
         }

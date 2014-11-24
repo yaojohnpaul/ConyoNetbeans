@@ -8,15 +8,21 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
-public abstract class utos_makePalit implements created.iNode  
+public abstract class utos_makePalit extends created.iNode  
 {
+    public utos_makePalit(int ln)
+    {
+        super(ln);
+    }
+    
     public static class makePalit extends utos_makePalit
     {
         public sabi_sabi s; 
         public makePalit_MRW m;
         
-        public makePalit(sabi_sabi s, makePalit_MRW m)
+        public makePalit(int ln, sabi_sabi s, makePalit_MRW m)
         {
+            super(ln);
             this.s = s;
             this.m = m;
         }

@@ -9,14 +9,20 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import created.*;
 
-public abstract class utos_makeSulat implements created.iNode  
+public abstract class utos_makeSulat extends created.iNode  
 {
+    public utos_makeSulat(int ln)
+    {
+        super(ln);
+    }
+    
     public static class makeSulat extends utos_makeSulat
     {
         public sabi_sabi s; 
         
-        public makeSulat(sabi_sabi s)
+        public makeSulat(int ln, sabi_sabi s)
         {
+            super(ln);
             this.s = s;
         }
         

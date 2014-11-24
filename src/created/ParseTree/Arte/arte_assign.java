@@ -8,19 +8,26 @@ import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
-public abstract class arte_assign implements created.iNode 
+public abstract class arte_assign extends created.iNode 
 {
+    public arte_assign(int ln)
+    {
+        super(ln);
+    }
+    
     public static class arteAssign extends arte_assign
     {
         public arte_init i; 
         
-        public arteAssign()
+        public arteAssign(int ln)
         {
+            super(ln);
             this.i = null;
         }
         
-        public arteAssign(arte_init i)
+        public arteAssign(int ln, arte_init i)
         {
+            super(ln);
             this.i = i;
         }
         

@@ -9,14 +9,20 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.*;
 
-public abstract class arithmetic_2 implements created.iNode
+public abstract class arithmetic_2 extends created.iNode
 {
+    public arithmetic_2(int ln)
+    {
+        super(ln);
+    }
+    
     public static class arithmetic2 extends arithmetic_2
     {
         public String kind; // will contain either /, * or % 
         
-        public arithmetic2(String type)
+        public arithmetic2(int ln, String type)
         {
+            super(ln);
             kind = type;
         }
         

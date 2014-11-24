@@ -10,14 +10,20 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.*;
 
-public abstract class utos_makeBasa implements created.iNode  
+public abstract class utos_makeBasa extends created.iNode  
 {
+    public utos_makeBasa(int ln)
+    {
+        super(ln);
+    }
+    
     public static class makeBasa extends utos_makeBasa
     {
         public data_type dt; 
         
-        public makeBasa(data_type dt)
+        public makeBasa(int ln, data_type dt)
         {
+            super(ln);
             this.dt = dt;
         }
         
@@ -45,13 +51,13 @@ public abstract class utos_makeBasa implements created.iNode
             {
                 if(((data_type.datatypePrimitive) dt).toString().equals("poor"))
                 {
-                    ErrorReport.error("Cannot get void as user input.");
+                    ErrorReport.error(ln(), "Cannot get void as user input.");
                 }
                 return ((data_type.datatypePrimitive) dt).checkContext(sl);
             }
             else if(dt instanceof data_type.datatypeReference)
             {
-                ErrorReport.error("Cannot get array as user input.");
+                ErrorReport.error(ln(), "Cannot get array as user input.");
             }
             return "";
         }

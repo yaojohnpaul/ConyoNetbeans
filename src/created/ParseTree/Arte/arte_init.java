@@ -9,14 +9,20 @@ import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
-public abstract class arte_init implements created.iNode 
+public abstract class arte_init extends created.iNode 
 {
+    public arte_init(int ln)
+    {
+        super(ln);
+    }
+    
     public static class arrayInit extends arte_init
     {
         public array_init a; 
         
-        public arrayInit(array_init a)
+        public arrayInit(int ln, array_init a)
         {
+            super(ln);
             this.a = a;
         }
         
@@ -65,8 +71,9 @@ public abstract class arte_init implements created.iNode
     {
         public sabi_sabi s; 
         
-        public sabiInit(sabi_sabi s)
+        public sabiInit(int ln, sabi_sabi s)
         {
+            super(ln);
             this.s = s;
         }
         

@@ -9,13 +9,19 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.*;
 
-public abstract class sabi_sabi_for implements created.iNode
+public abstract class sabi_sabi_for extends created.iNode
 {
+    public sabi_sabi_for(int ln)
+    {
+        super(ln);
+    }
+    
     public static class SabiSabiFor extends sabi_sabi_for
     {
         public sabi_sabi s;
         
-        public SabiSabiFor(sabi_sabi s){
+        public SabiSabiFor(int ln, sabi_sabi s){
+            super(ln);
             this.s = s;
         }
         

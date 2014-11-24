@@ -9,14 +9,20 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.*;
 
-public abstract class ss_unary_1 implements created.iNode
+public abstract class ss_unary_1 extends created.iNode
 {
+    public ss_unary_1(int ln)
+    {
+        super(ln);
+    }
+    
     public static class ssU1Not extends ss_unary_1
     {
         public ss_unary_1 u;
         
-        public ssU1Not(ss_unary_1 u)
+        public ssU1Not(int ln, ss_unary_1 u)
         {
+            super(ln);
             this.u = u;
         }
         
@@ -53,7 +59,7 @@ public abstract class ss_unary_1 implements created.iNode
             if(unary == "booly")
                 return unary;
                 
-            ErrorReport.error("Cannot use " + unary + " datatype with NOT operator.");
+            ErrorReport.error(ln(), "Cannot use " + unary + " datatype with NOT operator.");
             return "";
         } 
         
@@ -76,8 +82,9 @@ public abstract class ss_unary_1 implements created.iNode
     {
         public ss_paren p;
         
-        public ssU1Neg(ss_paren p)
+        public ssU1Neg(int ln, ss_paren p)
         {
+            super(ln);
             this.p = p;
         }
         
@@ -116,7 +123,7 @@ public abstract class ss_unary_1 implements created.iNode
                 return unary;
             }
                 
-            ErrorReport.error("Cannot use " + unary + " datatype with NOT operator.");
+            ErrorReport.error(ln(), "Cannot use " + unary + " datatype with NOT operator.");
             return "";
         } 
         
@@ -153,8 +160,9 @@ public abstract class ss_unary_1 implements created.iNode
     {
         public ss_paren p;
         
-        public ssU1(ss_paren p)
+        public ssU1(int ln, ss_paren p)
         {
+            super(ln);
             this.p = p;
         }
         

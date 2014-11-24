@@ -8,19 +8,26 @@ import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
-public abstract class OMG_section implements created.iNode 
+public abstract class OMG_section extends created.iNode 
 {
+    public OMG_section(int ln)
+    {
+        super(ln);
+    }
+    
     public static class OMGSection extends OMG_section
     {
         public OMG_list o;
         
-        public OMGSection(OMG_list o)
+        public OMGSection(int ln, OMG_list o)
         {
+            super(ln);
             this.o = o;
         }
         
-        public OMGSection()
+        public OMGSection(int ln)
         {
+            super(ln);
             this.o = null;
         }
         

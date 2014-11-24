@@ -9,16 +9,22 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.*;
 
-public abstract class ss_comparison implements created.iNode
+public abstract class ss_comparison extends created.iNode
 {
+    public ss_comparison(int ln)
+    {
+        super(ln);
+    }
+    
     public static class ssComparisonExpansion extends ss_comparison
     {
         public ss_a1 a;
         public comparison co;
         public ss_comparison c;
         
-        public ssComparisonExpansion(ss_a1 a, comparison co, ss_comparison c)
+        public ssComparisonExpansion(int ln, ss_a1 a, comparison co, ss_comparison c)
         {
+            super(ln);
             this.a = a;
             this.co = co;
             this.c = c;
@@ -89,18 +95,18 @@ public abstract class ss_comparison implements created.iNode
                 case "inty" : break;
                 default : 
                     if(arith.isEmpty())
-                        ErrorReport.error("Datatype Not Allowed with Comparison Operator");
+                        ErrorReport.error(ln(), "Datatype Not Allowed with Comparison Operator");
                     else
-                        ErrorReport.error("Datatype Not Allowed with Comparison Operator: " + arith);
+                        ErrorReport.error(ln(), "Datatype Not Allowed with Comparison Operator: " + arith);
                             return "";
             }
             if(arith.equals(compare) || arith.equals("floaty") && compare.equals("inty") || arith.equals("inty") && compare.equals("floaty"))
                 return "booly";
                 
             if(arith.isEmpty() || compare.isEmpty())
-                ErrorReport.error("Datatype Mismatch in comparison operator");
+                ErrorReport.error(ln(), "Datatype Mismatch in comparison operator");
             else
-                ErrorReport.error("Datatype Mismatch in comparison operator: " + arith + " and " + compare);
+                ErrorReport.error(ln(), "Datatype Mismatch in comparison operator: " + arith + " and " + compare);
             return "";
         } 
         
@@ -198,8 +204,9 @@ public abstract class ss_comparison implements created.iNode
     {
         public ss_a1 a;
         
-        public ssComparison(ss_a1 a)
+        public ssComparison(int ln, ss_a1 a)
         {
+            super(ln);
             this.a = a;
         }
         

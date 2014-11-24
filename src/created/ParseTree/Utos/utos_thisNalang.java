@@ -9,19 +9,26 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.*;
 
-public abstract class utos_thisNalang implements created.iNode  
+public abstract class utos_thisNalang extends created.iNode  
 {
+    public utos_thisNalang(int ln)
+    {
+        super(ln);
+    }
+    
     public static class thisNalang extends utos_thisNalang
     {
         public utos_block b; 
         
-        public thisNalang()
+        public thisNalang(int ln)
         {
+            super(ln);
             this.b = null;
         }
         
-        public thisNalang(utos_block b)
+        public thisNalang(int ln, utos_block b)
         {
+            super(ln);
             this.b = b;
         }
         
@@ -73,8 +80,9 @@ public abstract class utos_thisNalang implements created.iNode
         public utos_block b;
         public utos_thisNalang t;
         
-        public thisNalangKapag(sabi_sabi s, utos_block b, utos_thisNalang t)
+        public thisNalangKapag(int ln, sabi_sabi s, utos_block b, utos_thisNalang t)
         {
+            super(ln);
             this.s = s;
             this.b = b;
             this.t = t;
@@ -131,7 +139,7 @@ public abstract class utos_thisNalang implements created.iNode
             
             if(!a.equals("booly"))
             {
-                ErrorReport.error("Condition for if else statement is not Boolean");
+                ErrorReport.error(ln(), "Condition for if else statement is not Boolean");
             }
         }
         

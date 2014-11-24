@@ -9,15 +9,20 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.*;
 
-public abstract class sabi_sabi_end implements created.iNode
+public abstract class sabi_sabi_end extends created.iNode
 {
+    public sabi_sabi_end(int ln)
+    {
+        super(ln);
+    }
     
     public static class ssEndValidVar extends sabi_sabi_end
     {
         public valid_var v;
         
-        public ssEndValidVar(valid_var v)
+        public ssEndValidVar(int ln, valid_var v)
         {
+            super(ln);
             this.v = v;
         }
         
@@ -69,8 +74,9 @@ public abstract class sabi_sabi_end implements created.iNode
     {
         public utos_dec_val u;
         
-        public ssEndUtos(utos_dec_val u)
+        public ssEndUtos(int ln, utos_dec_val u)
         {
+            super(ln);
             this.u = u;
         }
         
@@ -103,7 +109,7 @@ public abstract class sabi_sabi_end implements created.iNode
                 fndt = ((utos_dec_val.utosMakeTawag) u).checkContext(sl);
                 if(fndt.equals("poor"))
                 {
-                    ErrorReport.error("Void function used in expression.: " + 
+                    ErrorReport.error(ln(), "Void function used in expression.: " + 
                     ((valid_name.identifier)((utos_makeTawag.makeTawag)((utos_dec_val.utosMakeTawag) u).ut).vn).toString());
                     return "";
                 }
@@ -133,8 +139,9 @@ public abstract class sabi_sabi_end implements created.iNode
     {
         public literal l;
         
-        public ssEndLiteral(literal l)
+        public ssEndLiteral(int ln, literal l)
         {
+            super(ln);
             this.l = l;
         }
         

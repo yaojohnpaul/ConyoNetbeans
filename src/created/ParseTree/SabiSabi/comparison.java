@@ -9,14 +9,20 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.*;
 
-public abstract class comparison implements created.iNode
+public abstract class comparison extends created.iNode
 {
+    public comparison(int ln)
+    {
+        super(ln);
+    }
+    
     public static class compare extends comparison
     {
         public String kind; // will contain either <, <=, >= or >
         
-        public compare(String type)
+        public compare(int ln, String type)
         {
+            super(ln);
             kind = type;
         }
         

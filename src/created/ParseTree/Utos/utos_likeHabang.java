@@ -9,21 +9,28 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.*;
 
-public abstract class utos_likeHabang implements created.iNode  
+public abstract class utos_likeHabang extends created.iNode  
 {
+    public utos_likeHabang(int ln)
+    {
+        super(ln);
+    }
+    
     public static class likeHabang extends utos_likeHabang
     {
         public sabi_sabi s; 
         public utos_block u;
         
-        public likeHabang(sabi_sabi s)
+        public likeHabang(int ln, sabi_sabi s)
         {
+            super(ln);
             this.s = s;
             this.u = null;
         }
         
-        public likeHabang(sabi_sabi s, utos_block u)
+        public likeHabang(int ln, sabi_sabi s, utos_block u)
         {
+            super(ln);
             this.s = s;
             this.u = u;
         }
@@ -57,7 +64,7 @@ public abstract class utos_likeHabang implements created.iNode
                 type = ((sabi_sabi.SabiSabi) s).checkContext(sl);
                 if(!type.equals("booly"))
                 {
-                    ErrorReport.error("Condition for while statement is not Boolean");
+                    ErrorReport.error(ln(), "Condition for while statement is not Boolean");
                 }
             }
             
