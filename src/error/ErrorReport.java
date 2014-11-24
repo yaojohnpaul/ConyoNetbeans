@@ -20,7 +20,6 @@ public class ErrorReport
     {
         if(sb.length() > 0)
         {
-            System.out.println("\nErrors:");
             System.out.println(sb);
         }
     }

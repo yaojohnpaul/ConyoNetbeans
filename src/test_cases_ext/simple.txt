@@ -6,14 +6,25 @@ $
         makeSulat(i) db
 $
 
+hireYaya test2 bayad (inty a) makeBalik poor
+$
+    likeKapag(a < 0)
+    $
+        makeSulat("Negative number!") db
+    $
+    thisNalangKapag(a == 0)
+    $
+        makeSulat("Zero!") db
+    $
+    thisNalang
+    $
+        makeSulat("Positive number!") db
+    $
+$
+
 superYaya
 $
-        makeArte inty[] a makeKuha {1, 2} db
-        a makeKuha {1,2,3} db
-        makeArte inty j makeKuha 11 db
-        makeArte floaty i db
-        i makeKuha TEST db
-        makeSulat("input: ") db
-        makeSulat(makeBasa(inty)) db
-        makeSulat("LOOK AT THIS AMAZING ARITHMETIC: " + 1 + a[2]) db
+        makeSulat("Input any integer: ") db
+        makeArte inty i makeKuha makeBasa(inty) db
+        makeTawag test2(i) db
 $

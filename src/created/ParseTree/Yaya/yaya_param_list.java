@@ -77,6 +77,29 @@ public abstract class yaya_param_list implements created.iNode
             }
         }
         
+        public ArrayList<String> getNames()
+        {
+            ArrayList<String> local = new ArrayList<>();
+            
+            if(ypl instanceof yaya_param_list.yayaParamList)
+            {
+                local.addAll(((yaya_param_list.yayaParamList) ypl).getNames());
+                if(yp instanceof yaya_param.yayaParam)
+                {
+                    local.add(((yaya_param.yayaParam) yp).id);
+                }
+                return local;
+            }
+            else
+            {
+                if(yp instanceof yaya_param.yayaParam)
+                {
+                    local.add(((yaya_param.yayaParam) yp).id);
+                }
+                return local;
+            }
+        }
+        
         public void checkContext(SymList sl)
         {
             if(yp instanceof yaya_param.yayaParam)

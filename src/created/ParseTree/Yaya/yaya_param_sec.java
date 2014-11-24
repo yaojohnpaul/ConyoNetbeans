@@ -50,6 +50,15 @@ public abstract class yaya_param_sec implements created.iNode
             return new ArrayList<>();
         }
         
+        public ArrayList<String> getNames()
+        {
+            if(ypl instanceof yaya_param_list.yayaParamList)
+            {
+                return ((yaya_param_list.yayaParamList) ypl).getNames();
+            }
+            return new ArrayList<>();
+        }
+        
         public void checkContext(SymList sl)
         {
             if(ypl instanceof yaya_param_list.yayaParamList)
