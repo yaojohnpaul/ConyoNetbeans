@@ -158,9 +158,48 @@ public abstract class ss_a2 implements created.iNode
             {
                 switch(((arithmetic_2.arithmetic2) ar).evaluate())
                 {
-                    case "*" : return (double)o1 * (double)o2;
-                    case "/" : return (double)o1 / (double)o2;
-                    case "%" : return (double)o1 % (double)o2;
+                    case "*" : if (o1 instanceof Float)
+                                {
+                                    if(o2 instanceof Float)
+                                        return (float)o1 * (float)o2;
+                                    else if(o2 instanceof Integer)
+                                        return (float)o1 * (int)o2;
+                                }
+                                else if (o1 instanceof Integer)
+                                {
+                                    if(o2 instanceof Float)
+                                        return (int)o1 * (float)o2;
+                                    else if(o2 instanceof Integer)
+                                        return (int)o1 * (int)o2;
+                                }
+                    case "/" : if (o1 instanceof Float)
+                                {
+                                    if(o2 instanceof Float)
+                                        return (float)o1 / (float)o2;
+                                    else if(o2 instanceof Integer)
+                                        return (float)o1 / (int)o2;
+                                }
+                                else if (o1 instanceof Integer)
+                                {
+                                    if(o2 instanceof Float)
+                                        return (int)o1 / (float)o2;
+                                    else if(o2 instanceof Integer)
+                                        return (int)o1 / (int)o2;
+                                }
+                    case "%" : if (o1 instanceof Float)
+                                {
+                                    if(o2 instanceof Float)
+                                        return (float)o1 % (float)o2;
+                                    else if(o2 instanceof Integer)
+                                        return (float)o1 % (int)o2;
+                                }
+                                else if (o1 instanceof Integer)
+                                {
+                                    if(o2 instanceof Float)
+                                        return (int)o1 % (float)o2;
+                                    else if(o2 instanceof Integer)
+                                        return (int)o1 % (int)o2;
+                                }
                 }
             }
             

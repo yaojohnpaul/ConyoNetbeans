@@ -79,7 +79,20 @@ public abstract class utos_makePalit implements created.iNode
         
         public void evaluate(SymList sl)
         {
+            Object match = null;
+            if(s instanceof sabi_sabi.SabiSabi)
+            {
+                match = ((sabi_sabi.SabiSabi) s).evaluate(sl);
+            }
             
+            if(m instanceof makePalit_MRW.MRW)
+            {
+                ((makePalit_MRW.MRW) m).evaluate(sl, match);
+            }
+            else if(m instanceof makePalit_MRW.MDR)
+            {
+                ((makePalit_MRW.MDR) m).evaluate(sl);
+            }
         }
     }
 }
