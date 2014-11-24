@@ -138,8 +138,6 @@ public class Conyogram implements iNode
         {
             ((super_yaya.superYaya) s).evaluate(super_sym);
         }
-
-        OutGen.printResult();
     }
     
     /**

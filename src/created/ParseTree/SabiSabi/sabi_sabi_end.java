@@ -117,6 +117,14 @@ public abstract class sabi_sabi_end implements created.iNode
         
         public Object evaluate(SymList sl)
         {
+            if(u instanceof utos_dec_val.utosMakeBasa)
+            {
+                return ((utos_dec_val.utosMakeBasa) u).evaluate(sl);
+            }
+            else if(u instanceof utos_dec_val.utosMakeTawag)
+            {
+                return ((utos_dec_val.utosMakeTawag) u).evaluate(sl);
+            }
             return null;
         }
     }

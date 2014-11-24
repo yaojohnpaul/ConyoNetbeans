@@ -50,6 +50,15 @@ public abstract class utos_dec_val implements created.iNode
                 ((utos_makeTawag.makeTawag) ut).preInterpret(sl);
             }
         }
+        
+        public Object evaluate(SymList sl)
+        {
+            if(ut instanceof utos_makeTawag.makeTawag)
+            {
+                return ((utos_makeTawag.makeTawag) ut).evaluate(sl);
+            }
+            return null;
+        }
     }
     
     public static class utosMakeBasa extends utos_dec_val
@@ -91,6 +100,15 @@ public abstract class utos_dec_val implements created.iNode
             {
                 ((utos_makeBasa.makeBasa) ub).preInterpret(sl);
             }
+        }
+        
+        public Object evaluate(SymList sl)
+        {
+            if(ub instanceof utos_makeBasa.makeBasa)
+            {
+                return ((utos_makeBasa.makeBasa) ub).evaluate(sl);
+            }
+            return null;
         }
     }
 }

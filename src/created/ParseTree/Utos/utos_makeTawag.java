@@ -138,5 +138,10 @@ public abstract class utos_makeTawag implements created.iNode
                 ((arte_init_list.arteInitList) l).preInterpret(sl);
             } 
         }
+        
+        public Object evaluate(SymList sl)
+        {
+            return null;
+        }
     }
 }

@@ -13,6 +13,7 @@ $
         makeArte inty j makeKuha 11 db
         makeArte floaty i db
         i makeKuha TEST db
-        makeSulat(100 * 5 + 1) db
+        makeSulat("input: ") db
+        makeSulat(makeBasa(inty)) db
         makeSulat("LOOK AT THIS AMAZING ARITHMETIC: " + 1 + a[2]) db
 $
