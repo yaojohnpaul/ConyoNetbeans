@@ -8,14 +8,20 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
-public abstract class utos_dec implements created.iNode 
+public abstract class utos_dec extends created.iNode 
 {
+    public utos_dec(int ln)
+    {
+        super(ln);
+    }
+    
     public static class utosDecDB extends utos_dec
     {
         public utos_dec_db ud;
         
-        public utosDecDB(utos_dec_db ud)
+        public utosDecDB(int ln, utos_dec_db ud)
         {
+            super(ln);
             this.ud = ud;
         }
         
@@ -111,8 +117,9 @@ public abstract class utos_dec implements created.iNode
     {
         public utos_dec_val uv;
         
-        public utosDecVal(utos_dec_val uv)
+        public utosDecVal(int ln, utos_dec_val uv)
         {
+            super(ln);
             this.uv = uv;
         }
         
@@ -159,7 +166,14 @@ public abstract class utos_dec implements created.iNode
         
         public void evaluate(SymList sl)
         {
-            
+            if(uv instanceof utos_dec_val.utosMakeTawag)
+            {
+                ((utos_dec_val.utosMakeTawag) uv).evaluate(sl);
+            }
+            else if(uv instanceof utos_dec_val.utosMakeBasa)
+            {
+                ((utos_dec_val.utosMakeBasa) uv).evaluate(sl);
+            }
         }
     }
     
@@ -167,8 +181,9 @@ public abstract class utos_dec implements created.iNode
     {
         public utos_dec_nodb un;
         
-        public utosDecNoDB(utos_dec_nodb un)
+        public utosDecNoDB(int ln, utos_dec_nodb un)
         {
+            super(ln);
             this.un = un;
         }
         
@@ -292,8 +307,9 @@ public abstract class utos_dec implements created.iNode
     {
         public utos_sabisabi us;
         
-        public utosDecSabiSabi(utos_sabisabi us)
+        public utosDecSabiSabi(int ln, utos_sabisabi us)
         {
+            super(ln);
             this.us = us;
         }
         

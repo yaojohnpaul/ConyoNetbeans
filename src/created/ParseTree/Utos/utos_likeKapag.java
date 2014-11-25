@@ -9,16 +9,22 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.*;
 
-public abstract class utos_likeKapag implements created.iNode  
+public abstract class utos_likeKapag extends created.iNode  
 {
+    public utos_likeKapag(int ln)
+    {
+        super(ln);
+    }
+    
     public static class likeKapag extends utos_likeKapag
     {
         public sabi_sabi s;
         public utos_block b;
         public utos_thisNalang t;
         
-        public likeKapag(sabi_sabi s, utos_block b, utos_thisNalang t)
+        public likeKapag(int ln, sabi_sabi s, utos_block b, utos_thisNalang t)
         {
+            super(ln);
             this.s = s;
             this.b = b;
             this.t = t;
@@ -75,7 +81,7 @@ public abstract class utos_likeKapag implements created.iNode
             
             if(!a.equals("booly"))
             {
-                ErrorReport.error("Condition for if else statement is not Boolean");
+                ErrorReport.error(ln(), "Condition for if else statement is not Boolean");
             }
         }
         

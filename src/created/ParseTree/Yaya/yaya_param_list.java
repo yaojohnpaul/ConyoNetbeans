@@ -9,21 +9,28 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Utos.*;
 import created.Sym.*;
 
-public abstract class yaya_param_list implements created.iNode 
+public abstract class yaya_param_list extends created.iNode 
 {
+    public yaya_param_list(int ln)
+    {
+        super(ln);
+    }
+    
     public static class yayaParamList extends yaya_param_list
     {
         public yaya_param yp;
         public yaya_param_list ypl;
         
-        public yayaParamList(yaya_param yp, yaya_param_list ypl)
+        public yayaParamList(int ln, yaya_param yp, yaya_param_list ypl)
         {
+            super(ln);
             this.yp = yp;
             this.ypl = ypl;
         }
         
-        public yayaParamList(yaya_param yp)
+        public yayaParamList(int ln, yaya_param yp)
         {
+            super(ln);
             this.yp = yp;
             this.ypl = null;
         }
@@ -72,6 +79,29 @@ public abstract class yaya_param_list implements created.iNode
                 if(yp instanceof yaya_param.yayaParam)
                 {
                     local.add(((yaya_param.yayaParam) yp).dt);
+                }
+                return local;
+            }
+        }
+        
+        public ArrayList<String> getNames()
+        {
+            ArrayList<String> local = new ArrayList<>();
+            
+            if(ypl instanceof yaya_param_list.yayaParamList)
+            {
+                local.addAll(((yaya_param_list.yayaParamList) ypl).getNames());
+                if(yp instanceof yaya_param.yayaParam)
+                {
+                    local.add(((yaya_param.yayaParam) yp).id);
+                }
+                return local;
+            }
+            else
+            {
+                if(yp instanceof yaya_param.yayaParam)
+                {
+                    local.add(((yaya_param.yayaParam) yp).id);
                 }
                 return local;
             }

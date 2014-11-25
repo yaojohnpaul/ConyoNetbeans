@@ -8,23 +8,30 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
-public abstract class makePalit_MRW implements created.iNode  
+public abstract class makePalit_MRW extends created.iNode  
 {
+    public makePalit_MRW(int ln)
+    {
+        super(ln);
+    }
+    
     public static class MRW extends makePalit_MRW
     {
         public sabi_sabi s; 
         public utos_block_opt u;
         public makePalit_MRW m;
         
-        public MRW()
+        public MRW(int ln)
         {
+            super(ln);
             this.s = null;
             this.u = null;
             this.m = null;
         }
         
-        public MRW(sabi_sabi s, utos_block_opt u, makePalit_MRW m)
+        public MRW(int ln, sabi_sabi s, utos_block_opt u, makePalit_MRW m)
         {
+            super(ln);
             this.s = s;
             this.u = u;
             this.m = m;
@@ -108,8 +115,11 @@ public abstract class makePalit_MRW implements created.iNode
         {
             Object toBeMatched = null;
             boolean flag = previousFlag;
+<<<<<<< HEAD
             int utosType = 0;
             
+=======
+>>>>>>> a82c3eba95ad968e41c0e3314d7344e2d8a1bc93
             if(flag == false)
             {
                 if(s instanceof sabi_sabi.SabiSabi)
@@ -117,16 +127,8 @@ public abstract class makePalit_MRW implements created.iNode
                     toBeMatched = ((sabi_sabi.SabiSabi) s).evaluate(sl);
                 }
                 
+                flag = match.equals(toBeMatched);
                 
-                if (match instanceof String)
-                {
-                    if(toBeMatched instanceof String)
-                        flag = ((String)match).equals((String)toBeMatched);
-                }
-                else
-                {
-                    flag = match == toBeMatched;
-                }
                 
                 if(flag == true)
                 {
@@ -172,8 +174,9 @@ public abstract class makePalit_MRW implements created.iNode
     {
         public utos_block_opt o; 
         
-        public MDR(utos_block_opt o)
+        public MDR(int ln, utos_block_opt o)
         {
+            super(ln);
             this.o = o;
         }
         

@@ -8,14 +8,20 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
-public abstract class utos_dec_db implements created.iNode  
+public abstract class utos_dec_db extends created.iNode  
 {
+    public utos_dec_db(int ln)
+    {
+        super(ln);
+    }
+    
     public static class utosMakeKuha extends utos_dec_db
     {
         public utos_makeKuha uk; 
         
-        public utosMakeKuha(utos_makeKuha uk)
+        public utosMakeKuha(int ln, utos_makeKuha uk)
         {
+            super(ln);
             this.uk = uk;
         }
         
@@ -61,8 +67,9 @@ public abstract class utos_dec_db implements created.iNode
     {
         public utos_makeSulat usu; 
         
-        public utosMakeSulat(utos_makeSulat usu)
+        public utosMakeSulat(int ln, utos_makeSulat usu)
         {
+            super(ln);
             this.usu = usu;
         }
         
@@ -106,8 +113,9 @@ public abstract class utos_dec_db implements created.iNode
     
     public static class breakup extends utos_dec_db
     {
-        public breakup()
+        public breakup(int ln)
         {
+            super(ln);
         }
         
         public String toString()
@@ -123,8 +131,9 @@ public abstract class utos_dec_db implements created.iNode
     
     public static class makeup extends utos_dec_db
     {
-        public makeup()
+        public makeup(int ln)
         {
+            super(ln);
         }
         
         public String toString()

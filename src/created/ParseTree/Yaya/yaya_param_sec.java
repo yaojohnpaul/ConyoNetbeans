@@ -9,19 +9,26 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Utos.*;
 import created.Sym.*;
 
-public abstract class yaya_param_sec implements created.iNode 
+public abstract class yaya_param_sec extends created.iNode 
 {
+    public yaya_param_sec(int ln)
+    {
+        super(ln);
+    }
+    
     public static class yayaParamSec extends yaya_param_sec
     {
         public yaya_param_list ypl;
         
-        public yayaParamSec()
+        public yayaParamSec(int ln)
         {
+            super(ln);
             ypl = null;   
         }
         
-        public yayaParamSec(yaya_param_list ypl)
+        public yayaParamSec(int ln, yaya_param_list ypl)
         {
+            super(ln);
             this.ypl = ypl;
         }
         
@@ -46,6 +53,15 @@ public abstract class yaya_param_sec implements created.iNode
             if(ypl instanceof yaya_param_list.yayaParamList)
             {
                 return ((yaya_param_list.yayaParamList) ypl).getContents();
+            }
+            return new ArrayList<>();
+        }
+        
+        public ArrayList<String> getNames()
+        {
+            if(ypl instanceof yaya_param_list.yayaParamList)
+            {
+                return ((yaya_param_list.yayaParamList) ypl).getNames();
             }
             return new ArrayList<>();
         }

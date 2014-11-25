@@ -9,13 +9,19 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.*;
 
-public abstract class ss_paren implements created.iNode
+public abstract class ss_paren extends created.iNode
 {
+    public ss_paren(int ln)
+    {
+        super(ln);
+    }
+    
     public static class ssParen extends ss_paren
     {
         public ss_OR a;
         
-        public ssParen(ss_OR a){
+        public ssParen(int ln, ss_OR a){
+            super(ln);
             this.a = a;
         }
         
@@ -68,8 +74,9 @@ public abstract class ss_paren implements created.iNode
     {
         public sabi_sabi_end e;
         
-        public ssParenEnd(sabi_sabi_end e)
+        public ssParenEnd(int ln, sabi_sabi_end e)
         {
+            super(ln);
             this.e = e;
         }
         

@@ -9,16 +9,22 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.*;
 
-public abstract class ss_a1 implements created.iNode
+public abstract class ss_a1 extends created.iNode
 {
+    public ss_a1(int ln)
+    {
+        super(ln);
+    }
+    
     public static class ssA1Expansion extends ss_a1
     {
         public ss_a2 a2;
         public arithmetic_1 ar;
         public ss_a1 a1;
         
-        public ssA1Expansion(ss_a2 a2, arithmetic_1 ar, ss_a1 a1)
+        public ssA1Expansion(int ln, ss_a2 a2, arithmetic_1 ar, ss_a1 a1)
         {
+            super(ln);
             this.a1 = a1;
             this.ar = ar;
             this.a2 = a2;
@@ -96,9 +102,9 @@ public abstract class ss_a1 implements created.iNode
                     case "chary"    : return "stringy";
                     default         : 
                         if(arith2.isEmpty())
-                            ErrorReport.error("Datatype Mismatch with string concatenation.");
+                            ErrorReport.error(ln(), "Datatype Mismatch with string concatenation.");
                         else
-                            ErrorReport.error("Datatype Mismatch with string concatenation. Trying to concatenate " + arith2 + " with string.");         
+                            ErrorReport.error(ln(), "Datatype Mismatch with string concatenation. Trying to concatenate " + arith2 + " with string.");         
                         return "";
                                     
                 }
@@ -115,9 +121,9 @@ public abstract class ss_a1 implements created.iNode
                 case "chary"    : return "stringy";
                 default         :
                     if(arith1.isEmpty())
-                        ErrorReport.error("Datatype Mismatch with string concatenation.");
+                        ErrorReport.error(ln(), "Datatype Mismatch with string concatenation.");
                     else
-                        ErrorReport.error("Datatype Mismatch with string concatenation. Trying to concatenate " + arith1 + " with string.");         
+                        ErrorReport.error(ln(), "Datatype Mismatch with string concatenation. Trying to concatenate " + arith1 + " with string.");         
                     return "";
                 }
             }
@@ -129,9 +135,9 @@ public abstract class ss_a1 implements created.iNode
                     case "stringy" : return "string";
                     default         : 
                         if(arith1.isEmpty() || arith2.isEmpty())
-                            ErrorReport.error("Datatype Mismatch in " + operator + " operator");
+                            ErrorReport.error(ln(), "Datatype Mismatch in " + operator + " operator");
                         else
-                            ErrorReport.error("Datatype Mismatch in " + operator + " operator: " + arith1 + " and " + arith2);
+                            ErrorReport.error(ln(), "Datatype Mismatch in " + operator + " operator: " + arith1 + " and " + arith2);
                                 return "";
                 }
             }
@@ -143,9 +149,9 @@ public abstract class ss_a1 implements created.iNode
                     case "stringy" : return "string";
                     default         : 
                         if(arith1.isEmpty() || arith2.isEmpty())
-                            ErrorReport.error("Datatype Mismatch in " + operator + " operator");
+                            ErrorReport.error(ln(), "Datatype Mismatch in " + operator + " operator");
                         else
-                            ErrorReport.error("Datatype Mismatch in " + operator + " operator: " + arith1 + " and " + arith2);
+                            ErrorReport.error(ln(), "Datatype Mismatch in " + operator + " operator: " + arith1 + " and " + arith2);
                                 return "";
                 }
             }
@@ -155,18 +161,18 @@ public abstract class ss_a1 implements created.iNode
                 case "inty" : break;
                 default : 
                     if(arith2.isEmpty())
-                        ErrorReport.error("Datatype Not Allowed in " + operator + " operator");
+                        ErrorReport.error(ln(), "Datatype Not Allowed in " + operator + " operator");
                     else
-                        ErrorReport.error("Datatype Not Allowed in " + operator + " operator: " + arith2);
+                        ErrorReport.error(ln(), "Datatype Not Allowed in " + operator + " operator: " + arith2);
                             return "";
             }
             if(arith2.equals(arith1))
                 return arith2;
                 
             if(arith1.isEmpty() || arith2.isEmpty())
-                ErrorReport.error("Datatype Mismatch in " + operator + " operator");
+                ErrorReport.error(ln(), "Datatype Mismatch in " + operator + " operator");
             else
-                ErrorReport.error("Datatype Mismatch in " + operator + " operator: " + arith1 + " and " + arith2);
+                ErrorReport.error(ln(), "Datatype Mismatch in " + operator + " operator: " + arith1 + " and " + arith2);
             return "";
         } 
         
@@ -268,8 +274,9 @@ public abstract class ss_a1 implements created.iNode
     {
         public ss_a2 a2;
         
-        public ssA1(ss_a2 a2)
+        public ssA1(int ln, ss_a2 a2)
         {
+            super(ln);
             this.a2 = a2;
         }
         

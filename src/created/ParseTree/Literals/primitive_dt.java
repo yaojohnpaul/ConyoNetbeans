@@ -8,15 +8,20 @@ import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
-public abstract class primitive_dt implements created.iNode
+public abstract class primitive_dt extends created.iNode
 {
+    public primitive_dt(int ln)
+    {
+        super(ln);
+    }
     
     public static class intType extends primitive_dt
     {
         public String i;
         
-        public intType(String i)
+        public intType(int ln, String i)
         {
+            super(ln);
             this.i = i;
         }
         
@@ -29,8 +34,9 @@ public abstract class primitive_dt implements created.iNode
     {
         public String f;
         
-        public floatType(String f)
+        public floatType(int ln, String f)
         {
+            super(ln);
             this.f = f;
         }
         
@@ -43,8 +49,9 @@ public abstract class primitive_dt implements created.iNode
     {
         public String s;
         
-        public stringType(String s)
+        public stringType(int ln, String s)
         {
+            super(ln);
             this.s = s;
         }
         
@@ -57,8 +64,9 @@ public abstract class primitive_dt implements created.iNode
     {
         public String c;
         
-        public charType(String c)
+        public charType(int ln, String c)
         {
+            super(ln);
             this.c = c;
         }
         
@@ -71,8 +79,9 @@ public abstract class primitive_dt implements created.iNode
     {
         public String b;
         
-        public booleanType(String b)
+        public booleanType(int ln, String b)
         {
+            super(ln);
             this.b = b;
         }
         

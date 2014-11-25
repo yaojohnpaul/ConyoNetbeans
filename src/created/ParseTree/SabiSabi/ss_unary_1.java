@@ -9,14 +9,20 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.*;
 
-public abstract class ss_unary_1 implements created.iNode
+public abstract class ss_unary_1 extends created.iNode
 {
+    public ss_unary_1(int ln)
+    {
+        super(ln);
+    }
+    
     public static class ssU1Not extends ss_unary_1
     {
         public ss_unary_1 u;
         
-        public ssU1Not(ss_unary_1 u)
+        public ssU1Not(int ln, ss_unary_1 u)
         {
+            super(ln);
             this.u = u;
         }
         
@@ -53,7 +59,7 @@ public abstract class ss_unary_1 implements created.iNode
             if(unary == "booly")
                 return unary;
                 
-            ErrorReport.error("Cannot use " + unary + " datatype with NOT operator.");
+            ErrorReport.error(ln(), "Cannot use " + unary + " datatype with NOT operator.");
             return "";
         } 
         
@@ -72,12 +78,91 @@ public abstract class ss_unary_1 implements created.iNode
         }
     }
     
+    public static class ssU1Neg extends ss_unary_1
+    {
+        public ss_paren p;
+        
+        public ssU1Neg(int ln, ss_paren p)
+        {
+            super(ln);
+            this.p = p;
+        }
+        
+        public String toString()
+        {
+            return "-" + p.toString();
+        }
+        
+        public void setSymList(SymList sl)
+        {
+            if(p instanceof ss_paren.ssParen)
+            {
+                ((ss_paren.ssParen) p).setSymList(sl);
+            }
+            else if(p instanceof ss_paren.ssParenEnd)
+            {
+                ((ss_paren.ssParenEnd) p).setSymList(sl);
+            }
+        }
+        
+        public String checkContext(SymList sl) 
+        { // for sabi sabi plng
+            String unary = "";
+            if(p instanceof ss_paren.ssParen)
+            {
+                unary = ((ss_paren.ssParen) p).checkContext(sl);
+            }
+            else if(p instanceof ss_paren.ssParenEnd)
+            {
+                unary = ((ss_paren.ssParenEnd) p).checkContext(sl);
+            }
+           
+            //other context here
+            if(unary.equals("inty") || unary.equals("floaty"))
+            {
+                return unary;
+            }
+                
+            ErrorReport.error(ln(), "Cannot use " + unary + " datatype with NOT operator.");
+            return "";
+        } 
+        
+        public Object evaluate(SymList sl)
+        {
+            if(p instanceof ss_paren.ssParen)
+            {
+                if(((ss_paren.ssParen) p).evaluate(sl) instanceof Integer)
+                {
+                    return -((int)(((ss_paren.ssParen) p).evaluate(sl)));
+                }
+                else if(((ss_paren.ssParen) p).evaluate(sl) instanceof Float)
+                {
+                    return -((float)(((ss_paren.ssParen) p).evaluate(sl)));
+                }
+            }
+            else if(p instanceof ss_paren.ssParenEnd)
+            {
+                if(((ss_paren.ssParenEnd) p).evaluate(sl) instanceof Integer)
+                {
+                    return -((int)(((ss_paren.ssParenEnd) p).evaluate(sl)));
+                }
+                else if(((ss_paren.ssParenEnd) p).evaluate(sl) instanceof Float)
+                {
+                    return -((float)(((ss_paren.ssParenEnd) p).evaluate(sl)));
+                }
+            }
+            
+            return null;
+        }
+    }
+    
     public static class ssU1 extends ss_unary_1
     {
         public ss_paren p;
         
-        public ssU1(ss_paren p)
+        public ssU1(int ln, ss_paren p)
         {
+            super(ln);
             this.p = p;
         }
         

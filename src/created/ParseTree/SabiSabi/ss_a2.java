@@ -9,16 +9,22 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.*;
 
-public abstract class ss_a2 implements created.iNode
+public abstract class ss_a2 extends created.iNode
 {
+    public ss_a2(int ln)
+    {
+        super(ln);
+    }
+    
     public static class ssA2Expansion extends ss_a2
     {
         public ss_unary_1 u;
         public arithmetic_2 ar;
         public ss_a2 a;
         
-        public ssA2Expansion(ss_unary_1 u, arithmetic_2 ar, ss_a2 a)
+        public ssA2Expansion(int ln, ss_unary_1 u, arithmetic_2 ar, ss_a2 a)
         {
+            super(ln);
             this.u = u;
             this.ar = ar;
             this.a = a;
@@ -37,6 +43,10 @@ public abstract class ss_a2 implements created.iNode
             else if(u instanceof ss_unary_1.ssU1Not)
             {
                 ((ss_unary_1.ssU1Not) u).setSymList(sl);
+            }
+            else if(u instanceof ss_unary_1.ssU1Neg)
+            {
+                ((ss_unary_1.ssU1Neg) u).setSymList(sl);
             }
             
             if(ar instanceof arithmetic_2.arithmetic2)
@@ -69,6 +79,10 @@ public abstract class ss_a2 implements created.iNode
             {
                 a2 = ((ss_a2.ssA2Expansion) a).checkContext(sl);
             }
+            else if(u instanceof ss_unary_1.ssU1Neg)
+            {
+                unary = ((ss_unary_1.ssU1Neg) u).checkContext(sl);
+            }
             
             
             if(ar instanceof arithmetic_2.arithmetic2)
@@ -90,9 +104,9 @@ public abstract class ss_a2 implements created.iNode
                 case "inty" : break;
                 default : 
                     if(unary.isEmpty())
-                        ErrorReport.error("Datatype Not Allowed in " + arith + " operator");
+                        ErrorReport.error(ln(), "Datatype Not Allowed in " + arith + " operator");
                     else
-                        ErrorReport.error("Datatype Not Allowed in " + arith + " operator: " + unary);
+                        ErrorReport.error(ln(), "Datatype Not Allowed in " + arith + " operator: " + unary);
                     return "";
             }
             if(unary.equals("inty")){
@@ -102,9 +116,9 @@ public abstract class ss_a2 implements created.iNode
                     case "floaty" : return "floaty";
                     default         : 
                         if(unary.isEmpty() || a2.isEmpty())
-                            ErrorReport.error("Datatype Mismatch in " + arith + " operator");
+                            ErrorReport.error(ln(), "Datatype Mismatch in " + arith + " operator");
                         else
-                            ErrorReport.error("Datatype Mismatch in " + arith + " operator: " + unary + " and " + a2);
+                            ErrorReport.error(ln(), "Datatype Mismatch in " + arith + " operator: " + unary + " and " + a2);
                         return "";
                 }
             }
@@ -115,9 +129,9 @@ public abstract class ss_a2 implements created.iNode
                     case "floaty" : return "floaty";
                     default         : 
                         if(unary.isEmpty() || a2.isEmpty())
-                            ErrorReport.error("Datatype Mismatch in " + arith + " operator");
+                            ErrorReport.error(ln(), "Datatype Mismatch in " + arith + " operator");
                         else
-                            ErrorReport.error("Datatype Mismatch in " + arith + " operator: " + unary + " and " + a2);
+                            ErrorReport.error(ln(), "Datatype Mismatch in " + arith + " operator: " + unary + " and " + a2);
                                 return "";
                 }
             }
@@ -125,15 +139,15 @@ public abstract class ss_a2 implements created.iNode
                 return unary;
                
             if(unary.isEmpty() || a2.isEmpty())
-                ErrorReport.error("Datatype Mismatch in " + arith + " operator");
+                ErrorReport.error(ln(), "Datatype Mismatch in " + arith + " operator");
             else
-                ErrorReport.error("Datatype Mismatch in " + arith + " operator: " + unary + " and " + a2);
+                ErrorReport.error(ln(), "Datatype Mismatch in " + arith + " operator: " + unary + " and " + a2);
             return "";
         } 
         
         
         
-        public double evaluate(SymList sl)
+        public Object evaluate(SymList sl)
         {
             Object o1 = null;
             Object o2 = null;
@@ -145,6 +159,10 @@ public abstract class ss_a2 implements created.iNode
             else if(a instanceof ss_a2.ssA2Expansion)
             {
                 o1 = ((ss_a2.ssA2Expansion) a).evaluate(sl);
+            }
+            else if(u instanceof ss_unary_1.ssU1Neg)
+            {
+                o1 = ((ss_unary_1.ssU1Neg) u).evaluate(sl);
             }
             
             if(u instanceof ss_unary_1.ssU1)
@@ -188,7 +206,12 @@ public abstract class ss_a2 implements created.iNode
                                     if(o2 instanceof Float)
                                         return (int)o1 / (float)o2;
                                     else if(o2 instanceof Integer)
-                                        return (int)o1 / (int)o2;
+                                    {
+                                        if(((int) o1 % (int) o2) == 0)
+                                            return (int) o1 / (int) o2;
+                                        else
+                                            return Float.intBitsToFloat((int)o1) / Float.intBitsToFloat((int)o2);
+                                    }
                                 }
                     case "%" : if (o1 instanceof Float)
                                 {
@@ -207,7 +230,7 @@ public abstract class ss_a2 implements created.iNode
                 }
             }
             
-            return 0.0;
+            return (float) 0.0;
         }
         
     }
@@ -216,8 +239,9 @@ public abstract class ss_a2 implements created.iNode
     {
         public ss_unary_1 u;
         
-        public ssA2(ss_unary_1 u)
+        public ssA2(int ln, ss_unary_1 u)
         {
+            super(ln);
             this.u = u;
         }
         
@@ -236,6 +260,10 @@ public abstract class ss_a2 implements created.iNode
             {
                 ((ss_unary_1.ssU1Not) u).setSymList(sl);
             }
+            else if(u instanceof ss_unary_1.ssU1Neg)
+            {
+                ((ss_unary_1.ssU1Neg) u).setSymList(sl);
+            }
         }
         
         public String checkContext(SymList sl) 
@@ -247,6 +275,10 @@ public abstract class ss_a2 implements created.iNode
             else if(u instanceof ss_unary_1.ssU1Not)
             {
                 return ((ss_unary_1.ssU1Not) u).checkContext(sl);
+            }
+            else if(u instanceof ss_unary_1.ssU1Neg)
+            {
+                return ((ss_unary_1.ssU1Neg) u).checkContext(sl);
             }
             return "";
         } 
@@ -260,6 +292,10 @@ public abstract class ss_a2 implements created.iNode
             else if(u instanceof ss_unary_1.ssU1Not)
             {
                 return ((ss_unary_1.ssU1Not) u).evaluate(sl);
+            }
+            else if(u instanceof ss_unary_1.ssU1Neg)
+            {
+                return ((ss_unary_1.ssU1Neg) u).evaluate(sl);
             }
             
             return null;

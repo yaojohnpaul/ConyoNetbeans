@@ -9,19 +9,26 @@ import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
-public abstract class arte_init_list implements created.iNode 
+public abstract class arte_init_list extends created.iNode 
 {
+    public arte_init_list(int ln)
+    {
+        super(ln);
+    }
+    
     public static class arteInitList extends arte_init_list
     {
         public arte_init_opt o; 
         
-        public arteInitList()
+        public arteInitList(int ln)
         {
+            super(ln);
             this.o = null;
         }
         
-        public arteInitList(arte_init_opt o)
+        public arteInitList(int ln, arte_init_opt o)
         {
+            super(ln);
             this.o = o;
         }
         

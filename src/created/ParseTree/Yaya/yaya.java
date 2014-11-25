@@ -8,15 +8,21 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Utos.*;
 import created.Sym.*;
 
-public abstract class yaya implements created.iNode  
+public abstract class yaya extends created.iNode  
 {
+    public yaya(int ln)
+    {
+        super(ln);
+    }
+    
     public static class addYaya extends yaya
     {
         public yaya_header h;
         public utos_block u;
         
-        public addYaya(yaya_header h, utos_block u)
+        public addYaya(int ln, yaya_header h, utos_block u)
         {
+            super(ln);
             this.h = h;
             this.u = u;
         }
@@ -40,7 +46,7 @@ public abstract class yaya implements created.iNode
                 {
                     String tName = ((yaya_header.yayaHeader) h).name;
                     SymFunc temp = (SymFunc) sl.getSymbol(tName);
-                    sl.editSymbol(tName, new SymFunc(tName, temp.yayaParamSec(), temp.dataType(), temp.ret(), u, temp.getArity()));
+                    sl.editSymbol(tName, new SymFunc(tName, temp.yayaParamSec(), temp.dataType(), temp.ret(), u, this, temp.getArity()));
                 }
             }
             
@@ -48,6 +54,16 @@ public abstract class yaya implements created.iNode
             {
                 ((utos_block.utosBlock) u).setSymList(this.sl);
             }
+        }
+        
+        public SymList getLocalSymList()
+        {
+            return this.sl;
+        }
+        
+        public void setLocalSymList(SymList sl)
+        {
+            this.sl = sl;
         }
         
         public void checkContext(SymList sl)
@@ -78,7 +94,7 @@ public abstract class yaya implements created.iNode
             }
         }
         
-        public void evaluate(SymList sl)
+        public Object evaluate(SymList sl)
         {
             this.sl.setAncestor(sl);
             if(h instanceof yaya_header.yayaHeader)
@@ -91,7 +107,21 @@ public abstract class yaya implements created.iNode
                 ((utos_block.utosBlock) u).evaluate(this.sl);
             }
             
-            //add return here
+            SymVar sv = null;
+            if(h instanceof yaya_header.yayaHeader)
+            {
+                if(((yaya_header.yayaHeader) h).ret != null)
+                    sv = (SymVar) this.sl.getSymbol(((yaya_header.yayaHeader) h).ret);
+            }
+            
+            if(sv != null)
+            {
+                return sv.value();
+            }
+            else
+            {
+                return null;
+            }
         }
     }
     

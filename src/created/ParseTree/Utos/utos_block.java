@@ -8,19 +8,26 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 
-public abstract class utos_block implements created.iNode 
+public abstract class utos_block extends created.iNode 
 {
+    public utos_block(int ln)
+    {
+        super(ln);
+    }
+    
     public static class utosBlock extends utos_block
     {
         public utos_block_opt uo;
         
-        public utosBlock()
+        public utosBlock(int ln)
         {
+            super(ln);
             this.uo = null;
         }
         
-        public utosBlock(utos_block_opt uo)
+        public utosBlock(int ln, utos_block_opt uo)
         {
+            super(ln);
             this.uo = uo;
         }
         

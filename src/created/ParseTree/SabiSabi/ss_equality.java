@@ -9,16 +9,22 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.*;
 
-public abstract class ss_equality implements created.iNode
+public abstract class ss_equality extends created.iNode
 {
+    public ss_equality(int ln)
+    {
+        super(ln);
+    }
+    
     public static class ssEqualityExpansion extends ss_equality
     {
         public ss_comparison c;
         public equality eq;
         public ss_equality e;
         
-        public ssEqualityExpansion(ss_comparison c, equality eq, ss_equality e)
+        public ssEqualityExpansion(int ln, ss_comparison c, equality eq, ss_equality e)
         {
+            super(ln);
             this.c = c;
             this.eq = eq;
             this.e = e;
@@ -30,8 +36,8 @@ public abstract class ss_equality implements created.iNode
         
         // public boolean evaluate(){
         //     switch(eq.evaluate()){
-        //         case "!=" : return c.evaluate() != e.evaluate();
-        //         case "==" : return c.evaluate() == e.evaluate();
+        //         case "!=" : return !c.evaluate().equals(e.evaluate()); // maybe <>
+        //         case "==" : return c.evaluate().equals(e.evaluate());
         //     }
         // }
         
@@ -100,9 +106,9 @@ public abstract class ss_equality implements created.iNode
                     case "chary"    : return "booly";
                     default         : 
                         if(equal.isEmpty() || compare.isEmpty())
-                            ErrorReport.error("Datatype Mismatch in equality operator");
+                            ErrorReport.error(ln(), "Datatype Mismatch in equality operator");
                         else
-                            ErrorReport.error("Datatype Mismatch in equality operator: " + equal + " and " + compare);
+                            ErrorReport.error(ln(), "Datatype Mismatch in equality operator: " + equal + " and " + compare);
                         return "";              
                 }
             }
@@ -118,9 +124,9 @@ public abstract class ss_equality implements created.iNode
                     case "chary"    : return "booly";
                     default         : 
                         if(equal.isEmpty() || compare.isEmpty())
-                            ErrorReport.error("Datatype Mismatch in equality operator");
+                            ErrorReport.error(ln(), "Datatype Mismatch in equality operator");
                         else
-                            ErrorReport.error("Datatype Mismatch in equality operator: " + equal + " and " + compare);
+                            ErrorReport.error(ln(), "Datatype Mismatch in equality operator: " + equal + " and " + compare);
                                         return "";
                 }
             }
@@ -130,18 +136,18 @@ public abstract class ss_equality implements created.iNode
                 case "inty" : break;
                 default : 
                     if(compare.isEmpty())
-                        ErrorReport.error("Datatype Not Allowed in Equality Operator");
+                        ErrorReport.error(ln(), "Datatype Not Allowed in Equality Operator");
                     else
-                        ErrorReport.error("Datatype Not Allowed in Equality Operator: " + compare);
+                        ErrorReport.error(ln(), "Datatype Not Allowed in Equality Operator: " + compare);
                             return "";
             }
             if(compare.equals(equal))
                 return "booly";
                 
             if(equal.isEmpty() || compare.isEmpty())
-                ErrorReport.error("Datatype Mismatch in equality operator");
+                ErrorReport.error(ln(), "Datatype Mismatch in equality operator");
             else
-                ErrorReport.error("Datatype Mismatch in equality operator: " + equal + " and " + compare);
+                ErrorReport.error(ln(), "Datatype Mismatch in equality operator: " + equal + " and " + compare);
             
             return "";
         } 
@@ -195,8 +201,9 @@ public abstract class ss_equality implements created.iNode
     {
         public ss_comparison c;
         
-        public ssEquality(ss_comparison c)
+        public ssEquality(int ln, ss_comparison c)
         {
+            super(ln);
             this.c = c;
         }
         

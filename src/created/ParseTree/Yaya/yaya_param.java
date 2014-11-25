@@ -9,15 +9,21 @@ import created.ParseTree.Utos.*;
 import created.Sym.*;
 import error.*;
 
-public abstract class yaya_param implements created.iNode  
+public abstract class yaya_param extends created.iNode  
 {
+    public yaya_param(int ln)
+    {
+        super(ln);
+    }
+    
     public static class yayaParam extends yaya_param
     {
         public data_type dt;
         public String id;
         
-        public yayaParam(data_type dt, String id)
+        public yayaParam(int ln, data_type dt, String id)
         {
+            super(ln);
             this.dt = dt;
             this.id = id;
         }
@@ -34,7 +40,7 @@ public abstract class yaya_param implements created.iNode
                 Boolean avail = sl.addToList(id, new SymVar(id, dt));
                 if(!avail)
                 {
-                    ErrorReport.error("Duplicate parameter!: " + id);
+                    ErrorReport.error(ln(), "Duplicate parameter!: " + id);
                 }
                 
                 // ((data_type.datatypePrimitive) dt).setSymList(sl);
@@ -44,7 +50,7 @@ public abstract class yaya_param implements created.iNode
                 Boolean avail = sl.addToList(id, new SymVar(id, dt));
                 if(!avail)
                 {
-                    ErrorReport.error("Duplicate parameter!: " + id);
+                    ErrorReport.error(ln(), "Duplicate parameter!: " + id);
                 }
                 // ((data_type.datatypeReference) dt).setSymList(sl);
             }

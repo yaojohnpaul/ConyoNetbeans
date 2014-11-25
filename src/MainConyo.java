@@ -37,10 +37,7 @@ class MainConyo
                     c.preInterpret();
                     c.evaluate();
                 }
-                else
-                {
-                    ErrorReport.printError();
-                }
+                ErrorReport.printError();
             }
             catch (Exception e) 
             {

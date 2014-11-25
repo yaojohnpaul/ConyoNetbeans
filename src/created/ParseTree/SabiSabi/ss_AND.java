@@ -9,15 +9,21 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.*;
 
-public abstract class ss_AND implements created.iNode
+public abstract class ss_AND extends created.iNode
 {
+    public ss_AND(int ln)
+    {
+        super(ln);
+    }
+    
     public static class ssANDExpansion extends ss_AND
     {
         public ss_AND a;
         public ss_equality e;
         
-        public ssANDExpansion(ss_equality e, ss_AND a)
+        public ssANDExpansion(int ln, ss_equality e, ss_AND a)
         {
+            super(ln);
             this.a = a;
             this.e = e;
         }
@@ -72,7 +78,7 @@ public abstract class ss_AND implements created.iNode
             if(equal.equals(and))
                 return "booly";
                 
-            ErrorReport.error("Datatype Mismatch in AND operator. One or more non-boolean members.");
+            ErrorReport.error(ln(), "Datatype Mismatch in AND operator. One or more non-boolean members.");
             return "";
         } 
         
@@ -106,8 +112,9 @@ public abstract class ss_AND implements created.iNode
     {
         public ss_equality e;
         
-        public ssAND(ss_equality e)
+        public ssAND(int ln, ss_equality e)
         {
+            super(ln);
             this.e = e;
         }
         

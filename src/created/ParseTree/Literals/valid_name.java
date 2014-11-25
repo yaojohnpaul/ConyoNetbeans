@@ -9,15 +9,20 @@ import created.ParseTree.Yaya.*;
 import error.*;
 import created.Sym.*;
 
-public abstract class valid_name implements created.iNode
+public abstract class valid_name extends created.iNode
 {
+    public valid_name(int ln)
+    {
+        super(ln);
+    }
     
     public static class identifier extends valid_name
     {
         public String id;
         
-        public identifier(String identity)
+        public identifier(int ln, String identity)
         {
+            super(ln);
             this.id = identity;
         }
         
@@ -42,7 +47,7 @@ public abstract class valid_name implements created.iNode
             
             if(ste == null)
             {
-                ErrorReport.error("Not yet declared!: " + id);
+                ErrorReport.error(ln(), "Not yet declared!: " + id);
                 return "";
             }
                 

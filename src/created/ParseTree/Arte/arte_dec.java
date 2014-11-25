@@ -9,16 +9,22 @@ import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import error.*;
 
-public abstract class arte_dec implements created.iNode 
+public abstract class arte_dec extends created.iNode 
 {
+    public arte_dec(int ln)
+    {
+        super(ln);
+    }
+    
     public static class arteDec extends arte_dec
     {
         public data_type dt; 
         public String id;
         public arte_assign a;
         
-        public arteDec(data_type dt, String id, arte_assign a)
+        public arteDec(int ln, data_type dt, String id, arte_assign a)
         {
+            super(ln);
             this.dt = dt;
             this.id = id;
             this.a = a;
@@ -35,7 +41,7 @@ public abstract class arte_dec implements created.iNode
  
             if(!avail)
             {
-                ErrorReport.error("Duplicate variable defined!: " + id);
+                ErrorReport.error(ln(), "Duplicate variable defined!: " + id);
             }
             
             if(a instanceof arte_assign.arteAssign)
@@ -78,9 +84,9 @@ public abstract class arte_dec implements created.iNode
                 }
 
                 if(temp.isEmpty())
-                    ErrorReport.error("Datatype Mismatch in " + id);
+                    ErrorReport.error(ln(), "Datatype Mismatch in " + id);
                 else
-                    ErrorReport.error("Datatype Mismatch in " + id + ": " + dt.toString() + " and " + temp);
+                    ErrorReport.error(ln(), "Datatype Mismatch in " + id + ": " + dt.toString() + " and " + temp);
                 return "";
             }
             else
