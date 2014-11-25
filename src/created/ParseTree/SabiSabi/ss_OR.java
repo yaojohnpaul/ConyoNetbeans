@@ -98,11 +98,11 @@ public abstract class ss_OR extends created.iNode
             }
             if(a instanceof ss_AND.ssAND)
             {
-                o = ((ss_AND.ssAND) a).evaluate(sl);
+                o2 = ((ss_AND.ssAND) a).evaluate(sl);
             }
             else if(a instanceof ss_AND.ssANDExpansion)
             {
-                o1 = ((ss_AND.ssANDExpansion) a).evaluate(sl);
+                o2 = ((ss_AND.ssANDExpansion) a).evaluate(sl);
             }
             
             return (Boolean)o1 || (Boolean)o2;

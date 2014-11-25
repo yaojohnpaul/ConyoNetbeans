@@ -196,7 +196,7 @@ public abstract class ss_a1 extends created.iNode
             }
             else if(a2 instanceof ss_a2.ssA2Expansion)
             {
-                o = ((ss_a2.ssA2Expansion) a2).evaluate(sl);
+                o2 = ((ss_a2.ssA2Expansion) a2).evaluate(sl);
             }
             
             

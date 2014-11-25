@@ -41,10 +41,17 @@ $
 
 superYaya
 $
-        makeArte inty[] a makeKuha {1,2,3} db
-        makeArte inty i makeKuha 2 db
-        makeArte db
-        makeArte inty i makeKuha 1.2 db
-        
-        makeTawag test2(-1) db
+    makeArte inty i makeKuha 1 db
+    makePalit(i)
+    $
+        MRW 1:
+            makeSulat(2 * 10 / 5 * 2) db
+        MRW 2:
+            makeSulat("asdf2") db
+            breakup db
+        MRW 5:
+            makeSulat("asdf3") db
+        MDR:
+            makeSulat("asdf4") db
+    $
 $

@@ -115,11 +115,9 @@ public abstract class makePalit_MRW extends created.iNode
         {
             Object toBeMatched = null;
             boolean flag = previousFlag;
-<<<<<<< HEAD
+
             int utosType = 0;
-            
-=======
->>>>>>> a82c3eba95ad968e41c0e3314d7344e2d8a1bc93
+
             if(flag == false)
             {
                 if(s instanceof sabi_sabi.SabiSabi)

@@ -126,7 +126,7 @@ public abstract class utos_dec_db extends created.iNode
         public int evaluate(SymList sl)
         {
             return 1;
-        
+        }
     }
     
     public static class makeup extends utos_dec_db

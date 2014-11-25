@@ -86,7 +86,7 @@ public abstract class utos_makeGawaHabang extends created.iNode
             {
                 if(u instanceof utos_block.utosBlock)
                 {
-                    return = ((utos_block.utosBlock) u).evaluate(sl);
+                    ((utos_block.utosBlock) u).evaluate(sl);
                 }
                 
                 if(utosType == 1)
