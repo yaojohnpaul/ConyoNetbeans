@@ -108,6 +108,7 @@ public abstract class makePalit_MRW implements created.iNode
         {
             Object toBeMatched = null;
             boolean flag = previousFlag;
+            int utosType = 0;
             
             if(flag == false)
             {
@@ -131,14 +132,17 @@ public abstract class makePalit_MRW implements created.iNode
                 {
                     if(u instanceof utos_block_opt.utosBlockOpt)
                     {
-                        ((utos_block_opt.utosBlockOpt) u).evaluate(sl);
+                        utosType = ((utos_block_opt.utosBlockOpt) u).evaluate(sl);
                     }
+                    
+                    if(utosType == 1)
+                        flag = false;
                     
                 }
                 
                 if(m instanceof makePalit_MRW.MRW)
                 {
-                    ((makePalit_MRW.MRW) m).evaluate(sl, match,flag);
+                    ((makePalit_MRW.MRW) m).evaluate(sl, match, flag);
                 }
                 else if(m instanceof makePalit_MRW.MDR)
                 {

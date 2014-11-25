@@ -57,12 +57,14 @@ public abstract class utos_thisNalang implements created.iNode
             }
         }
         
-        public void evaluate(SymList sl)
+        public int evaluate(SymList sl)
         {
             if(b instanceof utos_block.utosBlock)
             {
-                ((utos_block.utosBlock) b).evaluate(sl);
+                return ((utos_block.utosBlock) b).evaluate(sl);
             }
+            
+            return 0;
         }
         
     }
@@ -158,7 +160,7 @@ public abstract class utos_thisNalang implements created.iNode
         }
         
         
-        public void evaluate(SymList sl)
+        public int evaluate(SymList sl)
         {
             boolean a = false;
             if(s instanceof sabi_sabi.SabiSabi)
@@ -170,22 +172,22 @@ public abstract class utos_thisNalang implements created.iNode
             {
                 if(b instanceof utos_block.utosBlock)
                 {
-                    ((utos_block.utosBlock) b).evaluate(sl);
+                    return ((utos_block.utosBlock) b).evaluate(sl);
                 }
             }
             else
             {
                 if(t instanceof utos_thisNalang.thisNalang)
                 {
-                    ((utos_thisNalang.thisNalang) t).evaluate(sl);
+                    return ((utos_thisNalang.thisNalang) t).evaluate(sl);
                 }
                 else if(t instanceof utos_thisNalang.thisNalangKapag)
                 {
-                    ((utos_thisNalang.thisNalangKapag) t).evaluate(sl);
+                    return ((utos_thisNalang.thisNalangKapag) t).evaluate(sl);
                 } 
             }
             
-            
+            return 0;
         }
         
     }

@@ -81,22 +81,23 @@ public abstract class ss_OR implements created.iNode
             Object o1 = null;
             Object o2 = null;
             
+            
+            if(o instanceof ss_OR.ssOR)
+            {
+                o1 = ((ss_OR.ssOR) o).evaluate(sl);
+            }
+            else if(o instanceof ss_OR.ssORExpansion)
+            {
+                o1 = ((ss_OR.ssORExpansion) o).evaluate(sl);
+            }
             if(a instanceof ss_AND.ssAND)
             {
-                o1 = ((ss_AND.ssAND) a).evaluate(sl);
+                o = ((ss_AND.ssAND) a).evaluate(sl);
             }
             else if(a instanceof ss_AND.ssANDExpansion)
             {
                 o1 = ((ss_AND.ssANDExpansion) a).evaluate(sl);
             }
-            if(o instanceof ss_OR.ssOR)
-            {
-                o2 = ((ss_OR.ssOR) o).evaluate(sl);
-            }
-            else if(o instanceof ss_OR.ssORExpansion)
-            {
-                o2 = ((ss_OR.ssORExpansion) o).evaluate(sl);
-            }   
             
             return (Boolean)o1 || (Boolean)o2;
         }

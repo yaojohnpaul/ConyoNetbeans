@@ -74,13 +74,17 @@ public abstract class utos_makeGawaHabang implements created.iNode
         public void evaluate(SymList sl)
         {
             boolean a = false;
+            int utosType = 0;
             
             do
             {
                 if(u instanceof utos_block.utosBlock)
                 {
-                    ((utos_block.utosBlock) u).evaluate(sl);
+                    return = ((utos_block.utosBlock) u).evaluate(sl);
                 }
+                
+                if(utosType == 1)
+                    break;
                 
                 if(s instanceof sabi_sabi.SabiSabi)
                 {

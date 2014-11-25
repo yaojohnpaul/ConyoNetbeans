@@ -81,14 +81,6 @@ public abstract class ss_AND implements created.iNode
             Object o1 = null;
             Object o2 = null;
             
-            if(e instanceof ss_equality.ssEquality)
-            {
-                o2 = ((ss_equality.ssEquality) e).evaluate(sl);
-            }
-            else if(e instanceof ss_equality.ssEqualityExpansion)
-            {
-                o2 = ((ss_equality.ssEqualityExpansion) e).evaluate(sl);
-            }
             if(a instanceof ss_AND.ssAND)
             {
                 o1 = ((ss_AND.ssAND) a).evaluate(sl);
@@ -97,6 +89,15 @@ public abstract class ss_AND implements created.iNode
             {
                 o1 = ((ss_AND.ssANDExpansion) a).evaluate(sl);
             }
+            if(e instanceof ss_equality.ssEquality)
+            {
+                o2 = ((ss_equality.ssEquality) e).evaluate(sl);
+            }
+            else if(e instanceof ss_equality.ssEqualityExpansion)
+            {
+                o2 = ((ss_equality.ssEqualityExpansion) e).evaluate(sl);
+            }
+            
             return (Boolean)o1 && (Boolean)o2;
         }
     }

@@ -84,7 +84,7 @@ public abstract class utos_dec implements created.iNode
             }
         }
         
-        public void evaluate(SymList sl)
+        public int evaluate(SymList sl)
         {
             if(ud instanceof utos_dec_db.utosMakeKuha)
             {
@@ -94,14 +94,16 @@ public abstract class utos_dec implements created.iNode
             {
                 ((utos_dec_db.utosMakeSulat) ud).evaluate(sl);
             }
-//            else if(ud instanceof utos_dec_db.breakup)
-//            {
-//                // ((utos_dec_db.breakup) ud).preInterpret(sl);
-//            }
-//            else if(ud instanceof utos_dec_db.makeup)
-//            {
-//                // ((utos_dec_db.makeup) ud).preInterpret(sl);
-//            }
+            else if(ud instanceof utos_dec_db.breakup)
+            {
+                return ((utos_dec_db.breakup) ud).evaluate(sl);
+            }
+            else if(ud instanceof utos_dec_db.makeup)
+            {
+                return ((utos_dec_db.makeup) ud).evaluate(sl);
+            }
+            
+            return 0;
         }
     }
     
@@ -255,11 +257,11 @@ public abstract class utos_dec implements created.iNode
             }
         }
         
-        public void evaluate(SymList sl)
+        public int evaluate(SymList sl)
         {
             if(un instanceof utos_dec_nodb.utosLikeKapag)
             {
-                ((utos_dec_nodb.utosLikeKapag) un).evaluate(sl);
+                return ((utos_dec_nodb.utosLikeKapag) un).evaluate(sl);
             }
             else if(un instanceof utos_dec_nodb.utosMakePalit)
             {
@@ -281,6 +283,8 @@ public abstract class utos_dec implements created.iNode
             {
                 ((utos_dec_nodb.utosMakeUlit) un).evaluate(sl);
             }
+            
+            return 0;
         }
     }
     

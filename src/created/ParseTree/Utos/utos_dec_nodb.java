@@ -48,12 +48,14 @@ public abstract class utos_dec_nodb implements created.iNode
             }
         }
         
-        public void evaluate(SymList sl)
+        public int evaluate(SymList sl)
         {
             if(uk instanceof utos_likeKapag.likeKapag)
             {
-                ((utos_likeKapag.likeKapag) uk).evaluate(sl);
+                return ((utos_likeKapag.likeKapag) uk).evaluate(sl);
             }
+            
+            return 0;
         }
     }
     

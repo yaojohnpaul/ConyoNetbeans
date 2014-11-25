@@ -106,85 +106,87 @@ public abstract class ss_comparison implements created.iNode
         
         public Object evaluate(SymList sl)
         {
-            Object arith = "";
-            Object compare = "";
-            if(a instanceof ss_a1.ssA1)
-            {
-                arith = ((ss_a1.ssA1) a).evaluate(sl);
-            }
-            else if(a instanceof ss_a1.ssA1Expansion)
-            {
-                arith = ((ss_a1.ssA1Expansion) a).evaluate(sl);
-            }
+            Object o1 = "";
+            Object o2 = "";
             
             if(c instanceof ss_comparison.ssComparison)
             {
-                compare = ((ss_comparison.ssComparison) c).evaluate(sl);
+                o1 = ((ss_comparison.ssComparison) c).evaluate(sl);
             }
             else if(c instanceof ss_comparison.ssComparisonExpansion)
             {
-                compare = ((ss_comparison.ssComparisonExpansion) c).evaluate(sl);
+                o1 = ((ss_comparison.ssComparisonExpansion) c).evaluate(sl);
+            }
+            if(a instanceof ss_a1.ssA1)
+            {
+                o2 = ((ss_a1.ssA1) a).evaluate(sl);
+            }
+            else if(a instanceof ss_a1.ssA1Expansion)
+            {
+                o2 = ((ss_a1.ssA1Expansion) a).evaluate(sl);
             }
             
+            
+        
             if(co instanceof comparison.compare)
             {
                 switch(((comparison.compare) co).checkContext(sl))
                 {
-                    case "<" :  if (arith instanceof Float)
+                    case "<" :  if (o1 instanceof Float)
                                 {
-                                    if(compare instanceof Float)
-                                        return (float)arith < (float)compare;
-                                    else if(compare instanceof Integer)
-                                        return (float)arith < (int)compare;
+                                    if(o2 instanceof Float)
+                                        return (float)o1 < (float)o2;
+                                    else if(o2 instanceof Integer)
+                                        return (float)o1 < (int)o2;
                                 }
-                                else if (arith instanceof Integer)
+                                else if (o1 instanceof Integer)
                                 {
-                                    if(compare instanceof Float)
-                                        return (int)arith < (float)compare;
-                                    else if(compare instanceof Integer)
-                                        return (int)arith < (int)compare;
+                                    if(o2 instanceof Float)
+                                        return (int)o1 < (float)o2;
+                                    else if(o2 instanceof Integer)
+                                        return (int)o1 < (int)o2;
                                 }
-                    case "<=" : if (arith instanceof Float)
+                    case "<=" : if (o1 instanceof Float)
                                 {
-                                    if(compare instanceof Float)
-                                        return (float)arith <= (float)compare;
-                                    else if(compare instanceof Integer)
-                                        return (float)arith <= (int)compare;
+                                    if(o2 instanceof Float)
+                                        return (float)o1 <= (float)o2;
+                                    else if(o2 instanceof Integer)
+                                        return (float)o1 <= (int)o2;
                                 }
-                                else if (arith instanceof Integer)
+                                else if (o1 instanceof Integer)
                                 {
-                                    if(compare instanceof Float)
-                                        return (int)arith <= (float)compare;
-                                    else if(compare instanceof Integer)
-                                        return (int)arith <= (int)compare;
+                                    if(o2 instanceof Float)
+                                        return (int)o1 <= (float)o2;
+                                    else if(o2 instanceof Integer)
+                                        return (int)o1 <= (int)o2;
                                 }
-                    case ">" :  if (arith instanceof Float)
+                    case ">" :  if (o1 instanceof Float)
                                 {
-                                    if(compare instanceof Float)
-                                        return (float)arith > (float)compare;
-                                    else if(compare instanceof Integer)
-                                        return (float)arith > (int)compare;
+                                    if(o2 instanceof Float)
+                                        return (float)o1 > (float)o2;
+                                    else if(o2 instanceof Integer)
+                                        return (float)o1 > (int)o2;
                                 }
-                                else if (arith instanceof Integer)
+                                else if (o1 instanceof Integer)
                                 {
-                                    if(compare instanceof Float)
-                                        return (int)arith > (float)compare;
-                                    else if(compare instanceof Integer)
-                                        return (int)arith > (int)compare;
+                                    if(o2 instanceof Float)
+                                        return (int)o1 > (float)o2;
+                                    else if(o2 instanceof Integer)
+                                        return (int)o1 > (int)o2;
                                 }
-                    case ">=" : if (arith instanceof Float)
+                    case ">=" : if (o1 instanceof Float)
                                 {
-                                    if(compare instanceof Float)
-                                        return (float)arith >= (float)compare;
-                                    else if(compare instanceof Integer)
-                                        return (float)arith >= (int)compare;
+                                    if(o2 instanceof Float)
+                                        return (float)o1 >= (float)o2;
+                                    else if(o2 instanceof Integer)
+                                        return (float)o1 >= (int)o2;
                                 }
-                                else if (arith instanceof Integer)
+                                else if (o1 instanceof Integer)
                                 {
-                                    if(compare instanceof Float)
-                                        return (int)arith >= (float)compare;
-                                    else if(compare instanceof Integer)
-                                        return (int)arith >= (int)compare;
+                                    if(o2 instanceof Float)
+                                        return (int)o1 >= (float)o2;
+                                    else if(o2 instanceof Integer)
+                                        return (int)o1 >= (int)o2;
                                 }
                     default   : return null;
                 }

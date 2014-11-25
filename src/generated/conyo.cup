@@ -305,17 +305,17 @@ sabi_sabi_end ::= valid_var:v {: RESULT = new sabi_sabi_end.ssEndValidVar(v); :}
 
 sabi_sabi_for ::= sabi_sabi:s DB {: RESULT = new sabi_sabi_for.SabiSabiFor(s); :};	
 sabi_sabi ::= ss_OR:o {: RESULT = new sabi_sabi.SabiSabi(o); :};
-ss_OR ::= ss_AND:a OR ss_OR:o {: RESULT = new ss_OR.ssORExpansion(a, o); :}
+ss_OR ::= ss_OR:o OR ss_AND:a {: RESULT = new ss_OR.ssORExpansion(a, o); :}
 		| ss_AND:a {: RESULT = new ss_OR.ssOR(a); :};
-ss_AND ::= ss_equality:e AND ss_AND:a {: RESULT = new ss_AND.ssANDExpansion(e, a); :}
+ss_AND ::= ss_AND:a AND ss_equality:e {: RESULT = new ss_AND.ssANDExpansion(e, a); :}
 		| ss_equality:e {: RESULT = new ss_AND.ssAND(e); :};
-ss_equality ::= ss_comparison:c equality:eq ss_equality:e {: RESULT = new ss_equality.ssEqualityExpansion(c, eq, e); :}
+ss_equality ::= ss_equality:e equality:eq ss_comparison:c {: RESULT = new ss_equality.ssEqualityExpansion(c, eq, e); :}
 			| ss_comparison:c {: RESULT = new ss_equality.ssEquality(c); :};
-ss_comparison ::= ss_a1:a comparison:co ss_comparison:c {: RESULT = new ss_comparison.ssComparisonExpansion(a, co, c); :}
+ss_comparison ::= ss_comparison:c comparison:co ss_a1:a {: RESULT = new ss_comparison.ssComparisonExpansion(a, co, c); :}
 			|	ss_a1:a {: RESULT = new ss_comparison.ssComparison(a); :};
-ss_a1 ::= ss_a2:a2 arithmetic_1:ar ss_a1:a1 {: RESULT = new ss_a1.ssA1Expansion(a2, ar, a1); :}
+ss_a1 ::= ss_a1:a1 arithmetic_1:ar ss_a2:a2 {: RESULT = new ss_a1.ssA1Expansion(a2, ar, a1); :}
 		| ss_a2:a2 {: RESULT = new ss_a1.ssA1(a2); :};
-ss_a2 ::= ss_unary_1:u arithmetic_2:ar ss_a2:a {: RESULT = new ss_a2.ssA2Expansion(u, ar, a); :}
+ss_a2 ::= ss_a2:a  arithmetic_2:ar ss_unary_1:u{: RESULT = new ss_a2.ssA2Expansion(u, ar, a); :}
 		| ss_unary_1:u {: RESULT = new ss_a2.ssA2(u); :};
 ss_unary_1 ::= NOT ss_unary_1:u {: RESULT = new ss_unary_1.ssU1Not(u); :}
 			| ss_paren:p {: RESULT = new ss_unary_1.ssU1(p); :};

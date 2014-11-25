@@ -60,19 +60,6 @@ public abstract class ss_a2 implements created.iNode
             String unary = "";
             String arith = "";
             String a2 = "";
-            if(u instanceof ss_unary_1.ssU1)
-            {
-                unary = ((ss_unary_1.ssU1) u).checkContext(sl);
-            }
-            else if(u instanceof ss_unary_1.ssU1Not)
-            {
-                unary = ((ss_unary_1.ssU1Not) u).checkContext(sl);
-            }
-            
-            if(ar instanceof arithmetic_2.arithmetic2)
-            {
-                arith = ((arithmetic_2.arithmetic2) ar).checkContext(sl);
-            }
             
             if(a instanceof ss_a2.ssA2)
             {
@@ -81,6 +68,21 @@ public abstract class ss_a2 implements created.iNode
             else if(a instanceof ss_a2.ssA2Expansion)
             {
                 a2 = ((ss_a2.ssA2Expansion) a).checkContext(sl);
+            }
+            
+            
+            if(ar instanceof arithmetic_2.arithmetic2)
+            {
+                arith = ((arithmetic_2.arithmetic2) ar).checkContext(sl);
+            }
+            
+            if(u instanceof ss_unary_1.ssU1)
+            {
+                unary = ((ss_unary_1.ssU1) u).checkContext(sl);
+            }
+            else if(u instanceof ss_unary_1.ssU1Not)
+            {
+                unary = ((ss_unary_1.ssU1Not) u).checkContext(sl);
             }
             switch(unary){
                 case "booly" : break;
@@ -136,23 +138,25 @@ public abstract class ss_a2 implements created.iNode
             Object o1 = null;
             Object o2 = null;
             
-            if(u instanceof ss_unary_1.ssU1)
-            {
-                o1 = ((ss_unary_1.ssU1) u).evaluate(sl);
-            }
-            else if(u instanceof ss_unary_1.ssU1Not)
-            {
-                o1 = ((ss_unary_1.ssU1Not) u).evaluate(sl);
-            }
-            
             if(a instanceof ss_a2.ssA2)
             {
-                o2 = ((ss_a2.ssA2) a).evaluate(sl);
+                o1 = ((ss_a2.ssA2) a).evaluate(sl);
             }
             else if(a instanceof ss_a2.ssA2Expansion)
             {
-                o2 = ((ss_a2.ssA2Expansion) a).evaluate(sl);
+                o1 = ((ss_a2.ssA2Expansion) a).evaluate(sl);
             }
+            
+            if(u instanceof ss_unary_1.ssU1)
+            {
+                o2 = ((ss_unary_1.ssU1) u).evaluate(sl);
+            }
+            else if(u instanceof ss_unary_1.ssU1Not)
+            {
+                o2 = ((ss_unary_1.ssU1Not) u).evaluate(sl);
+            }
+            
+            
             
             if(ar instanceof arithmetic_2.arithmetic2)
             {
