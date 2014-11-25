@@ -41,16 +41,17 @@ $
 
 superYaya
 $
-    makeArte inty i makeKuha 1 db
+    makeArte inty i makeKuha 5 db
     makePalit(i)
     $
         MRW 1:
-            makeSulat(2 * 10 / 5 * 2) db
+            makeSulat("asdf1") db
         MRW 2:
             makeSulat("asdf2") db
             breakup db
         MRW 5:
             makeSulat("asdf3") db
+            breakup db
         MDR:
             makeSulat("asdf4") db
     $

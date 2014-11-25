@@ -93,7 +93,7 @@ public abstract class utos_makePalit extends created.iNode
             
             if(m instanceof makePalit_MRW.MRW)
             {
-                ((makePalit_MRW.MRW) m).evaluate(sl, match, false);
+                ((makePalit_MRW.MRW) m).evaluate(sl, match, false, false);
             }
             else if(m instanceof makePalit_MRW.MDR)
             {
