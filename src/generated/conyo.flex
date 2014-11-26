@@ -127,7 +127,7 @@ float = {integer}\.{integer}(e{integer})?
 	"||"  { return symbol(sym.OR); }
 	"!" { return symbol(sym.NOT); }
 	\'  { yybegin(CHARACTER); }
-	\" { yybegin(STRING); }
+	\" { string.setLength(0); yybegin(STRING); }
 	"++" { return symbol(sym.POS_INC); }
 	"--" { return symbol(sym.NEG_INC); }
 	
@@ -141,8 +141,8 @@ float = {integer}\.{integer}(e{integer})?
 
 /*When inputting a string*/
 <STRING> { 
-	\" {yybegin(YYINITIAL); return symbol(sym.STRING_LITERAL, "");}
-	{valid_string} {return symbol(sym.STRING_LITERAL, yytext());}
+	\" {yybegin(YYINITIAL); return symbol(sym.STRING_LITERAL, string.toString());}
+	{valid_string} {string.append(yytext());}
 }
 
 /*When inputting a character*/

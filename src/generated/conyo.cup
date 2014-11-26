@@ -152,7 +152,7 @@ start with conyogram;
 
 conyogram ::= OMG_section:o yaya_section:y super_yaya:p 
 				{: 
-					RESULT = new Conyogram(oleft, o, y, p);
+					RESULT = new Conyogram(oleft, o, y, p, sb.length());
 					printText(); 
 				:};
 

@@ -811,7 +811,7 @@ public class ConyoLexer implements java_cup.runtime.Scanner {
 
       switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
         case 1: 
-          { return symbol(sym.STRING_LITERAL, yytext());
+          { string.append(yytext());
           }
         case 67: break;
         case 2: 
@@ -903,11 +903,11 @@ public class ConyoLexer implements java_cup.runtime.Scanner {
           }
         case 89: break;
         case 24: 
-          { yybegin(STRING);
+          { string.setLength(0); yybegin(STRING);
           }
         case 90: break;
         case 25: 
-          { yybegin(YYINITIAL); return symbol(sym.STRING_LITERAL, "");
+          { yybegin(YYINITIAL); return symbol(sym.STRING_LITERAL, string.toString());
           }
         case 91: break;
         case 26: 

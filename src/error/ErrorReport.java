@@ -1,6 +1,9 @@
 
 package error;
 
+import created.MainFrame;
+import static created.MainFrame.output;
+
 /**
  * Class for reporting errors.
  */
@@ -26,12 +29,19 @@ public class ErrorReport
     {
         if(sb.length() > 0)
         {
-            System.out.println(sb);
+            //System.out.println(sb);
+            MainFrame.output.setText(sb.toString());
         }
     }
     
     public static int semanticErrorsCount()
     {
         return semanticErrorsCount;
+    }
+    
+    public static void resetErrors()
+    {
+        semanticErrorsCount = 0;
+        sb.setLength(0);
     }
 }
