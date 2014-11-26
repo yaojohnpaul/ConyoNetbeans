@@ -157,23 +157,24 @@ public abstract class ss_equality extends created.iNode
             Object o1 = null;
             Object o2 = null;
             
-            if(c instanceof ss_comparison.ssComparison)
-            {
-                o1 = ((ss_comparison.ssComparison) c).evaluate(sl);
-            }
-            else if(c instanceof ss_comparison.ssComparisonExpansion)
-            {
-                o1 = ((ss_comparison.ssComparisonExpansion) c).evaluate(sl);
-            }
-            
             if(e instanceof ss_equality.ssEquality)
             {
-                o2 = ((ss_equality.ssEquality) e).evaluate(sl);
+                o1 = ((ss_equality.ssEquality) e).evaluate(sl);
             }
             else if(e instanceof ss_equality.ssEqualityExpansion)
             {
-                o2 = ((ss_equality.ssEqualityExpansion) e).evaluate(sl);
+                o1 = ((ss_equality.ssEqualityExpansion) e).evaluate(sl);
             }
+            if(c instanceof ss_comparison.ssComparison)
+            {
+                o2 = ((ss_comparison.ssComparison) c).evaluate(sl);
+            }
+            else if(c instanceof ss_comparison.ssComparisonExpansion)
+            {
+                o2 = ((ss_comparison.ssComparisonExpansion) c).evaluate(sl);
+            }
+            
+            
             
             if(eq instanceof equality.equal)
             {

@@ -80,6 +80,7 @@ public abstract class utos_makeGawaHabang extends created.iNode
         public void evaluate(SymList sl)
         {
             boolean a = false;
+            int utosType = 0;
             
             do
             {
@@ -87,6 +88,9 @@ public abstract class utos_makeGawaHabang extends created.iNode
                 {
                     ((utos_block.utosBlock) u).evaluate(sl);
                 }
+                
+                if(utosType == 1)
+                    break;
                 
                 if(s instanceof sabi_sabi.SabiSabi)
                 {

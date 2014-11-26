@@ -183,6 +183,8 @@ public abstract class utos_makeUlit extends created.iNode
         public void evaluate(SymList sl)
         {
             boolean flag = false;
+            int utosType = 0;
+            
             if(m1 instanceof utos_makeKuha.makeKuha)
             {
                 ((utos_makeKuha.makeKuha) m1).evaluate(sl);
@@ -199,8 +201,11 @@ public abstract class utos_makeUlit extends created.iNode
                 {
                     if(u instanceof utos_block.utosBlock)
                     {
-                        ((utos_block.utosBlock) u).evaluate(sl);
+                        utosType = ((utos_block.utosBlock) u).evaluate(sl);
                     }
+                    
+                    if(utosType == 1)
+                        break;
                     
                     if(m2 instanceof utos_makeKuha.makeKuha)
                     {
@@ -221,8 +226,11 @@ public abstract class utos_makeUlit extends created.iNode
                 {
                     if(u instanceof utos_block.utosBlock)
                     {
-                        ((utos_block.utosBlock) u).evaluate(sl);
+                        utosType = ((utos_block.utosBlock) u).evaluate(sl);
                     }
+                    
+                    if(utosType == 1)
+                        break;
                     
                     if(s2 instanceof sabi_sabi_for.SabiSabiFor)
                     {
@@ -242,8 +250,11 @@ public abstract class utos_makeUlit extends created.iNode
                 {
                     if(u instanceof utos_block.utosBlock)
                     {
-                        ((utos_block.utosBlock) u).evaluate(sl);
+                        utosType = ((utos_block.utosBlock) u).evaluate(sl);
                     }
+                    
+                    if(utosType == 1)
+                        break;
                     
                     if(m3 instanceof utos_sabisabi.utosSabiSabiFront)
                     {

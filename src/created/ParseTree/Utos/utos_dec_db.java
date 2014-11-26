@@ -122,6 +122,11 @@ public abstract class utos_dec_db extends created.iNode
         {
             return "breakup db";
         }
+        
+        public int evaluate(SymList sl)
+        {
+            return 1;
+        }
     }
     
     public static class makeup extends utos_dec_db
@@ -134,6 +139,11 @@ public abstract class utos_dec_db extends created.iNode
         public String toString()
         {
             return "makeup db";
+        }
+        
+        public int evaluate(SymList sl)
+        {
+            return 2;
         }
     }
 }

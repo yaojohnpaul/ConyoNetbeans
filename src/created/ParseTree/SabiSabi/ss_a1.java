@@ -181,23 +181,25 @@ public abstract class ss_a1 extends created.iNode
             Object o1 = null;
             Object o2 = null;
             
-            if(a2 instanceof ss_a2.ssA2)
-            {
-                o1 = ((ss_a2.ssA2) a2).evaluate(sl);
-            }
-            else if(a2 instanceof ss_a2.ssA2Expansion)
-            {
-                o1 = ((ss_a2.ssA2Expansion) a2).evaluate(sl);
-            }
-            
             if(a1 instanceof ss_a1.ssA1)
             {
-                o2 = ((ss_a1.ssA1) a1).evaluate(sl);
+                o1 = ((ss_a1.ssA1) a1).evaluate(sl);
             }
             else if(a1 instanceof ss_a1.ssA1Expansion)
             {
-                o2 = ((ss_a1.ssA1Expansion) a1).evaluate(sl);
+                o1 = ((ss_a1.ssA1Expansion) a1).evaluate(sl);
             }
+            
+            if(a2 instanceof ss_a2.ssA2)
+            {
+                o2 = ((ss_a2.ssA2) a2).evaluate(sl);
+            }
+            else if(a2 instanceof ss_a2.ssA2Expansion)
+            {
+                o2 = ((ss_a2.ssA2Expansion) a2).evaluate(sl);
+            }
+            
+            
             
             if(ar instanceof arithmetic_1.arithmetic1)
             {
