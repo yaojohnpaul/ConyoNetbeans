@@ -906,7 +906,7 @@ public class ConyoLexer implements java_cup.runtime.Scanner {
           }
         case 90: break;
         case 25: 
-          { yybegin(YYINITIAL);
+          { yybegin(YYINITIAL); return symbol(sym.STRING_LITERAL, "");
           }
         case 91: break;
         case 26: 

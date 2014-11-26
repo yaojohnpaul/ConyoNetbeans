@@ -1,3 +1,4 @@
+package generated;
 /*Import*/
 import generated.sym;
 import java.io.*;
@@ -140,7 +141,7 @@ float = {integer}\.{integer}(e{integer})?
 
 /*When inputting a string*/
 <STRING> { 
-	\" {yybegin(YYINITIAL);}
+	\" {yybegin(YYINITIAL); return symbol(sym.STRING_LITERAL, "");}
 	{valid_string} {return symbol(sym.STRING_LITERAL, yytext());}
 }
 
