@@ -711,8 +711,10 @@ public class Parser extends java_cup.runtime.lr_parser {
 	}
 	public void printText()
 	{
-		if(sb.length() > 0)
+		if(sb.length() > 0) {
 			System.out.println(sb);
+                        OutGen.addOut(String.valueOf(sb));
+                }
 	}
 
 
