@@ -45,7 +45,15 @@ class MainConyo {
 
             end = System.nanoTime();
             duration = (int) Math.round((end - start) / 1000000000);
-            OutGen.addOut("Execution successful (total time: " + duration + " seconds)");
+            if(ErrorReport.semanticErrorsCount() == 0 && !c.errorExist())
+            {
+                OutGen.addOut("Execution successful (total time: " + duration + " seconds)");
+            }
+            else
+            {
+                OutGen.addOut("Unsuccessful execution (total time: " + duration + " seconds)");
+            }
+            ErrorReport.resetErrors();
         } catch (Exception e) {
             e.printStackTrace(System.out);
             System.exit(1);

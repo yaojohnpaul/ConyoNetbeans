@@ -711,10 +711,8 @@ public class Parser extends java_cup.runtime.lr_parser {
 	}
 	public void printText()
 	{
-		if(sb.length() > 0) {
-			System.out.println(sb);
-                        OutGen.addOut(String.valueOf(sb));
-                }
+		if(sb.length() > 0)
+			OutGen.addOut(String.valueOf(sb));
 	}
 
 
@@ -770,7 +768,7 @@ class CUP$Parser$actions {
 		int pright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		super_yaya p = (super_yaya)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		 
-					RESULT = new Conyogram(oleft, o, y, p);
+					RESULT = new Conyogram(oleft, o, y, p, sb.length());
 					printText(); 
 				
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("conyogram",0, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);

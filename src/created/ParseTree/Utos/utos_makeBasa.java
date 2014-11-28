@@ -8,6 +8,7 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
+import created.*;
 import error.*;
 
 public abstract class utos_makeBasa extends created.iNode  
@@ -80,23 +81,90 @@ public abstract class utos_makeBasa extends created.iNode
             data_type.datatypePrimitive datatype = ((data_type.datatypePrimitive) dt);
             if(datatype.toString().equals("inty"))
             {
-                return sc.nextInt();
+                while(true)
+                {
+                    try
+                    {
+                        return sc.nextInt();
+                    }
+                    catch(Exception e)
+                    {
+                        sc.next();
+                        OutGen.addOut("Invalid integer input! Input again: ");
+                    }
+                }
             }
             else if(datatype.toString().equals("floaty"))
             {
-                return sc.nextFloat();
+                while(true)
+                {
+                    try
+                    {
+                        return sc.nextFloat();
+                    }
+                    catch(Exception e)
+                    {
+                        sc.next();
+                        OutGen.addOut("Invalid float input! Input again: ");
+                    }
+                }
             }
             else if(datatype.toString().equals("booly"))
             {
-                return sc.nextBoolean();
+                while(true)
+                {
+                    try
+                    {
+                        String bool = sc.next();
+                        if(bool.equals("yuhh") || bool.equals("true"))
+                        {
+                            return true;
+                        }
+                        else if(bool.equals("nuhh") || bool.equals("false"))
+                        {
+                            return false;
+                        }
+                        else
+                        {
+                            OutGen.addOut("Invalid boolean input! Input again: ");
+                        }
+                    }
+                    catch(Exception e)
+                    {
+                        sc.next();
+                        OutGen.addOut("Invalid boolean input! Input again: ");
+                    }
+                }
             }
             else if(datatype.toString().equals("stringy"))
             {
-                return sc.next();
+                while(true)
+                {
+                    try
+                    {
+                        return sc.next();
+                    }
+                    catch(Exception e)
+                    {
+                        sc.next();
+                        OutGen.addOut("Invalid string input! Input again: ");
+                    }
+                }
             }
             else if(datatype.toString().equals("chary"))
             {
-                return sc.next().charAt(0);
+                while(true)
+                {
+                    try
+                    {
+                        return sc.next().charAt(0);
+                    }
+                    catch(Exception e)
+                    {
+                        sc.next();
+                        OutGen.addOut("Invalid character input! Input again: ");
+                    }
+                }
             }
             return null;
         }

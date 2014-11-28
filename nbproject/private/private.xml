@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/Documents/GitHub/ConyoNetbeans/src/created/MainFrame.java</file>
-            <file>file:/F:/Documents/GitHub/ConyoNetbeans/src/created/MainConyo.java</file>
-            <file>file:/F:/Documents/GitHub/ConyoNetbeans/src/test_cases_ext/simple.txt</file>
+            <file>file:/D:/Github/ConyoNetbeans/src/generated/conyo.flex</file>
+            <file>file:/D:/Github/ConyoNetbeans/src/created/MainFrame.java</file>
+            <file>file:/D:/Github/ConyoNetbeans/src/generated/ConyoLexer.java</file>
+            <file>file:/D:/Github/ConyoNetbeans/src/generated/ConyoTokenMaker.java</file>
         </group>
     </open-files>
 </project-private>

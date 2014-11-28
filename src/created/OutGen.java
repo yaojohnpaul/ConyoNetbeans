@@ -10,7 +10,7 @@ public class OutGen
     public static void addOut(String out)
     {
         MainFrame.output.setText(output.getText() + out + "\n");
-        System.out.print(out + "\n");
+        //System.out.print(out + "\n");
     }
     
     public static void clear() 

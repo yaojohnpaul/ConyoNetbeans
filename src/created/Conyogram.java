@@ -9,16 +9,34 @@ public class Conyogram extends iNode
     private OMG_section o;
     private yaya_section y;
     private super_yaya s;
+    private boolean errorExist;
     
     /**
      * Constructor
      */
-    public Conyogram(int ln, OMG_section o, yaya_section y, super_yaya s)
+    public Conyogram(int ln, OMG_section o, yaya_section y, super_yaya s, int error_length)
     {
         super(ln);
         this.o = o;
         this.y = y;
         this.s = s;
+        if(error_length > 0)
+        {
+            errorExist = true;
+        }
+        else
+        {
+            errorExist = false;
+        }
+    }
+    
+    /**
+     * If the string builder in the parser has content, then there are parsing errors.
+     * @return If there are parsing errors
+     */
+    public boolean errorExist()
+    {
+        return errorExist;
     }
     
     /**
