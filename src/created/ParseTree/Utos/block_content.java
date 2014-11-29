@@ -117,34 +117,34 @@ public abstract class block_content extends created.iNode
             }
         }
         
-        public int evaluate(SymList sl)
+        public int evaluate(SymList sl, int call, int inAFunction)
         {
             int utosType = 0;
             
             if(u instanceof utos_dec.utosDecDB)
             {
-                utosType = ((utos_dec.utosDecDB) u).evaluate(sl);
+                utosType = ((utos_dec.utosDecDB) u).evaluate(sl, call, inAFunction);
                 if(utosType != 0)
                     return utosType;
             }
             else if(u instanceof utos_dec.utosDecNoDB)
             {
-                utosType = ((utos_dec.utosDecNoDB) u).evaluate(sl);
+                utosType = ((utos_dec.utosDecNoDB) u).evaluate(sl, call, inAFunction);
                 if(utosType != 0)
                     return utosType;
             }
             else if(u instanceof utos_dec.utosDecSabiSabi)
             {
-                ((utos_dec.utosDecSabiSabi) u).evaluate(sl);
+                ((utos_dec.utosDecSabiSabi) u).evaluate(sl, call, inAFunction);
             }
             else if(u instanceof utos_dec.utosDecVal)
             {
-                ((utos_dec.utosDecVal) u).evaluate(sl);
+                ((utos_dec.utosDecVal) u).evaluate(sl, call, inAFunction);
             }
             
             if(b instanceof block_content.blockContent)
             {
-                return ((block_content.blockContent) b).evaluate(sl);
+                return ((block_content.blockContent) b).evaluate(sl, call, inAFunction);
             }
             
             return 0;

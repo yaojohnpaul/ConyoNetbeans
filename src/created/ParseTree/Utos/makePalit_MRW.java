@@ -118,7 +118,7 @@ public abstract class makePalit_MRW extends created.iNode
          * @param previousFlag Check if previous case did not break.
          * @param foundMatch Check if a match has been found (thus not needing default case)
          */
-        public void evaluate(SymList sl, Object match, boolean previousFlag, boolean foundMatch)
+        public void evaluate(SymList sl, Object match, boolean previousFlag, boolean foundMatch, int call, int inAFunction)
         {
             Object toBeMatched = null;
             boolean flag = previousFlag;
@@ -141,7 +141,7 @@ public abstract class makePalit_MRW extends created.iNode
                     checkMatch = true;
                     if(u instanceof utos_block_opt.utosBlockOpt)
                     {
-                        utosType = ((utos_block_opt.utosBlockOpt) u).evaluate(sl);
+                        utosType = ((utos_block_opt.utosBlockOpt) u).evaluate(sl, call, inAFunction);
                     }
                     
                     if(utosType == 1)
@@ -151,13 +151,13 @@ public abstract class makePalit_MRW extends created.iNode
                 
                 if(m instanceof makePalit_MRW.MRW)
                 {
-                    ((makePalit_MRW.MRW) m).evaluate(sl, match, flag, checkMatch);
+                    ((makePalit_MRW.MRW) m).evaluate(sl, match, flag, checkMatch, call, inAFunction);
                 }
                 else if(m instanceof makePalit_MRW.MDR)
                 {
                     if(!checkMatch || flag) //no match in cases or no break
                     {
-                        ((makePalit_MRW.MDR) m).evaluate(sl);
+                        ((makePalit_MRW.MDR) m).evaluate(sl, call, inAFunction);
                     }
                 }
                 
@@ -166,7 +166,7 @@ public abstract class makePalit_MRW extends created.iNode
             {
                 if(u instanceof utos_block_opt.utosBlockOpt)
                 {
-                    utosType = ((utos_block_opt.utosBlockOpt) u).evaluate(sl);
+                    utosType = ((utos_block_opt.utosBlockOpt) u).evaluate(sl, call, inAFunction);
                 }
                     
                 if(utosType == 1)
@@ -174,7 +174,7 @@ public abstract class makePalit_MRW extends created.iNode
                 
                 if(m instanceof makePalit_MRW.MRW)
                 {
-                        ((makePalit_MRW.MRW) m).evaluate(sl, match, flag, checkMatch == true? true : match.equals(toBeMatched));
+                        ((makePalit_MRW.MRW) m).evaluate(sl, match, flag, checkMatch == true? true : match.equals(toBeMatched), call, inAFunction);
                 }
                 else if(m instanceof makePalit_MRW.MDR)
                 {
@@ -188,7 +188,7 @@ public abstract class makePalit_MRW extends created.iNode
                     if(flag) allowDefExec = true;
                     
                     if(allowDefExec)
-                        ((makePalit_MRW.MDR) m).evaluate(sl);
+                        ((makePalit_MRW.MDR) m).evaluate(sl, call, inAFunction);
                 }
             }
         }
@@ -233,11 +233,11 @@ public abstract class makePalit_MRW extends created.iNode
             }
         }
         
-        public void evaluate(SymList sl)
+        public void evaluate(SymList sl, int call, int inAFunction)
         {
                 if(o instanceof utos_block_opt.utosBlockOpt)
                 {
-                    ((utos_block_opt.utosBlockOpt) o).evaluate(sl);
+                    ((utos_block_opt.utosBlockOpt) o).evaluate(sl,call, inAFunction);
                 }
         }
     }

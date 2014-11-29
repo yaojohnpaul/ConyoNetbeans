@@ -7,6 +7,8 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
+import created.WatchAndTrace;
+import created.WatchManager;
 import error.*;
 
 public abstract class utos_thisNalang extends created.iNode  
@@ -64,11 +66,11 @@ public abstract class utos_thisNalang extends created.iNode
             }
         }
         
-        public int evaluate(SymList sl)
+        public int evaluate(SymList sl, int call, int inAFunction)
         {
             if(b instanceof utos_block.utosBlock)
             {
-                return ((utos_block.utosBlock) b).evaluate(sl);
+                return ((utos_block.utosBlock) b).evaluate(sl,  call, inAFunction);
             }
             
             return 0;
@@ -168,30 +170,37 @@ public abstract class utos_thisNalang extends created.iNode
         }
         
         
-        public int evaluate(SymList sl)
+        public int evaluate(SymList sl, int call, int inAFunction)
         {
             boolean a = false;
             if(s instanceof sabi_sabi.SabiSabi)
             {
                 a = (boolean)((sabi_sabi.SabiSabi) s).evaluate(sl);
             }
-            
+            if(WatchAndTrace.getVersion() != WatchManager.NOWATCH_ID){
+                if(WatchAndTrace.getVersion() == WatchManager.NORMALWATCH_ID || inAFunction == WatchManager.NOT_IN_A_FUNCTION){
+                    if(call == WatchManager.STANDALONE){
+                        WatchAndTrace GUI = WatchAndTrace.getInstance();
+                        GUI.watchAndTrace(sl);
+                    }
+                }
+            }// highlight else if condition
             if(a == true)
             {
                 if(b instanceof utos_block.utosBlock)
                 {
-                    return ((utos_block.utosBlock) b).evaluate(sl);
+                    return ((utos_block.utosBlock) b).evaluate(sl, call, inAFunction);
                 }
             }
             else
             {
                 if(t instanceof utos_thisNalang.thisNalang)
                 {
-                    return ((utos_thisNalang.thisNalang) t).evaluate(sl);
+                    return ((utos_thisNalang.thisNalang) t).evaluate(sl, call , inAFunction);
                 }
                 else if(t instanceof utos_thisNalang.thisNalangKapag)
                 {
-                    return ((utos_thisNalang.thisNalangKapag) t).evaluate(sl);
+                    return ((utos_thisNalang.thisNalangKapag) t).evaluate(sl, call, inAFunction);
                 } 
             }
             

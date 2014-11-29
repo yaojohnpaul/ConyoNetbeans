@@ -75,7 +75,7 @@ public abstract class utos_makeBasa extends created.iNode
             }
         }
         
-        public Object evaluate(SymList sl)
+        public Object evaluate(SymList sl, int call, int inAFunction)
         {
             Scanner sc = new Scanner(System.in);
             data_type.datatypePrimitive datatype = ((data_type.datatypePrimitive) dt);
@@ -163,6 +163,14 @@ public abstract class utos_makeBasa extends created.iNode
                     {
                         sc.next();
                         OutGen.addOut("Invalid character input! Input again: ");
+                    }
+                }
+            }
+            if(WatchAndTrace.getVersion() != WatchManager.NOWATCH_ID){
+                if(WatchAndTrace.getVersion() == WatchManager.NORMALWATCH_ID || inAFunction == WatchManager.NOT_IN_A_FUNCTION){
+                    if(call == WatchManager.STANDALONE){
+                        WatchAndTrace GUI = WatchAndTrace.getInstance();
+                        GUI.watchAndTrace(sl);
                     }
                 }
             }

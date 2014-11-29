@@ -54,11 +54,11 @@ public abstract class utos_dec_nodb extends created.iNode
             }
         }
         
-        public int evaluate(SymList sl)
+        public int evaluate(SymList sl, int call, int inAFunction)
         {
             if(uk instanceof utos_likeKapag.likeKapag)
             {
-                return ((utos_likeKapag.likeKapag) uk).evaluate(sl);
+                return ((utos_likeKapag.likeKapag) uk).evaluate(sl, call, inAFunction);
             }
             
             return 0;
@@ -104,11 +104,11 @@ public abstract class utos_dec_nodb extends created.iNode
             }
         }
         
-        public void evaluate(SymList sl)
+        public void evaluate(SymList sl, int call, int inAFunction)
         {
             if(up instanceof utos_makePalit.makePalit)
             {
-                ((utos_makePalit.makePalit) up).evaluate(sl);
+                ((utos_makePalit.makePalit) up).evaluate(sl, call, inAFunction);
             }
         }
     }
@@ -152,11 +152,11 @@ public abstract class utos_dec_nodb extends created.iNode
             }
         }
         
-        public void evaluate(SymList sl)
+        public void evaluate(SymList sl, int call, int inAFunction)
         {
             if(uh instanceof utos_likeHabang.likeHabang)
             {
-                ((utos_likeHabang.likeHabang) uh).evaluate(sl);
+                ((utos_likeHabang.likeHabang) uh).evaluate(sl, call, inAFunction);
             }
         }
     }
@@ -200,11 +200,11 @@ public abstract class utos_dec_nodb extends created.iNode
             }
         }
         
-        public void evaluate(SymList sl)
+        public void evaluate(SymList sl, int call, int inAFunction)
         {
             if(ugh instanceof utos_makeGawaHabang.makeGawaHabang)
             {
-                ((utos_makeGawaHabang.makeGawaHabang) ugh).evaluate(sl);
+                ((utos_makeGawaHabang.makeGawaHabang) ugh).evaluate(sl, call, inAFunction);
             }
         }
     }
@@ -248,11 +248,11 @@ public abstract class utos_dec_nodb extends created.iNode
             }
         }
         
-        public void evaluate(SymList sl)
+        public void evaluate(SymList sl, int call, int inAFunction)
         {
             if(uu instanceof utos_makeUlit.makeUlit)
             {
-                ((utos_makeUlit.makeUlit) uu).evaluate(sl);
+                ((utos_makeUlit.makeUlit) uu).evaluate(sl, call, inAFunction);
             }
         }
     }
@@ -296,11 +296,11 @@ public abstract class utos_dec_nodb extends created.iNode
             }
         }
         
-        public void evaluate(SymList sl)
+        public void evaluate(SymList sl, int call, int inAFunction)
         {
             if(ua instanceof utos_makeArte.makeArte)
             {
-                ((utos_makeArte.makeArte) ua).evaluate(sl);
+                ((utos_makeArte.makeArte) ua).evaluate(sl, call, inAFunction);
             }
         }
     }

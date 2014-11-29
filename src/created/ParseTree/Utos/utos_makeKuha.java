@@ -8,6 +8,8 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
+import created.WatchAndTrace;
+import created.WatchManager;
 import error.*;
 
 public abstract class utos_makeKuha extends created.iNode  
@@ -112,7 +114,7 @@ public abstract class utos_makeKuha extends created.iNode
             }
         }
         
-        public void evaluate(SymList sl)
+        public void evaluate(SymList sl, int call, int inAFunction)
         {
             String validVar = vv.toString();
             int index = 0;
@@ -160,6 +162,14 @@ public abstract class utos_makeKuha extends created.iNode
                 }
             }
             sl.editSymbol(vv.toString(), sv);
+            if(WatchAndTrace.getVersion() != WatchManager.NOWATCH_ID){
+                if(WatchAndTrace.getVersion() == WatchManager.NORMALWATCH_ID || inAFunction == WatchManager.NOT_IN_A_FUNCTION){
+                    if(call == WatchManager.STANDALONE){
+                        WatchAndTrace GUI = WatchAndTrace.getInstance();
+                        GUI.watchAndTrace(sl);
+                    }
+                }
+            }
         }
     }
 }

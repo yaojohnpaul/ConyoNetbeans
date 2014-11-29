@@ -30,7 +30,7 @@ public class ErrorReport
         if(sb.length() > 0)
         {
             //System.out.println(sb);
-            MainFrame.output.setText(sb.toString());
+            MainFrame.output.setText(output.getText() + sb.toString());
         }
     }
     

@@ -45,15 +45,26 @@ class MainConyo {
 
             end = System.nanoTime();
             duration = (int) Math.round((end - start) / 1000000000);
-            if(ErrorReport.semanticErrorsCount() == 0 && !c.errorExist())
-            {
-                OutGen.addOut("Execution successful (total time: " + duration + " seconds)");
-            }
-            else
-            {
+            
+            try {
+                c.errorExist();
+                
+                if(ErrorReport.semanticErrorsCount() == 0 && !c.errorExist())
+                {
+                    OutGen.addOut("Execution successful (total time: " + duration + " seconds)");
+                }
+                else
+                {
+                    OutGen.addOut("Unsuccessful execution (total time: " + duration + " seconds)");
+                }
+                ErrorReport.resetErrors();
+            } catch (NullPointerException n) {
+                ErrorReport.error(-2, "Fatal Syntax Error");
+                ErrorReport.printError();
                 OutGen.addOut("Unsuccessful execution (total time: " + duration + " seconds)");
+                ErrorReport.resetErrors();
             }
-            ErrorReport.resetErrors();
+            
         } catch (Exception e) {
             e.printStackTrace(System.out);
             System.exit(1);

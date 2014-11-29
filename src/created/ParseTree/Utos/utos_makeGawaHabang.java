@@ -7,6 +7,8 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
+import created.WatchAndTrace;
+import created.WatchManager;
 import error.*;
 
 public abstract class utos_makeGawaHabang extends created.iNode  
@@ -77,7 +79,7 @@ public abstract class utos_makeGawaHabang extends created.iNode
             }
         }
         
-        public void evaluate(SymList sl)
+        public void evaluate(SymList sl, int call, int inAFunction)
         {
             boolean a = false;
             int utosType = 0;
@@ -86,7 +88,7 @@ public abstract class utos_makeGawaHabang extends created.iNode
             {
                 if(u instanceof utos_block.utosBlock)
                 {
-                    ((utos_block.utosBlock) u).evaluate(sl);
+                    ((utos_block.utosBlock) u).evaluate(sl, call, inAFunction );
                 }
                 
                 if(utosType == 1)
@@ -96,6 +98,15 @@ public abstract class utos_makeGawaHabang extends created.iNode
                 {
                     a = (boolean)((sabi_sabi.SabiSabi) s).evaluate(sl);
                 }
+               
+                if(WatchAndTrace.getVersion() != WatchManager.NOWATCH_ID){
+                    if(WatchAndTrace.getVersion() == WatchManager.NORMALWATCH_ID || inAFunction == WatchManager.NOT_IN_A_FUNCTION){
+                        if(call == WatchManager.STANDALONE){
+                            WatchAndTrace GUI = WatchAndTrace.getInstance();
+                            GUI.watchAndTrace(sl);
+                        }
+                    }
+                }// highlight while condition
             } while(a);
         }
     }

@@ -9,6 +9,8 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
 import created.SymManager;
+import created.WatchAndTrace;
+import created.WatchManager;
 import error.*;
 
 public abstract class utos_makeTawag extends created.iNode  
@@ -152,7 +154,7 @@ public abstract class utos_makeTawag extends created.iNode
             } 
         }
         
-        public Object evaluate(SymList sl)
+        public Object evaluate(SymList sl, int call, int inAFunction)
         {
             SymFunc sf = (SymFunc) sl.getSymbol(vn.toString()); //Function Symbol
             yaya.addYaya yy = (yaya.addYaya) sf.getYaya(); //Function class
@@ -180,7 +182,17 @@ public abstract class utos_makeTawag extends created.iNode
                 local.editSymbol(paramNames.get(i), sv);
             }
             yy.setLocalSymList(local);
-            return yy.evaluate(SymManager.getSym(SymManager.SUPER_ID));
+            Object x = yy.evaluate(SymManager.getSym(SymManager.SUPER_ID));
+            
+            if(WatchAndTrace.getVersion() != WatchManager.NOWATCH_ID){
+                if(WatchAndTrace.getVersion() == WatchManager.NORMALWATCH_ID || inAFunction == WatchManager.NOT_IN_A_FUNCTION){
+                    if(call == WatchManager.STANDALONE){
+                        WatchAndTrace GUI = WatchAndTrace.getInstance();
+                        GUI.watchAndTrace(sl);
+                    }
+                }
+            }
+            return x;
         }
     }
 }
