@@ -2,6 +2,7 @@
 
 package generated;
 
+import created.MainFrame;
 import java.io.*;
 import javax.swing.text.Segment;
 
@@ -483,6 +484,8 @@ public class ConyoPlusPlusTokenMaker extends AbstractJFlexCTokenMaker {
 						int startOffset, boolean hyperlink) {
 		super.addToken(array, start,end, tokenType, startOffset, hyperlink);
 		zzStartRead = zzMarkedPos;
+                if(tokenType == TokenTypes.IDENTIFIER)
+                    MainFrame.newCompletion(array, start, end);
 	}
 
 

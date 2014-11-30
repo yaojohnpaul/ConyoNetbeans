@@ -6,18 +6,13 @@ package created;
  * and open the template in the editor.
  */
 import generated.*;
-import created.*;
-import error.*;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.*;
 import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
+import javax.swing.event.*;
 import javax.swing.text.BadLocationException;
 import org.fife.ui.autocomplete.*;
 import org.fife.ui.rtextarea.*;
@@ -32,6 +27,12 @@ public class MainFrame extends javax.swing.JFrame implements KeyListener, Action
     public static RSyntaxTextArea input;
     public static JTextArea output;
     public static ConyoLexer s = null;
+    public static AutoCompletion ac;
+    public static String[] defaultCompletions = {"OMG", "hireYaya", "bayad", "makeBalik", "superYaya", "makeArte",
+        "breakup", "makeup", "makeTawag", "makeSulat", "likeKapag", "thisNalang",
+        "thisNalangKapag", "makePalit", "MRW", "MDR", "likeHabang", "makeGawa",
+        "makeUlit", "inty", "floaty", "chary", "stringy", "booly",
+        "yuhh", "nuhh", "poor", "waley", "makeKuha"};
     private boolean fileChanged = false;
     private boolean isControlPressed = false;
 
@@ -60,7 +61,7 @@ public class MainFrame extends javax.swing.JFrame implements KeyListener, Action
         input.setCodeFoldingEnabled(true);
         input.setAntiAliasingEnabled(true);
         input.setTabSize(4);
-
+        
         // Colors and formatting
         SyntaxScheme scheme = input.getSyntaxScheme();
         hsb = Color.RGBtoHSB(72, 107, 154, null);
@@ -69,6 +70,32 @@ public class MainFrame extends javax.swing.JFrame implements KeyListener, Action
         scheme.getStyle(Token.RESERVED_WORD_2).foreground = Color.getHSBColor(hsb[0], hsb[1], hsb[2]);
         hsb = Color.RGBtoHSB(70, 70, 70, null);
         scheme.getStyle(Token.IDENTIFIER).foreground = Color.getHSBColor(hsb[0], hsb[1], hsb[2]);
+        
+        /*
+         * Dark theme
+         *
+         */
+//        hsb = Color.RGBtoHSB(25, 25, 25, null);
+//        input.setBackground(Color.getHSBColor(hsb[0], hsb[1], hsb[2]));
+//        hsb = Color.RGBtoHSB(146, 146, 146, null);
+//        input.setForeground(Color.getHSBColor(hsb[0], hsb[1], hsb[2]));
+//        hsb = Color.RGBtoHSB(30, 30, 30, null);
+//        input.setCurrentLineHighlightColor(Color.getHSBColor(hsb[0], hsb[1], hsb[2]));
+//        hsb = Color.RGBtoHSB(146, 146, 146, null);
+//        scheme.getStyle(Token.IDENTIFIER).foreground = Color.getHSBColor(hsb[0], hsb[1], hsb[2]);
+//        hsb = Color.RGBtoHSB(70, 76, 69, null);
+//        scheme.getStyle(Token.COMMENT_MULTILINE).foreground = Color.getHSBColor(hsb[0], hsb[1], hsb[2]);
+//        hsb = Color.RGBtoHSB(70, 76, 69, null);
+//        scheme.getStyle(Token.COMMENT_DOCUMENTATION).foreground = Color.getHSBColor(hsb[0], hsb[1], hsb[2]);
+//        hsb = Color.RGBtoHSB(70, 76, 69, null);
+//        scheme.getStyle(Token.COMMENT_EOL).foreground = Color.getHSBColor(hsb[0], hsb[1], hsb[2]);
+//        hsb = Color.RGBtoHSB(70, 76, 69, null);
+//        scheme.getStyle(Token.COMMENT_KEYWORD).foreground = Color.getHSBColor(hsb[0], hsb[1], hsb[2]);
+//        hsb = Color.RGBtoHSB(70, 76, 69, null);
+//        scheme.getStyle(Token.COMMENT_MARKUP).foreground = Color.getHSBColor(hsb[0], hsb[1], hsb[2]);
+//         hsb = Color.RGBtoHSB(72, 107, 154, null);
+//        scheme.getStyle(Token.LITERAL_STRING_DOUBLE_QUOTE).foreground = Color.getHSBColor(hsb[0], hsb[1], hsb[2]);
+        
         input.setFont(new Font("Liberation Mono", Font.PLAIN, 12));
         input.getDocument().addDocumentListener(new CustomDocumentListener());
         input.addKeyListener(this);
@@ -82,8 +109,9 @@ public class MainFrame extends javax.swing.JFrame implements KeyListener, Action
          * (c) Robert Futrell
          * https://github.com/bobbylight/AutoComplete
          */
-        CompletionProvider provider = createCompletionProvider();
-        AutoCompletion ac = new AutoCompletion(provider);
+        DefaultCompletionProvider provider = new DefaultCompletionProvider();
+        addDefaultCompletionProviders(provider);
+        ac = new AutoCompletion(provider);
         ac.install(input);
 
         /**
@@ -95,12 +123,12 @@ public class MainFrame extends javax.swing.JFrame implements KeyListener, Action
         output.setText("Result(s):\n");
 
         // Colors and formatting
-//        hsb = Color.RGBtoHSB(51, 51, 51, null);
+//        hsb = Color.RGBtoHSB(50, 50, 50, null);
 //        output.setBackground(Color.getHSBColor(hsb[0], hsb[1], hsb[2]));
 //        hsb = Color.RGBtoHSB(240, 240, 240, null);
 //        output.setForeground(Color.getHSBColor(hsb[0], hsb[1], hsb[2]));
         output.setFont(new Font("Liberation Mono", Font.PLAIN, 12));
-        
+
         output.getInputMap().put(KeyStroke.getKeyStroke("BACK_SPACE"), "none");
         JScrollPane output_sp = new JScrollPane(output);
         cp.add(BorderLayout.SOUTH, output_sp);
@@ -235,8 +263,8 @@ public class MainFrame extends javax.swing.JFrame implements KeyListener, Action
         OutGen.clear();
         MainConyo.parse(true);
     }
-    
-    public void watchAndTrace(){
+
+    public void watchAndTrace() {
         OutGen.clear();
         WatchAndTrace.setVersion(1);
         WatchAndTrace window = WatchAndTrace.getInstance();
@@ -244,19 +272,21 @@ public class MainFrame extends javax.swing.JFrame implements KeyListener, Action
         ExecutionThread t = new ExecutionThread();
         t.start();
     }
-    
+
     public static String scanInput() throws BadLocationException {
         int offset = output.getLineEndOffset(output.getLineCount() - 1);
         int length = 0;
         
         while (output.getText().charAt(output.getLineEndOffset(output.getLineCount() - 1) - 1) != '\n' || length == 0) {
+            if(output.getCaretPosition() < offset)
+                output.setCaretPosition(offset);
             System.out.println();
             length = output.getLineEndOffset(output.getLineCount() - 1) - offset;
         }
-        
+
         return output.getText(offset, length - 1);
     }
-    
+
     class ExecutionThread extends Thread {
 
         @Override
@@ -267,46 +297,59 @@ public class MainFrame extends javax.swing.JFrame implements KeyListener, Action
         }
     }
 
-    private CompletionProvider createCompletionProvider() {
-        DefaultCompletionProvider provider = new DefaultCompletionProvider();
-
-        provider.addCompletion(new BasicCompletion(provider, "OMG"));
-        provider.addCompletion(new BasicCompletion(provider, "hireYaya"));
-        provider.addCompletion(new BasicCompletion(provider, "bayad"));
-        provider.addCompletion(new BasicCompletion(provider, "makeBalik"));
-        provider.addCompletion(new BasicCompletion(provider, "superYaya"));
-        provider.addCompletion(new BasicCompletion(provider, "makeArte"));
-        provider.addCompletion(new BasicCompletion(provider, "breakup"));
-        provider.addCompletion(new BasicCompletion(provider, "makeup"));
-        provider.addCompletion(new BasicCompletion(provider, "makeTawag"));
-        provider.addCompletion(new BasicCompletion(provider, "makeSulat"));
-        provider.addCompletion(new BasicCompletion(provider, "makeBasa"));
-        provider.addCompletion(new BasicCompletion(provider, "likeKapag"));
-        provider.addCompletion(new BasicCompletion(provider, "thisNalang"));
-        provider.addCompletion(new BasicCompletion(provider, "thisNalangKapag"));
-        provider.addCompletion(new BasicCompletion(provider, "makePalit"));
-        provider.addCompletion(new BasicCompletion(provider, "MRW"));
-        provider.addCompletion(new BasicCompletion(provider, "MDR"));
-        provider.addCompletion(new BasicCompletion(provider, "likeHabang"));
-        provider.addCompletion(new BasicCompletion(provider, "makeGawa"));
-        provider.addCompletion(new BasicCompletion(provider, "makeUlit"));
-        provider.addCompletion(new BasicCompletion(provider, "inty"));
-        provider.addCompletion(new BasicCompletion(provider, "floaty"));
-        provider.addCompletion(new BasicCompletion(provider, "chary"));
-        provider.addCompletion(new BasicCompletion(provider, "stringy"));
-        provider.addCompletion(new BasicCompletion(provider, "booly"));
-        provider.addCompletion(new BasicCompletion(provider, "yuhh"));
-        provider.addCompletion(new BasicCompletion(provider, "nuhh"));
-        provider.addCompletion(new BasicCompletion(provider, "poor"));
-        provider.addCompletion(new BasicCompletion(provider, "waley"));
-        provider.addCompletion(new BasicCompletion(provider, "makeKuha"));
+    public static void addDefaultCompletionProviders(DefaultCompletionProvider provider) {
+        for (String s : defaultCompletions) {
+            provider.addCompletion(new BasicCompletion(provider, s));
+        }
 
         provider.addCompletion(new ShorthandCompletion(provider, "msulat",
                 "makeSulat(", "makeSulat("));
         provider.addCompletion(new ShorthandCompletion(provider, "syaya",
                 "superYaya\n$\n\n$", "superYaya\n$\n\n$"));
+    }
 
-        return provider;
+    public static void newCompletion(char[] text, int start, int end) {
+        String temp = new String(text);
+        String key;
+//        Boolean isReservedWord = false;
+        DefaultCompletionProvider provider = new DefaultCompletionProvider();
+//        ArrayList<String> completions = new ArrayList<>();
+
+        if (!temp.substring(end + 1).trim().isEmpty()) {
+
+            key = temp.substring(start, end + 1);
+
+//            String[] keywords = temp.split("[\n\r\\s\t\b\012]");
+//
+//            for (String s : keywords) {
+//                isReservedWord = false;
+//
+//                if (s.isEmpty()) {
+//                    continue;
+//                }
+//                if (s.contains("/*") || s.contains("*/")) {
+//                    continue;
+//                }
+//                for (String t : defaultCompletions) {
+//                    if (s.equals(t)) {
+//                        isReservedWord = true;
+//                        break;
+//                    }
+//                }
+//                if (isReservedWord) {
+//                    continue;
+//                }
+//            }
+            if (/*!completions.contains(key) &&*/key.length() > 2) {
+                ac.uninstall();
+                addDefaultCompletionProviders(provider);
+                provider.addCompletion(new BasicCompletion(provider, key));
+                AutoCompletion ac = new AutoCompletion(provider);
+                ac.install(input);
+//                completions.add(key);
+            }
+
+        }
     }
 
     @Override
