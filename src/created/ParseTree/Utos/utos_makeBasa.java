@@ -1,6 +1,5 @@
 package created.ParseTree.Utos;
 
-import java.util.*;
 import created.ParseTree.Array.*;
 import created.ParseTree.Arte.*;
 import created.ParseTree.Literals.*;
@@ -75,9 +74,8 @@ public abstract class utos_makeBasa extends created.iNode
             }
         }
         
-        public Object evaluate(SymList sl)
+        public Object evaluate(SymList sl, int call, int inAFunction)
         {
-            Scanner sc = new Scanner(System.in);
             data_type.datatypePrimitive datatype = ((data_type.datatypePrimitive) dt);
             if(datatype.toString().equals("inty"))
             {
@@ -85,11 +83,11 @@ public abstract class utos_makeBasa extends created.iNode
                 {
                     try
                     {
-                        return sc.nextInt();
+                        String temp = MainFrame.scanInput();
+                        return Integer.parseInt(temp);
                     }
                     catch(Exception e)
                     {
-                        sc.next();
                         OutGen.addOut("Invalid integer input! Input again: ");
                     }
                 }
@@ -100,11 +98,11 @@ public abstract class utos_makeBasa extends created.iNode
                 {
                     try
                     {
-                        return sc.nextFloat();
+                        String temp = MainFrame.scanInput();
+                        return Float.parseFloat(temp);
                     }
                     catch(Exception e)
                     {
-                        sc.next();
                         OutGen.addOut("Invalid float input! Input again: ");
                     }
                 }
@@ -115,7 +113,7 @@ public abstract class utos_makeBasa extends created.iNode
                 {
                     try
                     {
-                        String bool = sc.next();
+                        String bool = MainFrame.scanInput();
                         if(bool.equals("yuhh") || bool.equals("true"))
                         {
                             return true;
@@ -131,7 +129,6 @@ public abstract class utos_makeBasa extends created.iNode
                     }
                     catch(Exception e)
                     {
-                        sc.next();
                         OutGen.addOut("Invalid boolean input! Input again: ");
                     }
                 }
@@ -142,11 +139,10 @@ public abstract class utos_makeBasa extends created.iNode
                 {
                     try
                     {
-                        return sc.next();
+                        return MainFrame.scanInput();
                     }
                     catch(Exception e)
                     {
-                        sc.next();
                         OutGen.addOut("Invalid string input! Input again: ");
                     }
                 }
@@ -157,12 +153,19 @@ public abstract class utos_makeBasa extends created.iNode
                 {
                     try
                     {
-                        return sc.next().charAt(0);
+                        return MainFrame.scanInput().charAt(0);
                     }
                     catch(Exception e)
                     {
-                        sc.next();
                         OutGen.addOut("Invalid character input! Input again: ");
+                    }
+                }
+            }
+            if(WatchAndTrace.getVersion() != WatchManager.NOWATCH_ID){
+                if(WatchAndTrace.getVersion() == WatchManager.NORMALWATCH_ID || inAFunction == WatchManager.NOT_IN_A_FUNCTION){
+                    if(call == WatchManager.STANDALONE){
+                        WatchAndTrace GUI = WatchAndTrace.getInstance();
+                        GUI.watchAndTrace(sl);
                     }
                 }
             }

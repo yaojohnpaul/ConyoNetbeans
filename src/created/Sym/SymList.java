@@ -92,6 +92,10 @@ public class SymList
         }
     }
     
+    public Map getMap(){
+        return m;
+    }
+    
     @Override
     public String toString()
     {

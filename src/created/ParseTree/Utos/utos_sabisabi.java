@@ -7,6 +7,8 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
+import created.WatchAndTrace;
+import created.WatchManager;
 import error.ErrorReport;
 
 public abstract class utos_sabisabi extends created.iNode 
@@ -85,7 +87,7 @@ public abstract class utos_sabisabi extends created.iNode
             }
         }
         
-        public void evaluate(SymList sl){
+        public void evaluate(SymList sl, int call, int inAFunction){
             SymVar sv = (SymVar) sl.getSymbol(vv.toString());
             switch(kind){
                 case "++" :
@@ -110,6 +112,14 @@ public abstract class utos_sabisabi extends created.iNode
                     break;
             }
             sl.editSymbol(vv.toString(), sv);
+            if(WatchAndTrace.getVersion() != WatchManager.NOWATCH_ID){
+                if(WatchAndTrace.getVersion() == WatchManager.NORMALWATCH_ID || inAFunction == WatchManager.NOT_IN_A_FUNCTION){
+                    if(call == WatchManager.STANDALONE){
+                        WatchAndTrace GUI = WatchAndTrace.getInstance();
+                        GUI.watchAndTrace(sl);
+                    }
+                }
+            }
         }
     }
     
@@ -182,7 +192,7 @@ public abstract class utos_sabisabi extends created.iNode
             }
         }
         
-        public void evaluate(SymList sl)
+        public void evaluate(SymList sl, int call, int inAFunction)
         {
             SymVar sv = (SymVar) sl.getSymbol(vv.toString());
             switch(kind){
@@ -208,6 +218,14 @@ public abstract class utos_sabisabi extends created.iNode
                     break;
             }
             sl.editSymbol(vv.toString(), sv);
+            if(WatchAndTrace.getVersion() != WatchManager.NOWATCH_ID){
+                if(WatchAndTrace.getVersion() == WatchManager.NORMALWATCH_ID || inAFunction == WatchManager.NOT_IN_A_FUNCTION){
+                    if(call == WatchManager.STANDALONE){
+                        WatchAndTrace GUI = WatchAndTrace.getInstance();
+                        GUI.watchAndTrace(sl);
+                    }
+                }
+            }
         }
     }
     

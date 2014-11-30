@@ -7,6 +7,8 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
+import created.WatchAndTrace;
+import created.WatchManager;
 
 public abstract class utos_makePalit extends created.iNode  
 {
@@ -83,7 +85,7 @@ public abstract class utos_makePalit extends created.iNode
             }
         }
         
-        public void evaluate(SymList sl)
+        public void evaluate(SymList sl, int call, int inAFunction)
         {
             Object match = null;
             if(s instanceof sabi_sabi.SabiSabi)
@@ -91,13 +93,22 @@ public abstract class utos_makePalit extends created.iNode
                 match = ((sabi_sabi.SabiSabi) s).evaluate(sl);
             }
             
+            if(WatchAndTrace.getVersion() != WatchManager.NOWATCH_ID){
+                if(WatchAndTrace.getVersion() == WatchManager.NORMALWATCH_ID || inAFunction == WatchManager.NOT_IN_A_FUNCTION){
+                    if(call == WatchManager.STANDALONE){
+                        WatchAndTrace GUI = WatchAndTrace.getInstance();
+                        GUI.watchAndTrace(sl);
+                    }
+                }
+            }
+            
             if(m instanceof makePalit_MRW.MRW)
             {
-                ((makePalit_MRW.MRW) m).evaluate(sl, match, false, false);
+                ((makePalit_MRW.MRW) m).evaluate(sl, match, false, false, call, inAFunction);
             }
             else if(m instanceof makePalit_MRW.MDR)
             {
-                ((makePalit_MRW.MDR) m).evaluate(sl);
+                ((makePalit_MRW.MDR) m).evaluate(sl, call, inAFunction);
             }
         }
     }

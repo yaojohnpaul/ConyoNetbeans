@@ -7,6 +7,8 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
+import created.WatchAndTrace;
+import created.WatchManager;
 
 public abstract class utos_dec_db extends created.iNode  
 {
@@ -54,11 +56,11 @@ public abstract class utos_dec_db extends created.iNode
             }
         }
         
-        public void evaluate(SymList sl)
+        public void evaluate(SymList sl, int call, int inAFunction)
         {
             if(uk instanceof utos_makeKuha.makeKuha)
             {
-                ((utos_makeKuha.makeKuha) uk).evaluate(sl);
+                ((utos_makeKuha.makeKuha) uk).evaluate(sl, call, inAFunction);
             }
         }
     }
@@ -102,11 +104,11 @@ public abstract class utos_dec_db extends created.iNode
             }
         }
         
-        public void evaluate(SymList sl)
+        public void evaluate(SymList sl, int call, int inAFunction)
         {
             if(usu instanceof utos_makeSulat.makeSulat)
             {
-                ((utos_makeSulat.makeSulat) usu).evaluate(sl);
+                ((utos_makeSulat.makeSulat) usu).evaluate(sl, call, inAFunction);
             }
         }
     }
@@ -123,8 +125,16 @@ public abstract class utos_dec_db extends created.iNode
             return "breakup db";
         }
         
-        public int evaluate(SymList sl)
+        public int evaluate(SymList sl, int call, int inAFunction)
         {
+            if(WatchAndTrace.getVersion() != WatchManager.NOWATCH_ID){
+                if(WatchAndTrace.getVersion() == WatchManager.NORMALWATCH_ID || inAFunction == WatchManager.NOT_IN_A_FUNCTION){
+                    if(call == WatchManager.STANDALONE){
+                    WatchAndTrace GUI = WatchAndTrace.getInstance();
+                    GUI.watchAndTrace(sl);
+                    }
+                }
+            }
             return 1;
         }
     }
@@ -141,8 +151,16 @@ public abstract class utos_dec_db extends created.iNode
             return "makeup db";
         }
         
-        public int evaluate(SymList sl)
+        public int evaluate(SymList sl, int call, int inAFunction)
         {
+            if(WatchAndTrace.getVersion() != WatchManager.NOWATCH_ID){
+                if(WatchAndTrace.getVersion() == WatchManager.NORMALWATCH_ID || inAFunction == WatchManager.NOT_IN_A_FUNCTION){
+                    if(call == WatchManager.STANDALONE){
+                        WatchAndTrace GUI = WatchAndTrace.getInstance();
+                        GUI.watchAndTrace(sl);
+                    }
+                }
+            }
             return 2;
         }
     }

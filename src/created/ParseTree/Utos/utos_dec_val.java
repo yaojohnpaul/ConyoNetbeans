@@ -57,11 +57,11 @@ public abstract class utos_dec_val extends created.iNode
             }
         }
         
-        public Object evaluate(SymList sl)
+        public Object evaluate(SymList sl, int call, int inAFunction)
         {
             if(ut instanceof utos_makeTawag.makeTawag)
             {
-                return ((utos_makeTawag.makeTawag) ut).evaluate(sl);
+                return ((utos_makeTawag.makeTawag) ut).evaluate(sl, call, inAFunction);
             }
             return null;
         }
@@ -109,11 +109,11 @@ public abstract class utos_dec_val extends created.iNode
             }
         }
         
-        public Object evaluate(SymList sl)
+        public Object evaluate(SymList sl, int call, int inAFunction)
         {
             if(ub instanceof utos_makeBasa.makeBasa)
             {
-                return ((utos_makeBasa.makeBasa) ub).evaluate(sl);
+                return ((utos_makeBasa.makeBasa) ub).evaluate(sl, call, inAFunction);
             }
             return null;
         }

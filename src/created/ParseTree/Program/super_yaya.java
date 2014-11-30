@@ -7,6 +7,7 @@ import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
+import created.WatchManager;
 
 public abstract class super_yaya extends created.iNode 
 {
@@ -73,7 +74,7 @@ public abstract class super_yaya extends created.iNode
             this.sl.setAncestor(sl);
             if(u instanceof utos_block.utosBlock)
             {
-                ((utos_block.utosBlock) u).evaluate(this.sl);
+                ((utos_block.utosBlock) u).evaluate(this.sl, WatchManager.STANDALONE, WatchManager.NOT_IN_A_FUNCTION );
             }
         }
     }

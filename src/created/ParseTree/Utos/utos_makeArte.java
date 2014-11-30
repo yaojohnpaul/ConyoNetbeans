@@ -7,6 +7,8 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
+import created.WatchAndTrace;
+import created.WatchManager;
 
 public abstract class utos_makeArte extends created.iNode  
 {
@@ -54,11 +56,19 @@ public abstract class utos_makeArte extends created.iNode
             }
         }
         
-        public void evaluate(SymList sl)
+        public void evaluate(SymList sl, int call, int inAFunction)
         {
             if(a instanceof arte_dec.arteDec)
             {
                 ((arte_dec.arteDec) a).evaluate(sl);
+            }
+            if(WatchAndTrace.getVersion() != WatchManager.NOWATCH_ID){
+                if(WatchAndTrace.getVersion() == WatchManager.NORMALWATCH_ID || inAFunction == WatchManager.NOT_IN_A_FUNCTION){
+                    if(call == WatchManager.STANDALONE){
+                        WatchAndTrace GUI = WatchAndTrace.getInstance();
+                        GUI.watchAndTrace(sl);
+                    }
+                }
             }
         }
     }

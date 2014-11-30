@@ -7,6 +7,7 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Utos.*;
 import created.Sym.*;
+import created.WatchManager;
 
 public abstract class yaya extends created.iNode  
 {
@@ -104,7 +105,7 @@ public abstract class yaya extends created.iNode
             
             if(u instanceof utos_block.utosBlock)
             {
-                ((utos_block.utosBlock) u).evaluate(this.sl);
+                ((utos_block.utosBlock) u).evaluate(this.sl,  WatchManager.STANDALONE, WatchManager.IN_A_FUNCTION );
             }
             
             SymVar sv = null;

@@ -7,6 +7,7 @@ import created.ParseTree.Program.*;
 import created.ParseTree.Utos.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
+import created.WatchManager;
 import error.*;
 
 public abstract class sabi_sabi_end extends created.iNode
@@ -125,11 +126,11 @@ public abstract class sabi_sabi_end extends created.iNode
         {
             if(u instanceof utos_dec_val.utosMakeBasa)
             {
-                return ((utos_dec_val.utosMakeBasa) u).evaluate(sl);
+                return ((utos_dec_val.utosMakeBasa) u).evaluate(sl, WatchManager.INNERCALL, WatchManager.NOT_IN_A_FUNCTION);
             }
             else if(u instanceof utos_dec_val.utosMakeTawag)
             {
-                return ((utos_dec_val.utosMakeTawag) u).evaluate(sl);
+                return ((utos_dec_val.utosMakeTawag) u).evaluate(sl, WatchManager.INNERCALL, WatchManager.NOT_IN_A_FUNCTION);
             }
             return null;
         }

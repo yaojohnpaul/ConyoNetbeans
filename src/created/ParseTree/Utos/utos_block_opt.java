@@ -63,11 +63,11 @@ public abstract class utos_block_opt extends created.iNode
             }
         }
         
-        public int evaluate(SymList sl)
+        public int evaluate(SymList sl, int call, int inAFunction)
         {
             if(b instanceof block_content.blockContent)
             {
-                return ((block_content.blockContent) b).evaluate(sl);
+                return ((block_content.blockContent) b).evaluate(sl, call, inAFunction);
             }
             
             return 0;

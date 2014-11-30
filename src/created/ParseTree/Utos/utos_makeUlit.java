@@ -7,6 +7,8 @@ import created.ParseTree.Program.*;
 import created.ParseTree.SabiSabi.*;
 import created.ParseTree.Yaya.*;
 import created.Sym.*;
+import created.WatchAndTrace;
+import created.WatchManager;
 
 public abstract class utos_makeUlit extends created.iNode  
 {
@@ -180,18 +182,27 @@ public abstract class utos_makeUlit extends created.iNode
             }
         }
         
-        public void evaluate(SymList sl)
+        public void evaluate(SymList sl, int call, int inAFunction)
         {
             boolean flag = false;
             int utosType = 0;
             
             if(m1 instanceof utos_makeKuha.makeKuha)
             {
-                ((utos_makeKuha.makeKuha) m1).evaluate(sl);
+                ((utos_makeKuha.makeKuha) m1).evaluate(sl, call, inAFunction);
             }
             if(s1 instanceof sabi_sabi_for.SabiSabiFor)
             {
                 flag = ((sabi_sabi_for.SabiSabiFor) s1).evaluate(sl);
+            }
+            
+            if(WatchAndTrace.getVersion() != WatchManager.NOWATCH_ID){
+                if(WatchAndTrace.getVersion() == WatchManager.NORMALWATCH_ID || inAFunction == WatchManager.NOT_IN_A_FUNCTION){
+                    if(call == WatchManager.STANDALONE){
+                        WatchAndTrace GUI = WatchAndTrace.getInstance();
+                        GUI.watchAndTrace(sl);
+                    }
+                }
             }
             
             if(s2 == null && m3 == null) // case 1
@@ -201,7 +212,7 @@ public abstract class utos_makeUlit extends created.iNode
                 {
                     if(u instanceof utos_block.utosBlock)
                     {
-                        utosType = ((utos_block.utosBlock) u).evaluate(sl);
+                        utosType = ((utos_block.utosBlock) u).evaluate(sl,  call, inAFunction);
                     }
                     
                     if(utosType == 1)
@@ -209,12 +220,21 @@ public abstract class utos_makeUlit extends created.iNode
                     
                     if(m2 instanceof utos_makeKuha.makeKuha)
                     {
-                        ((utos_makeKuha.makeKuha) m2).evaluate(sl);
+                        ((utos_makeKuha.makeKuha) m2).evaluate(sl,  call, inAFunction);
                     }
                     
                     if(s1 instanceof sabi_sabi_for.SabiSabiFor)
                     {
                         flag = ((sabi_sabi_for.SabiSabiFor) s1).evaluate(sl);
+                    }
+                    
+                    if(WatchAndTrace.getVersion() != WatchManager.NOWATCH_ID){
+                        if(WatchAndTrace.getVersion() == WatchManager.NORMALWATCH_ID || inAFunction == WatchManager.NOT_IN_A_FUNCTION){
+                            if(call == WatchManager.STANDALONE){
+                                WatchAndTrace GUI = WatchAndTrace.getInstance();
+                                GUI.watchAndTrace(sl);
+                            }
+                        }
                     }
                     
                 }
@@ -226,7 +246,7 @@ public abstract class utos_makeUlit extends created.iNode
                 {
                     if(u instanceof utos_block.utosBlock)
                     {
-                        utosType = ((utos_block.utosBlock) u).evaluate(sl);
+                        utosType = ((utos_block.utosBlock) u).evaluate(sl,  call, inAFunction);
                     }
                     
                     if(utosType == 1)
@@ -241,6 +261,15 @@ public abstract class utos_makeUlit extends created.iNode
                     {
                         flag = ((sabi_sabi_for.SabiSabiFor) s1).evaluate(sl);
                     }
+                    
+                    if(WatchAndTrace.getVersion() != WatchManager.NOWATCH_ID){
+                        if(WatchAndTrace.getVersion() == WatchManager.NORMALWATCH_ID || inAFunction == WatchManager.NOT_IN_A_FUNCTION){
+                            if(call == WatchManager.STANDALONE){
+                                WatchAndTrace GUI = WatchAndTrace.getInstance();
+                                GUI.watchAndTrace(sl);
+                            }
+                        }
+                    }
                 }
             }
             else if(m2 == null && s2 == null) // case 3
@@ -250,7 +279,7 @@ public abstract class utos_makeUlit extends created.iNode
                 {
                     if(u instanceof utos_block.utosBlock)
                     {
-                        utosType = ((utos_block.utosBlock) u).evaluate(sl);
+                        utosType = ((utos_block.utosBlock) u).evaluate(sl,  call, inAFunction);
                     }
                     
                     if(utosType == 1)
@@ -258,16 +287,25 @@ public abstract class utos_makeUlit extends created.iNode
                     
                     if(m3 instanceof utos_sabisabi.utosSabiSabiFront)
                     {
-                        ((utos_sabisabi.utosSabiSabiFront) m3).evaluate(sl);
+                        ((utos_sabisabi.utosSabiSabiFront) m3).evaluate(sl,  call, inAFunction);
                     }
                     else if(m3 instanceof utos_sabisabi.utosSabiSabiBack)
                     {
-                        ((utos_sabisabi.utosSabiSabiBack) m3).evaluate(sl);
+                        ((utos_sabisabi.utosSabiSabiBack) m3).evaluate(sl,  call, inAFunction);
                     }
                     
                     if(s1 instanceof sabi_sabi_for.SabiSabiFor)
                     {
                         flag = ((sabi_sabi_for.SabiSabiFor) s1).evaluate(sl);
+                    }
+                    
+                    if(WatchAndTrace.getVersion() != WatchManager.NOWATCH_ID){
+                        if(WatchAndTrace.getVersion() == WatchManager.NORMALWATCH_ID || inAFunction == WatchManager.NOT_IN_A_FUNCTION){
+                            if(call == WatchManager.STANDALONE){
+                                WatchAndTrace GUI = WatchAndTrace.getInstance();
+                                GUI.watchAndTrace(sl);
+                            }
+                        }
                     }
                 }
             }
