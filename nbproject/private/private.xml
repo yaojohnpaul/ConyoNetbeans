@@ -3,12 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/Documents/GitHub/ConyoNetbeans/src/generated/ConyoPlusPlusTokenMaker.java</file>
-            <file>file:/F:/Documents/GitHub/ConyoNetbeans/src/created/ParseTree/Utos/utos_makeBasa.java</file>
-            <file>file:/F:/Documents/GitHub/ConyoNetbeans/src/created/MainConyo.java</file>
-            <file>file:/F:/Documents/GitHub/ConyoNetbeans/src/created/Conyogram.java</file>
-            <file>file:/F:/Documents/GitHub/ConyoNetbeans/src/error/ErrorReport.java</file>
-            <file>file:/F:/Documents/GitHub/ConyoNetbeans/src/created/MainFrame.java</file>
+            <file>file:/I:/ConyoNetbeans/src/created/MainFrame.java</file>
+            <file>file:/I:/ConyoNetbeans/src/created/ParseTree/Utos/utos_makeArte.java</file>
+            <file>file:/I:/ConyoNetbeans/src/created/ParseTree/Utos/utos_dec_db.java</file>
+            <file>file:/I:/ConyoNetbeans/src/created/ParseTree/Utos/utos_thisNalang.java</file>
+            <file>file:/I:/ConyoNetbeans/src/created/ParseTree/Utos/utos_likeKapag.java</file>
+            <file>file:/I:/ConyoNetbeans/src/created/ParseTree/Utos/utos_makeUlit.java</file>
+            <file>file:/I:/ConyoNetbeans/src/created/ParseTree/Utos/utos_makeBasa.java</file>
+            <file>file:/I:/ConyoNetbeans/src/created/WatchAndTrace.java</file>
+            <file>file:/I:/ConyoNetbeans/src/created/ParseTree/Utos/utos_makeKuha.java</file>
+            <file>file:/I:/ConyoNetbeans/src/created/ParseTree/Utos/utos_sabisabi.java</file>
+            <file>file:/I:/ConyoNetbeans/src/created/ParseTree/Utos/utos_makePalit.java</file>
+            <file>file:/I:/ConyoNetbeans/src/created/ParseTree/Utos/utos_likeHabang.java</file>
+            <file>file:/I:/ConyoNetbeans/src/created/ParseTree/Utos/utos_makeGawaHabang.java</file>
+            <file>file:/I:/ConyoNetbeans/src/created/ParseTree/Utos/utos_makeSulat.java</file>
+            <file>file:/I:/ConyoNetbeans/src/created/ParseTree/Utos/utos_makeTawag.java</file>
         </group>
     </open-files>
 </project-private>

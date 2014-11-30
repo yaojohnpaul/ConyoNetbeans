@@ -184,9 +184,10 @@ public class WatchAndTrace extends javax.swing.JFrame implements ActionListener{
     
     
     
-    public void watchAndTrace(SymList sl){
+    public void watchAndTrace(SymList sl, int ln){
         Map map = sl.getMap();
         Iterator it = map.entrySet().iterator();
+        //MainFrame.highlightLine(ln);
         for (int i = model.getRowCount() - 1  ; i >= 0; i--) {
                 model.removeRow(i);
         }

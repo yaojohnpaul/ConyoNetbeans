@@ -115,7 +115,7 @@ public abstract class utos_likeHabang extends created.iNode
                 }
                 if(WatchAndTrace.getVersion() != WatchManager.NOWATCH_ID){
                     WatchAndTrace GUI = WatchAndTrace.getInstance();
-                    GUI.watchAndTrace(sl);
+                    GUI.watchAndTrace(sl, ln());
                 }// highlight while condition
             }
         }
