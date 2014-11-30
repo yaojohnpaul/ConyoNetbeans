@@ -14,6 +14,8 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultHighlighter;
+import javax.swing.text.Highlighter.HighlightPainter;
 import org.fife.ui.autocomplete.*;
 import org.fife.ui.rtextarea.*;
 import org.fife.ui.rsyntaxtextarea.*;
@@ -28,11 +30,13 @@ public class MainFrame extends javax.swing.JFrame implements KeyListener, Action
     public static JTextArea output;
     public static ConyoLexer s = null;
     public static AutoCompletion ac;
-    public static String[] defaultCompletions = {"OMG", "hireYaya", "bayad", "makeBalik", "superYaya", "makeArte",
+    public static String[] RESERVED_COMPLETIONS = {"OMG", "hireYaya", "bayad", "makeBalik", "superYaya", "makeArte",
         "breakup", "makeup", "makeTawag", "makeSulat", "likeKapag", "thisNalang",
         "thisNalangKapag", "makePalit", "MRW", "MDR", "likeHabang", "makeGawa",
         "makeUlit", "inty", "floaty", "chary", "stringy", "booly",
-        "yuhh", "nuhh", "poor", "waley", "makeKuha"};
+        "yuhh", "nuhh", "poor", "waley", "makeKuha", "makeBasa",
+        "db"};
+    public static String[] DATA_TYPES = {"inty", "floaty", "chary", "stringy", "booly"};
     private boolean fileChanged = false;
     private boolean isControlPressed = false;
 
@@ -298,7 +302,7 @@ public class MainFrame extends javax.swing.JFrame implements KeyListener, Action
     }
 
     public static void addDefaultCompletionProviders(DefaultCompletionProvider provider) {
-        for (String s : defaultCompletions) {
+        for (String s : RESERVED_COMPLETIONS) {
             provider.addCompletion(new BasicCompletion(provider, s));
         }
 
@@ -308,7 +312,7 @@ public class MainFrame extends javax.swing.JFrame implements KeyListener, Action
                 "superYaya\n$\n\n$", "superYaya\n$\n\n$"));
     }
 
-    public static void newCompletion(char[] text, int start, int end) {
+    public static void newCompletionBakOnly1CustomKey(char[] text, int start, int end) {
         String temp = new String(text);
         String key;
 //        Boolean isReservedWord = false;
@@ -330,7 +334,7 @@ public class MainFrame extends javax.swing.JFrame implements KeyListener, Action
 //                if (s.contains("/*") || s.contains("*/")) {
 //                    continue;
 //                }
-//                for (String t : defaultCompletions) {
+//                for (String t : RESERVED_COMPLETIONS) {
 //                    if (s.equals(t)) {
 //                        isReservedWord = true;
 //                        break;
@@ -349,6 +353,97 @@ public class MainFrame extends javax.swing.JFrame implements KeyListener, Action
 //                completions.add(key);
             }
 
+        }
+    }
+    
+    public static void newCompletion(char[] text, int start, int end) {
+    String temp = new String(text);
+    Boolean isDuplicate;
+    Boolean isReservedWord;
+    Boolean isDataType;
+    int funcKeyDist = 0;
+    int varKeyDist = 0;
+    DefaultCompletionProvider provider = new DefaultCompletionProvider();
+    ArrayList<String> completions = new ArrayList<>();
+
+        if (!temp.substring(end + 1).trim().isEmpty()) {
+
+            String[] keywords = temp.split("[\n\r\\s\t\b\012]");
+
+            for (String s : keywords) {
+                System.out.println(s);
+                isReservedWord = false;
+                isDuplicate = false;
+
+                if (s.isEmpty()) {
+                    continue;
+                }
+                if (!s.matches("[a-zA-Z_][a-zA-Z0-9_]*")) {
+                    continue;
+                }
+                for (String t : RESERVED_COMPLETIONS) {
+                    isDataType = false;
+                    if (s.equals(t)) {
+                        for (String r : DATA_TYPES) {
+                            if (r.equals(t)) {
+                                isDataType = true;
+                            }
+                        }
+                        if (s.equals("hireYaya")) {
+                            funcKeyDist = 1;
+                        } else if (s.equals("makeArte")) {
+                            varKeyDist = 1;
+                        } else if (varKeyDist == 1 && !isDataType) {
+                            varKeyDist = 0;
+                        }
+                        isReservedWord = true;
+                        break;
+                    }
+                }
+                if (isReservedWord) {
+                    continue;
+                }
+                for (String t : completions) {
+                    if (s.equals(t)) {
+                        isDuplicate = true;
+                        break;
+                    }
+                }
+                if (isDuplicate) {
+                    continue;
+                }
+
+                if (funcKeyDist == 1 || varKeyDist == 1) {
+                    completions.add(s);
+                }
+
+                if (funcKeyDist > 0) {
+                    funcKeyDist--;
+                }
+                if (varKeyDist > 0) {
+                    varKeyDist--;
+                }
+            }
+
+            ac.uninstall();
+            addDefaultCompletionProviders(provider);
+            for (String s : completions) {
+                provider.addCompletion(new BasicCompletion(provider, s));
+            }
+            AutoCompletion ac = new AutoCompletion(provider);
+            ac.install(input);
+
+        }
+    }
+    
+    public static void highlightLine(int lineNumber) {
+        HighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter(Color.lightGray);
+        
+        input.getHighlighter().removeAllHighlights();
+        try { 
+            input.getHighlighter().addHighlight(input.getLineStartOffset(lineNumber), input.getLineEndOffset(lineNumber), painter);
+        } catch (BadLocationException ex) { 
+            ex.printStackTrace(); 
         }
     }
 
