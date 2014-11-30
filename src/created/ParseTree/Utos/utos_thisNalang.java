@@ -181,7 +181,7 @@ public abstract class utos_thisNalang extends created.iNode
                 if(WatchAndTrace.getVersion() == WatchManager.NORMALWATCH_ID || inAFunction == WatchManager.NOT_IN_A_FUNCTION){
                     if(call == WatchManager.STANDALONE){
                         WatchAndTrace GUI = WatchAndTrace.getInstance();
-                        GUI.watchAndTrace(sl);
+                        GUI.watchAndTrace(sl, ln());
                     }
                 }
             }// highlight else if condition
