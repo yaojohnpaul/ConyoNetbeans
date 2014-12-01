@@ -206,6 +206,11 @@ class MainConyo {
             if (choice == JFileChooser.APPROVE_OPTION) {
                 currentFile = fc.getSelectedFile();
                 
+                if(!currentFile.getName().endsWith(".cnyo"))
+                {
+                    currentFile = new File(currentFile.getAbsolutePath()+ ".cnyo");
+                }
+                
                 if(currentFile.exists()) {
                     choice = JOptionPane.showConfirmDialog(file_frame, "File exists. Overwrite the file?", "Conyo IDE", JOptionPane.YES_NO_OPTION);
             

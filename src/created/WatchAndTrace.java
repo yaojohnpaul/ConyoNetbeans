@@ -86,6 +86,11 @@ public class WatchAndTrace extends javax.swing.JFrame implements ActionListener{
         });
 
         stopButton.setText("Stop");
+        stopButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stopButtonActionPerformed(evt);
+            }
+        });
 
         listTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -131,6 +136,13 @@ public class WatchAndTrace extends javax.swing.JFrame implements ActionListener{
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nextButtonActionPerformed
+
+    private void stopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopButtonActionPerformed
+        setVersion(0);
+        checker = true;
+        MainFrame.input.getHighlighter().removeAllHighlights();
+        this.dispose();
+    }//GEN-LAST:event_stopButtonActionPerformed
 
      
     public void actionPerformed(ActionEvent e) {
