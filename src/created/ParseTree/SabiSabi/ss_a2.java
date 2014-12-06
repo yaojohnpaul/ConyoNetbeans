@@ -98,6 +98,10 @@ public abstract class ss_a2 extends created.iNode
             {
                 unary = ((ss_unary_1.ssU1Not) u).checkContext(sl);
             }
+            else if(u instanceof ss_unary_1.ssU1Neg)
+            {
+                unary = ((ss_unary_1.ssU1Neg) u).checkContext(sl);
+            }
             switch(unary){
                 case "booly" : break;
                 case "floaty" : break;
@@ -173,6 +177,10 @@ public abstract class ss_a2 extends created.iNode
             {
                 o2 = ((ss_unary_1.ssU1Not) u).evaluate(sl);
             }
+            else if(u instanceof ss_unary_1.ssU1Neg)
+            {
+                o2 = ((ss_unary_1.ssU1Neg) u).evaluate(sl);
+            }
             
             
             
@@ -197,20 +205,46 @@ public abstract class ss_a2 extends created.iNode
                     case "/" : if (o1 instanceof Float)
                                 {
                                     if(o2 instanceof Float)
-                                        return (float)o1 / (float)o2;
+                                        if((float)o2 != 0)
+                                            return (float)o1 / (float)o2;
+                                        else
+                                        {
+                                            ErrorReport.error(ln(), "Equation Invalid. Division by 0 is not allowed. Disregarded the division by 0 instead.");
+                                            return (float)o1;
+                                        }
                                     else if(o2 instanceof Integer)
-                                        return (float)o1 / (int)o2;
+                                        if((int)o2 != 0)
+                                            return (float)o1 / (int)o2;
+                                        else
+                                        {
+                                            ErrorReport.error(ln(), "Equation Invalid. Division by 0 is not allowed. Disregarded the division by 0 instead.");
+                                            return (float)o1;
+                                        }
                                 }
                                 else if (o1 instanceof Integer)
                                 {
                                     if(o2 instanceof Float)
-                                        return (int)o1 / (float)o2;
+                                        if((float)o2 != 0)
+                                            return (int)o1 / (float)o2;
+                                        else
+                                        {
+                                            ErrorReport.error(ln(), "Equation Invalid. Division by 0 is not allowed. Disregarded the division by 0 instead.");
+                                            return (int)o1;
+                                        }
                                     else if(o2 instanceof Integer)
                                     {
-                                        if(((int) o1 % (int) o2) == 0)
-                                            return (int) o1 / (int) o2;
+                                        if((int)o2 != 0)
+                                        {
+                                            if(((int) o1 % (int) o2) == 0)
+                                                return (int) o1 / (int) o2;
+                                            else
+                                                return Float.intBitsToFloat((int)o1) / Float.intBitsToFloat((int)o2);
+                                        }
                                         else
-                                            return Float.intBitsToFloat((int)o1) / Float.intBitsToFloat((int)o2);
+                                        {
+                                            ErrorReport.error(ln(), "Equation Invalid. Division by 0 is not allowed. Disregarded the division by 0 instead.");
+                                            return (int)o1;
+                                        }
                                     }
                                 }
                     case "%" : if (o1 instanceof Float)

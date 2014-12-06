@@ -314,6 +314,7 @@ ss_a1 ::= ss_a1:a1 arithmetic_1:ar ss_a2:a2 {: RESULT = new ss_a1.ssA1Expansion(
 ss_a2 ::= ss_a2:a  arithmetic_2:ar ss_unary_1:u{: RESULT = new ss_a2.ssA2Expansion(uleft, u, ar, a); :}
 		| ss_unary_1:u {: RESULT = new ss_a2.ssA2(uleft, u); :};
 ss_unary_1 ::= NOT ss_unary_1:u {: RESULT = new ss_unary_1.ssU1Not(uleft, u); :}
+                | MINUS ss_paren:p {: RESULT = new ss_unary_1.ssU1Neg(pleft, p); :}
 			| ss_paren:p {: RESULT = new ss_unary_1.ssU1(pleft, p); :};
 ss_paren ::= LEFT_PAREN ss_OR:a RIGHT_PAREN {: RESULT = new ss_paren.ssParen(aleft, a); :}
 			| sabi_sabi_end:e {: RESULT = new ss_paren.ssParenEnd(eleft, e); :};

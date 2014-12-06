@@ -485,7 +485,7 @@ public class ConyoPlusPlusTokenMaker extends AbstractJFlexCTokenMaker {
 		super.addToken(array, start,end, tokenType, startOffset, hyperlink);
 		zzStartRead = zzMarkedPos;
                 if(tokenType == TokenTypes.IDENTIFIER)
-                    MainFrame.newCompletion(array, start, end);
+                    MainFrame.newCompletion(zzBuffer, start, end);
 	}
 
 
